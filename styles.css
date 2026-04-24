@@ -4,12 +4,16 @@
    ============================================================ */
 
 /* ── FONTS (self-hosted Avocado Sans) ────────────────────── */
+/* unicode-range limits Avocado Sans to the codepoints it actually draws;
+   anything outside (em/en dashes, middle dot, ©, arrows, math, etc.)
+   falls through to the next font in the stack. */
 @font-face {
   font-family: 'Avocado Sans';
   src: url('/fonts/AvocadoSans-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-0024, U+0026-0029, U+002C-003B, U+003F-005A, U+005F, U+0061-007A, U+007C, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2122;
 }
 @font-face {
   font-family: 'Avocado Sans';
@@ -17,6 +21,7 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-0024, U+0026-0029, U+002C-003B, U+003F-005A, U+005F, U+0061-007A, U+007C, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2122;
 }
 @font-face {
   font-family: 'Avocado Sans';
@@ -24,6 +29,7 @@
   font-weight: 100;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-0024, U+0026-0029, U+002C-003B, U+003F-005A, U+005F, U+0061-007A, U+007C, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2122;
 }
 
 /* ── TOKENS ──────────────────────────────────────────────── */
