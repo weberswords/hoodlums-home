@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Intelligent Hoodlums</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --prussian: #0B2545;
+    --rufous: #B7280F;
+    --tuscany: #E0A458;
+    --bone: #F2E8D5;
+    --cadet: #8CA3B5;
+    --ink: #0F1419;
+    --bone-40: rgba(242,232,213,0.4);
+    --bone-60: rgba(242,232,213,0.6);
+    --bone-80: rgba(242,232,213,0.8);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--bone);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HALFTONE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--bone) 0.5px, transparent 0.5px);
+    background-size: 8px 8px;
+    opacity: 0.018;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--prussian);
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--bone-60);
+    border-bottom: 2px solid var(--rufous);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(242,232,213,0.08);
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cadet);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--bone); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(11,37,69,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(183,40,15,0.08) 0%, transparent 50%),
+      var(--ink);
+  }
+
+  .hero-pillars {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--tuscany);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 10vw, 120px);
+    line-height: 0.95;
+    letter-spacing: 4px;
+    color: var(--bone);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-rule {
+    width: 80px;
+    height: 3px;
+    background: var(--rufous);
+    margin: 0 auto 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-tagline {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--cadet);
+    max-width: 520px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-cta {
+    margin-top: 48px;
+    display: flex;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  .btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--rufous);
+    color: var(--bone);
+  }
+  .btn-primary:hover {
+    background: #9A2009;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--bone);
+    border: 1px solid var(--bone-40);
+  }
+  .btn-outline:hover {
+    border-color: var(--bone);
+    background: rgba(242,232,213,0.05);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 40px;
+  }
+
+  .section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--tuscany);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    letter-spacing: 2px;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+
+  .section-rule {
+    width: 48px;
+    height: 3px;
+    background: var(--rufous);
+    margin-bottom: 40px;
+  }
+
+  /* ── WHAT WE DO ── */
+  .what-we-do {
+    background: var(--prussian);
+    position: relative;
+  }
+
+  .what-we-do::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--bone) 0.8px, transparent 0.8px);
+    background-size: 12px 12px;
+    opacity: 0.025;
+    pointer-events: none;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .service-card {
+    border: 1px solid rgba(242,232,213,0.08);
+    padding: 32px 28px;
+  }
+
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--cadet);
+    line-height: 1.65;
+  }
+
+  /* ── THE LEDE (about) ── */
+  .the-lede {
+    background: var(--ink);
+  }
+
+  .lede-text {
+    font-size: 17px;
+    color: var(--cadet);
+    line-height: 1.75;
+    max-width: 680px;
+  }
+
+  .lede-text strong {
+    color: var(--bone);
+    font-weight: 500;
+  }
+
+  .lede-names {
+    margin-top: 40px;
+    display: flex;
+    gap: 48px;
+  }
+
+  .lede-name {
+    border-left: 2px solid var(--rufous);
+    padding-left: 20px;
+  }
+
+  .lede-name h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--bone);
+  }
+
+  .lede-name p {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--cadet);
+    margin-top: 4px;
+  }
+
+  /* ── VIDEOS ── */
+  .videos-section {
+    background: var(--prussian);
+    position: relative;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .video-card {
+    aspect-ratio: 16/9;
+    background: var(--ink);
+    border: 1px solid rgba(242,232,213,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+
+  .video-card:hover {
+    border-color: var(--rufous);
+  }
+
+  .video-placeholder {
+    text-align: center;
+  }
+
+  .video-placeholder .play-icon {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--bone-40);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    transition: border-color 0.3s;
+  }
+
+  .video-card:hover .play-icon {
+    border-color: var(--rufous);
+  }
+
+  .play-icon svg {
+    fill: var(--bone-60);
+    width: 16px;
+    margin-left: 3px;
+  }
+
+  .video-placeholder span {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cadet);
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--rufous);
+    padding: 64px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.15) 0.8px, transparent 0.8px);
+    background-size: 10px 10px;
+    pointer-events: none;
+  }
+
+  .cta-band h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: 3px;
+    color: var(--bone);
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .cta-band p {
+    font-size: 15px;
+    color: rgba(242,232,213,0.8);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .btn-bone {
+    background: var(--bone);
+    color: var(--ink);
+    position: relative;
+  }
+  .btn-bone:hover {
+    background: #fff;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(242,232,213,0.06);
+    padding: 60px 40px 40px;
+  }
+
+  .footer-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .footer-brand h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+
+  .footer-brand p {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cadet);
+    line-height: 1.8;
+  }
+
+  .footer-social h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--tuscany);
+    margin-bottom: 16px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .social-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 11px;
+    color: var(--cadet);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 1px;
+  }
+
+  .social-links a:hover { color: var(--bone); }
+
+  .footer-bottom {
+    max-width: 1000px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(242,232,213,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 10px;
+    color: rgba(140,163,181,0.5);
+    letter-spacing: 1px;
+  }
+
+  .footer-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rufous);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 11px; letter-spacing: 2px; }
+    section { padding: 72px 24px; }
+    .hero { padding: 60px 24px; min-height: 80vh; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .lede-names { flex-direction: column; gap: 24px; }
+    .footer-inner { flex-direction: column; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 48px; }
+    .masthead { font-size: 9px; letter-spacing: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  The Intelligent Hoodlums &nbsp;·&nbsp; Las Vegas &nbsp;·&nbsp; Est 2014
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
+  <ul class="nav-links">
+    <li><a href="#work">The Work</a></li>
+    <li><a href="#crew">The Crew</a></li>
+    <li><a href="#video">Watch</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pillars">Design &nbsp;·&nbsp; Disrupt &nbsp;·&nbsp; Deliver</div>
+  <h1>We Help Teachers<br>Solve Problems.</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-tagline">
+    Your day is hard enough. We're here to make it easier — with PD that's actually useful, tools that fit your workflow, and a community that gets it.
+  </p>
+  <div class="hero-cta">
+    <a href="#connect" class="btn btn-primary">Let's Talk</a>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what-we-do" id="work">
+  <div class="section-inner">
+    <div class="section-label">Chapter 01</div>
+    <h2 class="section-title">The Work</h2>
+    <div class="section-rule"></div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Professional Development</h3>
+        <p>Practical skills teachers can use on Monday. Not theory. Not a binder. Work that survives contact with a real classroom.</p>
+      </div>
+      <div class="service-card">
+        <h3>Consulting</h3>
+        <p>Schools and districts who need a trusted partner — not a vendor pitch. We build systems that run without us.</p>
+      </div>
+      <div class="service-card">
+        <h3>Conferences</h3>
+        <p>A room full of teachers who are tired of feeling alone in the work. Connection first. Transactions follow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CREW -->
+<section class="the-lede" id="crew">
+  <div class="section-inner">
+    <div class="section-label">Chapter 02</div>
+    <h2 class="section-title">Who's Behind The Mask</h2>
+    <div class="section-rule"></div>
+    <p class="lede-text">
+      <strong>Two instructional designers who'd seen too many schools sold temporal solutions</strong> by people who'd never taught a single period. We built something different. Everything we make is pressure-tested by people who've taught it, at schools where Tuesday is the hardest day.
+    </p>
+    <div class="lede-names">
+      <div class="lede-name">
+        <h4>Mike Lang</h4>
+        <p>Co-founder · Creative Direction<br>Curriculum Architecture · Instructional Design</p>
+      </div>
+      <div class="lede-name">
+        <h4>Webs</h4>
+        <p>Co-founder · Software Developer<br>Workshop Facilitation · Instructional Design</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="videos-section" id="video">
+  <div class="section-inner">
+    <div class="section-label">Chapter 03</div>
+    <h2 class="section-title">Watch</h2>
+    <div class="section-rule"></div>
+    <div class="videos-grid">
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="play-icon">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <span>Video 01</span>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="play-icon">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <span>Video 02</span>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="play-icon">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <span>Video 03</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="connect">
+  <h2>Let's Talk About What Your Teachers Need.</h2>
+  <p>PD that holds. Systems that run. Coffee that stays hot.</p>
+  <a href="mailto:whenindoubt@theintelligenthoodlums.com" class="btn btn-bone">Get In Touch</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>The Intelligent Hoodlums</h3>
+      <p>
+        Las Vegas, Nevada · Est 2014<br>
+        Design · Disrupt · Deliver
+      </p>
+    </div>
+    <div class="footer-social">
+      <h4>The Streets</h4>
+      <div class="social-links">
+        <a href="#">YouTube</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2014–2026 The Intelligent Hoodlums</p>
+    <span class="footer-tagline">When In Doubt, Trust A Hoodlum.</span>
+  </div>
+</footer>
+
+</body>
+</html>
