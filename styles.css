@@ -736,7 +736,7 @@ body::before {
   justify-content: space-between;
   align-items: baseline;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .day-pill {
@@ -760,14 +760,24 @@ body::before {
   text-align: right;
 }
 
+.day-theme {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--hm-tuscany);
+  margin-bottom: 10px;
+}
+
 .day-title {
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 22px;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: 0.015em;
   color: var(--hm-bone);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .day-blurb {
@@ -804,6 +814,23 @@ body::before {
 .day-cta:hover span,
 .day-cta:focus-visible span {
   transform: translateX(4px);
+}
+
+.schedule-meta {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--bone-08);
+  font-family: var(--font-family);
+  font-weight: 100;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hm-cadet);
+  text-align: center;
+}
+.schedule-meta strong {
+  color: var(--hm-bone);
+  font-weight: 400;
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
