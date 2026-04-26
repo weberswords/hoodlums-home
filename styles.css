@@ -897,6 +897,20 @@ body::before {
   font-weight: 400;
 }
 
+.schedule-intro {
+  border-left: 3px solid var(--hm-rufous);
+  padding: 6px 0 6px 20px;
+  margin-bottom: 32px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--hm-cadet);
+  max-width: 720px;
+}
+.schedule-intro strong {
+  color: var(--hm-bone);
+  font-weight: 700;
+}
+
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 14px 24px; }
