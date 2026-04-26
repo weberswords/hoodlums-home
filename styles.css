@@ -659,6 +659,153 @@ body::before {
   }
 }
 
+/* ── ANNOUNCEMENT BAR (above masthead) ──────────────────── */
+.announce-bar {
+  background: var(--hm-rufous);
+  color: var(--hm-bone);
+  text-align: center;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.33em;
+  text-transform: uppercase;
+  padding: 9px 24px;
+  display: block;
+  text-decoration: none;
+  transition: background-color 150ms ease-in-out;
+}
+.announce-bar:hover,
+.announce-bar:focus-visible {
+  background: var(--hm-rufous-dark);
+}
+.announce-bar .dot {
+  margin: 0 0.5em;
+  color: var(--hm-tuscany);
+  letter-spacing: normal;
+}
+.announce-bar .arrow {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 150ms ease-in-out;
+}
+.announce-bar:hover .arrow,
+.announce-bar:focus-visible .arrow {
+  transform: translateX(3px);
+}
+
+/* ── EVENT PAGE: nav-back link ──────────────────────────── */
+.nav-back {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hm-cadet);
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+}
+.nav-back:hover,
+.nav-back:focus-visible { color: var(--hm-bone); }
+
+/* ── EVENT PAGE: hero tweak (slightly shorter) ──────────── */
+.hero-event { min-height: 72vh; }
+
+/* ── EVENT PAGE: day grid + cards ───────────────────────── */
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: 1px solid var(--bone-08);
+  padding: 28px 26px;
+  transition: border-color 150ms ease-in-out, transform 150ms ease-in-out;
+}
+.day-card:hover {
+  border-color: var(--bone-40);
+  transform: translateY(-2px);
+}
+
+.day-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.day-pill {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.33em;
+  text-transform: uppercase;
+  color: var(--hm-ink);
+  background: var(--hm-tuscany);
+  padding: 5px 10px 4px;
+}
+
+.day-date {
+  font-family: var(--font-family);
+  font-weight: 100;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hm-cadet);
+  text-align: right;
+}
+
+.day-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0.015em;
+  color: var(--hm-bone);
+  margin-bottom: 12px;
+}
+
+.day-blurb {
+  font-size: 15px;
+  color: var(--hm-cadet);
+  line-height: 1.65;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.day-cta {
+  align-self: flex-start;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hm-bone);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--hm-rufous);
+  transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
+}
+.day-cta:hover,
+.day-cta:focus-visible {
+  color: var(--hm-tuscany);
+  border-bottom-color: var(--hm-tuscany);
+}
+.day-cta span {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 150ms ease-in-out;
+}
+.day-cta:hover span,
+.day-cta:focus-visible span {
+  transform: translateX(4px);
+}
+
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
   .site-nav { padding: 14px 24px; }
@@ -666,6 +813,7 @@ body::before {
   .nav-links a { font-size: 11px; letter-spacing: 0.18em; }
   .section { padding: 80px 24px; }
   .hero { padding: 64px 24px; min-height: 80vh; }
+  .hero-event { min-height: 64vh; }
   .crew-names { gap: 32px; }
   .videos-grid { grid-template-columns: 1fr; }
 }
@@ -678,9 +826,12 @@ body::before {
   .site-nav { justify-content: center; }
   .hero-title { font-size: 44px; }
   .masthead { font-size: 10px; letter-spacing: 0.35em; padding: 10px 16px; }
+  .announce-bar { font-size: 10px; letter-spacing: 0.22em; padding: 9px 16px; }
   .section { padding: 64px 20px; }
   .cta-band { padding: 56px 20px; }
   .site-footer { padding: 48px 20px 24px; }
   .footer-inner { flex-direction: column; gap: 28px; }
   .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+  .day-card-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .day-date { text-align: left; }
 }
