@@ -109,6 +109,11 @@ answers live side by side. Create the custom properties first (Settings →
 Properties) so the mapping is clean. Only import contacts where
 `contact_consent = Yes` if you want to respect opt-in for marketing.
 
+> **"Other" write-ins:** when someone picks *Other* on Primary role, Common
+> stressors, or Who paid, a text box appears and their answer is stored inline
+> as `Other: their text` in the same column (e.g. `who_paid = "Other: PTA"`).
+> No extra columns to map.
+
 > **Multi-checkbox fields** (`common_stressors`, `future_interest`) are stored
 > semicolon-separated — exactly what HubSpot expects when importing into a
 > multiple-checkbox property, so each selected option maps to its own value.

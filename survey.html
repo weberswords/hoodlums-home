@@ -102,6 +102,7 @@
                 <option value="Paraprofessional">Paraprofessional</option>
                 <option value="Other">Other</option>
               </select>
+              <input type="text" class="other-input" id="f_role_other" name="primary_role_other" placeholder="Tell us your role" hidden aria-label="Your role">
             </div>
             <div class="field">
               <label for="f_years">Years experience</label>
@@ -154,6 +155,7 @@
             <label class="check-field"><input type="checkbox" name="common_stressors" value="Curriculum I didn't have input into"><span>Being given a curriculum I didn't have input into adopting</span></label>
             <label class="check-field"><input type="checkbox" name="common_stressors" value="Knowledge management"><span>Knowledge management &mdash; not knowing what resources are available to me</span></label>
             <label class="check-field"><input type="checkbox" name="common_stressors" value="Other"><span>Other</span></label>
+            <input type="text" class="other-input" id="f_stressor_other" name="common_stressors_other" placeholder="What else is weighing on you?" hidden aria-label="Other stressor">
           </div>
         </fieldset>
 
@@ -224,6 +226,7 @@
               <option value="A grant">A grant</option>
               <option value="Other">Other</option>
             </select>
+            <input type="text" class="other-input" id="f_paid_other" name="who_paid_other" placeholder="Who covered it?" hidden aria-label="Who paid">
           </div>
           <div class="field">
             <label>Future interest <span class="opt">(check all that apply)</span></label>
@@ -421,6 +424,33 @@
     buildScale(document.getElementById('recMount'), 'nps', 1, 10);
   }
 
+  /* ---- "Other" write-in reveals ----------------------------- */
+  // Show the matching text input only while "Other" is selected; clear it
+  // and move focus to it when revealed.
+  function wireOther(trigger, input) {
+    if (!trigger || !input) return;
+    function sync(isOn, focusOnShow) {
+      input.hidden = !isOn;
+      if (!isOn) { input.value = ''; }
+      else if (focusOnShow) { try { input.focus(); } catch (e) {} }
+    }
+    if (trigger.tagName === 'SELECT') {
+      trigger.addEventListener('change', function () {
+        sync(trigger.value === 'Other', true);
+      });
+      sync(trigger.value === 'Other', false);
+    } else { // checkbox
+      trigger.addEventListener('change', function () {
+        sync(trigger.checked, true);
+      });
+      sync(trigger.checked, false);
+    }
+  }
+  wireOther(form.primary_role, document.getElementById('f_role_other'));
+  wireOther(document.getElementById('f_paid'), document.getElementById('f_paid_other'));
+  wireOther(form.querySelector('input[name="common_stressors"][value="Other"]'),
+            document.getElementById('f_stressor_other'));
+
   /* ---- submit ----------------------------------------------- */
   var btn = document.getElementById('submitBtn');
   var note = document.getElementById('formNote');
@@ -436,6 +466,14 @@
       form.querySelectorAll('input[name="' + name + '"]:checked'),
       function (el) { return el.value; }
     );
+  }
+
+  // If "Other" is chosen and a write-in exists, store it as "Other: <text>".
+  function withOther(value, otherInputId) {
+    if (value !== 'Other') return value;
+    var el = document.getElementById(otherInputId);
+    var txt = el && el.value.trim();
+    return txt ? 'Other: ' + txt : 'Other';
   }
 
   function validate() {
@@ -472,11 +510,13 @@
       data[item.key] = checked ? checked.value : '';
     });
     if (phase === 'before') {
-      data.primary_role = form.primary_role.value;
+      data.primary_role = withOther(form.primary_role.value, 'f_role_other');
       data.years_experience = form.years_experience.value;
       data.subject_grade = form.subject_grade.value.trim();
       data.school = form.school.value.trim();
-      data.common_stressors = checkedValues('common_stressors').join('; ');
+      data.common_stressors = checkedValues('common_stressors').map(function (v) {
+        return v === 'Other' ? withOther('Other', 'f_stressor_other') : v;
+      }).join('; ');
       data.pain_point = form.pain_point.value.trim();
       data.hoped_outcome = form.hoped_outcome.value.trim();
     } else {
@@ -489,7 +529,7 @@
       data.what_changed = form.what_changed.value.trim();
       data.what_built = form.what_built.value.trim();
       data.work_as_model = wam ? wam.value : '';
-      data.who_paid = form.who_paid.value;
+      data.who_paid = withOther(form.who_paid.value, 'f_paid_other');
       data.future_interest = checkedValues('future_interest').join('; ');
       data.testimonial = form.testimonial.value.trim();
       data.referral_name = form.referral_name.value.trim();

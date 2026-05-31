@@ -1184,6 +1184,10 @@ body::before {
 }
 .check-field span { margin-bottom: 0; color: var(--hm-cadet); }
 
+/* "Other" write-in — revealed when Other is selected */
+.other-input { margin-top: 10px; }
+.check-group .other-input { margin-left: 32px; width: calc(100% - 32px); }
+
 /* ── Inline radios (Yes / No) ───────────────────────────── */
 .radio-inline { display: flex; gap: 12px; }
 .radio-pill { position: relative; cursor: pointer; }
