@@ -20,26 +20,38 @@
 
 // Fixed column order. The header row is written automatically on first run.
 var COLUMNS = [
-  'received_at',          // server timestamp (added here)
-  'phase',                // 'before' | 'after'
-  'submitted_at_client',  // ISO string from the browser
-  'name',
-  'email',                // lowercased — the join key between before & after
-  'role',
-  'subject_grade',
-  'school',
-  'q_source_code',        // Likert 1–5
-  'q_architecture',       // Likert 1–5
-  'q_scheduler',          // Likert 1–5
-  'q_applications',       // Likert 1–5
-  'q_north_star',         // Likert 1–5
-  'pain_point',           // before
-  'hoped_outcome',        // before
-  'what_changed',         // after
-  'what_built',           // after
-  'nps',                  // after, 0–10
-  'testimonial',          // after
-  'contact_consent'       // 'Yes' | 'No'  → HubSpot consent / marketing status
+  'received_at',            // server timestamp (added here)
+  'phase',                  // 'before' | 'after'
+  'submitted_at_client',    // ISO string from the browser
+  'event_name',             // pre-filled event metadata
+  'event_date',
+  'event_type',
+  'event_format',
+  'first_name',
+  'last_name',
+  'email',                  // lowercased — the join key between before & after
+  'primary_role',           // before
+  'years_experience',       // before
+  'subject_grade',          // before
+  'school',                 // before
+  'q_source_code',          // Likert 1–5
+  'q_architecture',         // Likert 1–5
+  'q_scheduler',            // Likert 1–5
+  'q_applications',         // Likert 1–5
+  'q_north_star',           // Likert 1–5
+  'common_stressors',       // before, semicolon-joined multi
+  'pain_point',             // before
+  'hoped_outcome',          // before
+  'value_rating',           // after, 1–5
+  'nps',                    // after, 1–10 (invite/recommend)
+  'most_valuable_takeaway', // after
+  'what_changed',           // after
+  'what_built',             // after
+  'work_as_model',          // after, 'Yes' | 'No'
+  'who_paid',               // after
+  'future_interest',        // after, semicolon-joined multi
+  'testimonial',            // after
+  'contact_consent'         // 'Yes' | 'No'  → HubSpot consent / marketing status
 ];
 
 function doPost(e) {

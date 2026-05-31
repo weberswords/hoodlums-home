@@ -1071,7 +1071,7 @@ body::before {
   background: var(--bone-08);
 }
 
-/* ── Likert ─────────────────────────────────────────────── */
+/* ── Likert / scales ────────────────────────────────────── */
 .likert-scale-key,
 .nps-key {
   display: flex;
@@ -1112,26 +1112,25 @@ body::before {
   margin-bottom: 6px;
 }
 
-.likert-options {
+/* numeric radio scales (Likert 1–5, value 1–5, recommend 1–10) */
+.scale-options {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   gap: 8px;
 }
+.scale-options.scale-5  { grid-template-columns: repeat(5, 1fr); }
+.scale-options.scale-10 { grid-template-columns: repeat(10, 1fr); gap: 6px; }
 
-.likert-opt,
-.nps-opt {
+.scale-opt {
   position: relative;
   cursor: pointer;
 }
-.likert-opt input,
-.nps-opt input {
+.scale-opt input {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
-.likert-opt span,
-.nps-opt span {
+.scale-opt span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1144,29 +1143,24 @@ body::before {
   border: 1px solid var(--bone-08);
   transition: all 150ms ease-in-out;
 }
-.likert-opt:hover span,
-.nps-opt:hover span { border-color: var(--bone-40); color: var(--hm-bone); }
-.likert-opt input:checked + span,
-.nps-opt input:checked + span {
+.scale-options.scale-10 .scale-opt span { height: 42px; font-size: 14px; }
+.scale-opt:hover span { border-color: var(--bone-40); color: var(--hm-bone); }
+.scale-opt input:checked + span {
   background: var(--hm-rufous);
   border-color: var(--hm-rufous);
   color: var(--hm-bone);
 }
-.likert-opt input:focus-visible + span,
-.nps-opt input:focus-visible + span {
+.scale-opt input:focus-visible + span {
   outline: 2px solid var(--hm-tuscany);
   outline-offset: 2px;
 }
 
-/* ── NPS (0–10) ─────────────────────────────────────────── */
-.nps {
-  display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  gap: 6px;
+/* ── Checkbox groups / consent ──────────────────────────── */
+.check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
-.nps-opt span { height: 42px; font-size: 14px; }
-
-/* ── Consent checkbox ───────────────────────────────────── */
 .check-field {
   display: flex;
   align-items: flex-start;
@@ -1181,6 +1175,37 @@ body::before {
   accent-color: var(--hm-rufous);
 }
 .check-field span { margin-bottom: 0; color: var(--hm-cadet); }
+
+/* ── Inline radios (Yes / No) ───────────────────────────── */
+.radio-inline { display: flex; gap: 12px; }
+.radio-pill { position: relative; cursor: pointer; }
+.radio-pill input { position: absolute; opacity: 0; width: 0; height: 0; }
+.radio-pill span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  height: 46px;
+  padding: 0 20px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--hm-cadet);
+  background: var(--bone-06);
+  border: 1px solid var(--bone-08);
+  transition: all 150ms ease-in-out;
+}
+.radio-pill:hover span { border-color: var(--bone-40); color: var(--hm-bone); }
+.radio-pill input:checked + span {
+  background: var(--hm-rufous);
+  border-color: var(--hm-rufous);
+  color: var(--hm-bone);
+}
+.radio-pill input:focus-visible + span {
+  outline: 2px solid var(--hm-tuscany);
+  outline-offset: 2px;
+}
 
 /* ── Actions / states ───────────────────────────────────── */
 .survey-actions {
@@ -1217,8 +1242,8 @@ body::before {
 
 @media (max-width: 640px) {
   .field-row { grid-template-columns: 1fr; gap: 0; }
-  .likert-options { gap: 6px; }
-  .likert-opt span { height: 42px; font-size: 15px; }
-  .nps { gap: 4px; }
-  .nps-opt span { height: 38px; font-size: 13px; }
+  .scale-options.scale-5 { gap: 6px; }
+  .scale-options.scale-5 .scale-opt span { height: 42px; font-size: 15px; }
+  .scale-options.scale-10 { gap: 4px; }
+  .scale-options.scale-10 .scale-opt span { height: 38px; font-size: 12px; }
 }
