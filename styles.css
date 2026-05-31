@@ -940,3 +940,285 @@ body::before {
   .day-card-head { flex-direction: column; align-items: flex-start; gap: 8px; }
   .day-date { text-align: left; }
 }
+
+/* ── SURVEY (Pulse Check) ───────────────────────────────── */
+.section-survey { background: var(--hm-ink); padding-top: 56px; }
+
+.survey-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.survey-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: var(--hm-bone);
+  margin-bottom: 16px;
+}
+
+.survey-lede {
+  font-size: 17px;
+  color: var(--hm-cadet);
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.survey-form { display: block; }
+
+/* honeypot — visually + assistively hidden, still in the DOM */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.survey-group {
+  border: none;
+  border-top: 1px solid var(--bone-08);
+  padding: 32px 0 8px;
+  margin: 0;
+}
+.survey-group:first-of-type { border-top: none; padding-top: 0; }
+
+.survey-group-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.33em;
+  text-transform: uppercase;
+  color: var(--hm-tuscany);
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.survey-group-hint {
+  font-size: 14px;
+  color: var(--hm-cadet);
+  line-height: 1.6;
+  margin: -10px 0 20px;
+}
+.survey-group-hint strong { color: var(--hm-bone); font-weight: 700; }
+
+.field { margin-bottom: 22px; }
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.field label,
+.check-field span {
+  display: block;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--hm-bone);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.req { color: var(--hm-rufous); }
+.opt { color: var(--hm-cadet); font-weight: 100; }
+
+.field-hint {
+  font-size: 13px;
+  color: var(--hm-cadet);
+  line-height: 1.55;
+  margin-top: 6px;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field select,
+.field textarea {
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--hm-bone);
+  background: var(--bone-06);
+  border: 1px solid var(--bone-08);
+  border-radius: 0;
+  padding: 13px 14px;
+  transition: border-color 150ms ease-in-out, background-color 150ms ease-in-out;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.field textarea { resize: vertical; line-height: 1.55; }
+.field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238CA3B5' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(140,163,181,0.55); }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--hm-rufous);
+  background: var(--bone-08);
+}
+
+/* ── Likert ─────────────────────────────────────────────── */
+.likert-scale-key,
+.nps-key {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family);
+  font-weight: 100;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hm-cadet);
+  margin-bottom: 14px;
+}
+.nps-key { margin-top: 10px; margin-bottom: 0; }
+
+.likert-row {
+  border: none;
+  border-top: 1px solid var(--bone-06);
+  padding: 20px 0;
+  margin: 0;
+}
+.likert-row:first-of-type { border-top: none; padding-top: 4px; }
+
+.likert-statement {
+  font-size: 16px;
+  color: var(--hm-bone);
+  line-height: 1.5;
+  padding: 0;
+  margin-bottom: 14px;
+}
+.likert-layer {
+  display: block;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.33em;
+  text-transform: uppercase;
+  color: var(--hm-tuscany);
+  margin-bottom: 6px;
+}
+
+.likert-options {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.likert-opt,
+.nps-opt {
+  position: relative;
+  cursor: pointer;
+}
+.likert-opt input,
+.nps-opt input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.likert-opt span,
+.nps-opt span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--hm-cadet);
+  background: var(--bone-06);
+  border: 1px solid var(--bone-08);
+  transition: all 150ms ease-in-out;
+}
+.likert-opt:hover span,
+.nps-opt:hover span { border-color: var(--bone-40); color: var(--hm-bone); }
+.likert-opt input:checked + span,
+.nps-opt input:checked + span {
+  background: var(--hm-rufous);
+  border-color: var(--hm-rufous);
+  color: var(--hm-bone);
+}
+.likert-opt input:focus-visible + span,
+.nps-opt input:focus-visible + span {
+  outline: 2px solid var(--hm-tuscany);
+  outline-offset: 2px;
+}
+
+/* ── NPS (0–10) ─────────────────────────────────────────── */
+.nps {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 6px;
+}
+.nps-opt span { height: 42px; font-size: 14px; }
+
+/* ── Consent checkbox ───────────────────────────────────── */
+.check-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+.check-field input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--hm-rufous);
+}
+.check-field span { margin-bottom: 0; color: var(--hm-cadet); }
+
+/* ── Actions / states ───────────────────────────────────── */
+.survey-actions {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--bone-08);
+}
+.survey-actions .btn { border: none; }
+
+.survey-note {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--hm-cadet);
+  margin-top: 14px;
+}
+.survey-note.is-error { color: var(--hm-tuscany); }
+
+.survey-result { padding: 24px 0 40px; }
+.survey-result .rufous-rule { margin-bottom: 24px; }
+.survey-result-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  color: var(--hm-bone);
+  margin-bottom: 14px;
+}
+.survey-result-body {
+  font-size: 17px;
+  color: var(--hm-cadet);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .likert-options { gap: 6px; }
+  .likert-opt span { height: 42px; font-size: 15px; }
+  .nps { gap: 4px; }
+  .nps-opt span { height: 38px; font-size: 13px; }
+}
