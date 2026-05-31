@@ -71,27 +71,50 @@ When you're ready to load responses into HubSpot:
    One file → One object (Contacts)** → upload the CSV.
 3. Map the columns:
 
-| Sheet column        | HubSpot field                                   |
-|---------------------|-------------------------------------------------|
-| `email`             | **Email** (the dedupe key — set as unique ID)   |
-| `name`              | First/Last name (or a custom *Full name*)       |
-| `role`              | custom property *Role*                          |
-| `school`            | Company / custom *School or District*           |
-| `subject_grade`     | custom *Subject & grade*                         |
-| `pain_point`        | custom *Pain point (start)*                      |
-| `hoped_outcome`     | custom *Hoped outcome*                           |
-| `what_changed`      | custom *What changed (end)*                      |
-| `what_built`        | custom *What they built*                         |
-| `nps`               | custom *NPS*                                      |
-| `testimonial`       | custom *Testimonial*                             |
-| `q_*` (the five)    | custom number properties (optional, for deltas) |
-| `contact_consent`   | marketing/consent status or a custom checkbox   |
+| Sheet column            | HubSpot field                                   | When     |
+|-------------------------|-------------------------------------------------|----------|
+| `email`                 | **Email** (the dedupe key — set as unique ID)   | both     |
+| `first_name`            | **First name**                                  | both     |
+| `last_name`             | **Last name**                                   | both     |
+| `event_name`            | custom *Event name*                             | both     |
+| `event_date`            | custom *Event date* (date)                       | both     |
+| `event_type`            | custom *Event type*                             | both     |
+| `event_format`          | custom *Event format*                           | both     |
+| `primary_role`          | custom *Primary role (education)*               | before   |
+| `years_experience`      | custom *Years experience*                       | before   |
+| `school`                | Company / custom *School or District*           | before   |
+| `subject_grade`         | custom *Subject & grade*                         | before   |
+| `common_stressors`      | custom **multi-checkbox** *Common stressors*    | before   |
+| `pain_point`            | custom *Pain point (start)*                      | before   |
+| `hoped_outcome`         | custom *Hoped outcome*                           | before   |
+| `value_rating`          | custom number *Value rating (1–5)*              | after    |
+| `nps`                   | custom number *Recommend score (1–10)*          | after    |
+| `most_valuable_takeaway`| custom *Most valuable takeaway*                 | after    |
+| `what_changed`          | custom *What changed (end)*                      | after    |
+| `what_built`            | custom *What they built*                         | after    |
+| `work_as_model`         | custom *Use work as model?* (Yes/No)            | after    |
+| `who_paid`              | custom *Who paid to attend*                      | after    |
+| `future_interest`       | custom **multi-checkbox** *Future interest*     | after    |
+| `testimonial`           | custom *Testimonial*                             | after    |
+| `q_*` (the five layers) | custom number properties (for before→after deltas) | both  |
+| `contact_consent`       | marketing/consent status or a custom checkbox   | both     |
 
 Because HubSpot dedupes on **email**, importing the *before* file then the
 *after* file updates the **same contact** — start-of-week and end-of-week
 answers live side by side. Create the custom properties first (Settings →
 Properties) so the mapping is clean. Only import contacts where
 `contact_consent = Yes` if you want to respect opt-in for marketing.
+
+> **Multi-checkbox fields** (`common_stressors`, `future_interest`) are stored
+> semicolon-separated — exactly what HubSpot expects when importing into a
+> multiple-checkbox property, so each selected option maps to its own value.
+
+### Event metadata
+`event_name`, `event_type`, and `event_format` are pre-filled with Classroom OS
+defaults so those columns stay populated without teachers typing them. To reuse
+the survey for another event, override them in the URL — e.g.
+`/survey?event_name=Summer%20Institute&event_date=2026-07-10&event_format=Virtual`.
+Set `event_date` per use the same way (it's blank by default).
 
 > **Upgrade path:** when you do want real-time sync instead of CSV, the same
 > payload can POST to HubSpot's CRM API (free Private App token) from a Vercel
@@ -110,9 +133,18 @@ Properties) so the mapping is clean. Only import contacts where
 | Tools/systems run when I'm not in the room | Applications | `q_applications` |
 | Classroom could run a day without me | Whole system | `q_north_star` |
 
-All scored 1 (not at all) → 5 (completely). Plus name, email, role, school,
-subject/grade, the open pain-point / outcome questions, NPS + testimonial
-(after), and contact consent.
+All scored 1 (not at all) → 5 (completely). The five layer scales appear in
+**both** phases, so `after − before` per person reads as improvement.
+
+**Before** also collects: first/last name, email, primary role, years
+experience, subject/grade, school, common stressors (multi), biggest pain
+point, and hoped outcome.
+
+**After** also collects: value rating (1–5), recommend score (1–10), most
+valuable takeaway, what changed, what they built, "use your work as a model?"
+(Yes/No), who paid to attend, future interest (multi), and a testimonial.
+
+Both phases carry event metadata and contact consent.
 
 ## Privacy
 The page is `noindex`. The honeypot field (`company_website`) silently drops
