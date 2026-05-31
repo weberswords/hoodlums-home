@@ -239,6 +239,25 @@
             <textarea id="f_quote" name="testimonial" rows="3" placeholder="Your words, your call."></textarea>
           </div>
         </fieldset>
+
+        <fieldset class="survey-group">
+          <legend class="survey-group-title">Who else should see this?</legend>
+          <p class="survey-group-hint">Is there a principal, coach, or district leader at your school who'd want to know about Classroom OS? Tell us who &mdash; we'll only reach out the way you're comfortable with. <span class="opt">All optional.</span></p>
+          <div class="field-row">
+            <div class="field">
+              <label for="f_ref_name">Their name</label>
+              <input type="text" id="f_ref_name" name="referral_name" placeholder="e.g. Dr. Lee">
+            </div>
+            <div class="field">
+              <label for="f_ref_role">Their role</label>
+              <input type="text" id="f_ref_role" name="referral_role" placeholder="e.g. Principal, Associate Superintendent">
+            </div>
+          </div>
+          <label class="check-field">
+            <input type="checkbox" id="f_ref_consent" name="referral_intro_consent" value="Yes">
+            <span>You can mention that I recommended reaching out to them.</span>
+          </label>
+        </fieldset>
       </div>
 
       <!-- CONSENT -->
@@ -473,6 +492,9 @@
       data.who_paid = form.who_paid.value;
       data.future_interest = checkedValues('future_interest').join('; ');
       data.testimonial = form.testimonial.value.trim();
+      data.referral_name = form.referral_name.value.trim();
+      data.referral_role = form.referral_role.value.trim();
+      data.referral_intro_consent = form.referral_intro_consent.checked ? 'Yes' : 'No';
     }
     return data;
   }

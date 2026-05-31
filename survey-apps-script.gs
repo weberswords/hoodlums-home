@@ -48,6 +48,9 @@ var COLUMNS = [
   'who_paid',               // after
   'future_interest',        // after, semicolon-joined multi
   'testimonial',            // after
+  'referral_name',          // after — decision-maker the teacher would refer
+  'referral_role',          // after — their title (principal, assoc. supt., etc.)
+  'referral_intro_consent', // after — 'Yes' = ok to say the teacher referred them
   'contact_consent'         // 'Yes' | 'No'  → HubSpot consent / marketing status
 ];
 

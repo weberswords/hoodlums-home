@@ -96,6 +96,9 @@ When you're ready to load responses into HubSpot:
 | `who_paid`              | custom *Who paid to attend*                      | after    |
 | `future_interest`       | custom **multi-checkbox** *Future interest*     | after    |
 | `testimonial`           | custom *Testimonial*                             | after    |
+| `referral_name`         | custom *Referral — name*                         | after    |
+| `referral_role`         | custom *Referral — role*                         | after    |
+| `referral_intro_consent`| custom *Referral — intro OK?* (Yes/No)          | after    |
 | `q_runs_without_me`     | custom number (1–5) — for before→after delta      | both  |
 | `q_systems_not_presence`| custom number (1–5) — for before→after delta      | both  |
 | `contact_consent`       | marketing/consent status or a custom checkbox   | both     |
@@ -141,7 +144,9 @@ point, and hoped outcome.
 
 **After** also collects: value rating (1–5), recommend score (1–10), most
 valuable takeaway, what changed, what they built, "use your work as a model?"
-(Yes/No), who paid to attend, future interest (multi), and a testimonial.
+(Yes/No), who paid to attend, future interest (multi), a testimonial, and an
+optional **referral** — the name and role of a principal / district leader the
+teacher would point us to, plus consent to mention they referred them.
 
 Both phases carry event metadata and contact consent.
 
