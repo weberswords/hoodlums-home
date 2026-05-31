@@ -8,7 +8,7 @@ Google Sheet you can export to CSV and import into HubSpot.
 - **Before** (Day 01, Mon): `https://theintelligenthoodlums.com/survey`
 - **After** (Day 05, Fri): `https://theintelligenthoodlums.com/survey?phase=after`
 
-The same five 1–5 statements appear in both phases, so `after − before` per
+The same two 1–5 statements appear in both phases, so `after − before` per
 person reads directly as improvement. Responses are matched by **email**.
 
 ---
@@ -96,7 +96,8 @@ When you're ready to load responses into HubSpot:
 | `who_paid`              | custom *Who paid to attend*                      | after    |
 | `future_interest`       | custom **multi-checkbox** *Future interest*     | after    |
 | `testimonial`           | custom *Testimonial*                             | after    |
-| `q_*` (the five layers) | custom number properties (for before→after deltas) | both  |
+| `q_runs_without_me`     | custom number (1–5) — for before→after delta      | both  |
+| `q_systems_not_presence`| custom number (1–5) — for before→after delta      | both  |
 | `contact_consent`       | marketing/consent status or a custom checkbox   | both     |
 
 Because HubSpot dedupes on **email**, importing the *before* file then the
@@ -125,16 +126,14 @@ Set `event_date` per use the same way (it's blank by default).
 
 ## What's collected
 
-| Question | Layer | Field |
-|---|---|---|
-| Can articulate beliefs about how students learn | Source Code | `q_source_code` |
-| Classroom runs on structures, not my presence | Architecture | `q_architecture` |
-| Year designed as an arc, not a pacing guide | Scheduler | `q_scheduler` |
-| Tools/systems run when I'm not in the room | Applications | `q_applications` |
-| Classroom could run a day without me | Whole system | `q_north_star` |
+| Question | Field |
+|---|---|
+| My classroom could run a day without me and still work | `q_runs_without_me` |
+| My classroom runs on systems and tools I've built, not my presence | `q_systems_not_presence` |
 
-All scored 1 (not at all) → 5 (completely). The five layer scales appear in
-**both** phases, so `after − before` per person reads as improvement.
+Two statements, scored 1 (not at all) → 5 (completely), kept short on purpose
+to avoid survey fatigue. They appear in **both** phases, so `after − before`
+per person reads directly as proof the system approach moved the needle.
 
 **Before** also collects: first/last name, email, primary role, years
 experience, subject/grade, school, common stressors (multi), biggest pain

@@ -129,9 +129,9 @@
         </div>
       </fieldset>
 
-      <!-- THE FOUR LAYERS (Likert — identical in both phases for delta math) -->
+      <!-- THE SYSTEM CHECK (Likert — identical in both phases for delta math) -->
       <fieldset class="survey-group">
-        <legend class="survey-group-title">The four layers</legend>
+        <legend class="survey-group-title">Does your classroom run as a system?</legend>
         <p class="survey-group-hint" id="layersHint">
           For each statement, mark how true it is for your classroom <strong>right now</strong>.
         </p>
@@ -312,18 +312,12 @@
     if (form[k]) form[k].value = params.get(k) || EVENT_DEFAULTS[k];
   });
 
-  /* ---- the four layers (stable keys — must match the sheet) - */
+  /* ---- the two system statements (stable keys — must match the sheet) - */
   var LAYERS = [
-    { key: 'q_source_code', layer: 'Source Code',
-      text: 'I can clearly articulate what I actually believe about how students learn.' },
-    { key: 'q_architecture', layer: 'Architecture',
-      text: 'My classroom runs on visible structures and routines — not on my voice and presence.' },
-    { key: 'q_scheduler', layer: 'Scheduler',
-      text: 'My year is intentionally designed as an arc, not dictated by a pacing guide.' },
-    { key: 'q_applications', layer: 'Applications',
-      text: 'I have tools and systems (AI, sub plans, resources) that run when I\'m not in the room.' },
-    { key: 'q_north_star', layer: 'The Whole System',
-      text: 'My classroom could run for a day without me and still work.' }
+    { key: 'q_runs_without_me', layer: 'The Whole System',
+      text: 'My classroom could run for a day without me and still work.' },
+    { key: 'q_systems_not_presence', layer: 'Systems vs. Presence',
+      text: 'My classroom runs on systems and tools I\'ve built — not on my own voice and presence in the room.' }
   ];
 
   /* ---- copy per phase --------------------------------------- */

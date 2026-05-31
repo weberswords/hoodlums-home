@@ -34,11 +34,8 @@ var COLUMNS = [
   'years_experience',       // before
   'subject_grade',          // before
   'school',                 // before
-  'q_source_code',          // Likert 1–5
-  'q_architecture',         // Likert 1–5
-  'q_scheduler',            // Likert 1–5
-  'q_applications',         // Likert 1–5
-  'q_north_star',           // Likert 1–5
+  'q_runs_without_me',       // Likert 1–5 (north star)
+  'q_systems_not_presence',  // Likert 1–5
   'common_stressors',       // before, semicolon-joined multi
   'pain_point',             // before
   'hoped_outcome',          // before
