@@ -145,6 +145,24 @@ valuable takeaway, what changed, what they built, "use your work as a model?"
 
 Both phases carry event metadata and contact consent.
 
+**Required fields are kept minimal to limit fatigue** — Before asks only for
+name, email, and the biggest pain point; After asks for name, email, the
+value rating, the recommend score, and what changed. Everything else is
+optional.
+
+## Accessibility (WCAG 2.2 AA)
+- All text/UI colors meet 1.4.3 / 1.4.11 contrast (required `*` uses Tuscany,
+  8.48:1 on Ink — brand Rufous was only 2.93:1 and was not used for text).
+- Radio scales and checkbox groups are real `<input>`s in `<fieldset>`/
+  `<legend>` groups; the custom styling keeps a visible focus ring (1.4.11,
+  2.4.7) and the native controls stay keyboard-operable (2.1.1).
+- The status line is `role="status" aria-live="polite"`; validation errors
+  move focus to it, and on success focus moves to the confirmation heading
+  (4.1.3, 2.4.3).
+- Targets (scale cells, pills, checkboxes) are ≥24px to satisfy 2.5.8 Target
+  Size (Minimum).
+- `prefers-reduced-motion` is respected site-wide.
+
 ## Privacy
 The page is `noindex`. The honeypot field (`company_website`) silently drops
 bot submissions. Only ask for what you'll use; consent is opt-in.

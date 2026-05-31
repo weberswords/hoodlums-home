@@ -941,6 +941,14 @@ body::before {
   .day-date { text-align: left; }
 }
 
+/* ── PULSE CHECK CTA (on Classroom OS page) ─────────────── */
+.pulse-cta {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 /* ── SURVEY (Pulse Check) ───────────────────────────────── */
 .section-survey { background: var(--hm-ink); padding-top: 56px; }
 
@@ -1026,7 +1034,7 @@ body::before {
   line-height: 1.5;
 }
 
-.req { color: var(--hm-rufous); }
+.req { color: var(--hm-tuscany); } /* tuscany 8.48:1 on Ink — rufous fails 1.4.3 */
 .opt { color: var(--hm-cadet); font-weight: 100; }
 
 .field-hint {

@@ -161,11 +161,11 @@
           <legend class="survey-group-title">Your biggest pain point</legend>
           <div class="field">
             <label for="f_pain">What's the single biggest thing making your job harder right now? <span class="req">*</span></label>
-            <textarea id="f_pain" name="pain_point" rows="3" placeholder="The thing you'd most want to fix before September."></textarea>
+            <textarea id="f_pain" name="pain_point" rows="2" placeholder="The thing you'd most want to fix before September."></textarea>
           </div>
           <div class="field">
-            <label for="f_hope">By Friday, what would make this week worth it for you?</label>
-            <textarea id="f_hope" name="hoped_outcome" rows="3" placeholder="What you want to walk out with."></textarea>
+            <label for="f_hope">By Friday, what would make this week worth it? <span class="opt">(optional)</span></label>
+            <textarea id="f_hope" name="hoped_outcome" rows="2" placeholder="What you want to walk out with."></textarea>
           </div>
         </fieldset>
       </div>
@@ -192,19 +192,19 @@
         <fieldset class="survey-group">
           <legend class="survey-group-title">What changed</legend>
           <div class="field">
-            <label for="f_takeaway">Most valuable takeaway</label>
-            <textarea id="f_takeaway" name="most_valuable_takeaway" rows="3" placeholder="The one thing you'll carry into September."></textarea>
+            <label for="f_changed">Which pain point did we actually help you solve? <span class="req">*</span></label>
+            <textarea id="f_changed" name="what_changed" rows="2" placeholder="The one thing that's better than it was Monday."></textarea>
           </div>
           <div class="field">
-            <label for="f_changed">Which pain point did we actually help you solve? <span class="req">*</span></label>
-            <textarea id="f_changed" name="what_changed" rows="3" placeholder="Be specific — this is the part we learn the most from."></textarea>
+            <label for="f_takeaway">Most valuable takeaway <span class="opt">(optional)</span></label>
+            <textarea id="f_takeaway" name="most_valuable_takeaway" rows="2" placeholder="What you'll carry into September."></textarea>
           </div>
           <div class="field">
             <label for="f_built">What did you walk out having built? <span class="opt">(optional)</span></label>
-            <textarea id="f_built" name="what_built" rows="2" placeholder="Source Code doc, Scheduler, a live Gem, a sub plan that runs without you…"></textarea>
+            <textarea id="f_built" name="what_built" rows="2" placeholder="Source Code doc, Scheduler, a live Gem, a sub plan…"></textarea>
           </div>
           <div class="field">
-            <label>Can we use your work as a model for future sessions? <span class="req">*</span></label>
+            <label>Can we use your work as a model for future sessions? <span class="opt">(optional)</span></label>
             <div class="radio-inline" role="radiogroup" aria-label="Use your work as a model">
               <label class="radio-pill"><input type="radio" name="work_as_model" value="Yes"><span>Yes</span></label>
               <label class="radio-pill"><input type="radio" name="work_as_model" value="No"><span>No</span></label>
@@ -251,7 +251,7 @@
 
       <div class="survey-actions">
         <button type="submit" class="btn btn-primary" id="submitBtn">Send It</button>
-        <p class="survey-note" id="formNote"></p>
+        <p class="survey-note" id="formNote" role="status" aria-live="polite" tabindex="-1"></p>
       </div>
 
     </form>
@@ -325,7 +325,7 @@
     before: {
       label: 'Day 01 &middot; Pulse Check',
       title: 'Where does your classroom stand today?',
-      lede: 'Two minutes, before we start building. Classroom OS is about turning your classroom into a system that runs whether you\'re in the room or not. To measure whether we actually move the needle this week, we need an honest read on where things stand right now. No wrong answers &mdash; the gaps are the whole point.',
+      lede: '<strong>About 2 minutes.</strong> Classroom OS turns your classroom into a system that runs whether you\'re in the room or not. Give us an honest read on where things stand right now so we can measure what moves by Friday. No wrong answers &mdash; the gaps are the whole point.',
       layersHint: 'For each statement, mark how true it is for your classroom <strong>right now</strong>.',
       emailHint: 'We use your email to match your start-of-week and end-of-week answers &mdash; please use the same one both times.',
       successTitle: 'Got it. Let\'s build.',
@@ -334,7 +334,7 @@
     after: {
       label: 'Day 05 &middot; Pulse Check',
       title: 'Did the system actually move?',
-      lede: 'You started the week with a read on where your classroom stood. Same statements now &mdash; mark where you honestly land today so we can see what this week changed. Then tell us, in your words, what we got right and what we didn\'t.',
+      lede: '<strong>Last one, about 2 minutes.</strong> Same two statements as Monday &mdash; mark where you honestly land now so we can see what moved. Then a few quick questions on what we got right and what we didn\'t.',
       layersHint: 'Same statements as Day One. Mark how true each is for your classroom <strong>now</strong>.',
       emailHint: 'Use the same email you used on Day One so we can match your answers and send your certificate.',
       successTitle: 'Thank you — truly.',
@@ -409,6 +409,7 @@
   function setNote(msg, isError) {
     note.textContent = msg || '';
     note.className = 'survey-note' + (isError ? ' is-error' : '');
+    if (msg && isError) { try { note.focus(); } catch (e) {} } // move focus to the error
   }
 
   function checkedValues(name) {
@@ -429,7 +430,6 @@
       if (!form.querySelector('input[name="value_rating"]:checked')) return 'Pick a value rating, 1 to 5.';
       if (!form.querySelector('input[name="nps"]:checked')) return 'Pick a number, 1 to 10, for the recommend question.';
       if (!form.what_changed.value.trim()) return 'Tell us what changed — that\'s the heart of it.';
-      if (!form.querySelector('input[name="work_as_model"]:checked')) return 'Let us know if we can use your work as a model.';
     }
     return null;
   }
@@ -479,7 +479,12 @@
 
   function showSuccess() {
     form.hidden = true;
-    document.getElementById('successState').hidden = false;
+    var state = document.getElementById('successState');
+    state.hidden = false;
+    // move focus to the confirmation heading so SR/keyboard users land on it
+    var heading = document.getElementById('successTitle');
+    heading.setAttribute('tabindex', '-1');
+    heading.focus();
     document.getElementById('top').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
