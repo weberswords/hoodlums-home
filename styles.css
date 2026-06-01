@@ -1046,7 +1046,7 @@ body::before {
   gap: 18px;
 }
 
-.field label,
+.field > label,
 .check-field span {
   display: block;
   font-family: var(--font-family);
