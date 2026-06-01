@@ -223,18 +223,6 @@
         <fieldset class="survey-group">
           <legend class="survey-group-title">Logistics &amp; what's next</legend>
           <div class="field">
-            <label for="f_paid">Who paid for you to attend this workshop?</label>
-            <select id="f_paid" name="who_paid">
-              <option value="">Select…</option>
-              <option value="Myself (out of pocket)">Myself (out of pocket)</option>
-              <option value="My school">My school</option>
-              <option value="My district">My district</option>
-              <option value="A grant">A grant</option>
-              <option value="Other">Other</option>
-            </select>
-            <input type="text" class="other-input" id="f_paid_other" name="who_paid_other" placeholder="Who covered it?" hidden aria-label="Who paid">
-          </div>
-          <div class="field">
             <label>You've got a system now. How do you want to keep building it? <span class="opt">(check all that apply)</span></label>
             <p class="field-hint">Not a sales menu &mdash; just where you'd want to take this next.</p>
             <div class="check-group">
@@ -456,7 +444,6 @@
     }
   }
   wireOther(form.primary_role, document.getElementById('f_role_other'));
-  wireOther(document.getElementById('f_paid'), document.getElementById('f_paid_other'));
   wireOther(form.querySelector('input[name="common_stressors"][value="Other"]'),
             document.getElementById('f_stressor_other'));
   wireOther(form.querySelector('input[name="future_interest"][value="Other"]'),
@@ -540,7 +527,6 @@
       data.what_changed = form.what_changed.value.trim();
       data.what_built = form.what_built.value.trim();
       data.work_as_model = wam ? wam.value : '';
-      data.who_paid = withOther(form.who_paid.value, 'f_paid_other');
       data.future_interest = checkedValues('future_interest').map(function (v) {
         return v === 'Other' ? withOther('Other', 'f_interest_other') : v;
       }).join('; ');
