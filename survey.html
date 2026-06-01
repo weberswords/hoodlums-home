@@ -235,6 +235,8 @@
               <label class="check-field"><input type="checkbox" name="future_interest" value="Paid workshops"><span>Paid workshops</span></label>
               <label class="check-field"><input type="checkbox" name="future_interest" value="School/district partnership"><span>School/district partnership</span></label>
               <label class="check-field"><input type="checkbox" name="future_interest" value="No future communications"><span>No future communications</span></label>
+              <label class="check-field"><input type="checkbox" name="future_interest" value="Other"><span>Other</span></label>
+              <input type="text" class="other-input" id="f_interest_other" name="future_interest_other" placeholder="What else would you want from us?" hidden aria-label="Other interest">
             </div>
           </div>
           <div class="field">
@@ -450,6 +452,8 @@
   wireOther(document.getElementById('f_paid'), document.getElementById('f_paid_other'));
   wireOther(form.querySelector('input[name="common_stressors"][value="Other"]'),
             document.getElementById('f_stressor_other'));
+  wireOther(form.querySelector('input[name="future_interest"][value="Other"]'),
+            document.getElementById('f_interest_other'));
 
   /* ---- submit ----------------------------------------------- */
   var btn = document.getElementById('submitBtn');
@@ -530,7 +534,9 @@
       data.what_built = form.what_built.value.trim();
       data.work_as_model = wam ? wam.value : '';
       data.who_paid = withOther(form.who_paid.value, 'f_paid_other');
-      data.future_interest = checkedValues('future_interest').join('; ');
+      data.future_interest = checkedValues('future_interest').map(function (v) {
+        return v === 'Other' ? withOther('Other', 'f_interest_other') : v;
+      }).join('; ');
       data.testimonial = form.testimonial.value.trim();
       data.referral_name = form.referral_name.value.trim();
       data.referral_role = form.referral_role.value.trim();
