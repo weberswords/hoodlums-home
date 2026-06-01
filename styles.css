@@ -952,6 +952,30 @@ body::before {
 /* ── SURVEY (Pulse Check) ───────────────────────────────── */
 .section-survey { background: var(--hm-ink); padding-top: 56px; }
 
+/* value-anchor — asserts the transformation on the end-of-week survey */
+.value-anchor {
+  border-left: 3px solid var(--hm-rufous);
+  background: var(--bone-06);
+  padding: 22px 24px;
+  margin-bottom: 36px;
+}
+.value-anchor-kicker {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.33em;
+  text-transform: uppercase;
+  color: var(--hm-tuscany);
+  margin-bottom: 10px;
+}
+.value-anchor-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--hm-cadet);
+}
+.value-anchor-body strong { color: var(--hm-bone); font-weight: 700; }
+.value-anchor-body em { color: var(--hm-bone); font-style: italic; }
+
 .survey-inner {
   max-width: 640px;
   margin: 0 auto;
