@@ -45,6 +45,22 @@ CARDS = [
         "url": BASE + "/survey?phase=after&event_date=2026-06-05",
         "caption": "theintelligenthoodlums.com / survey",
     },
+    {
+        "file": "media-release.png",
+        "kicker": "BEFORE YOU'RE ON CAMERA",
+        "title": "Media\nRelease",
+        "sub": "Sign once on your phone.\nGood for the whole week.",
+        "url": BASE + "/release?event_date=2026-06-01",
+        "caption": "theintelligenthoodlums.com / release",
+    },
+    {
+        "file": "field-guide.png",
+        "kicker": "CREW ONLY",
+        "title": "Vlog\nField Guide",
+        "sub": "The capture playbook.\nShoot to the pitch.",
+        "url": BASE + "/vlog",
+        "caption": "theintelligenthoodlums.com / vlog",
+    },
 ]
 
 # ── canvas geometry (print-friendly, ~1080x1500) ───────────
