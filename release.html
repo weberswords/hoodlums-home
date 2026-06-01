@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Release — Classroom OS · The Intelligent Hoodlums</title>
+<meta name="description" content="Digital media release for Classroom OS. Sign once to let The Intelligent Hoodlums use this week's photo and video in our work.">
+<meta name="theme-color" content="#0F1419">
+<meta name="author" content="The Intelligent Hoodlums">
+<meta name="robots" content="noindex">
+
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/HM-favicon-64.png">
+
+<link rel="preload" href="/fonts/AvocadoSans-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Thin.otf" as="font" type="font/otf" crossorigin>
+
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+  /* the legal-text block — scoped to this page */
+  .release-terms {
+    border: 1px solid var(--bone-08);
+    background: var(--bone-06);
+    border-radius: 8px;
+    padding: var(--space-5) var(--space-6);
+    margin-bottom: var(--space-6);
+    max-height: 320px;
+    overflow-y: auto;
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--bone-60);
+  }
+  .release-terms p { margin-bottom: var(--space-4); }
+  .release-terms strong { color: var(--hm-bone); }
+  .release-sign label .req { color: var(--hm-rufous); }
+  .release-meta { color: var(--bone-40); font-size: var(--text-xs); margin-top: var(--space-4); }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span>The Intelligent Hoodlums</span>
+  <span class="dot">&middot;</span>
+  <span>Las Vegas</span>
+  <span class="dot">&middot;</span>
+  <span>Est 2014</span>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
+  <ul class="nav-links">
+    <li><a href="/classroom-os" class="nav-back">&larr; Classroom OS</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+<section class="section section-survey" id="release">
+  <div class="survey-inner">
+
+    <div class="section-label">Classroom OS &middot; Media Release</div>
+    <h1 class="survey-title">Mind if we film you?</h1>
+    <div class="rufous-rule section-rule"></div>
+    <p class="survey-lede">
+      We're documenting Classroom OS this week &mdash; photo and video &mdash; to show
+      other teachers and schools what the work looks like. Before you end up on camera,
+      we need your okay. Read it, sign it once, and you're set for the whole week. Takes
+      thirty seconds.
+    </p>
+
+    <form id="releaseForm" class="survey-form" novalidate>
+
+      <!-- honeypot -->
+      <div class="hp-field" aria-hidden="true">
+        <label>Leave this field empty
+          <input type="text" name="company_website" tabindex="-1" autocomplete="off">
+        </label>
+      </div>
+
+      <!-- event metadata — hidden, pre-filled (override with ?event_name=, ?event_date=) -->
+      <input type="hidden" name="event_name" value="Classroom OS">
+      <input type="hidden" name="event_date" value="">
+      <input type="hidden" name="page_url" value="">
+
+      <!-- WHO -->
+      <fieldset class="survey-group">
+        <legend class="survey-group-title">Who you are</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="f_first">First name <span class="req">*</span></label>
+            <input type="text" id="f_first" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="f_last">Last name <span class="req">*</span></label>
+            <input type="text" id="f_last" name="last_name" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f_email">Email <span class="req">*</span></label>
+          <input type="email" id="f_email" name="email" autocomplete="email" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f_role">You're here as <span class="req">*</span></label>
+            <select id="f_role" name="role" required>
+              <option value="">Select…</option>
+              <option value="Teacher (participant)">Teacher (participant)</option>
+              <option value="Administrator / Observer">Administrator / Observer</option>
+              <option value="Crew / Staff">Crew / Staff</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f_org">School / organization <span class="opt">(optional)</span></label>
+            <input type="text" id="f_org" name="school_org" placeholder="e.g. Legacy HS, CCSD">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- THE RELEASE -->
+      <fieldset class="survey-group">
+        <legend class="survey-group-title">The release</legend>
+        <div class="release-terms" tabindex="0" aria-label="Media release terms">
+          <p>I grant <strong>The Intelligent Hoodlums LLC</strong> ("the Hoodlums") and
+          anyone they authorize permission to <strong>photograph and record me</strong>
+          (my image, likeness, voice, and any work I create or present) during the
+          Classroom OS event in Las Vegas, Nevada.</p>
+
+          <p>I agree the Hoodlums may <strong>use, edit, and publish</strong> that material
+          in any media now known or later developed &mdash; including websites, social
+          media, marketing, presentations to schools and districts, white papers, and
+          other promotional or educational materials &mdash; <strong>without further
+          approval, notice, or payment to me.</strong></p>
+
+          <p>I understand the material may be combined with other content and that I
+          <strong>will not own the resulting work</strong> or the recordings themselves.
+          This permission is voluntary, and I confirm I am <strong>18 or older</strong>.</p>
+
+          <p>I release the Hoodlums from any claim related to this use, including claims
+          about how the material is edited or where it appears. I may withdraw consent
+          for <strong>future</strong> use at any time by emailing
+          <strong>whenindoubt@theintelligenthoodlums.com</strong>; that won't affect
+          material already published.</p>
+
+          <p class="release-meta">This is a standard media release, not legal advice. If
+          anything here gives you pause, talk to a Hoodlum before signing &mdash; we'd
+          rather have the conversation than your hesitation.</p>
+        </div>
+
+        <label class="check-field" style="margin-bottom: var(--space-5);">
+          <input type="checkbox" id="f_agree" name="agreed" value="Yes" required>
+          <span>I've read the release above and <strong>I agree</strong> to it. <span class="req">*</span></span>
+        </label>
+
+        <div class="field release-sign">
+          <label for="f_sign">Type your full legal name to sign <span class="req">*</span></label>
+          <input type="text" id="f_sign" name="typed_signature" autocomplete="name" placeholder="Your full name = your signature">
+          <p class="field-hint">Typing your name here counts as your electronic signature, dated today.</p>
+        </div>
+      </fieldset>
+
+      <div class="survey-actions">
+        <button type="submit" class="btn btn-primary" id="submitBtn">Sign &amp; Submit</button>
+        <p class="survey-note" id="formNote" role="status" aria-live="polite" tabindex="-1"></p>
+      </div>
+    </form>
+
+    <!-- SUCCESS STATE -->
+    <div class="survey-result" id="successState" hidden>
+      <div class="rufous-rule"></div>
+      <h2 class="survey-result-title">Signed. Thank you.</h2>
+      <p class="survey-result-body">You're cleared for the whole week. Now go build
+      something worth filming.</p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  // ── CONFIG ──────────────────────────────────────────────────
+  // Paste the deployed Apps Script /exec URL here (see RELEASE-SETUP.md).
+  var RELEASE_ENDPOINT = '';
+
+  var form = document.getElementById('releaseForm');
+
+  // Pre-fill metadata from query string (?event_date=2026-06-01 etc.)
+  var params = new URLSearchParams(location.search);
+  ['event_name', 'event_date'].forEach(function (k) {
+    var v = params.get(k);
+    if (v && form[k]) form[k].value = v;
+  });
+  if (form.page_url) form.page_url.value = location.href;
+
+  var btn = document.getElementById('submitBtn');
+  var note = document.getElementById('formNote');
+
+  function setNote(msg, isError) {
+    note.textContent = msg || '';
+    note.className = 'survey-note' + (isError ? ' is-error' : '');
+    if (msg && isError) { try { note.focus(); } catch (e) {} }
+  }
+
+  function validate() {
+    if (!form.first_name.value.trim() || !form.last_name.value.trim()) return 'Please add your first and last name.';
+    var email = form.email.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Please enter a valid email.';
+    if (!form.role.value) return 'Let us know how you\'re here this week.';
+    if (!form.agreed.checked) return 'Please check the box to agree to the release.';
+    if (!form.typed_signature.value.trim()) return 'Type your name to sign.';
+    return null;
+  }
+
+  function collect() {
+    return {
+      submitted_at_client: new Date().toISOString(),
+      event_name: form.event_name.value,
+      event_date: form.event_date.value,
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      role: form.role.value,
+      school_org: form.school_org.value.trim(),
+      agreed: form.agreed.checked ? 'Yes' : 'No',
+      typed_signature: form.typed_signature.value.trim(),
+      user_agent: navigator.userAgent,
+      page_url: form.page_url.value,
+      company_website: form.company_website.value // honeypot
+    };
+  }
+
+  function showSuccess() {
+    form.hidden = true;
+    var state = document.getElementById('successState');
+    state.hidden = false;
+    var h = state.querySelector('.survey-result-title');
+    h.setAttribute('tabindex', '-1');
+    h.focus();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = validate();
+    if (err) { setNote(err, true); return; }
+
+    if (!RELEASE_ENDPOINT) {
+      setNote('This form isn\'t connected yet (no endpoint configured). See RELEASE-SETUP.md.', true);
+      return;
+    }
+
+    btn.disabled = true;
+    var original = btn.textContent;
+    btn.textContent = 'Signing…';
+    setNote('');
+
+    // text/plain avoids a CORS preflight against Apps Script.
+    fetch(RELEASE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(collect())
+    })
+    .then(function (res) { return res.json().catch(function () { return { result: 'ok' }; }); })
+    .then(function () { showSuccess(); })
+    .catch(function () {
+      btn.disabled = false;
+      btn.textContent = original;
+      setNote('Something hiccuped sending that. Check your connection and try once more — or grab a Hoodlum and we\'ll log it by hand.', true);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
