@@ -1191,50 +1191,50 @@ body::before {
 .check-group {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 4px;
 }
 .check-field {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   cursor: pointer;
+  padding: 8px 0;
 }
 .check-field input[type="checkbox"] {
-  -webkit-appearance: none;
   appearance: none;
+  -webkit-appearance: none;
   flex: 0 0 auto;
-  width: 20px;
-  height: 20px;
-  margin: 2px 0 0;
-  border: 1.5px solid var(--bone-40);
-  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: 1.5px solid var(--hm-cadet);
+  border-radius: 5px;
   background: transparent;
   cursor: pointer;
   display: grid;
   place-content: center;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
-.check-field input[type="checkbox"]::before {
-  content: '';
-  width: 11px;
-  height: 11px;
-  transform: scale(0);
-  transition: transform 0.12s ease-in-out;
-  /* bone checkmark */
-  background: var(--hm-bone);
-  clip-path: polygon(14% 47%, 0 60%, 39% 100%, 100% 22%, 86% 9%, 39% 73%);
+.check-field input[type="checkbox"]::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  margin-top: -2px;
+  border: solid var(--hm-bone);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.12s ease;
 }
 .check-field input[type="checkbox"]:checked {
   background: var(--hm-rufous);
   border-color: var(--hm-rufous);
 }
-.check-field input[type="checkbox"]:checked::before { transform: scale(1); }
-.check-field input[type="checkbox"]:hover { border-color: var(--bone-60); }
+.check-field input[type="checkbox"]:checked::after { transform: rotate(45deg) scale(1); }
 .check-field input[type="checkbox"]:focus-visible {
-  outline: 2px solid var(--hm-rufous);
+  outline: 2px solid var(--hm-tuscany);
   outline-offset: 2px;
 }
-.check-field span { margin-bottom: 0; color: var(--hm-cadet); }
+.check-field span { margin-bottom: 0; color: var(--hm-cadet); line-height: 1.4; }
 
 /* "Other" write-in — revealed when Other is selected */
 .other-input { margin-top: 10px; }
