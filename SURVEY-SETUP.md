@@ -93,7 +93,6 @@ When you're ready to load responses into HubSpot:
 | `what_changed`          | custom *What changed (end)*                      | after    |
 | `what_built`            | custom *What they built*                         | after    |
 | `work_as_model`         | custom *Use work as model?* (Yes/No)            | after    |
-| `who_paid`              | custom *Who paid to attend*                      | after    |
 | `future_interest`       | custom **multi-checkbox** *Future interest*     | after    |
 | `testimonial`           | custom *Testimonial*                             | after    |
 | `referral_name`         | custom *Referral — name*                         | after    |
@@ -110,9 +109,9 @@ Properties) so the mapping is clean. Only import contacts where
 `contact_consent = Yes` if you want to respect opt-in for marketing.
 
 > **"Other" write-ins:** when someone picks *Other* on Primary role, Common
-> stressors, or Who paid, a text box appears and their answer is stored inline
-> as `Other: their text` in the same column (e.g. `who_paid = "Other: PTA"`).
-> No extra columns to map.
+> stressors, or Future interest, a text box appears and their answer is stored
+> inline as `Other: their text` in the same column (e.g.
+> `future_interest = "Other: monthly check-ins"`). No extra columns to map.
 
 > **Multi-checkbox fields** (`common_stressors`, `future_interest`) are stored
 > semicolon-separated — exactly what HubSpot expects when importing into a
