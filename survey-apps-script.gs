@@ -34,11 +34,8 @@ var COLUMNS = [
   'years_experience',       // before
   'subject_grade',          // before
   'school',                 // before
-  'q_source_code',          // Likert 1–5
-  'q_architecture',         // Likert 1–5
-  'q_scheduler',            // Likert 1–5
-  'q_applications',         // Likert 1–5
-  'q_north_star',           // Likert 1–5
+  'q_runs_without_me',       // Likert 1–5 (north star)
+  'q_systems_not_presence',  // Likert 1–5
   'common_stressors',       // before, semicolon-joined multi
   'pain_point',             // before
   'hoped_outcome',          // before
@@ -51,6 +48,9 @@ var COLUMNS = [
   'who_paid',               // after
   'future_interest',        // after, semicolon-joined multi
   'testimonial',            // after
+  'referral_name',          // after — decision-maker the teacher would refer
+  'referral_role',          // after — their title (principal, assoc. supt., etc.)
+  'referral_intro_consent', // after — 'Yes' = ok to say the teacher referred them
   'contact_consent'         // 'Yes' | 'No'  → HubSpot consent / marketing status
 ];
 

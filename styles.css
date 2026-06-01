@@ -941,8 +941,40 @@ body::before {
   .day-date { text-align: left; }
 }
 
+/* ── PULSE CHECK CTA (on Classroom OS page) ─────────────── */
+.pulse-cta {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 /* ── SURVEY (Pulse Check) ───────────────────────────────── */
 .section-survey { background: var(--hm-ink); padding-top: 56px; }
+
+/* value-anchor — asserts the transformation on the end-of-week survey */
+.value-anchor {
+  border-left: 3px solid var(--hm-rufous);
+  background: var(--bone-06);
+  padding: 22px 24px;
+  margin-bottom: 36px;
+}
+.value-anchor-kicker {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.33em;
+  text-transform: uppercase;
+  color: var(--hm-tuscany);
+  margin-bottom: 10px;
+}
+.value-anchor-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--hm-cadet);
+}
+.value-anchor-body strong { color: var(--hm-bone); font-weight: 700; }
+.value-anchor-body em { color: var(--hm-bone); font-style: italic; }
 
 .survey-inner {
   max-width: 640px;
@@ -1026,7 +1058,7 @@ body::before {
   line-height: 1.5;
 }
 
-.req { color: var(--hm-rufous); }
+.req { color: var(--hm-tuscany); } /* tuscany 8.48:1 on Ink — rufous fails 1.4.3 */
 .opt { color: var(--hm-cadet); font-weight: 100; }
 
 .field-hint {
@@ -1175,6 +1207,10 @@ body::before {
   accent-color: var(--hm-rufous);
 }
 .check-field span { margin-bottom: 0; color: var(--hm-cadet); }
+
+/* "Other" write-in — revealed when Other is selected */
+.other-input { margin-top: 10px; }
+.check-group .other-input { margin-left: 32px; width: calc(100% - 32px); }
 
 /* ── Inline radios (Yes / No) ───────────────────────────── */
 .radio-inline { display: flex; gap: 12px; }

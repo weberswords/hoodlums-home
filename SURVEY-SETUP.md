@@ -8,7 +8,7 @@ Google Sheet you can export to CSV and import into HubSpot.
 - **Before** (Day 01, Mon): `https://theintelligenthoodlums.com/survey`
 - **After** (Day 05, Fri): `https://theintelligenthoodlums.com/survey?phase=after`
 
-The same five 1–5 statements appear in both phases, so `after − before` per
+The same two 1–5 statements appear in both phases, so `after − before` per
 person reads directly as improvement. Responses are matched by **email**.
 
 ---
@@ -96,7 +96,11 @@ When you're ready to load responses into HubSpot:
 | `who_paid`              | custom *Who paid to attend*                      | after    |
 | `future_interest`       | custom **multi-checkbox** *Future interest*     | after    |
 | `testimonial`           | custom *Testimonial*                             | after    |
-| `q_*` (the five layers) | custom number properties (for before→after deltas) | both  |
+| `referral_name`         | custom *Referral — name*                         | after    |
+| `referral_role`         | custom *Referral — role*                         | after    |
+| `referral_intro_consent`| custom *Referral — intro OK?* (Yes/No)          | after    |
+| `q_runs_without_me`     | custom number (1–5) — for before→after delta      | both  |
+| `q_systems_not_presence`| custom number (1–5) — for before→after delta      | both  |
 | `contact_consent`       | marketing/consent status or a custom checkbox   | both     |
 
 Because HubSpot dedupes on **email**, importing the *before* file then the
@@ -104,6 +108,11 @@ Because HubSpot dedupes on **email**, importing the *before* file then the
 answers live side by side. Create the custom properties first (Settings →
 Properties) so the mapping is clean. Only import contacts where
 `contact_consent = Yes` if you want to respect opt-in for marketing.
+
+> **"Other" write-ins:** when someone picks *Other* on Primary role, Common
+> stressors, or Who paid, a text box appears and their answer is stored inline
+> as `Other: their text` in the same column (e.g. `who_paid = "Other: PTA"`).
+> No extra columns to map.
 
 > **Multi-checkbox fields** (`common_stressors`, `future_interest`) are stored
 > semicolon-separated — exactly what HubSpot expects when importing into a
@@ -125,16 +134,14 @@ Set `event_date` per use the same way (it's blank by default).
 
 ## What's collected
 
-| Question | Layer | Field |
-|---|---|---|
-| Can articulate beliefs about how students learn | Source Code | `q_source_code` |
-| Classroom runs on structures, not my presence | Architecture | `q_architecture` |
-| Year designed as an arc, not a pacing guide | Scheduler | `q_scheduler` |
-| Tools/systems run when I'm not in the room | Applications | `q_applications` |
-| Classroom could run a day without me | Whole system | `q_north_star` |
+| Question | Field |
+|---|---|
+| My classroom could run a day without me and still work | `q_runs_without_me` |
+| My classroom runs on systems and tools I've built, not my presence | `q_systems_not_presence` |
 
-All scored 1 (not at all) → 5 (completely). The five layer scales appear in
-**both** phases, so `after − before` per person reads as improvement.
+Two statements, scored 1 (not at all) → 5 (completely), kept short on purpose
+to avoid survey fatigue. They appear in **both** phases, so `after − before`
+per person reads directly as proof the system approach moved the needle.
 
 **Before** also collects: first/last name, email, primary role, years
 experience, subject/grade, school, common stressors (multi), biggest pain
@@ -142,9 +149,29 @@ point, and hoped outcome.
 
 **After** also collects: value rating (1–5), recommend score (1–10), most
 valuable takeaway, what changed, what they built, "use your work as a model?"
-(Yes/No), who paid to attend, future interest (multi), and a testimonial.
+(Yes/No), who paid to attend, future interest (multi), a testimonial, and an
+optional **referral** — the name and role of a principal / district leader the
+teacher would point us to, plus consent to mention they referred them.
 
 Both phases carry event metadata and contact consent.
+
+**Required fields are kept minimal to limit fatigue** — Before asks only for
+name, email, and the biggest pain point; After asks for name, email, the
+value rating, the recommend score, and what changed. Everything else is
+optional.
+
+## Accessibility (WCAG 2.2 AA)
+- All text/UI colors meet 1.4.3 / 1.4.11 contrast (required `*` uses Tuscany,
+  8.48:1 on Ink — brand Rufous was only 2.93:1 and was not used for text).
+- Radio scales and checkbox groups are real `<input>`s in `<fieldset>`/
+  `<legend>` groups; the custom styling keeps a visible focus ring (1.4.11,
+  2.4.7) and the native controls stay keyboard-operable (2.1.1).
+- The status line is `role="status" aria-live="polite"`; validation errors
+  move focus to it, and on success focus moves to the confirmation heading
+  (4.1.3, 2.4.3).
+- Targets (scale cells, pills, checkboxes) are ≥24px to satisfy 2.5.8 Target
+  Size (Minimum).
+- `prefers-reduced-motion` is respected site-wide.
 
 ## Privacy
 The page is `noindex`. The honeypot field (`company_website`) silently drops
