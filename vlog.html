@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vlog & Capture Field Guide — Classroom OS · The Intelligent Hoodlums</title>
+<meta name="description" content="The 5-day filming field guide for Classroom OS: the one throughline question, the daily before/after vlog format, per-day key questions, the Friday Gem-Swap money shot, and Portrait of a Nevada Learner alignment.">
+<meta name="theme-color" content="#0F1419">
+<meta name="author" content="The Intelligent Hoodlums">
+<meta name="robots" content="noindex">
+
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/HM-favicon-64.png">
+
+<link rel="preload" href="/fonts/AvocadoSans-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Thin.otf" as="font" type="font/otf" crossorigin>
+
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+  /* ── Page-scoped styles (field guide only) ───────────────── */
+  .vg-lede { color: var(--bone-60); max-width: 60ch; }
+
+  .vg-callout {
+    border-left: 3px solid var(--hm-rufous);
+    background: var(--bone-06);
+    padding: var(--space-5) var(--space-6);
+    margin: var(--space-6) 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .vg-callout .vg-q {
+    font-weight: 700;
+    font-size: var(--text-lg);
+    line-height: 1.3;
+  }
+
+  /* beats */
+  .vg-beats { display: grid; gap: var(--space-5); margin-top: var(--space-6); }
+  @media (min-width: 720px) { .vg-beats { grid-template-columns: 1fr 1fr; } }
+  .vg-beat {
+    border: 1px solid var(--bone-08);
+    border-radius: 8px;
+    padding: var(--space-5);
+  }
+  .vg-beat h4 { font-size: var(--text-md); margin-bottom: var(--space-3); }
+  .vg-beat ol { margin: 0; padding-left: 1.2em; }
+  .vg-beat li { margin-bottom: var(--space-3); }
+  .vg-beat li strong { color: var(--hm-tuscany); }
+
+  /* tables */
+  .vg-table-wrap { overflow-x: auto; margin: var(--space-6) 0; }
+  table.vg-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+  table.vg-table th, table.vg-table td {
+    text-align: left; padding: var(--space-4);
+    border-bottom: 1px solid var(--bone-08); vertical-align: top;
+  }
+  table.vg-table th { color: var(--hm-tuscany); font-weight: 700; }
+  table.vg-table td:first-child { white-space: nowrap; font-weight: 700; }
+  table.vg-table .vg-qcell { font-style: italic; color: var(--bone-60); }
+
+  /* checklist */
+  .vg-checklist { margin-top: var(--space-6); }
+  .vg-day-block {
+    border: 1px solid var(--bone-08);
+    border-radius: 8px;
+    padding: var(--space-5);
+    margin-bottom: var(--space-5);
+    break-inside: avoid;
+  }
+  .vg-day-block h4 {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-4);
+    display: flex; align-items: baseline; gap: var(--space-3);
+  }
+  .vg-day-block h4 .vg-daypill {
+    font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--hm-ink); background: var(--hm-tuscany);
+    padding: 2px 8px; border-radius: 4px; font-weight: 700;
+  }
+  .vg-check { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-3); }
+  .vg-check input { margin-top: 5px; width: 16px; height: 16px; accent-color: var(--hm-rufous); flex: 0 0 auto; }
+  .vg-check label { cursor: pointer; }
+
+  .vg-print-hint { color: var(--bone-40); font-size: var(--text-sm); }
+
+  /* ── Print: clean one/two-pager for the clipboard ────────── */
+  @media print {
+    @page { margin: 14mm; }
+    body { background: #fff; color: #111; }
+    body::before { display: none; }
+    .masthead, .site-nav, .site-footer, .vg-noprint, .hero-cta { display: none !important; }
+    .section { padding: 0 !important; }
+    .vg-day-block { border: 1px solid #999; page-break-inside: avoid; }
+    .vg-callout { border-left: 3px solid #111; background: #f2f2f2; }
+    .vg-beat, table.vg-table th, table.vg-table td { border-color: #999; }
+    table.vg-table th, .vg-beat li strong, .vg-day-block h4 .vg-daypill, table.vg-table td:first-child { color: #111; }
+    .vg-day-block h4 .vg-daypill { background: #ddd; }
+    a { color: #111; text-decoration: none; }
+    h2.section-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span>The Intelligent Hoodlums</span>
+  <span class="dot">&middot;</span>
+  <span>Field Guide</span>
+  <span class="dot">&middot;</span>
+  <span>Crew Use Only</span>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="/classroom-os" class="nav-logo">CLASSROOM OS</a>
+  <ul class="nav-links">
+    <li><a href="/classroom-os" class="nav-back">&larr; Back to Classroom OS</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero hero-event">
+  <div class="hero-inner">
+    <div class="hero-pillars">Capture &nbsp;&middot;&nbsp; Prove &nbsp;&middot;&nbsp; Pitch</div>
+    <h1 class="hero-title">Vlog &amp; Capture Field Guide.</h1>
+    <div class="rufous-rule hero-rule"></div>
+    <p class="hero-tagline">
+      Five mornings of phone footage, shot to one argument: <strong>we built classrooms
+      that run without the teacher in them &mdash; and a district should care.</strong>
+      Every clip feeds the Pitch Film or the White Paper. If it moves neither, skip it.
+    </p>
+  </div>
+</section>
+
+<!-- THE ONE QUESTION -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">The Throughline</div>
+    <h2 class="section-title">One Question, All Week</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text vg-lede">
+      Every before/after vlog reacts to the same question from a different angle. That's
+      what makes five days of handheld footage edit into one story.
+    </p>
+    <div class="vg-callout">
+      <p class="vg-q">&ldquo;Can we build a classroom that runs without the teacher in it
+      &mdash; and make a district see why that matters?&rdquo;</p>
+    </div>
+    <div class="vg-beats">
+      <div class="vg-beat">
+        <h4>&#9728;&#65039; Morning &mdash; &ldquo;Before&rdquo;</h4>
+        <ol>
+          <li><strong>The Question.</strong> Say today's question out loud (see the table).</li>
+          <li><strong>The Stakes.</strong> One sentence: why a teacher <em>or a district</em> should care today.</li>
+          <li><strong>The Bet.</strong> &ldquo;Here's what we'll build / prove by 12:30.&rdquo; Name the artifact.</li>
+        </ol>
+      </div>
+      <div class="vg-beat">
+        <h4>&#127769; Evening &mdash; &ldquo;After&rdquo;</h4>
+        <ol>
+          <li><strong>The Callback.</strong> Re-ask the morning question.</li>
+          <li><strong>The Proof.</strong> What got built + the single best thing a teacher said.</li>
+          <li><strong>The Tease.</strong> One line at tomorrow. (Thursday: tease Friday hard.)</li>
+        </ol>
+      </div>
+    </div>
+    <p class="lede-text vg-lede" style="margin-top: var(--space-6);">
+      <strong>Host discipline:</strong> one consistent host fronts every vlog; pull a
+      <em>different teacher</em> into each evening cut. By Friday the cohort has narrated
+      its own transformation &mdash; far stronger than us narrating it for them.
+    </p>
+  </div>
+</section>
+
+<!-- DAY BY DAY -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">Day by Day</div>
+    <h2 class="section-title">The Key Question &amp; The Proof</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="schedule-intro">
+      Each day already has a question (it's on the Classroom OS page). Use it as the
+      on-camera prompt. The last column is the artifact the camera <em>must</em> physically see.
+    </p>
+    <div class="vg-table-wrap">
+      <table class="vg-table">
+        <thead>
+          <tr><th>Day</th><th>Theme</th><th>The Question to React To</th><th>Capture on camera</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mon&nbsp;&middot;&nbsp;1</td><td>Empathy</td>
+            <td class="vg-qcell">&ldquo;If a stranger walked into your classroom while you were absent, what would tell them who you are?&rdquo;</td>
+            <td>Completed Circle Map; first Source Code lines; NotebookLM set up live</td>
+          </tr>
+          <tr>
+            <td>Tue&nbsp;&middot;&nbsp;2</td><td>Analysis</td>
+            <td class="vg-qcell">&ldquo;If you didn't remind them, would your students know what to do?&rdquo;</td>
+            <td>Bubble Map of a real room; a crew member catching a blind spot</td>
+          </tr>
+          <tr>
+            <td>Wed&nbsp;&middot;&nbsp;3</td><td>Daydreaming</td>
+            <td class="vg-qcell">&ldquo;Do your students know where they are in the year and where they're going?&rdquo;</td>
+            <td>Flow Map of a full year; a Unit NotebookLM trained on real content</td>
+          </tr>
+          <tr>
+            <td>Thu&nbsp;&middot;&nbsp;4</td><td>Prototyping</td>
+            <td class="vg-qcell">&ldquo;If you got a call tonight that you couldn't come in tomorrow, would you feel ready?&rdquo;</td>
+            <td>A live Google Gem answering a real question; the finished sub plan</td>
+          </tr>
+          <tr>
+            <td>Fri&nbsp;&middot;&nbsp;5</td><td>Testing</td>
+            <td class="vg-qcell">&ldquo;Does it work without you?&rdquo;</td>
+            <td><strong>The Gem Swap</strong> &mdash; the money shot of the week (below)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- THE MONEY SHOT -->
+<section class="section section-leaders">
+  <div class="section-inner">
+    <div class="section-label section-label-dark">Friday</div>
+    <h2 class="section-title section-title-dark">The Gem Swap &mdash; The Money Shot</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text lede-text-dark">
+      Each teacher <strong>swaps their Gem with someone who's never seen the content</strong>,
+      and that person leads it through the 5 tasks. This is &ldquo;does it work without
+      you?&rdquo; made visible. Shoot it like a stress test, not a celebration:
+    </p>
+    <div class="vg-beats">
+      <div class="vg-beat">
+        <h4>The shots</h4>
+        <ol>
+          <li><strong>Cold open:</strong> the handoff &mdash; &ldquo;I built this. You've never seen it. Run my class.&rdquo;</li>
+          <li><strong>The attempt:</strong> over-the-shoulder of the <em>substitute</em> working the Gem through 5 tasks.</li>
+          <li><strong>The verdict:</strong> turn the camera on the <em>builder</em> watching their class run without them. This reaction shot closes the Pitch Film.</li>
+        </ol>
+      </div>
+      <div class="vg-beat">
+        <h4>The soundbite to land</h4>
+        <p>Ask the substitute, on camera:</p>
+        <p style="margin-top: var(--space-3); font-style: italic; color: var(--hm-tuscany);">
+          &ldquo;Could you have run that class today with nothing but what they built?&rdquo;</p>
+        <p style="margin-top: var(--space-3);">Their unscripted &ldquo;yeah, actually&rdquo;
+        is worth more than anything we could say about ourselves.</p>
+      </div>
+    </div>
+    <p class="lede-text lede-text-dark" style="margin-top: var(--space-6);">
+      <strong>If you get one thing clean all week, get this:</strong> steady, good audio,
+      both faces, and shoot it <strong>landscape</strong> &mdash; the Pitch Film wants it.
+    </p>
+  </div>
+</section>
+
+<!-- PORTRAIT ALIGNMENT -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">The District Hook</div>
+    <h2 class="section-title">Portrait of a Nevada Learner</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text vg-lede">
+      A superintendent doesn't buy &ldquo;cool PD.&rdquo; They buy alignment to the
+      framework they're accountable to. Our five days hit all four Portrait themes &mdash;
+      say these words on camera; they're the district's own language.
+    </p>
+    <div class="vg-table-wrap">
+      <table class="vg-table">
+        <thead><tr><th>Portrait theme</th><th>How Classroom OS proves it</th><th>Capture it</th></tr></thead>
+        <tbody>
+          <tr><td>Know themselves</td><td>Day 1 Source Code &mdash; naming what you believe about learning</td><td>Mon: Circle Map + Source Code</td></tr>
+          <tr><td>Connect with others</td><td>The crew model &mdash; a chemistry teacher catching an English teacher's blind spot</td><td>Tue / Fri: crew + Gallery Walk</td></tr>
+          <tr><td>Contribute their skills</td><td>Building real tools (Gems, sub plans) that serve actual students</td><td>Thu: the build</td></tr>
+          <tr><td>Thrive through challenges</td><td>A system that holds when the person isn't in the room</td><td>Fri: the Gem Swap</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="vg-callout">
+      <p class="vg-q" style="font-size: var(--text-md);">Pitch line to record to camera:</p>
+      <p style="margin-top: var(--space-3);">&ldquo;The Portrait of a Nevada Learner asks
+      us to help kids <em>know themselves, connect, contribute, and thrive.</em> This week,
+      the teachers did exactly that &mdash; and built classrooms that ask the same of their
+      students. This philosophy applies to everything.&rdquo;</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOUNDBITE BANK -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">Soundbite Bank</div>
+    <h2 class="section-title">The Lines That Sell</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="schedule-intro">Get name + grade + subject first (&ldquo;I'm ___, I teach ___ at ___&rdquo;). Then:</p>
+    <div class="vg-beats">
+      <div class="vg-beat">
+        <h4>Teachers</h4>
+        <ol>
+          <li>What did you walk in believing about PD, and what changed?</li>
+          <li>What did you build today that you'll actually open in August?</li>
+          <li>Finish: &ldquo;Before this week my sub plan was ___. Now it's ___.&rdquo;</li>
+          <li>What could you build with this that has nothing to do with your subject?</li>
+          <li>Why did you spend your summer morning here?</li>
+        </ol>
+      </div>
+      <div class="vg-beat">
+        <h4>Admin Observers &amp; the closer</h4>
+        <ol>
+          <li>You've sat through a lot of PD. What's different about today?</li>
+          <li>What would it mean for your building if every teacher had a system like this?</li>
+          <li>How does what you saw connect to the Portrait of a Nevada Learner?</li>
+          <li><strong>Closer (Fri):</strong> If you were a principal, would you send your staff? Why?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY CHECKLIST (print this) -->
+<section class="section section-crew vg-checklist">
+  <div class="section-inner">
+    <div class="section-label">Clipboard</div>
+    <h2 class="section-title">Daily Capture Checklist</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="schedule-intro vg-print-hint vg-noprint">
+      Tip: hit <strong>Cmd/Ctrl&nbsp;+&nbsp;P</strong> to print this as a clean one/two-pager
+      for the clipboard. Boxes are tickable on screen too.
+    </p>
+
+    <div class="vg-day-block">
+      <h4><span class="vg-daypill">Every Day</span> Non-negotiables</h4>
+      <div class="vg-check"><input type="checkbox" id="e1"><label for="e1">Morning &ldquo;Before&rdquo; vlog (3 beats) &mdash; vertical</label></div>
+      <div class="vg-check"><input type="checkbox" id="e2"><label for="e2">Evening &ldquo;After&rdquo; vlog (3 beats) + one new teacher on camera</label></div>
+      <div class="vg-check"><input type="checkbox" id="e3"><label for="e3">The day's proof artifact, filmed close-up (see table)</label></div>
+      <div class="vg-check"><input type="checkbox" id="e4"><label for="e4">2+ teacher soundbites (name/grade/subject first)</label></div>
+      <div class="vg-check"><input type="checkbox" id="e5"><label for="e5">B-roll: hands working, faces thinking, crew in motion, wide room</label></div>
+      <div class="vg-check"><input type="checkbox" id="e6"><label for="e6">Admin observer testimonial (the 4 daily seats), if present</label></div>
+      <div class="vg-check"><input type="checkbox" id="e7"><label for="e7">Media releases signed for every identifiable face</label></div>
+      <div class="vg-check"><input type="checkbox" id="e8"><label for="e8">Dump + cloud-backup tonight: <code>YYYY-MM-DD_Day0X_ClassroomOS</code></label></div>
+      <div class="vg-check"><input type="checkbox" id="e9"><label for="e9">Pick 2 clips good enough to post tonight</label></div>
+    </div>
+
+    <div class="vg-day-block">
+      <h4><span class="vg-daypill">Mon &middot; 1</span> Empathy</h4>
+      <div class="vg-check"><input type="checkbox" id="m1"><label for="m1">Completed Circle Map on camera</label></div>
+      <div class="vg-check"><input type="checkbox" id="m2"><label for="m2">A teacher reading their first Source Code lines</label></div>
+      <div class="vg-check"><input type="checkbox" id="m3"><label for="m3">NotebookLM being set up live</label></div>
+      <div class="vg-check"><input type="checkbox" id="m4"><label for="m4">&#11088; Monday-morning &ldquo;before&rdquo; portrait of a teacher (for the diptych)</label></div>
+    </div>
+
+    <div class="vg-day-block">
+      <h4><span class="vg-daypill">Tue &middot; 2</span> Analysis</h4>
+      <div class="vg-check"><input type="checkbox" id="t1"><label for="t1">Bubble Map of a real classroom</label></div>
+      <div class="vg-check"><input type="checkbox" id="t2"><label for="t2">A crew member catching someone's blind spot (the &ldquo;ohh&rdquo; moment)</label></div>
+    </div>
+
+    <div class="vg-day-block">
+      <h4><span class="vg-daypill">Wed &middot; 3</span> Daydreaming</h4>
+      <div class="vg-check"><input type="checkbox" id="w1"><label for="w1">Flow Map of a full year</label></div>
+      <div class="vg-check"><input type="checkbox" id="w2"><label for="w2">A Unit NotebookLM being trained on real content</label></div>
+    </div>
+
+    <div class="vg-day-block">
+      <h4><span class="vg-daypill">Thu &middot; 4</span> Prototyping</h4>
+      <div class="vg-check"><input type="checkbox" id="th1"><label for="th1">A live Google Gem answering a real question</label></div>
+      <div class="vg-check"><input type="checkbox" id="th2"><label for="th2">A finished sub plan held up to camera</label></div>
+      <div class="vg-check"><input type="checkbox" id="th3"><label for="th3">Tease the Friday Gem Swap hard in the &ldquo;after&rdquo; vlog</label></div>
+    </div>
+
+    <div class="vg-day-block">
+      <h4><span class="vg-daypill">Fri &middot; 5</span> Testing &mdash; The Money Shot</h4>
+      <div class="vg-check"><input type="checkbox" id="f1"><label for="f1">Gem Swap handoff (cold open)</label></div>
+      <div class="vg-check"><input type="checkbox" id="f2"><label for="f2">Substitute working the Gem through 5 tasks (over-the-shoulder)</label></div>
+      <div class="vg-check"><input type="checkbox" id="f3"><label for="f3">Builder's reaction watching it run without them &mdash; <strong>landscape</strong></label></div>
+      <div class="vg-check"><input type="checkbox" id="f4"><label for="f4">Substitute soundbite: &ldquo;Could you have run that class with only what they built?&rdquo;</label></div>
+      <div class="vg-check"><input type="checkbox" id="f5"><label for="f5">Gallery Walk crews giving structured feedback</label></div>
+      <div class="vg-check"><input type="checkbox" id="f6"><label for="f6">&#11088; Friday-afternoon &ldquo;after&rdquo; portrait, same framing as Monday (diptych)</label></div>
+      <div class="vg-check"><input type="checkbox" id="f7"><label for="f7">The closer: &ldquo;Would you send your staff?&rdquo;</label></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>The Intelligent Hoodlums</h3>
+      <p class="mono">
+        Las Vegas, Nevada &middot; Est 2014<br>
+        Design &middot; Disrupt &middot; Deliver
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mono">&copy; 2014&ndash;2026 The Intelligent Hoodlums &middot; Internal field guide</p>
+    <span class="footer-tagline">When In Doubt, Trust A Hoodlum.</span>
+  </div>
+</footer>
+
+</main>
+</body>
+</html>
