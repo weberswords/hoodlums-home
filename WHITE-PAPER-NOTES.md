@@ -76,6 +76,29 @@ Two things worth naming in the paper:
   session is the way we want teachers to set up similar lessons for their own
   students. The medium is the lesson.
 
+### 5. A toolkit introduced across the week (tools in service of the system)
+
+Teachers aren't taught one product — they're handed a **kit of digital tools**
+across the week and shown how each one slots into the system they're building.
+The point isn't the tool; it's what the tool does for the thinking the teacher
+already started on paper.
+
+Tools introduced so far:
+
+- **NotebookLM** — the AI partner that grows alongside the teacher's system all
+  year (set up Day 1; Unit NotebookLMs trained on their content later in the
+  week).
+- **Adobe Express** (and Adobe tools generally) — creative/production layer.
+- **Adobe Podcast** — audio production.
+- **Image generation from descriptions** — Day 1, teachers generated images
+  from their own written descriptions.
+
+Framing for the paper: each tool is introduced **only after** the human and
+analog work that gives it something to operate on. The kit is assembled the way
+a teacher should assemble tools in their own classroom — meaningfully, in
+sequence, never as the starting point. *(Confirm exact products/versions and the
+day each was introduced as the week progresses.)*
+
 ---
 
 ## Day-by-day
@@ -99,6 +122,17 @@ Focus: teaching **identity**.
 
 *(To capture: the exact opening, how the Circle Map was introduced, the crew /
 small-group structure of four, what teachers actually wrote.)*
+
+- **Tool introduced (digital layer): image generation from their own
+  descriptions.** After teachers wrote/described something on paper (the human +
+  analog steps), they generated images *from their own descriptions*. This is
+  the Human → Analog → Digital arc completed inside a single day: the digital
+  tool renders something the teacher already authored, rather than producing
+  content for them from scratch. The teacher's words are the prompt; the tool is
+  in service of their thinking.
+
+*(To capture: which specific tool they used for the image generation, and how
+teachers reacted to seeing their description rendered.)*
 
 ### Day 2 — Analysis · "What does your classroom actually do?"
 
