@@ -85,19 +85,18 @@ already started on paper.
 
 Tools introduced so far:
 
-- **NotebookLM** — the AI partner that grows alongside the teacher's system all
-  year (set up Day 1; Unit NotebookLMs trained on their content later in the
-  week).
-- **Adobe Express** (and Adobe tools generally) — creative/production layer.
-- **Adobe Podcast** — audio production.
-- **Image generation from descriptions** — Day 1, teachers generated images
-  from their own written descriptions.
+| Tool | Introduced | Role |
+| --- | --- | --- |
+| **NotebookLM** | Day 1 | AI partner that grows alongside the teacher's system all year (set up Day 1; Unit NotebookLMs trained on their content later in the week). |
+| **Adobe Express / Firefly** | Day 1 | Image generation — teachers generated images from their own written descriptions. |
+| **Adobe Podcast** | Day 2 | Audio production. |
+| **Padlet** | Day 2 | Collaboration / shared space. |
 
 Framing for the paper: each tool is introduced **only after** the human and
 analog work that gives it something to operate on. The kit is assembled the way
 a teacher should assemble tools in their own classroom — meaningfully, in
-sequence, never as the starting point. *(Confirm exact products/versions and the
-day each was introduced as the week progresses.)*
+sequence, never as the starting point. *(Keep adding products + the day each was
+introduced as the week progresses.)*
 
 ---
 
@@ -129,10 +128,10 @@ small-group structure of four, what teachers actually wrote.)*
   the Human → Analog → Digital arc completed inside a single day: the digital
   tool renders something the teacher already authored, rather than producing
   content for them from scratch. The teacher's words are the prompt; the tool is
-  in service of their thinking.
+  in service of their thinking. (Tool: **Adobe Express / Firefly**.)
 
-*(To capture: which specific tool they used for the image generation, and how
-teachers reacted to seeing their description rendered.)*
+*(To capture: how teachers reacted to seeing their own description rendered as
+an image.)*
 
 ### Day 2 — Analysis · "What does your classroom actually do?"
 
@@ -141,9 +140,12 @@ Focus: the **classroom as a system** ("what your classroom *is*").
 - Moves from identity (Day 1) to architecture: the structures that communicate a
   teacher's values without the teacher having to say them out loud.
 - Same Human → Analog → Digital progression.
+- **Tools introduced: Adobe Podcast** (audio production) and **Padlet**
+  (collaboration / shared space).
 
 *(To capture in real time today, 6/2: what surprised teachers, where the Bubble
-Map opened things up, moments where someone saw their own room differently.)*
+Map opened things up, moments where someone saw their own room differently, and
+how Padlet/Adobe Podcast fit into the day's analog→digital handoff.)*
 
 ---
 
