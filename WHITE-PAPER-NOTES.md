@@ -150,6 +150,14 @@ Focus: the **classroom as a system** ("what your classroom *is*").
   perfectionism that paralyzes both teachers and students. The act of producing
   and editing audio *is* the lesson about iteration — another instance of the
   medium being the message.
+- **Podcasting + audiograms to build fluency.** Audiograms (audio paired with
+  animated captions / waveform) connect **what a word sounds like to what a word
+  looks like**. Teachers can record sound and see it translate into written
+  words in real time — a direct, visible bridge between the spoken and the
+  written. Framed for the paper as a literacy/fluency move: the tool makes the
+  sound→print correspondence concrete and observable, which is exactly the link
+  emerging readers need. (Strong classroom-transfer example — applies straight to
+  students learning to read and to multilingual learners.)
 
 *(To capture in real time today, 6/2: what surprised teachers, where the Bubble
 Map opened things up, moments where someone saw their own room differently, and
