@@ -142,6 +142,14 @@ Focus: the **classroom as a system** ("what your classroom *is*").
 - Same Human → Analog → Digital progression.
 - **Tools introduced: Adobe Podcast** (audio production) and **Padlet**
   (collaboration / shared space).
+- **Podcasting as a model for handling perfectionism.** We talked about how
+  podcasting *lends itself to authentic editing and revising* — you record, you
+  listen back, you cut, you redo a take. The medium makes revision normal and
+  visible rather than shameful. We framed it explicitly as a way to embody
+  **"don't let perfect be the enemy of good"**: a working model for managing the
+  perfectionism that paralyzes both teachers and students. The act of producing
+  and editing audio *is* the lesson about iteration — another instance of the
+  medium being the message.
 
 *(To capture in real time today, 6/2: what surprised teachers, where the Bubble
 Map opened things up, moments where someone saw their own room differently, and
