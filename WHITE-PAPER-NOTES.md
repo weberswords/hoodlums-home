@@ -140,6 +140,15 @@ Focus: the **classroom as a system** ("what your classroom *is*").
 - Moves from identity (Day 1) to architecture: the structures that communicate a
   teacher's values without the teacher having to say them out loud.
 - Same Human → Analog → Digital progression.
+- **Thinking tool: a Double Bubble Map comparing "when you're present" vs. "when
+  you're not present."** Teachers map what happens in the room under each
+  condition. This is a sharp diagnostic: the gap between the two columns *is* the
+  measure of how much the classroom runs on the teacher's presence vs. on a
+  system. (Ties directly to the Day 2 site framing: *"When a classroom depends on
+  the teacher's voice, energy, and presence to function, it's not running on a
+  system. It's running on a person… it doesn't survive a Tuesday when you're out
+  sick."*) The Double Bubble's contrast structure makes that dependency visible
+  and turns it into a design target.
 - **Tools introduced: Adobe Podcast** (audio production) and **Padlet**
   (collaboration / shared space).
 - **Podcasting as a model for handling perfectionism.** We talked about how
