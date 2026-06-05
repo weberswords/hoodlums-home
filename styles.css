@@ -1542,6 +1542,14 @@ body::before {
   line-height: 1.5;
 }
 
+/* "What moved" lives on the Bone section — recolor stats for dark-on-bone */
+.section-leaders .stat-card {
+  border-color: rgba(15,20,25,0.12);
+  border-top-color: var(--hm-rufous);
+}
+.section-leaders .stat-num { color: var(--hm-ink); }
+.section-leaders .stat-label { color: var(--hm-prussian); }
+
 @media (max-width: 640px) {
   .case-study { padding: 32px 24px; }
   .case-ba { grid-template-columns: 1fr; gap: 20px; }
