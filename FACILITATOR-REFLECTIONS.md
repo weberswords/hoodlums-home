@@ -11,9 +11,22 @@ Possibly the **best professional development session we've ever done.**
 
 **Zero to hero.** **Dawn — 5th grade teacher at Snyder ES** — went from zero to
 hero in the span of a week. Watching that arc was the thing.
-> TODO: capture the specific before/after — what could Dawn *not* do Monday that
-> she could do by Friday? Even three words. (And get her booth testimonial +
-> release if she's willing — this is the case study.)
+
+**The before/after (a ~24-hour turn):**
+- **Wednesday, end of day:** Dawn said she *didn't really see the value* in
+  customizing the Gemini gems. Skeptical.
+- **Thursday, end of day:** she had built out, all in **her own color scheme and
+  font style** so everything matched (and reduced cognitive load for her
+  students):
+  - **Place cards** for her tables
+  - A **first-week-of-school letter**
+  - A **plan to get her students' multiplication facts mastered in 12 weeks**
+  - An **HTML-based practice tool** for multiplication tables
+- The throughline: not just "she used AI" — she produced a *coherent, branded
+  classroom kit* that matched her voice and lowered student cognitive load.
+
+> TODO: get Dawn's booth testimonial + release if she's willing — this is THE
+> case study.
 
 **We opened by making them question who they are as teachers.** Started the week
 with identity, not tools — who are you as a teacher? But we gave them one early
