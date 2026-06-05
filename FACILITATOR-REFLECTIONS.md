@@ -9,8 +9,11 @@ this lands in the white paper — this is the source material, in Webs' voice.
 
 Possibly the **best professional development session we've ever done.**
 
-**Zero to hero.** One teacher in particular went from zero to hero in the span
-of a week. Watching that arc was the thing.
+**Zero to hero.** **Dawn — 5th grade teacher at Snyder ES** — went from zero to
+hero in the span of a week. Watching that arc was the thing.
+> TODO: capture the specific before/after — what could Dawn *not* do Monday that
+> she could do by Friday? Even three words. (And get her booth testimonial +
+> release if she's willing — this is the case study.)
 
 **We opened by making them question who they are as teachers.** Started the week
 with identity, not tools — who are you as a teacher? But we gave them one early
