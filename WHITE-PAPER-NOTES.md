@@ -174,6 +174,40 @@ how Padlet/Adobe Podcast fit into the day's analog→digital handoff.)*
 
 ---
 
+## Pulse Check results — June 2026 cohort (aggregate, no PII)
+
+Source: Start-of-week (Mon 6/1) + End-of-week (Fri 6/5) Pulse surveys.
+Raw export held off-repo (contains participant emails — do NOT commit PII).
+
+**Matched before→after pairs: 7 teachers** (took both Mon + Fri).
+- "My classroom runs without me" (1–5): **3.71 → 4.43  (+0.71)**
+- "Runs on systems, not my presence" (1–5): **3.29 → 4.43  (+1.14)**
+- Combined transformation index: **3.50 → 4.43  (+0.93)**
+
+**End-of-week ratings (n=8 respondents):**
+- Average value rating: **4.75 / 5** (shown as 4.8 on the page)
+- NPS: **+88** — 7 promoters, 1 passive, **0 detractors**
+
+**Future interest** (multi-select, strong): most checked Free events + Paid
+workshops + School/district partnership.
+
+**Standout qualitative:**
+- Dawn (5th, Snyder): "I'm the human. I learned how to better communicate with
+  AI…" + full artifact list (Source Code, Architecture, Brand Kit, classroom
+  commercial, science podcast, parent letter, sentence-building Gem, multiplication
+  anchor chart + interactive). Confirms & expands the case study.
+- Ana (2nd, CCSD): "AI is not my competition. It is the paper plane I can
+  customize, maneuver and hop on to reach new heights."
+- Terrence: "Go! You WON'T regret it. Very transformative."
+- Carrie: "This can be a planning time saver!!"
+- Desiree: "If you live your life with no regrets… then what are u waiting for."
+
+**Warm leads / referrals:** captured in the Pulse export — administrator
+referrals with intro consent. Tracked privately (off-repo), NOT here, since the
+referred names are third-party PII. Follow up via your own CRM / private doc.
+
+---
+
 ## Open threads / to develop for the paper
 
 - [ ] Name the qualitative research methods explicitly and cite where relevant.
