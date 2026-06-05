@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Confession Booth — The Intelligent Hoodlums</title>
+<meta name="description" content="Step inside the booth and leave a testimonial. Write it, record it, or upload it — tell us what the work did for you.">
+<meta name="theme-color" content="#0F1419">
+<meta name="author" content="The Intelligent Hoodlums">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/HM-favicon-64.png">
+
+<link rel="preload" href="/fonts/AvocadoSans-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Thin.otf" as="font" type="font/otf" crossorigin>
+
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+  /* ── Booth-specific, scoped to this page ───────────────────── */
+
+  /* a little more hush than the survey: tighter, darker, intimate */
+  .booth-curtain {
+    height: 6px;
+    background:
+      repeating-linear-gradient(90deg,
+        var(--hm-rufous) 0, var(--hm-rufous) 14px,
+        var(--hm-rufous-dark) 14px, var(--hm-rufous-dark) 28px);
+    width: 100%;
+  }
+
+  .booth-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.33em;
+    text-transform: uppercase;
+    color: var(--hm-tuscany);
+    margin-bottom: 14px;
+  }
+  .booth-kicker .lamp {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--hm-rufous);
+    box-shadow: 0 0 10px 2px rgba(183,40,15,0.8);
+    animation: boothPulse 2.6s ease-in-out infinite;
+  }
+  @keyframes boothPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @media (prefers-reduced-motion: reduce) { .booth-kicker .lamp { animation: none; } }
+
+  /* ── Mode toggle (Write / Record / Upload) ─────────────────── */
+  .booth-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: var(--space-6);
+  }
+  .booth-mode { position: relative; cursor: pointer; }
+  .booth-mode input {
+    position: absolute; opacity: 0; width: 0; height: 0;
+  }
+  .booth-mode > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    padding: 16px 10px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--hm-cadet);
+    background: var(--bone-06);
+    border: 1px solid var(--bone-08);
+    transition: all 150ms ease-in-out;
+  }
+  .booth-mode > span .ico { font-size: 20px; line-height: 1; }
+  .booth-mode:hover > span { border-color: var(--bone-40); color: var(--hm-bone); }
+  .booth-mode input:checked + span {
+    background: var(--hm-rufous);
+    border-color: var(--hm-rufous);
+    color: var(--hm-bone);
+  }
+  .booth-mode input:focus-visible + span {
+    outline: 2px solid var(--hm-tuscany);
+    outline-offset: 2px;
+  }
+
+  /* panels */
+  .booth-panel { display: none; }
+  .booth-panel.is-active { display: block; }
+
+  .booth-prompts {
+    border-left: 3px solid var(--hm-rufous);
+    background: var(--bone-06);
+    padding: 14px 18px;
+    margin-bottom: var(--space-5);
+  }
+  .booth-prompts p {
+    font-size: var(--text-sm);
+    color: var(--hm-cadet);
+    line-height: 1.6;
+    margin: 0 0 6px;
+  }
+  .booth-prompts ul { margin: 0; padding-left: 18px; }
+  .booth-prompts li { font-size: var(--text-sm); color: var(--bone-60); line-height: 1.7; }
+  .booth-prompts strong { color: var(--hm-bone); }
+
+  /* recorder */
+  .recorder-stage {
+    position: relative;
+    background: #000;
+    border: 1px solid var(--bone-08);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: var(--space-4);
+  }
+  .recorder-stage video { width: 100%; height: 100%; object-fit: cover; background: #000; }
+  .recorder-placeholder {
+    color: var(--hm-cadet);
+    font-size: var(--text-sm);
+    text-align: center;
+    padding: 0 24px;
+    line-height: 1.6;
+  }
+  .rec-badge {
+    position: absolute; top: 12px; left: 12px;
+    display: none; align-items: center; gap: 7px;
+    font-family: var(--font-family); font-weight: 700;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--hm-bone);
+    background: rgba(15,20,25,0.65);
+    padding: 5px 10px; border-radius: 999px;
+  }
+  .rec-badge.is-live { display: flex; }
+  .rec-badge .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--hm-rufous);
+    animation: boothPulse 1.1s ease-in-out infinite;
+  }
+  .recorder-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .booth-audio-only { display: flex; align-items: center; gap: 8px; margin-bottom: var(--space-4); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--hm-bone);
+    border: 1px solid var(--bone-40);
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--hm-bone); }
+  .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+  /* upload dropzone */
+  .booth-drop {
+    border: 1px dashed var(--bone-40);
+    background: var(--bone-06);
+    padding: var(--space-7) var(--space-5);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 150ms, background 150ms;
+  }
+  .booth-drop:hover, .booth-drop.is-hover { border-color: var(--hm-rufous); background: var(--bone-08); }
+  .booth-drop .big { font-size: var(--text-md); color: var(--hm-bone); margin-bottom: 6px; }
+  .booth-drop .small { font-size: var(--text-sm); color: var(--hm-cadet); }
+  .booth-drop input[type="file"] { display: none; }
+
+  .booth-filechip {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: var(--space-4);
+    padding: 12px 14px;
+    background: var(--bone-06);
+    border: 1px solid var(--bone-08);
+  }
+  .booth-filechip.is-set { display: flex; }
+  .booth-filechip .meta { min-width: 0; }
+  .booth-filechip .name { color: var(--hm-bone); font-size: var(--text-sm); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .booth-filechip .size { color: var(--hm-cadet); font-size: var(--text-xs); }
+  .booth-filechip button {
+    flex: none;
+    background: transparent; border: 1px solid var(--bone-40);
+    color: var(--hm-cadet); font-family: var(--font-family); font-weight: 700;
+    font-size: 12px; padding: 6px 10px; cursor: pointer;
+  }
+  .booth-filechip button:hover { color: var(--hm-bone); border-color: var(--hm-bone); }
+
+  .booth-progress {
+    display: none;
+    height: 4px; width: 100%;
+    background: var(--bone-08);
+    margin-top: var(--space-4);
+    overflow: hidden;
+  }
+  .booth-progress.is-on { display: block; }
+  .booth-progress > i {
+    display: block; height: 100%; width: 30%;
+    background: var(--hm-rufous);
+    animation: boothSlide 1.1s ease-in-out infinite;
+  }
+  @keyframes boothSlide { 0% { transform: translateX(-120%); } 100% { transform: translateX(420%); } }
+
+  /* release block, borrowed from /release */
+  .release-terms {
+    border: 1px solid var(--bone-08);
+    background: var(--bone-06);
+    border-radius: 8px;
+    padding: var(--space-5) var(--space-6);
+    margin-bottom: var(--space-5);
+    max-height: 260px;
+    overflow-y: auto;
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--bone-60);
+  }
+  .release-terms p { margin-bottom: var(--space-4); }
+  .release-terms strong { color: var(--hm-bone); }
+  .release-meta { color: var(--bone-40); font-size: var(--text-xs); margin-top: var(--space-4); }
+  .release-sign label .req { color: var(--hm-tuscany); }
+
+  @media (max-width: 560px) {
+    .booth-mode > span { padding: 12px 6px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="booth-curtain" aria-hidden="true"></div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span>The Intelligent Hoodlums</span>
+  <span class="dot">&middot;</span>
+  <span>Las Vegas</span>
+  <span class="dot">&middot;</span>
+  <span>Est 2014</span>
+</div>
+
+<!-- NAV (minimal — this page is unlisted) -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-back">&larr; Home</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+<section class="section section-survey" id="booth">
+  <div class="survey-inner">
+
+    <div class="booth-kicker"><span class="lamp" aria-hidden="true"></span> The Confession Booth</div>
+    <h1 class="survey-title">Tell us the truth.</h1>
+    <div class="rufous-rule section-rule"></div>
+    <p class="survey-lede">
+      Step inside. No script, no polish required &mdash; just the real story of what the
+      work did for you, your classroom, or your school. Write it, record it, or upload
+      something you already made. We&rsquo;ll keep it honest.
+    </p>
+
+    <form id="boothForm" class="survey-form" novalidate>
+
+      <!-- honeypot -->
+      <div class="hp-field" aria-hidden="true">
+        <label>Leave this field empty
+          <input type="text" name="company_website" tabindex="-1" autocomplete="off">
+        </label>
+      </div>
+
+      <!-- context metadata — hidden, override with ?event_name= etc. -->
+      <input type="hidden" name="event_name" value="">
+      <input type="hidden" name="page_url" value="">
+
+      <!-- WHO -->
+      <fieldset class="survey-group">
+        <legend class="survey-group-title">Who&rsquo;s in the booth</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="f_first">First name <span class="req">*</span></label>
+            <input type="text" id="f_first" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="f_last">Last name <span class="req">*</span></label>
+            <input type="text" id="f_last" name="last_name" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f_role">Your role / title <span class="opt">(optional)</span></label>
+            <input type="text" id="f_role" name="role_title" placeholder="e.g. 8th grade ELA teacher">
+          </div>
+          <div class="field">
+            <label for="f_org">School / organization <span class="opt">(optional)</span></label>
+            <input type="text" id="f_org" name="school_org" placeholder="e.g. Legacy HS, CCSD">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f_email">Email <span class="opt">(optional)</span></label>
+          <input type="email" id="f_email" name="email" autocomplete="email" placeholder="So we can say thanks">
+          <p class="field-hint">Only if you want us to follow up. We won&rsquo;t publish it.</p>
+        </div>
+      </fieldset>
+
+      <!-- THE TESTIMONIAL -->
+      <fieldset class="survey-group">
+        <legend class="survey-group-title">Your testimonial</legend>
+
+        <div class="booth-prompts">
+          <p>Stuck on where to start? A few prompts &mdash; answer any, ignore the rest:</p>
+          <ul>
+            <li><strong>Before us</strong> &mdash; what was the hard part?</li>
+            <li><strong>The moment</strong> &mdash; when did it click?</li>
+            <li><strong>Now</strong> &mdash; what&rsquo;s different in your classroom?</li>
+            <li><strong>Who</strong> &mdash; who would you send our way?</li>
+          </ul>
+        </div>
+
+        <!-- mode toggle -->
+        <div class="booth-modes" role="radiogroup" aria-label="How you'd like to leave your testimonial">
+          <label class="booth-mode">
+            <input type="radio" name="mode" value="write" checked>
+            <span><span class="ico" aria-hidden="true">&#9998;</span> Write it</span>
+          </label>
+          <label class="booth-mode">
+            <input type="radio" name="mode" value="record">
+            <span><span class="ico" aria-hidden="true">&#9210;</span> Record it</span>
+          </label>
+          <label class="booth-mode">
+            <input type="radio" name="mode" value="upload">
+            <span><span class="ico" aria-hidden="true">&#8682;</span> Upload it</span>
+          </label>
+        </div>
+
+        <!-- PANEL: write -->
+        <div class="booth-panel is-active" id="panel-write">
+          <div class="field">
+            <label for="f_text">In your own words</label>
+            <textarea id="f_text" name="testimonial_text" rows="7" placeholder="Take your time. The specific story beats the polished one."></textarea>
+          </div>
+        </div>
+
+        <!-- PANEL: record -->
+        <div class="booth-panel" id="panel-record">
+          <label class="check-field booth-audio-only">
+            <input type="checkbox" id="audioOnly">
+            <span>Audio only &mdash; don&rsquo;t turn the camera on</span>
+          </label>
+
+          <div class="recorder-stage">
+            <span class="rec-badge" id="recBadge"><span class="dot" aria-hidden="true"></span> REC <span id="recTime">0:00</span></span>
+            <video id="recPreview" playsinline muted hidden></video>
+            <video id="recPlayback" playsinline controls hidden></video>
+            <p class="recorder-placeholder" id="recPlaceholder">
+              Press <strong>Start</strong> when you&rsquo;re ready. You&rsquo;ll get a
+              live preview, and up to 90&nbsp;seconds. Re-record as many times as you like.
+            </p>
+          </div>
+
+          <div class="recorder-controls">
+            <button type="button" class="btn btn-primary" id="recStart">Start recording</button>
+            <button type="button" class="btn btn-ghost" id="recStop" hidden>Stop</button>
+            <button type="button" class="btn btn-ghost" id="recRedo" hidden>Re-record</button>
+            <a class="btn btn-ghost" id="recSave" hidden download>Save a copy</a>
+          </div>
+          <p class="field-hint" id="recHint">
+            Your browser handles the recording &mdash; nothing uploads until you hit submit.
+          </p>
+        </div>
+
+        <!-- PANEL: upload -->
+        <div class="booth-panel" id="panel-upload">
+          <label class="booth-drop" id="dropZone">
+            <input type="file" id="fileInput" accept="video/*,audio/*,image/*">
+            <div class="big">Drop a file here, or tap to browse</div>
+            <div class="small">Video, audio, or an image &middot; up to 45&nbsp;MB</div>
+          </label>
+          <div class="booth-filechip" id="fileChip">
+            <div class="meta">
+              <div class="name" id="fileName"></div>
+              <div class="size" id="fileSize"></div>
+            </div>
+            <button type="button" id="fileClear">Remove</button>
+          </div>
+          <p class="field-hint">
+            Bigger than 45&nbsp;MB? Email it to
+            <strong>whenindoubt@theintelligenthoodlums.com</strong> and we&rsquo;ll grab it from there.
+          </p>
+        </div>
+      </fieldset>
+
+      <!-- THE RELEASE -->
+      <fieldset class="survey-group">
+        <legend class="survey-group-title">Permission to share</legend>
+        <div class="release-terms" tabindex="0" aria-label="Testimonial release terms">
+          <p>I grant <strong>The Intelligent Hoodlums LLC</strong> ("the Hoodlums") and
+          anyone they authorize permission to <strong>use, edit, and publish the
+          testimonial I&rsquo;m leaving here</strong> &mdash; my words, image, likeness,
+          and voice &mdash; in any media now known or later developed, including websites,
+          social media, marketing, and presentations to schools and districts,
+          <strong>without further approval, notice, or payment to me.</strong></p>
+
+          <p>I understand my testimonial may be edited, excerpted, or combined with other
+          content, that I <strong>will not own the resulting work</strong>, and that the
+          quote may appear alongside my name and role. This is voluntary, and I confirm I
+          am <strong>18 or older</strong> and that what I&rsquo;m sharing is my own honest
+          experience.</p>
+
+          <p>I may withdraw consent for <strong>future</strong> use at any time by emailing
+          <strong>whenindoubt@theintelligenthoodlums.com</strong>; that won&rsquo;t affect
+          material already published.</p>
+
+          <p class="release-meta">This is a standard testimonial release, not legal advice.
+          If anything here gives you pause, talk to a Hoodlum before you sign.</p>
+        </div>
+
+        <label class="check-field" style="margin-bottom: var(--space-5);">
+          <input type="checkbox" id="f_agree" name="agreed" value="Yes" required>
+          <span>I&rsquo;ve read the release and <strong>I agree</strong> to let the Hoodlums share my testimonial. <span class="req">*</span></span>
+        </label>
+
+        <div class="field release-sign">
+          <label for="f_sign">Type your full name to sign <span class="req">*</span></label>
+          <input type="text" id="f_sign" name="typed_signature" autocomplete="name" placeholder="Your full name = your signature">
+          <p class="field-hint">Typing your name here counts as your electronic signature, dated today.</p>
+        </div>
+      </fieldset>
+
+      <div class="survey-actions">
+        <button type="submit" class="btn btn-primary" id="submitBtn">Leave my testimonial</button>
+        <div class="booth-progress" id="progress" aria-hidden="true"><i></i></div>
+        <p class="survey-note" id="formNote" role="status" aria-live="polite" tabindex="-1"></p>
+      </div>
+    </form>
+
+    <!-- SUCCESS STATE -->
+    <div class="survey-result" id="successState" hidden>
+      <div class="rufous-rule"></div>
+      <h2 class="survey-result-title">Heard. Thank you.</h2>
+      <p class="survey-result-body">That&rsquo;s the kind of thing that keeps us in the
+      work. If we use it, we&rsquo;ll do it justice.</p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  // ── CONFIG ──────────────────────────────────────────────────
+  // Paste the deployed Apps Script /exec URL here (see FOR-THE-RECORD-SETUP.md).
+  var BOOTH_ENDPOINT = 'https://script.google.com/macros/s/AKfycbywUwwl_fO40mvNMAtIMKH49hMsLIHB-2uYYFzvgjDW_IzvmNZEBm7E5N1rE51LfDoAiQ/exec';
+
+  var MAX_BYTES = 45 * 1024 * 1024; // keep POST under Apps Script's limit
+  var MAX_SECONDS = 90;
+
+  var form = document.getElementById('boothForm');
+  var btn = document.getElementById('submitBtn');
+  var note = document.getElementById('formNote');
+  var progress = document.getElementById('progress');
+
+  // Pre-fill metadata from query string + the page URL.
+  var params = new URLSearchParams(location.search);
+  if (form.event_name && params.get('event_name')) form.event_name.value = params.get('event_name');
+  if (form.page_url) form.page_url.value = location.href;
+
+  // recordedBlob / uploadedFile hold whatever media the person attached.
+  var recordedBlob = null;
+  var uploadedFile = null;
+
+  function setNote(msg, isError) {
+    note.textContent = msg || '';
+    note.className = 'survey-note' + (isError ? ' is-error' : '');
+    if (msg && isError) { try { note.focus(); } catch (e) {} }
+  }
+
+  function currentMode() {
+    var checked = form.querySelector('input[name="mode"]:checked');
+    return checked ? checked.value : 'write';
+  }
+
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+  }
+
+  // ── Mode toggle ─────────────────────────────────────────────
+  var panels = {
+    write: document.getElementById('panel-write'),
+    record: document.getElementById('panel-record'),
+    upload: document.getElementById('panel-upload')
+  };
+  function showPanel(mode) {
+    Object.keys(panels).forEach(function (k) {
+      panels[k].classList.toggle('is-active', k === mode);
+    });
+  }
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="mode"]'), function (r) {
+    r.addEventListener('change', function () { showPanel(currentMode()); setNote(''); });
+  });
+
+  // ── RECORDER ────────────────────────────────────────────────
+  var canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+
+  var recStart = document.getElementById('recStart');
+  var recStop = document.getElementById('recStop');
+  var recRedo = document.getElementById('recRedo');
+  var recSave = document.getElementById('recSave');
+  var recBadge = document.getElementById('recBadge');
+  var recTime = document.getElementById('recTime');
+  var recPreview = document.getElementById('recPreview');
+  var recPlayback = document.getElementById('recPlayback');
+  var recPlaceholder = document.getElementById('recPlaceholder');
+  var recHint = document.getElementById('recHint');
+  var audioOnly = document.getElementById('audioOnly');
+
+  var mediaRecorder = null, chunks = [], stream = null, timer = null, seconds = 0, saveUrl = null;
+
+  if (!canRecord) {
+    recStart.disabled = true;
+    recHint.textContent = "This browser can't record in-page. Use Write or Upload instead — or try Chrome/Firefox/Safari.";
+  }
+
+  function pickMime(audio) {
+    var vids = ['video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm', 'video/mp4'];
+    var auds = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'];
+    var list = audio ? auds : vids;
+    for (var i = 0; i < list.length; i++) {
+      if (window.MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(list[i])) return list[i];
+    }
+    return '';
+  }
+
+  function fmtTime(s) {
+    var m = Math.floor(s / 60), r = s % 60;
+    return m + ':' + (r < 10 ? '0' : '') + r;
+  }
+
+  function stopStream() {
+    if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+  }
+
+  function resetRecorder() {
+    if (saveUrl) { URL.revokeObjectURL(saveUrl); saveUrl = null; }
+    recordedBlob = null;
+    chunks = [];
+    seconds = 0;
+    recTime.textContent = '0:00';
+    recBadge.classList.remove('is-live');
+    recPlayback.hidden = true; recPlayback.removeAttribute('src');
+    recPreview.hidden = true;
+    recPlaceholder.hidden = false;
+    recStart.hidden = false;
+    recStop.hidden = true;
+    recRedo.hidden = true;
+    recSave.hidden = true;
+  }
+
+  recStart.addEventListener('click', function () {
+    if (!canRecord) return;
+    var audio = audioOnly.checked;
+    setNote('');
+    navigator.mediaDevices.getUserMedia(audio ? { audio: true } : { audio: true, video: { facingMode: 'user' } })
+      .then(function (s) {
+        stream = s;
+        chunks = [];
+        recPlaceholder.hidden = true;
+        if (!audio) {
+          recPreview.hidden = false;
+          recPreview.srcObject = s;
+          recPreview.play().catch(function () {});
+        }
+        var mime = pickMime(audio);
+        mediaRecorder = mime ? new MediaRecorder(s, { mimeType: mime }) : new MediaRecorder(s);
+        mediaRecorder.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+        mediaRecorder.onstop = function () {
+          stopStream();
+          recPreview.hidden = true; recPreview.srcObject = null;
+          var type = (mediaRecorder.mimeType || mime || (audio ? 'audio/webm' : 'video/webm')).split(';')[0];
+          recordedBlob = new Blob(chunks, { type: type });
+          if (recordedBlob.size > MAX_BYTES) {
+            setNote('That recording is over 45 MB — trim it shorter, switch to audio only, or email it to us.', true);
+            resetRecorder();
+            return;
+          }
+          saveUrl = URL.createObjectURL(recordedBlob);
+          recPlayback.src = saveUrl;
+          recPlayback.hidden = false;
+          recSave.href = saveUrl;
+          recSave.download = 'testimonial' + (type.indexOf('audio') === 0 ? '.webm' : '.webm');
+          recSave.hidden = false;
+          recRedo.hidden = false;
+          recHint.textContent = 'Looks good? It’ll upload when you submit. Want another take? Re-record.';
+        };
+        mediaRecorder.start();
+        recBadge.classList.add('is-live');
+        recStart.hidden = true;
+        recStop.hidden = false;
+        recRedo.hidden = true;
+        seconds = 0; recTime.textContent = '0:00';
+        timer = setInterval(function () {
+          seconds++;
+          recTime.textContent = fmtTime(seconds);
+          if (seconds >= MAX_SECONDS) doStop();
+        }, 1000);
+      })
+      .catch(function () {
+        setNote('Couldn’t reach your camera or mic. Check the browser’s permission prompt, or use Write / Upload instead.', true);
+      });
+  });
+
+  function doStop() {
+    if (timer) { clearInterval(timer); timer = null; }
+    recBadge.classList.remove('is-live');
+    recStop.hidden = true;
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+  }
+  recStop.addEventListener('click', doStop);
+  recRedo.addEventListener('click', function () { resetRecorder(); });
+
+  // ── UPLOAD ──────────────────────────────────────────────────
+  var dropZone = document.getElementById('dropZone');
+  var fileInput = document.getElementById('fileInput');
+  var fileChip = document.getElementById('fileChip');
+  var fileName = document.getElementById('fileName');
+  var fileSize = document.getElementById('fileSize');
+  var fileClear = document.getElementById('fileClear');
+
+  function setFile(file) {
+    if (!file) return;
+    if (file.size > MAX_BYTES) {
+      setNote('That file is ' + humanSize(file.size) + ' — over the 45 MB limit. Trim it, or email it to us.', true);
+      return;
+    }
+    uploadedFile = file;
+    fileName.textContent = file.name || 'recording';
+    fileSize.textContent = humanSize(file.size) + (file.type ? ' · ' + file.type : '');
+    fileChip.classList.add('is-set');
+    setNote('');
+  }
+  fileInput.addEventListener('change', function () { setFile(fileInput.files && fileInput.files[0]); });
+  fileClear.addEventListener('click', function () {
+    uploadedFile = null; fileInput.value = ''; fileChip.classList.remove('is-set');
+  });
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    dropZone.addEventListener(ev, function (e) { e.preventDefault(); dropZone.classList.add('is-hover'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    dropZone.addEventListener(ev, function (e) { e.preventDefault(); dropZone.classList.remove('is-hover'); });
+  });
+  dropZone.addEventListener('drop', function (e) {
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]);
+  });
+
+  // ── SUBMIT ──────────────────────────────────────────────────
+  function blobToBase64(blob) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        // strip the "data:...;base64," prefix
+        var s = String(reader.result);
+        resolve(s.slice(s.indexOf(',') + 1));
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  function validate() {
+    if (!form.first_name.value.trim() || !form.last_name.value.trim()) return 'Please add your first and last name.';
+    var email = form.email.value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'That email doesn’t look right — fix it or leave it blank.';
+
+    var mode = currentMode();
+    if (mode === 'write' && !form.testimonial_text.value.trim()) return 'Write a few words before you submit.';
+    if (mode === 'record' && !recordedBlob) return 'Record your testimonial, or switch tabs to write or upload one.';
+    if (mode === 'upload' && !uploadedFile) return 'Choose a file to upload, or switch tabs to write or record one.';
+
+    if (!form.agreed.checked) return 'Please check the box to let us share your testimonial.';
+    if (!form.typed_signature.value.trim()) return 'Type your name to sign the release.';
+    return null;
+  }
+
+  function buildPayload() {
+    var mode = currentMode();
+    var base = {
+      submitted_at_client: new Date().toISOString(),
+      mode: mode,
+      event_name: form.event_name.value,
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      role_title: form.role_title.value.trim(),
+      school_org: form.school_org.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      testimonial_text: form.testimonial_text.value.trim(),
+      agreed: form.agreed.checked ? 'Yes' : 'No',
+      typed_signature: form.typed_signature.value.trim(),
+      user_agent: navigator.userAgent,
+      page_url: form.page_url.value,
+      company_website: form.company_website.value // honeypot
+    };
+
+    var media = null;
+    if (mode === 'record' && recordedBlob) {
+      media = { blob: recordedBlob, name: 'testimonial-recording.webm', type: recordedBlob.type || 'video/webm' };
+    } else if (mode === 'upload' && uploadedFile) {
+      media = { blob: uploadedFile, name: uploadedFile.name || 'testimonial-upload', type: uploadedFile.type || 'application/octet-stream' };
+    }
+
+    if (!media) return Promise.resolve(base);
+
+    base.media_filename = media.name;
+    base.media_type = media.type;
+    base.media_size = media.blob.size;
+    return blobToBase64(media.blob).then(function (b64) {
+      base.media_base64 = b64;
+      return base;
+    });
+  }
+
+  function showSuccess() {
+    form.hidden = true;
+    var state = document.getElementById('successState');
+    state.hidden = false;
+    var h = state.querySelector('.survey-result-title');
+    h.setAttribute('tabindex', '-1');
+    h.focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = validate();
+    if (err) { setNote(err, true); return; }
+
+    if (!BOOTH_ENDPOINT) {
+      setNote('The booth isn’t wired up yet (no endpoint configured). See FOR-THE-RECORD-SETUP.md.', true);
+      return;
+    }
+
+    btn.disabled = true;
+    var original = btn.textContent;
+    var hasMedia = currentMode() !== 'write';
+    btn.textContent = hasMedia ? 'Uploading…' : 'Sending…';
+    if (hasMedia) progress.classList.add('is-on');
+    setNote('');
+
+    buildPayload().then(function (payload) {
+      // text/plain avoids a CORS preflight against Apps Script.
+      return fetch(BOOTH_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+    })
+    .then(function (res) { return res.json().catch(function () { return { result: 'ok' }; }); })
+    .then(function (data) {
+      progress.classList.remove('is-on');
+      if (data && data.result === 'error') throw new Error(data.message || 'error');
+      showSuccess();
+    })
+    .catch(function () {
+      progress.classList.remove('is-on');
+      btn.disabled = false;
+      btn.textContent = original;
+      setNote('Something hiccuped sending that. Check your connection and try once more — or email it to whenindoubt@theintelligenthoodlums.com and we’ll log it by hand.', true);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
