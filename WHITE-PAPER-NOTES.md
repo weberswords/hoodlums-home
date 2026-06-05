@@ -208,6 +208,22 @@ referred names are third-party PII. Follow up via your own CRM / private doc.
 
 ---
 
+## Voice principle (governs the white paper + all copy)
+**The participant is the hero. Always.**
+- Meet them where they are. Never denigrate, never a "well, duh" gotcha.
+- They arrive as experts on their own context — not blank slates. The program
+  gives their expertise new range; it does not supply the expertise.
+- Reframed the case study accordingly: NOT "zero to hero" (zero erases that she
+  was already the expert) and NOT "she didn't see the point, then she did" (smug).
+  New framing: "She was already the expert. The tools caught up." Her doubt about
+  a *generic* tool was good judgment; the tool had to *earn* her — "earned, not
+  sold." Anonymized + dignified.
+
+## Status: DO NOT PUBLISH the page until the white paper is written.
+Page is a draft. Holds together but waits on the paper before going live. The
+bottom CTA still references "the white paper" — fine to leave while in draft;
+make honest (or wire a real link/gated form) right before publish.
+
 ## Core message / thesis line
 > "What if the machine wasn't the enemy? What if it was a mirror?"
 The AI reflects the teacher back — their voice, their classroom. Pays off in
