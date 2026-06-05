@@ -248,7 +248,8 @@ artifact for teachers + administrators. Tells the story of the week.
       "what moved" + CTA sections.
 
 **Proposed structure (prospective → retrospective):**
-1. Hero — past tense: "Five days. Twelve crews. Here's what they built."
+1. Hero — past tense: "Five days. Four crews. Here's what they built."
+   (~15 teachers, 4 crews — do NOT say twelve.)
 2. Ch 1 — What is Classroom OS? + the thesis (bottom-up system, teacher as
    expert, not a feature tour).
 3. Ch 2 (new) — *How we worked*: "Who are you?" not "what's your why?",
