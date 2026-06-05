@@ -214,6 +214,24 @@ The AI reflects the teacher back — their voice, their classroom. Pays off in
 Dawn's "I'm the human" and Ana's paper-plane quote. Now the epigraph opening the
 "How we worked" section. Strong candidate for the white paper's framing too.
 
+## A/B test (Thursday) — the key proof, with the honest nuance
+Prompt: "Create a lesson plan template that meets the requirements for my district."
+Run on Gemini with NO Course Brain vs. Gemini WITH Course Brain.
+- Teachers who filled out their Classroom OS docs → big difference, reflected back
+  in their voice/classroom.
+- Teachers who DIDN'T do the work → little/no difference.
+- Takeaway (now the page's strongest line): "The system doesn't invent you — it
+  reflects back exactly what you put in." Honest + credible; ties to mirror thesis.
+
+## Throughout-the-week tips (tools in service of the system)
+- Pomodoro technique via pomofocus.io (now named on the page).
+- Free apps + strategies usable Monday.
+- Newline boards (classroom interactive displays) — tips for using them. [Off the
+  page for now — hardware-specific; revisit for paper if useful.]
+
+## Friday (Day 5) also: deployment
+- Learned to SHARE their Gems and USE them in Google Classroom (now on Day 5 card).
+
 ## Anecdote: the mirror, day one
 A teacher asked their Classroom OS "If I were a historical figure based on my OS,
 who would I be?" → "Because of your focus on reflection and leadership, you'd be
