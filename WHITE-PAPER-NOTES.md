@@ -214,6 +214,15 @@ The AI reflects the teacher back — their voice, their classroom. Pays off in
 Dawn's "I'm the human" and Ana's paper-plane quote. Now the epigraph opening the
 "How we worked" section. Strong candidate for the white paper's framing too.
 
+## Anecdote: the mirror, day one
+A teacher asked their Classroom OS "If I were a historical figure based on my OS,
+who would I be?" → "Because of your focus on reflection and leadership, you'd be
+Marcus Aurelius." Perfect live demo of the machine-as-mirror thesis. On the page
+as a callout under the mirror epigraph in Ch 02.
+
+Day 4 correction: NOT just sub plans. They built something for the classroom WALL
+and something for the FIRST WEEK of school, plus the sub plan + live Gem.
+
 ## Pedagogy / theory we actually taught (interleaved with practice)
 
 IMPORTANT framing: we did NOT skip theory. We taught a lot of it — but
