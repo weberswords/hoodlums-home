@@ -183,3 +183,32 @@ how Padlet/Adobe Podcast fit into the day's analog→digital handoff.)*
       template for teachers' own lessons.
 - [ ] Decide framing: research paper vs. practitioner white paper vs. hybrid.
 - [ ] Define the audience (administrators? teachers? PD designers? funders?).
+
+---
+
+## Retrospective page (recasting /classroom-os)
+
+Decision: turn the live signup page into a "here's what we did with teachers"
+artifact for teachers + administrators. Tells the story of the week.
+
+**Decisions locked:**
+- **Soft forward CTA** — retrospective story that ends with a "bring this to
+  your school / next cohort" path. Not a pure signup page; not pure archive.
+- **Evidence available:** teacher quotes, photos, digital artifacts (Firefly,
+  audiograms, NotebookLM/Padlet/Gem screens), and Pulse Check data → page
+  supports quote cards, a photo/artifact gallery, embedded media, and a "what
+  moved" data section.
+
+**Proposed structure (prospective → retrospective):**
+1. Hero — past tense: "Five days. Twelve crews. Here's what they built."
+2. Ch 1 — What is Classroom OS? + the thesis (bottom-up system, teacher as
+   expert, not a feature tour).
+3. Ch 2 (new) — *How we worked*: "Who are you?" not "what's your why?",
+   human → analog → digital, psychological safety, tools-in-service-of-the-system.
+4. The Five Days, as story — each card recast to what happened + the artifact +
+   a quote/photo. Remove Luma CTAs.
+5. For Administrators — evidence pitch + Pulse Check results (not "observe a seat").
+6. What moved — Monday→Friday Pulse data as proof.
+7. Soft CTA — "Want this at your school? / next cohort."
+
+Build when assets are in hand. Page = public sibling of this white paper.
