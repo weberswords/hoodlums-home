@@ -224,6 +224,17 @@ Page is a draft. Holds together but waits on the paper before going live. The
 bottom CTA still references "the white paper" — fine to leave while in draft;
 make honest (or wire a real link/gated form) right before publish.
 
+## Gating decision: self-built form → Google Sheet (our own CRM)
+The white paper is GATED. Build our own form (NOT HubSpot — too ugly, and we want
+to own the data). Reuse the existing pattern: static HTML form in our design
+system → Google Apps Script web app → Google Sheet. References already in repo:
+- release.html + release-apps-script.gs + RELEASE-SETUP.md
+- survey.html + survey-apps-script.gs + SURVEY-SETUP.md
+- for-the-record.html + for-the-record-apps-script.gs (also does file delivery)
+White-paper gate = capture first/last name, email, role, school/district → append
+to a "CRM" Sheet → on success reveal the white-paper link/PDF. Likely a separate
+build task after the paper content exists.
+
 ## Core message / thesis line
 > "What if the machine wasn't the enemy? What if it was a mirror?"
 The AI reflects the teacher back — their voice, their classroom. Pays off in
