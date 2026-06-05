@@ -208,6 +208,12 @@ referred names are third-party PII. Follow up via your own CRM / private doc.
 
 ---
 
+## Core message / thesis line
+> "What if the machine wasn't the enemy? What if it was a mirror?"
+The AI reflects the teacher back — their voice, their classroom. Pays off in
+Dawn's "I'm the human" and Ana's paper-plane quote. Now the epigraph opening the
+"How we worked" section. Strong candidate for the white paper's framing too.
+
 ## Pedagogy / theory we actually taught (interleaved with practice)
 
 IMPORTANT framing: we did NOT skip theory. We taught a lot of it — but
