@@ -1549,6 +1549,19 @@ body::before {
 }
 .section-leaders .stat-num { color: var(--hm-ink); }
 .section-leaders .stat-label { color: var(--hm-prussian); }
+.section-leaders .stat-label strong { color: var(--hm-ink); font-weight: 700; }
+
+/* before → after shift display (shows movement, not a static score) */
+.stat-num.stat-shift {
+  font-size: clamp(28px, 4vw, 40px);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+}
+.section-leaders .stat-before { color: rgba(15,20,25,0.35); }
+.section-leaders .stat-after  { color: var(--hm-rufous); }
+.stat-arrow { color: var(--hm-tuscany); font-size: 0.7em; }
 
 @media (max-width: 640px) {
   .case-study { padding: 32px 24px; }
