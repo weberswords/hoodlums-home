@@ -199,10 +199,19 @@ artifact for teachers + administrators. Tells the story of the week.
   supports quote cards, a photo/artifact gallery, embedded media, and a "what
   moved" data section.
   - **Media releases + some photos already captured.**
-  - **Confession booth** (in progress): teachers record their experience as
-    video, audio, OR written. This is the centerpiece testimony — first-person,
-    their own voice. Page should feature these prominently (video/audio embeds +
-    pull-quotes from the written ones). Anchors the "what moved" + CTA sections.
+  - **Confession booth** = the existing `/for-the-record` page on `main`
+    ("Tell us the truth."). Already built: write / record-in-browser / upload,
+    audio-only option, built-in testimonial release. Data lands in a Google
+    Sheet + Drive media folder (see FOR-THE-RECORD-SETUP.md).
+    - Structured fields captured: first/last name, role/title, school/org,
+      email, testimonial_text, media link, typed signature (release).
+    - Booth prompts: Before (the hard part) → The moment (when it clicked) →
+      Now (what's different) → **Who (who'd you send our way)** = CTA fuel.
+    - RETRO PAGE PLAN: render attributed quote cards (name + "8th grade ELA,
+      Legacy HS") + video/audio embeds straight from this data. Release already
+      handled per-person. "Who" answers seed the "bring this to your school" CTA.
+    - This is the centerpiece testimony — feature prominently; anchors the
+      "what moved" + CTA sections.
 
 **Proposed structure (prospective → retrospective):**
 1. Hero — past tense: "Five days. Twelve crews. Here's what they built."
