@@ -24,7 +24,7 @@
 // ── CONFIG ────────────────────────────────────────────────────
 // Drive folder where recorded/uploaded media lands. Leave '' to use the
 // script's root Drive (a folder is strongly recommended). See setup doc.
-var MEDIA_FOLDER_ID = '';
+var MEDIA_FOLDER_ID = '1xXB1U1810GTMYFOvpXR3nXdMHqD5JN_o';
 
 // Reject payloads larger than this (decoded). The client also caps at 45 MB.
 var MAX_MEDIA_BYTES = 48 * 1024 * 1024;
