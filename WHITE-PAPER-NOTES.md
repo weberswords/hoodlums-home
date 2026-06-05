@@ -240,6 +240,17 @@ sequencing is itself a methodology point for the paper.
 → Page treatment: added a 4th method card ("Theory, earned not lectured") + fixed
   the Ch 01 line (was wrongly "No theory"). Full depth above belongs in the paper.
 
+### What actually happened per day (vs. the old aspirational copy)
+- **Day 3:** did NOT strictly do the "Scheduler" / full-year design. Actual:
+  uploaded their pacing guide; some work adding district-calendar events into
+  their Google Calendar; kept building Unit NotebookLM; made a Google Vids
+  commercial (why a student would want to be in their classroom). Page updated to
+  match — dropped Flow Map / "working Scheduler" claims.
+- **Day 2:** added — 90-second Adobe Podcast walking through what their classroom
+  is like.
+- **Prompt-building** ("how to build prompts") was taught — UNSURE if Day 3 or
+  Thursday. Left OFF the day cards until confirmed. TODO: place it once confirmed.
+
 ## Open threads / to develop for the paper
 
 - [ ] Name the qualitative research methods explicitly and cite where relevant.
