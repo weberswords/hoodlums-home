@@ -215,10 +215,15 @@ IMPORTANT framing: we did NOT skip theory. We taught a lot of it — but
 that made the concept land. Practice first, then name the research. This
 sequencing is itself a methodology point for the paper.
 
-- **Cognitive load theory** as the academic backbone. [CITATION TODO: confirm —
-  cognitive load theory is John Sweller; user said "Wiley Schleck" via dictation,
-  verify the name before printing it anywhere.] Introduced *after* teachers built
-  a design system and felt the payoff.
+- **Named theorists (user-confirmed): Chi and Schlechty.**
+  [CITATION TODO before printing — almost certainly **Michelene Chi** (ICAP
+  framework / active vs. constructive vs. interactive learning) and **Phillip
+  (Phil) Schlechty** (student engagement, "Working on the Work"). Verify first
+  names + spelling.]
+- **Cognitive load** (design-system rationale) also discussed — note that's
+  classically **John Sweller**, a *separate* line from Chi/Schlechty. Keep the
+  attributions distinct in the paper; don't collapse them into one "theory."
+  All introduced *after* teachers built the thing and felt the payoff.
 - **Design systems reduce cognitive load** — consistent font + consistent color
   scheme = less extraneous load for students. Taught by doing (Brand Kits), then
   explained.
