@@ -2,19 +2,19 @@
  * The Confession Booth — testimonial backend
  * The Intelligent Hoodlums
  *
- * Receives JSON POSTs from /confession on theintelligenthoodlums.com and
+ * Receives JSON POSTs from /for-the-record on theintelligenthoodlums.com and
  * appends each testimonial as a row to a bound Google Sheet. When a person
  * records or uploads media, the file is decoded and dropped into a Drive
  * folder, and the row stores a link to it.
  *
- * SETUP: see CONFESSION-SETUP.md. In short —
+ * SETUP: see FOR-THE-RECORD-SETUP.md. In short —
  *   1. Make a NEW Google Sheet (keep testimonials on their own Sheet).
  *   2. Extensions → Apps Script, paste this whole file.
  *   3. Make a Drive folder for the media, copy its ID into MEDIA_FOLDER_ID.
  *   4. Deploy → New deployment → Web app
  *        - Execute as: Me
  *        - Who has access: Anyone
- *   5. Copy the /exec URL into BOOTH_ENDPOINT in confession.html.
+ *   5. Copy the /exec URL into BOOTH_ENDPOINT in for-the-record.html.
  *
  * Each row is a signed, timestamped testimonial: the typed signature plus the
  * server-side receipt time and the browser's user agent are the evidence that
@@ -161,7 +161,7 @@ function extensionFor_(filename, type) {
 
 // Health check — visiting the /exec URL in a browser should say "ok".
 function doGet() {
-  return json_({ result: 'ok', service: 'confession-booth-testimonials' });
+  return json_({ result: 'ok', service: 'for-the-record-testimonials' });
 }
 
 function json_(obj) {

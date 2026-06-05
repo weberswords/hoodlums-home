@@ -1,6 +1,6 @@
-# The Confession Booth — Setup
+# For the Record — Setup
 
-An **unlisted** testimonial page at `/confession`. It isn't linked from the main site —
+An **unlisted** testimonial page (the "confession booth") at `/for-the-record`. It isn't linked from the main site —
 you point people to it (a link, a QR code at an event, a card). Visitors can leave a
 testimonial three ways: **write it**, **record it** in the browser, or **upload** a file
 they already have. Every testimonial is signed with a short release so you're cleared to
@@ -23,7 +23,7 @@ stores a link to it.
 ## 2. Deploy the script
 
 1. In the Sheet: **Extensions → Apps Script**. Delete the stub and paste all of
-   [`confession-apps-script.gs`](./confession-apps-script.gs).
+   [`for-the-record-apps-script.gs`](./for-the-record-apps-script.gs).
 2. At the top, set the folder ID:
    ```js
    var MEDIA_FOLDER_ID = 'paste-the-folder-id-here';
@@ -36,11 +36,11 @@ stores a link to it.
    permission as well as Sheets — that's expected. Copy the **`/exec` URL**.
 
 Health check: visiting the `/exec` URL in a browser should return
-`{"result":"ok","service":"confession-booth-testimonials"}`.
+`{"result":"ok","service":"for-the-record-testimonials"}`.
 
 ## 3. Wire up the page
 
-Open [`confession.html`](./confession.html) and paste the URL into:
+Open [`for-the-record.html`](./for-the-record.html) and paste the URL into:
 
 ```js
 var BOOTH_ENDPOINT = ''; // ← your https://script.google.com/macros/s/…/exec
@@ -48,8 +48,8 @@ var BOOTH_ENDPOINT = ''; // ← your https://script.google.com/macros/s/…/exec
 
 ## 4. Point people to it
 
-Share the link or print a QR code to **`/confession`**. You can tag the context so it lands
-in the Sheet: `/confession?event_name=Classroom%20OS`.
+Share the link or print a QR code to **`/for-the-record`**. You can tag the context so it lands
+in the Sheet: `/for-the-record?event_name=Classroom%20OS`.
 
 Each row records: server receipt time, the mode (write / record / upload), name, role,
 school, optional email, the written words, a **Drive link** to any recording or upload, the

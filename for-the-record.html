@@ -456,7 +456,7 @@
 <script>
 (function () {
   // ── CONFIG ──────────────────────────────────────────────────
-  // Paste the deployed Apps Script /exec URL here (see CONFESSION-SETUP.md).
+  // Paste the deployed Apps Script /exec URL here (see FOR-THE-RECORD-SETUP.md).
   var BOOTH_ENDPOINT = '';
 
   var MAX_BYTES = 45 * 1024 * 1024; // keep POST under Apps Script's limit
@@ -743,7 +743,7 @@
     if (err) { setNote(err, true); return; }
 
     if (!BOOTH_ENDPOINT) {
-      setNote('The booth isn’t wired up yet (no endpoint configured). See CONFESSION-SETUP.md.', true);
+      setNote('The booth isn’t wired up yet (no endpoint configured). See FOR-THE-RECORD-SETUP.md.', true);
       return;
     }
 
