@@ -198,6 +198,11 @@ artifact for teachers + administrators. Tells the story of the week.
   audiograms, NotebookLM/Padlet/Gem screens), and Pulse Check data → page
   supports quote cards, a photo/artifact gallery, embedded media, and a "what
   moved" data section.
+  - **Media releases + some photos already captured.**
+  - **Confession booth** (in progress): teachers record their experience as
+    video, audio, OR written. This is the centerpiece testimony — first-person,
+    their own voice. Page should feature these prominently (video/audio embeds +
+    pull-quotes from the written ones). Anchors the "what moved" + CTA sections.
 
 **Proposed structure (prospective → retrospective):**
 1. Hero — past tense: "Five days. Twelve crews. Here's what they built."
