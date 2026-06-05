@@ -26,7 +26,32 @@ hero in the span of a week. Watching that arc was the thing.
   classroom kit* that matched her voice and lowered student cognitive load.
 
 > TODO: get Dawn's booth testimonial + release if she's willing — this is THE
-> case study.
+> case study. (But see principle below — only if she offers it, in her words.)
+
+---
+
+## Principle: offer, don't extract
+
+It's over now — and I don't want to push people into specific things. **Always
+let people talk in their own words.** Let them *offer* things; never insist they
+give us a specific artifact, phrase, or clip. The unprompted, real version is
+worth more than anything we'd coax out of them. This applies to Dawn and to
+everyone — booth testimony, artifacts, all of it. (Consistent with "clear rather
+than clever" and the human-first design of the week.)
+
+---
+
+## Friday activity: "Slopped"
+
+**Slopped** = AI **slop** + the TV show **Chopped**. Teachers had to **design a
+Gem based on their Classroom OS**, and then we threw **curveballs** at them to
+test it live.
+- First curveball: *"You just got a student from Ecuador who only speaks Spanish
+  — what do you do?"*
+- The point: pressure-test the Classroom OS / Gem against the unpredictable
+  reality of a classroom, on the fly. Playful, but it proved the system holds up
+  under a real curveball.
+> TODO: capture the other curveballs we threw.
 
 **We opened by making them question who they are as teachers.** Started the week
 with identity, not tools — who are you as a teacher? But we gave them one early
