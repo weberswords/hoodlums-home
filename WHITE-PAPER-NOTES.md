@@ -208,6 +208,33 @@ referred names are third-party PII. Follow up via your own CRM / private doc.
 
 ---
 
+## Pedagogy / theory we actually taught (interleaved with practice)
+
+IMPORTANT framing: we did NOT skip theory. We taught a lot of it — but
+*interleaved* with the practical, and typically AFTER the hands-on application
+that made the concept land. Practice first, then name the research. This
+sequencing is itself a methodology point for the paper.
+
+- **Cognitive load theory** as the academic backbone. [CITATION TODO: confirm —
+  cognitive load theory is John Sweller; user said "Wiley Schleck" via dictation,
+  verify the name before printing it anywhere.] Introduced *after* teachers built
+  a design system and felt the payoff.
+- **Design systems reduce cognitive load** — consistent font + consistent color
+  scheme = less extraneous load for students. Taught by doing (Brand Kits), then
+  explained.
+- **Accessibility**: high-contrast color choices; sensitivity to color-vision
+  deficiencies; designing for all types of learners and their needs.
+- **The tech-in-education debate, with nuance** — not pro/anti. What tech can do
+  that paper/pencil can't: translation; adapting a tool to meet a learner exactly
+  where they are; duplicating some of the teacher's capacity to reach more
+  learners. AND where analog is the right tool: we used paper/pencil to scaffold —
+  center the human and what they need / what challenge they're ready for, then move
+  up through a digital tool to execute what was manifested in the analog.
+  (This is the human → analog → digital sequence, with the rationale.)
+
+→ Page treatment: added a 4th method card ("Theory, earned not lectured") + fixed
+  the Ch 01 line (was wrongly "No theory"). Full depth above belongs in the paper.
+
 ## Open threads / to develop for the paper
 
 - [ ] Name the qualitative research methods explicitly and cite where relevant.
