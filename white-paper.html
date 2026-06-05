@@ -11,12 +11,29 @@
   Tier discipline (per CONTENT-TIERING.md): this paper reveals
   the WHAT + WHY in depth (architecture, sequencing, theory,
   full methodology, case study). It deliberately HOLDS BACK the
-  executional HOW (templates, Thinking Maps how-to, prompt
-  method/library, "Slopped" mechanics, tool-chain steps,
-  facilitation moves) for the paid room.
+  executional HOW (templates, the trademarked visual-mapping
+  routines + how-to, prompt method/library, "Slopped" mechanics,
+  tool-chain steps, facilitation moves) for the paid room.
+
+  STORY STRUCTURE (StoryBrand / SB7, Miller 2017): the reader is
+  the HERO (the teacher, and the administrator deciding for them);
+  the Hoodlums are the GUIDE, not the hero. Arc woven across the
+  sections: Hero + Problem (01) -> Guide w/ empathy + authority
+  (02-06) -> Plan (03-04) -> Stakes/Failure (01, 09) -> Call to
+  action (CTA) -> Success (07-08, the classroom that runs without
+  you). Tagged inline as <!-- SB7: ... --> at each beat.
+
+  TRADEMARK NOTE: "Thinking Maps" + the eight maps are registered
+  trademarks of Thinking Maps, Inc. Do NOT name them or detail
+  them here — use generic descriptors ("visual thinking routines")
+  and hold the real maps for the paid room.
 
   Gated: noindex; revealed after the lead-capture form (separate
-  build task). Reuses styles.css design tokens + components.
+  build task). The paper must be DOWNLOADABLE (hosted branded PDF),
+  EMAILABLE (gate Apps Script mails the PDF/link to the captured
+  address, like for-the-record file delivery), and SAVE-TO-DRIVE
+  (Google "Save to Drive" button on the hosted PDF). Reuses
+  styles.css design tokens + components.
   ============================================================
 -->
 <html lang="en">
@@ -37,8 +54,12 @@
 <link rel="preload" href="/fonts/AvocadoSans-Thin.otf" as="font" type="font/otf" crossorigin>
 
 <link rel="stylesheet" href="/styles.css">
-<!-- TODO (build phase): add print stylesheet so "Save as PDF" yields a clean,
-     branded document for forwarding to a budget committee. -->
+<!-- TODO (build phase): print stylesheet so the page itself prints clean, AND a
+     hosted branded PDF as the canonical downloadable. Delivery (separate gate task):
+       - DOWNLOAD: "Download the PDF" button on the revealed page.
+       - EMAIL:    gate Apps Script mails the PDF/link to the captured address
+                   (reuse for-the-record's file-delivery pattern).
+       - DRIVE:    Google "Save to Drive" button pointed at the hosted PDF. -->
 </head>
 <body>
 
@@ -70,8 +91,11 @@
     <h1 class="hero-title">The classroom that runs without you.</h1>
     <div class="rufous-rule hero-rule"></div>
     <p class="hero-tagline">
+      <!-- SB7: Hero named (the teacher / the administrator), framed as the one this is for. -->
       <em>[INTENT: Subtitle + the thesis line — "What if the machine wasn't the enemy? What if it was a mirror?" — and a one-sentence statement of what this paper delivers that the public page doesn't: the architecture, the theory, the full methodology, the data.]</em>
     </p>
+    <!-- INTENT (build phase): post-reveal actions bar — "Download the PDF" + Google
+         "Save to Drive" button. (Email delivery handled by the gate Apps Script.) -->
     <!-- Headline Pulse stat strip (proof up front, honest n stated below in Ch.) -->
     <div class="pulse-stats" style="margin-top:40px;">
       <div class="stat-card">
@@ -111,10 +135,16 @@
 <section class="section section-work">
   <div class="section-inner">
     <div class="section-label">01</div>
-    <h2 class="section-title">Why most PD doesn't survive a Tuesday.</h2>
+    <h2 class="section-title">The moment we're actually in.</h2>
     <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Problem — both the external problem (the cultural moment) and the
+         internal one (the teacher who can't tell whether tech is friend or threat). -->
     <p class="lede-text">
-      <em>[INTENT: Name the failure mode without blaming the teacher (voice principle). One-off PD treats tools as the endpoint and the teacher as a blank slate to fill with a vendor's feature tour. The deeper failure: classrooms that run on a person's presence, energy, and voice — they don't survive the Tuesday you're out sick. Set up the gap this method fills. Use the One-off vs Classroom OS contrast from the notes, framed as a system problem, not a teacher deficiency.]</em>
+      <em>[INTENT — NAME THE SOCIAL CONTEXT first: schools right now are reaching for the blunt instruments — phone bans, screen-time restriction, "no AI" policies. Those are understandable reactions to a real problem, but they're a posture, not a pedagogy. Classroom OS is the constructive third path: not banning, not unfettered adoption — "what's the right tool for the job?" The answer to restriction-or-surrender is design. Name it without scolding either camp (voice principle).]</em>
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <em>[INTENT — THEN the PD failure mode, without blaming the teacher: one-off PD treats tools as the endpoint and the teacher as a blank slate for a vendor's feature tour. The deeper failure it leaves untouched: classrooms that run on a person's presence, energy, and voice — they don't survive the Tuesday you're out sick. That dependency is the gap this method closes. Use the one-off vs. Classroom OS contrast as a SYSTEM problem, not a teacher deficiency.]</em>
+      <!-- SB7: Stakes/Failure seeded here (restriction = losing path; presence-dependence = fragility). -->
     </p>
   </div>
 </section>
@@ -127,6 +157,7 @@
     <div class="section-label">02</div>
     <h2 class="section-title">The machine as a mirror.</h2>
     <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Guide enters with EMPATHY (we get the fear) + the reframe that earns trust. -->
 
     <figure class="quote-feature">
       <span class="quote-feature-mark" aria-hidden="true">&ldquo;</span>
@@ -189,8 +220,22 @@
     <div class="section-label">04</div>
     <h2 class="section-title">Human, then analog, then digital.</h2>
     <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Plan — the clear, repeatable process the guide offers the hero. -->
     <p class="lede-text">
-      <em>[INTENT: The named "right tool for the job" scaffold and its rationale — analog protects the thinking (slows it down, lowers the barrier) before any tool speeds it up; digital then does what only digital can (translate, adapt to one learner, extend one teacher's reach, reflect work back in the teacher's voice). Plus: "Who are you as a teacher?" vs "What's your why?" as a deliberate design choice (identity is generative; why falls out of it). Psychological safety as a first-class design constraint — opt-in, graduated disclosure; forced vulnerability isn't safety. And the meta-move: we ran the week the way we want them to run their rooms — the medium is the lesson. NO facilitation script, NO exact prompts.]</em>
+      <em>[INTENT: The named "right tool for the job" scaffold and its rationale — analog protects the thinking (slows it down, lowers the barrier) before any tool speeds it up; digital then does what only digital can (translate, adapt to one learner, extend one teacher's reach, reflect work back in the teacher's voice). The meta-move: we ran the week the way we want them to run their rooms — the medium is the lesson. NO facilitation script, NO exact prompts.]</em>
+    </p>
+    <div class="ab-callout" style="margin-top:32px;">
+      <div class="case-kicker">"Who are you?" — not "what's your why?"</div>
+      <p>
+        <em>[INTENT: The identity question as a deliberate design choice — identity is generative; the "why" falls out of it, not the reverse. THE ANECDOTE: after Day 1, a teacher described the question sending her back through the "historical index" of her experiences — why she became a teacher, why she's still one, what shaped who she is. The psychological power of identity, shown not asserted. Frame with dignity: it surfaced expertise she already had.]</em>
+      </p>
+    </div>
+    <p class="lede-text" style="margin-top:32px;">
+      <em>[INTENT — how we get people thinking, with the research named but light:
+        - OBLIQUE STRATEGIES (Eno & Schmidt, 1975) — oblique prompts to break a deadlock and provoke fresh thinking, used as a creativity technique (not a recipe).
+        - PSYCHOLOGICAL SAFETY as a first-class constraint — opt-in, graduated disclosure; "we hate over-sharing icebreakers too"; forced vulnerability isn't safety. Tie to the SOCIAL PRESENCE MODEL (Whiteside; Garrett Dikkers): affective association + community cohesion + instructor involvement as designable conditions.
+        - CREWS OF FOUR as team learning (Miyake & Kirschner, 2014) — small groups as the unit of constructive, interactive engagement.
+        - MOTIVATION designed White-Hat, not Black-Hat (Chou / Octalysis) — we engineer for durable intrinsic motivation, not compulsion loops. Keep all of these interleaved and earned, never a lit-review dump.]</em>
     </p>
     <div class="method-grid">
       <article class="method-card">
@@ -220,12 +265,18 @@
     <div class="section-label">05</div>
     <h2 class="section-title">Theory, earned — not lectured.</h2>
     <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Authority — the guide proves competence (real research, real results). -->
     <p class="lede-text">
-      <em>[INTENT: We did NOT skip theory; we interleaved it, and taught it AFTER the hands-on application that made it land — practice first, then name the research. That sequencing is itself a methodology point. Keep three distinct lines distinct: cognitive load (Sweller) for design-system/Brand-Kit rationale; Chi's ICAP engagement ladder; Schlechty's engagement design. Plus accessibility (high contrast, color-vision deficiency) and the tech-in-education debate with nuance (what digital can do that paper can't, and where analog is the right tool). Citations verified — see Appendix.]</em>
+      <em>[INTENT: We did NOT skip theory; we interleaved it and taught it AFTER the hands-on application that made it land — practice first, then name the research. That sequencing is itself a methodology point. Keep the lines DISTINCT (don't collapse them into one "theory"): cognitive load (Sweller) and multimedia design (Mayer) for the design-system / Brand-Kit / audiogram rationale; engagement (Chi's ICAP, Schlechty); collaboration (Miyake & Kirschner); social presence (Whiteside & Dikkers); motivation (Chou / Octalysis). Plus accessibility (high contrast, color-vision deficiency) and the tech-in-education debate with nuance — what digital can do that paper can't, and where analog is the right tool. All citations verified — see Appendix.]</em>
     </p>
     <div class="ab-callout">
       <div class="case-kicker">The research we named, after the practice that earned it</div>
-      <p><em>[INTENT: brief, distinct one-liners — Sweller / cognitive load (design systems reduce extraneous load); Chi / ICAP (passive→active→constructive→interactive); Schlechty / Working on the Work (designing for engagement). Full references in the Appendix.]</em></p>
+      <p><em>[INTENT: brief, distinct one-liners, each tied to a concrete moment from the week —
+        Sweller / cognitive load (consistent font + color = less extraneous load) and Mayer / multimedia learning (words + pictures, dual channels — the audiogram sound→print bridge);
+        Chi / ICAP (passive→active→constructive→interactive) and Schlechty / Working on the Work (designing for engagement);
+        Miyake & Kirschner (the crews of four as team learning);
+        Whiteside & Dikkers (social presence → the psychological-safety design);
+        Chou / Octalysis (White-Hat motivation). Full references in the Appendix.]</em></p>
     </div>
   </div>
 </section>
@@ -274,7 +325,7 @@
       </div>
     </div>
     <p class="lede-text lede-text-dark" style="margin-top:32px;">
-      <em>[INTENT: end-of-week ratings (n=8): average value 4.75/5; NPS +88 (7 promoters, 1 passive, 0 detractors). A line of standout qualitative (Dawn "I'm the human"; Ana "paper plane"). Honest framing: directional evidence from a small first cohort, consistent across every matched teacher.]</em>
+      <em>[INTENT: end-of-week ratings (n=8): average value 4.75/5; NPS +88 (7 promoters, 1 passive, 0 detractors). Standout qualitative (Dawn "I'm the human"; Ana "paper plane"). And a behavioral signal of real engagement, not just satisfaction: a teacher went home after Day 3 and finished building her classroom commercial on her own time — the White-Hat motivation working as designed. Honest framing: directional evidence from a small first cohort, consistent across every matched teacher.]</em>
     </p>
   </div>
 </section>
@@ -329,8 +380,9 @@
      ============================================================ -->
 <section class="cta-band">
   <div class="cta-inner">
+    <!-- SB7: Call to action + the Success/Failure stakes restated in one breath. -->
     <h2 class="cta-title"><em>[INTENT: "Bring this to your school." / next cohort]</em></h2>
-    <p class="cta-sub"><em>[INTENT: soft forward — district/partnership inquiry; restate the through-line in one sentence; "we read every email."]</em></p>
+    <p class="cta-sub"><em>[INTENT: soft forward — district/partnership inquiry. Restate the through-line in one sentence and close the StoryBrand arc: the success (a faculty whose classrooms run on systems, not on presence) against the failure (defaulting to bans and restriction while dependence stays). "We read every email."]</em></p>
     <a href="mailto:whenindoubt@theintelligenthoodlums.com?subject=Classroom%20OS%20%E2%80%94%20Bring%20it%20to%20our%20school" class="btn btn-bone">Start the Conversation</a>
   </div>
 </section>
@@ -345,9 +397,15 @@
     <div class="rufous-rule section-rule"></div>
     <p class="lede-text">
       <em>[INTENT: (A) The Pulse instrument — the exact item wording + scale + how matched pairs were computed. (B) Full, verified references:</em><br>
-      &middot; Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. <em>Cognitive Science</em>, 12(2), 257–285.<br>
       &middot; Chi, M. T. H., &amp; Wylie, R. (2014). The ICAP Framework: Linking Cognitive Engagement to Active Learning Outcomes. <em>Educational Psychologist</em>, 49(4), 219–243.<br>
+      &middot; Chou, Y. (2015). <em>Actionable Gamification: Beyond Points, Badges, and Leaderboards</em>. (Octalysis framework.)<br>
+      &middot; Eno, B., &amp; Schmidt, P. (1975). <em>Oblique Strategies: Over One Hundred Worthwhile Dilemmas</em>.<br>
+      &middot; Mayer, R. E. (2009). <em>Multimedia Learning</em> (2nd ed.). Cambridge University Press.<br>
+      &middot; Miller, D. (2017). <em>Building a StoryBrand</em>. HarperCollins Leadership.<br>
+      &middot; Miyake, N., &amp; Kirschner, P. A. (2014). The Social and Interactive Dimensions of Collaborative Learning. In R. K. Sawyer (Ed.), <em>The Cambridge Handbook of the Learning Sciences</em> (2nd ed., ch. 21). Cambridge University Press.<br>
       &middot; Schlechty, P. C. (2002). <em>Working on the Work: An Action Plan for Teachers, Principals, and Superintendents</em>. Jossey-Bass. (Expanded as <em>Engaging Students: The Next Level of Working on the Work</em>, 2011.)<br>
+      &middot; Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. <em>Cognitive Science</em>, 12(2), 257–285.<br>
+      &middot; Whiteside, A. L. (2015). Introducing the Social Presence Model to Explore Online and Blended Learning Experiences. <em>Online Learning</em>, 19(2). (Expanded in Whiteside, Garrett Dikkers, &amp; Swan, 2017, <em>Social Presence in Online Learning</em>.)<br>
       <em>(C) About The Intelligent Hoodlums + a one-line scope note: directional results from a single small pilot cohort, June 2026.]</em>
     </p>
   </div>
