@@ -142,6 +142,29 @@
   .pt-grid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 7px; }
 }
 
+/* desktop: the real periodic-table silhouette — each woman sits in the
+   canonical grid position for her number (#1 = Hydrogen's cell, etc.),
+   with the lanthanide strip detached below. Falls back to the wall on
+   narrow screens, where --col/--row are simply ignored. */
+@media (min-width: 920px) {
+  .pt-grid {
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(6, auto) 16px auto;
+    gap: 5px;
+    max-width: 1180px;
+  }
+  .pt-cell {
+    grid-column: var(--col);
+    grid-row: var(--row);
+    border-radius: 6px;
+    padding: 5px 4px;
+  }
+  .pt-cell .pt-name { display: none; }            /* number + symbol only, like the real thing */
+  .pt-cell .pt-sym  { font-size: clamp(12px, 1.5vw, 22px); }
+  .pt-cell .pt-n    { font-size: 9px; }
+  .pt-cell .pt-spark { width: 6px; height: 6px; top: 5px; right: 5px; }
+}
+
 /* a single element */
 .pt-cell {
   position: relative;
@@ -416,6 +439,23 @@
 
   function colorVar(field) { return 'var(--f-' + field + ', #888)'; }
 
+  // canonical periodic-table position [row, col] for each atomic number.
+  // used only on wide screens; ignored by the mobile wall layout.
+  var POS = (function () {
+    var P = {}, i;
+    P[1] = [1, 1]; P[2] = [1, 18];                 // period 1
+    P[3] = [2, 1]; P[4] = [2, 2];                  // period 2
+    for (i = 5;  i <= 10; i++) P[i] = [2, 13 + (i - 5)];
+    P[11] = [3, 1]; P[12] = [3, 2];                // period 3
+    for (i = 13; i <= 18; i++) P[i] = [3, 13 + (i - 13)];
+    for (i = 19; i <= 36; i++) P[i] = [4, 1 + (i - 19)];   // period 4
+    for (i = 37; i <= 54; i++) P[i] = [5, 1 + (i - 37)];   // period 5
+    P[55] = [6, 1]; P[56] = [6, 2];                // period 6
+    for (i = 57; i <= 71; i++) P[i] = [8, 3 + (i - 57)];   // lanthanides (detached)
+    for (i = 72; i <= 82; i++) P[i] = [6, 4 + (i - 72)];   // period 6 main block
+    return P;
+  })();
+
   // ── build the grid ──────────────────────────────────────
   function buildGrid() {
     var frag = document.createDocumentFragment();
@@ -424,6 +464,11 @@
       var cell = document.createElement('button');
       cell.className = 'pt-cell ' + (lit ? 'is-lit' : 'is-ghosted');
       cell.style.setProperty('--cell', colorVar(d.field));
+      var pos = POS[d.n];
+      if (pos) {
+        cell.style.setProperty('--row', pos[0]);
+        cell.style.setProperty('--col', pos[1]);
+      }
       cell.setAttribute('role', 'listitem');
       cell.dataset.field = d.field;
       cell.dataset.n = d.n;

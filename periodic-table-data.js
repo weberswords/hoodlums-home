@@ -111,11 +111,11 @@ window.STEM_DATA = [
   { n: 73, symbol: 'MML',  name: 'Margaret M. Lawrence',     years: '1914–2019', field: 'medicine',       status: 'ghosted', bio: '', artifact: '' },
   { n: 74, symbol: 'RLC',  name: 'Rebecca Lee Crumpler',     years: '1831–1895', field: 'medicine',       status: 'ghosted', bio: '', artifact: '' },
   { n: 75, symbol: 'MRM',  name: 'Melba Roy Mouton',         years: '1929–1990', field: 'mathematics',    status: 'ghosted', bio: '', artifact: '' },
-  { n: 76, symbol: 'LS',   name: 'Name unconfirmed',         years: '',          field: 'mathematics',    status: 'ghosted', bio: '', artifact: '', verify: true }, /* symbol reads "LS"; name illegible in photos — please read off the shirt */
+  { n: 76, symbol: 'LS',   name: 'Latanya Sweeney',          years: 'b. 1959',   field: 'computerScience', status: 'ghosted', bio: '', artifact: '' },
   { n: 77, symbol: 'AE',   name: 'Annie Easley',             years: '1933–2011', field: 'mathematics',    status: 'ghosted', bio: '', artifact: '' },
   { n: 78, symbol: 'EB',   name: 'Evelyn Boyd Granville',    years: '1924–2023', field: 'mathematics',    status: 'ghosted', bio: '', artifact: '' },
   { n: 79, symbol: 'AJ',   name: 'Ashanti Johnson',          years: 'b. 1972',   field: 'earthScience',   status: 'ghosted', bio: '', artifact: '' },
-  { n: 80, symbol: 'BAW',  name: 'Name unconfirmed',         years: '',          field: 'earthScience',   status: 'ghosted', bio: '', artifact: '', verify: true }, /* symbol reads "BAW"; name curves out of frame in every photo — please read off the shirt */
+  { n: 80, symbol: 'BAW',  name: 'Barbara A. Williams',      years: '',          field: 'earthScience',   status: 'ghosted', bio: '', artifact: '' },
   { n: 81, symbol: 'MW',   name: 'Marguerite Williams',      years: '1895–1991', field: 'earthScience',   status: 'ghosted', bio: '', artifact: '' },
   { n: 82, symbol: 'BAB',  name: 'Beth A. Brown',            years: '1969–2008', field: 'physics',        status: 'ghosted', bio: '', artifact: '' }
 ];
