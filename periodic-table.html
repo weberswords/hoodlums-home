@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Periodic Table of Black Women in STEM · The Intelligent Hoodlums</title>
+<meta name="description" content="A living tribute to Chem Thug's Periodic Table of Black Women in STEM. Every element starts ghosted and lights up as we research each woman and publish an artifact about her life and work.">
+<meta name="theme-color" content="#0F1419">
+<meta name="author" content="The Intelligent Hoodlums">
+<meta name="keywords" content="Black women in STEM, periodic table, Chem Thug, science history, STEM education, Intelligent Hoodlums">
+
+<link rel="canonical" href="https://theintelligenthoodlums.com/periodic-table">
+
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/HM-favicon-64.png">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="The Intelligent Hoodlums">
+<meta property="og:title" content="Periodic Table of Black Women in STEM">
+<meta property="og:description" content="A living tribute to Chem Thug's Periodic Table of Black Women in STEM. Each element lights up as we research her story and publish an artifact.">
+<meta property="og:url" content="https://theintelligenthoodlums.com/periodic-table">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://theintelligenthoodlums.com/assets/HM-og.png">
+<meta property="og:image:secure_url" content="https://theintelligenthoodlums.com/assets/HM-og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Intelligent Hoodlums wordmark on Ink — Las Vegas, Est 2014.">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Periodic Table of Black Women in STEM">
+<meta name="twitter:description" content="A living tribute to Chem Thug's design — every element lights up as we tell her story.">
+<meta name="twitter:image" content="https://theintelligenthoodlums.com/assets/HM-og.png">
+<meta name="twitter:domain" content="theintelligenthoodlums.com">
+
+<link rel="preload" href="/fonts/AvocadoSans-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/fonts/AvocadoSans-Thin.otf" as="font" type="font/otf" crossorigin>
+
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+/* ── PERIODIC TABLE PAGE (self-contained) ─────────────────── */
+
+/* discipline colours — keyed to Chem Thug's legend */
+:root {
+  --f-biology:         #8BC34A;
+  --f-chemistry:       #4DB6AC;
+  --f-mathematics:     #7EC8E3;
+  --f-physics:         #F4D03F;
+  --f-engineering:     #F1948A;
+  --f-computerScience: #5C6BC0;
+  --f-socialScience:   #F39C12;
+  --f-earthScience:    #EC7FA9;
+  --f-innovation:      #E6D3A3;
+  --f-medicine:        #C9A0DC;
+}
+
+/* progress meter in the hero */
+.pt-progress {
+  margin: var(--space-5) auto 0;
+  max-width: 460px;
+}
+.pt-progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--bone-08);
+  overflow: hidden;
+}
+.pt-progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--hm-tuscany), var(--hm-rufous));
+  transition: width 1.1s cubic-bezier(.16,1,.3,1);
+}
+.pt-progress-label {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--bone-60);
+}
+.pt-progress-label strong { color: var(--hm-bone); }
+
+/* credit chip */
+.pt-credit {
+  display: inline-block;
+  margin-top: var(--space-5);
+  padding: 10px 18px;
+  border: 1px solid var(--bone-08);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  color: var(--bone-60);
+}
+.pt-credit a { color: var(--hm-tuscany); text-decoration: none; border-bottom: 1px solid transparent; }
+.pt-credit a:hover { border-bottom-color: var(--hm-tuscany); }
+
+/* legend */
+.pt-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  justify-content: center;
+  margin: 0 auto var(--space-7);
+  max-width: 900px;
+}
+.pt-legend button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 8px;
+  border: 1px solid var(--bone-08);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bone-60);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.pt-legend button:hover { color: var(--hm-bone); border-color: var(--bone-40); }
+.pt-legend button[aria-pressed="true"] { color: var(--hm-ink); background: var(--hm-bone); border-color: var(--hm-bone); }
+.pt-legend .swatch {
+  width: 14px; height: 14px;
+  border-radius: 4px;
+  flex: none;
+  box-shadow: inset 0 0 0 1px rgba(15,20,25,.25);
+}
+
+/* the grid — a responsive wall of element tiles */
+.pt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+  gap: 10px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .pt-grid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 7px; }
+}
+
+/* a single element */
+.pt-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-family);
+  color: var(--hm-ink);
+  background: var(--cell, #888);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .25s ease, filter .35s ease, opacity .35s ease;
+}
+.pt-cell:focus-visible { outline: 3px solid var(--hm-bone); outline-offset: 2px; }
+
+/* ghosted = research not done yet */
+.pt-cell.is-ghosted {
+  filter: grayscale(1) brightness(.62);
+  opacity: .42;
+}
+.pt-cell.is-ghosted::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, transparent 0 5px, rgba(15,20,25,.16) 5px 6px);
+  pointer-events: none;
+}
+
+/* lit = artifact published */
+.pt-cell.is-lit {
+  filter: none;
+  opacity: 1;
+  box-shadow: 0 0 0 1px rgba(242,232,213,.18), 0 6px 22px rgba(0,0,0,.45), 0 0 24px -4px var(--cell);
+}
+.pt-cell.is-lit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  box-shadow: inset 0 0 22px -6px rgba(255,255,255,.7);
+  pointer-events: none;
+}
+.pt-cell:hover { transform: translateY(-3px); }
+.pt-cell.is-lit:hover { box-shadow: 0 0 0 1px rgba(242,232,213,.3), 0 10px 30px rgba(0,0,0,.5), 0 0 34px -2px var(--cell); }
+
+/* hidden by a legend filter */
+.pt-cell.is-dimmed { opacity: .08; filter: grayscale(1); pointer-events: none; }
+
+.pt-cell .pt-n { font-size: 11px; font-weight: 700; opacity: .8; line-height: 1; }
+.pt-cell .pt-sym { font-size: clamp(20px, 4.4vw, 30px); font-weight: 700; line-height: 1; }
+.pt-cell .pt-name { font-size: 9.5px; font-weight: 700; line-height: 1.12; }
+.pt-cell .pt-spark {
+  position: absolute; top: 6px; right: 7px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--hm-ink);
+  box-shadow: 0 0 8px 2px rgba(255,255,255,.85);
+}
+.pt-cell.is-ghosted .pt-spark { display: none; }
+
+/* ── MODAL ────────────────────────────────────────────────── */
+.pt-modal {
+  position: fixed; inset: 0;
+  display: none;
+  align-items: center; justify-content: center;
+  padding: var(--space-5);
+  background: rgba(8,11,14,.78);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+.pt-modal.is-open { display: flex; }
+.pt-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #161B21;
+  border: 1px solid var(--bone-08);
+  border-top: 4px solid var(--cell, var(--hm-tuscany));
+  border-radius: 14px;
+  padding: var(--space-7) var(--space-6) var(--space-6);
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+.pt-modal-close {
+  position: absolute; top: 14px; right: 14px;
+  width: 38px; height: 38px;
+  border: 1px solid var(--bone-08);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--hm-bone);
+  font-size: 20px; line-height: 1;
+  cursor: pointer;
+}
+.pt-modal-close:hover { background: var(--bone-08); }
+.pt-modal-badge {
+  display: inline-flex; flex-direction: column; gap: 2px;
+  padding: 10px 14px; border-radius: 10px;
+  color: var(--hm-ink); background: var(--cell, var(--hm-tuscany));
+  min-width: 78px;
+}
+.pt-modal-badge .pt-n { font-size: 11px; font-weight: 700; }
+.pt-modal-badge .pt-sym { font-size: 30px; font-weight: 700; line-height: 1; }
+.pt-modal-field {
+  font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--bone-60); margin-top: var(--space-4);
+}
+.pt-modal-name { font-size: var(--text-xl); line-height: 1.05; margin: 6px 0 2px; }
+.pt-modal-years { color: var(--hm-cadet); font-size: var(--text-sm); }
+.pt-modal-rule { height: 3px; width: 56px; background: var(--hm-rufous); margin: var(--space-5) 0; }
+.pt-modal-bio { color: var(--bone-60); font-size: var(--text-base); }
+.pt-modal-bio.is-empty { font-style: italic; color: var(--hm-cadet); }
+.pt-modal-cta { margin-top: var(--space-5); }
+.pt-modal-pending {
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--hm-cadet);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.pt-modal-pending .dotpulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--hm-tuscany);
+  animation: ptpulse 1.6s ease-in-out infinite;
+}
+@keyframes ptpulse { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-progress-fill, .pt-cell { transition: none; }
+  .dotpulse { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span>The Intelligent Hoodlums</span>
+  <span class="dot">&middot;</span>
+  <span>Las Vegas</span>
+  <span class="dot">&middot;</span>
+  <span>Est 2014</span>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-back">&larr; Back to Home</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero hero-event">
+  <div class="hero-inner">
+    <div class="hero-pillars">Research &nbsp;&middot;&nbsp; Honor &nbsp;&middot;&nbsp; Illuminate</div>
+    <h1 class="hero-title">Black Women<br>in STEM.</h1>
+    <div class="rufous-rule hero-rule"></div>
+    <p class="hero-tagline">
+      Every name here is an element. They all start in shadow &mdash; and light up one by one as we research her life, build something that tells her story, and pin it to her square. Click any element to step inside.
+    </p>
+
+    <div class="pt-progress">
+      <div class="pt-progress-track"><div class="pt-progress-fill" id="ptFill"></div></div>
+      <div class="pt-progress-label"><strong id="ptDone">0</strong> of <strong id="ptTotal">0</strong> illuminated</div>
+    </div>
+
+    <div class="pt-credit">
+      Built on the <em>Periodic Table of Black Women in STEM</em> by
+      <a href="https://chemthug.dashery.com/" target="_blank" rel="noopener">Chem&nbsp;Thug</a>.
+      Grab the original <a href="https://chemthug.dashery.com/" target="_blank" rel="noopener">shirt&nbsp;&amp;&nbsp;prints</a>.
+    </div>
+  </div>
+</section>
+
+<!-- THE TABLE -->
+<section class="section section-work" id="table">
+  <div class="section-inner">
+    <div class="section-label">The Table</div>
+    <h2 class="section-title">Tap to Discover</h2>
+    <div class="rufous-rule section-rule"></div>
+
+    <!-- legend / filters -->
+    <div class="pt-legend" id="ptLegend" aria-label="Filter by discipline"></div>
+
+    <!-- grid -->
+    <div class="pt-grid" id="ptGrid" role="list"></div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2 class="cta-title">Know One We Should Add?</h2>
+    <p class="cta-sub">A name we&rsquo;re missing, a correction, a story worth telling &mdash; send it our way.</p>
+    <a href="mailto:whenindoubt@theintelligenthoodlums.com?subject=Black%20Women%20in%20STEM" class="btn btn-bone">Get In Touch</a>
+  </div>
+</section>
+
+</main>
+
+<!-- MODAL -->
+<div class="pt-modal" id="ptModal" role="dialog" aria-modal="true" aria-labelledby="ptModalName">
+  <div class="pt-modal-card" id="ptModalCard">
+    <button class="pt-modal-close" id="ptModalClose" aria-label="Close">&times;</button>
+    <div class="pt-modal-badge">
+      <span class="pt-n">#<span id="ptModalN"></span></span>
+      <span class="pt-sym" id="ptModalSym"></span>
+    </div>
+    <div class="pt-modal-field" id="ptModalField"></div>
+    <h3 class="pt-modal-name" id="ptModalName"></h3>
+    <div class="pt-modal-years" id="ptModalYears"></div>
+    <div class="pt-modal-rule"></div>
+    <p class="pt-modal-bio" id="ptModalBio"></p>
+    <div id="ptModalAction"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>The Intelligent Hoodlums</h3>
+      <p class="mono">
+        Las Vegas, Nevada &middot; Est 2014<br>
+        A tribute project &middot; Original table by Chem Thug
+      </p>
+    </div>
+    <div class="footer-social">
+      <h4>The Streets</h4>
+      <ul class="social-links">
+        <li><a href="https://chemthug.dashery.com/" target="_blank" rel="noopener">Chem Thug</a></li>
+        <li><a href="https://blog.theintelligenthoodlums.com/" target="_blank" rel="noopener">Blog</a></li>
+        <li><a href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.instagram.com/theintelligenthoodlums/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mono">&copy; 2014&ndash;2026 The Intelligent Hoodlums</p>
+    <span class="footer-tagline">When In Doubt, Trust A Hoodlum.</span>
+  </div>
+</footer>
+
+<script src="/periodic-table-data.js"></script>
+<script>
+(function () {
+  var DATA = (window.STEM_DATA || []).slice().sort(function (a, b) { return a.n - b.n; });
+
+  var FIELDS = {
+    biology:        'Biology',
+    chemistry:      'Chemistry',
+    mathematics:    'Mathematics',
+    physics:        'Physics',
+    engineering:    'Engineering',
+    computerScience:'Computer Science',
+    socialScience:  'Social Science',
+    earthScience:   'Earth Science',
+    innovation:     'Innovation',
+    medicine:       'Medicine'
+  };
+
+  var grid   = document.getElementById('ptGrid');
+  var legend = document.getElementById('ptLegend');
+  var fillEl = document.getElementById('ptFill');
+  var activeFilter = null;
+
+  function colorVar(field) { return 'var(--f-' + field + ', #888)'; }
+
+  // ── build the grid ──────────────────────────────────────
+  function buildGrid() {
+    var frag = document.createDocumentFragment();
+    DATA.forEach(function (d) {
+      var lit = d.status === 'lit';
+      var cell = document.createElement('button');
+      cell.className = 'pt-cell ' + (lit ? 'is-lit' : 'is-ghosted');
+      cell.style.setProperty('--cell', colorVar(d.field));
+      cell.setAttribute('role', 'listitem');
+      cell.dataset.field = d.field;
+      cell.dataset.n = d.n;
+      cell.setAttribute('aria-label',
+        d.name + ', ' + (FIELDS[d.field] || d.field) + (lit ? ', artifact available' : ', coming soon'));
+      cell.innerHTML =
+        '<span class="pt-spark"></span>' +
+        '<span class="pt-n">' + d.n + '</span>' +
+        '<span class="pt-sym">' + d.symbol + '</span>' +
+        '<span class="pt-name">' + d.name + '</span>';
+      cell.addEventListener('click', function () { openModal(d); });
+      frag.appendChild(cell);
+    });
+    grid.appendChild(frag);
+  }
+
+  // ── legend / discipline filters ─────────────────────────
+  function buildLegend() {
+    // only show disciplines that actually appear on the table
+    var present = {};
+    DATA.forEach(function (d) { present[d.field] = true; });
+    Object.keys(FIELDS).forEach(function (key) {
+      if (!present[key]) return;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-pressed', 'false');
+      b.dataset.field = key;
+      b.innerHTML = '<span class="swatch" style="background:' + colorVar(key) + '"></span>' + FIELDS[key];
+      b.addEventListener('click', function () { toggleFilter(key, b); });
+      legend.appendChild(b);
+    });
+  }
+
+  function toggleFilter(field, btn) {
+    var turningOn = activeFilter !== field;
+    activeFilter = turningOn ? field : null;
+    Array.prototype.forEach.call(legend.children, function (c) {
+      c.setAttribute('aria-pressed', String(c.dataset.field === activeFilter));
+    });
+    Array.prototype.forEach.call(grid.children, function (c) {
+      var hide = activeFilter && c.dataset.field !== activeFilter;
+      c.classList.toggle('is-dimmed', !!hide);
+    });
+  }
+
+  // ── progress meter ──────────────────────────────────────
+  function updateProgress() {
+    var done = DATA.filter(function (d) { return d.status === 'lit'; }).length;
+    var total = DATA.length;
+    document.getElementById('ptDone').textContent = done;
+    document.getElementById('ptTotal').textContent = total;
+    requestAnimationFrame(function () {
+      fillEl.style.width = total ? (done / total * 100) + '%' : '0%';
+    });
+  }
+
+  // ── modal ───────────────────────────────────────────────
+  var modal   = document.getElementById('ptModal');
+  var card    = document.getElementById('ptModalCard');
+  var lastFocus = null;
+
+  function openModal(d) {
+    lastFocus = document.activeElement;
+    card.style.setProperty('--cell', colorVar(d.field));
+    document.getElementById('ptModalN').textContent = d.n;
+    document.getElementById('ptModalSym').textContent = d.symbol;
+    document.getElementById('ptModalField').textContent = FIELDS[d.field] || d.field;
+    document.getElementById('ptModalName').textContent = d.name;
+    document.getElementById('ptModalYears').textContent = d.years || '';
+
+    var bio = document.getElementById('ptModalBio');
+    var action = document.getElementById('ptModalAction');
+    action.innerHTML = '';
+
+    if (d.status === 'lit') {
+      bio.className = 'pt-modal-bio';
+      bio.textContent = d.bio || 'Write-up coming soon.';
+      if (d.artifact) {
+        var a = document.createElement('a');
+        a.href = d.artifact;
+        a.className = 'btn btn-primary pt-modal-cta';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'View the Artifact →';
+        action.appendChild(a);
+      }
+    } else {
+      bio.className = 'pt-modal-bio is-empty';
+      bio.textContent = 'We haven’t told her story yet. She’s on the list — an artifact about her life and work is on the way.';
+      var pending = document.createElement('div');
+      pending.className = 'pt-modal-pending';
+      pending.innerHTML = '<span class="dotpulse"></span> Research in progress';
+      action.appendChild(pending);
+    }
+
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('ptModalClose').focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    if (lastFocus) { try { lastFocus.focus(); } catch (e) {} }
+  }
+
+  document.getElementById('ptModalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  // ── go ──────────────────────────────────────────────────
+  buildGrid();
+  buildLegend();
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
