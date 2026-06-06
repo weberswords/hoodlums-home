@@ -102,8 +102,12 @@
     h1, h2, h3, h4 { break-inside: avoid; page-break-inside: avoid; }
     p, li { orphans: 3; widows: 3; }
 
+    /* End colophon: tidy, centered, kept together, separated from the appendix. */
     .footer-social { display: none !important; }
-    .site-footer { border-top: 1px solid rgba(15,20,25,0.2) !important; }
+    .site-footer { margin-top: 28px; padding: 16px 0 0 !important; border-top: 1px solid rgba(15,20,25,0.2) !important; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+    .footer-inner { display: block !important; text-align: center; padding: 0 !important; }
+    .footer-bottom { display: block !important; text-align: center; margin-top: 8px; padding-top: 8px !important; border-top: 0 !important; }
+    .footer-tagline { display: block; margin-top: 4px; }
 
     a { color: var(--hm-ink) !important; text-decoration: none !important; }
     @page { margin: 16mm 15mm; }
