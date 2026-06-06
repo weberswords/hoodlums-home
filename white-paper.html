@@ -48,12 +48,62 @@
 <link rel="preload" href="/fonts/AvocadoSans-Thin.otf" as="font" type="font/otf" crossorigin>
 
 <link rel="stylesheet" href="/styles.css">
-<!-- TODO (build phase): print stylesheet so the page itself prints clean, AND a
-     hosted branded PDF as the canonical downloadable. Delivery (separate gate task):
-       - DOWNLOAD: "Download the PDF" button on the revealed page.
-       - EMAIL:    gate Apps Script mails the PDF/link to the captured address
-                   (reuse for-the-record's file-delivery pattern).
-       - DRIVE:    Google "Save to Drive" button pointed at the hosted PDF. -->
+
+<style>
+  /* ── "Download PDF" control (screen only) ─────────────────── */
+  .btn-print {
+    font-family: var(--font-family); font-weight: 700; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--hm-ink); background: var(--hm-bone);
+    border: none; padding: 8px 16px; cursor: pointer; white-space: nowrap;
+    transition: background-color 150ms ease-in-out;
+  }
+  .btn-print:hover, .btn-print:focus-visible { background: #fff; }
+
+  /* ── PRINT / SAVE AS PDF: clean, light, ink-friendly document ─ */
+  @media print {
+    *, *::before, *::after { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: #fff !important; color: var(--hm-ink) !important; }
+    body::before { display: none !important; }                 /* halftone grit */
+    .site-nav, .hero-badge, .btn-print { display: none !important; }
+
+    .masthead, .hero, .section, .cta-band, .site-footer {
+      background: #fff !important; color: var(--hm-ink) !important;
+    }
+    .masthead { border-bottom: 2px solid var(--hm-rufous) !important; }
+    .hero { min-height: auto !important; padding: 18px 0 28px !important; }
+    .section { padding: 18px 0 !important; }
+    .hero::before, .section::before, .cta-band::before, .section-leaders::before { display: none !important; }
+
+    .hero *, .section *, .cta-band *, .site-footer * { color: var(--hm-ink) !important; }
+
+    /* brand accents stay rufous */
+    .hero-pillars, .section-label, .section-label-dark, .method-step,
+    .case-kicker, .stat-num, .stat-after, .quote-feature-mark { color: var(--hm-rufous) !important; }
+    .rufous-rule { background: var(--hm-rufous) !important; }
+    .stat-before { color: rgba(15,20,25,0.45) !important; }
+
+    /* cards and callouts: white with a light border, kept whole on a page */
+    .method-card, .stat-card, .case-study, .ab-callout, .quote-feature, .case-col {
+      background: #fff !important; border: 1px solid rgba(15,20,25,0.22) !important;
+      box-shadow: none !important; break-inside: avoid;
+    }
+    .btn { background: #fff !important; color: var(--hm-ink) !important; border: 1px solid var(--hm-rufous) !important; }
+
+    h1, h2, h3, h4 { break-after: avoid; }
+    .method-grid, .pulse-stats, .case-ba, .quote-feature, .ab-callout, .case-study { break-inside: avoid; }
+
+    .footer-social { display: none !important; }
+    .site-footer { border-top: 1px solid rgba(15,20,25,0.2) !important; }
+
+    a { color: var(--hm-ink) !important; text-decoration: none !important; }
+    @page { margin: 16mm 15mm; }
+  }
+</style>
+<!-- Note: the print stylesheet above makes "Save as PDF" produce a clean light
+     document. To light up the request page's "Download the PDF" + Google "Save to
+     Drive" buttons, export this page to PDF, host it (e.g. /assets/), and set
+     PDF_URL in white-paper-request.html and white-paper-apps-script.gs. -->
 </head>
 <body>
 
@@ -71,6 +121,7 @@
   <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
   <ul class="nav-links">
     <li><a href="/classroom-os" class="nav-back">&larr; The Retrospective</a></li>
+    <li><button type="button" class="btn-print" onclick="window.print()">Download PDF</button></li>
   </ul>
 </nav>
 
