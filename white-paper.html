@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <!--
   ============================================================
-  CLASSROOM OS — WHITE PAPER  ·  SKELETON FOR SIGN-OFF
+  CLASSROOM OS — WHITE PAPER
   ============================================================
-  This is the STRUCTURE ONLY. Each section carries its chapter
-  label, heading, and a single italic intent note describing
-  what the finished prose will cover. No real prose yet —
-  awaiting skeleton approval before drafting ~3,000–4,000 words.
-
-  Tier discipline (per CONTENT-TIERING.md): this paper reveals
-  the WHAT + WHY in depth (architecture, sequencing, theory,
-  full methodology, case study). It deliberately HOLDS BACK the
-  executional HOW (templates, the trademarked visual-mapping
-  routines + how-to, prompt method/library, "Slopped" mechanics,
-  tool-chain steps, facilitation moves) for the paid room.
+  Tier discipline (per CONTENT-TIERING.md): reveals the WHAT + WHY
+  in depth (architecture, sequencing, theory, full methodology,
+  case study). Deliberately HOLDS BACK the executional HOW
+  (templates, the trademarked visual-mapping routines + how-to,
+  prompt method/library, "Slopped" mechanics, tool-chain steps,
+  facilitation moves) for the paid room.
 
   STORY STRUCTURE (StoryBrand / SB7, Miller 2017): the reader is
-  the HERO (the teacher, and the administrator deciding for them);
-  the Hoodlums are the GUIDE, not the hero. Arc woven across the
-  sections: Hero + Problem (01) -> Guide w/ empathy + authority
-  (02-06) -> Plan (03-04) -> Stakes/Failure (01, 09) -> Call to
-  action (CTA) -> Success (07-08, the classroom that runs without
-  you). Tagged inline as <!-- SB7: ... --> at each beat.
+  the HERO (teacher + administrator); the Hoodlums are the GUIDE.
+  Beats tagged inline as <!-- SB7: ... -->.
 
   TRADEMARK NOTE: "Thinking Maps" + the eight maps are registered
-  trademarks of Thinking Maps, Inc. Do NOT name them or detail
-  them here — use generic descriptors ("visual thinking routines")
-  and hold the real maps for the paid room.
+  trademarks of Thinking Maps, Inc. — not named here by design.
 
   Gated: noindex; revealed after the lead-capture form (separate
-  build task). The paper must be DOWNLOADABLE (hosted branded PDF),
-  EMAILABLE (gate Apps Script mails the PDF/link to the captured
-  address, like for-the-record file delivery), and SAVE-TO-DRIVE
-  (Google "Save to Drive" button on the hosted PDF). Reuses
-  styles.css design tokens + components.
+  build task). Must be DOWNLOADABLE (hosted branded PDF), EMAILABLE
+  (gate Apps Script mails the PDF/link), and SAVE-TO-DRIVE.
+  Reuses styles.css tokens + components.
   ============================================================
 -->
 <html lang="en">
@@ -90,25 +77,24 @@
     <div class="hero-pillars">A White Paper &nbsp;&middot;&nbsp; For School &amp; District Leaders &nbsp;&middot;&nbsp; June 2026</div>
     <h1 class="hero-title">The classroom that runs without you.</h1>
     <div class="rufous-rule hero-rule"></div>
+    <!-- SB7: Hero named (the teacher / the administrator), framed as the one this is for. -->
     <p class="hero-tagline">
-      <!-- SB7: Hero named (the teacher / the administrator), framed as the one this is for. -->
-      <em>[INTENT: Subtitle + the thesis line — "What if the machine wasn't the enemy? What if it was a mirror?" — and a one-sentence statement of what this paper delivers that the public page doesn't: the architecture, the theory, the full methodology, the data.]</em>
+      How fifteen teachers in Las Vegas spent five mornings building the operating system their classrooms run on &mdash; and what we measured when they did. This is the longer story the public page only hints at: the architecture of the method and why it&rsquo;s sequenced the way it is, the research it stands on, the full Monday-to-Friday data, and the case study in full. The premise underneath all of it is one question &mdash; <em>what if the machine wasn&rsquo;t the enemy? What if it was a mirror?</em>
     </p>
     <!-- INTENT (build phase): post-reveal actions bar — "Download the PDF" + Google
          "Save to Drive" button. (Email delivery handled by the gate Apps Script.) -->
-    <!-- Headline Pulse stat strip (proof up front, honest n stated below in Ch.) -->
     <div class="pulse-stats" style="margin-top:40px;">
       <div class="stat-card">
         <div class="stat-num stat-shift"><span class="stat-before">3.7</span><span class="stat-arrow" aria-hidden="true">&rarr;</span><span class="stat-after">4.4</span></div>
-        <div class="stat-label"><em>[INTENT: "runs without me" shift]</em></div>
+        <div class="stat-label">how strongly teachers agreed their classroom could run <strong>without them in the room</strong> &mdash; Monday vs. Friday, out of 5</div>
       </div>
       <div class="stat-card">
         <div class="stat-num stat-shift"><span class="stat-before">3.3</span><span class="stat-arrow" aria-hidden="true">&rarr;</span><span class="stat-after">4.4</span></div>
-        <div class="stat-label"><em>[INTENT: "runs on systems, not my presence" shift]</em></div>
+        <div class="stat-label">&hellip; and that it runs on <strong>systems, not on their presence</strong> &mdash; same teachers, same week</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">86<span style="font-size:0.45em;color:rgba(15,20,25,0.45);">%</span></div>
-        <div class="stat-label"><em>[INTENT: rose in five days, none dropped]</em></div>
+        <div class="stat-label">of teachers&rsquo; scores on those questions <strong>rose in five days</strong> &mdash; not one fell</div>
       </div>
     </div>
     <img src="/assets/HM-badge-full.png" alt="" aria-hidden="true" class="hero-badge">
@@ -116,7 +102,7 @@
 </section>
 
 <!-- ============================================================
-     1 · EXECUTIVE SUMMARY  (the ~250-word version an admin reads)
+     1 · EXECUTIVE SUMMARY
      ============================================================ -->
 <section class="section section-crew">
   <div class="section-inner">
@@ -124,27 +110,32 @@
     <h2 class="section-title">The short version.</h2>
     <div class="rufous-rule section-rule"></div>
     <p class="lede-text">
-      <em>[INTENT: ~250 words, skim-survivable for a busy decision-maker. The thesis; what Classroom OS is (a bottom-up system the teacher builds, not a feature tour); the June 2026 pilot in one line (~15 teachers, 4 crews, 5 days); the measured shift (matched-pairs Pulse, the two items, NPS +88, honest about small n); and the budget logic — a classroom that runs on a system instead of a person. Ends pointing the reader into the paper.]</em>
+      If you only read one page, read this one. Most professional development hands a teacher a tool and a feature tour, then sends them back to a classroom that still runs on one thing: the teacher&rsquo;s own presence. The day they&rsquo;re out, it stops. Classroom OS was built to change what the classroom runs on.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Over five mornings in June 2026, fifteen teachers in North Las Vegas built &mdash; bottom-up, starting from who they are &mdash; the operating system their classrooms run on: what they believe about how people learn, the visible structures that carry it, the shape of their year, and a set of AI tools trained on all of it. They didn&rsquo;t learn &ldquo;how to use AI.&rdquo; They taught the machine who they were, and watched it reflect them back.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      We measured it. Same teachers, same questions, Monday and Friday. Their sense that the classroom could run without them in the room rose from 3.7 to 4.4 out of 5; their sense that it runs on systems rather than their presence rose from 3.3 to 4.4. Across those questions, 86% of teachers&rsquo; scores rose and not one fell. At week&rsquo;s end they rated the experience 4.8 out of 5, with a Net Promoter Score of +88 and zero detractors. It&rsquo;s a small first cohort &mdash; seven matched pairs &mdash; and we say so plainly. But the direction is unambiguous, and it&rsquo;s consistent. This paper is the case for spending PD budget on it: the method, the research it stands on, the data, and the story of one teacher who arrived an expert and left with tools that finally matched her.
     </p>
   </div>
 </section>
 
 <!-- ============================================================
-     2 · THE PROBLEM  (why most PD doesn't survive a Tuesday)
+     2 · THE PROBLEM  (name the moment + the failure mode)
      ============================================================ -->
 <section class="section section-work">
   <div class="section-inner">
     <div class="section-label">01</div>
-    <h2 class="section-title">The moment we're actually in.</h2>
+    <h2 class="section-title">The moment we&rsquo;re actually in.</h2>
     <div class="rufous-rule section-rule"></div>
-    <!-- SB7: Problem — both the external problem (the cultural moment) and the
-         internal one (the teacher who can't tell whether tech is friend or threat). -->
+    <!-- SB7: Problem — external (the cultural moment) + internal (friend or threat?). -->
     <p class="lede-text">
-      <em>[INTENT — NAME THE SOCIAL CONTEXT first: schools right now are reaching for the blunt instruments — phone bans, screen-time restriction, "no AI" policies. Those are understandable reactions to a real problem, but they're a posture, not a pedagogy. Classroom OS is the constructive third path: not banning, not unfettered adoption — "what's the right tool for the job?" The answer to restriction-or-surrender is design. Name it without scolding either camp (voice principle).]</em>
+      Walk into the current conversation about technology in schools and you&rsquo;ll find two camps shouting past each other. One wants to ban it &mdash; phones in pouches, screens off, a hard <em>no</em> on AI. The other wants to adopt everything, fast, before the next district does. Both are responding to something real. Distraction is real. The pace of change is real. The worry that students will outsource their thinking is real. But a ban is a posture, not a pedagogy, and uncritical adoption is just a different way of letting the tool lead. Neither asks the only question that actually helps a teacher on a Tuesday: <strong>what&rsquo;s the right tool for this job, for these students, right now?</strong> Classroom OS is built around that question. It is neither the restriction nor the surrender. It&rsquo;s the design discipline in between.
     </p>
     <p class="lede-text" style="margin-top:24px;">
-      <em>[INTENT — THEN the PD failure mode, without blaming the teacher: one-off PD treats tools as the endpoint and the teacher as a blank slate for a vendor's feature tour. The deeper failure it leaves untouched: classrooms that run on a person's presence, energy, and voice — they don't survive the Tuesday you're out sick. That dependency is the gap this method closes. Use the one-off vs. Classroom OS contrast as a SYSTEM problem, not a teacher deficiency.]</em>
-      <!-- SB7: Stakes/Failure seeded here (restriction = losing path; presence-dependence = fragility). -->
+      There&rsquo;s a second problem, quieter and older than AI. Most professional development treats the tool as the destination &mdash; here&rsquo;s the platform, here are its features, here&rsquo;s a certificate &mdash; and treats the teacher as a blank slate to be filled. It&rsquo;s a vendor&rsquo;s tour, not a teacher&rsquo;s build. And it leaves the deepest fragility in the room untouched: a classroom that depends on the teacher&rsquo;s voice, energy, and presence to function isn&rsquo;t running on a system &mdash; it&rsquo;s running on a person. It&rsquo;s brilliant on the days that person is at full strength, and it falls apart the day they&rsquo;re out sick. That dependency &mdash; not a lack of effort, not a lack of skill &mdash; is the gap Classroom OS was built to close. The teachers we worked with were experts in their rooms. What they didn&rsquo;t have was an operating system that could hold their expertise when they stepped away from it.
+      <!-- SB7: Stakes/Failure seeded (restriction = losing path; presence-dependence = fragility). -->
     </p>
   </div>
 </section>
@@ -161,16 +152,18 @@
 
     <figure class="quote-feature">
       <span class="quote-feature-mark" aria-hidden="true">&ldquo;</span>
-      <blockquote>What if the machine wasn't the enemy? What if it was a mirror?</blockquote>
+      <blockquote>What if the machine wasn&rsquo;t the enemy? What if it was a mirror?</blockquote>
     </figure>
 
     <p class="lede-text">
-      <em>[INTENT: The central reframe. AI reflects the teacher's expertise back — their voice, their classroom — rather than supplying or replacing it. The teacher arrives an expert; the tool has to earn its place. This is the philosophical spine the rest of the paper hangs on.]</em>
+      For a long time teachers have been treated as the thing AI is coming to replace. We started from the opposite premise. The machine isn&rsquo;t the enemy &mdash; and it isn&rsquo;t the savior either. Used well, it&rsquo;s a mirror: it can only give back what you put in front of it. Point a generic chatbot at a generic prompt and you get generic results, the same beige output everyone else gets. But teach it who you are &mdash; what you believe, how your room works, the standards you&rsquo;re held to, the voice you actually use with kids &mdash; and it starts reflecting <em>you</em> back. That reframe changes the teacher&rsquo;s role entirely. You&rsquo;re not competing with the tool. You&rsquo;re the source it draws from. As one teacher put it by Friday: <em>&ldquo;AI is not my competition. It is the paper plane I can customize, maneuver and hop on to reach new heights.&rdquo;</em>
     </p>
 
     <div class="ab-callout">
       <div class="case-kicker">The mirror, on day one</div>
-      <p><em>[INTENT: The Marcus Aurelius anecdote — teacher asks the OS "if I were a historical figure based on my OS, who would I be?" → "Because of your focus on reflection and leadership, you'd be Marcus Aurelius." Live proof of reflection, not replacement.]</em></p>
+      <p>
+        On the very first morning, a teacher asked his brand-new Classroom OS a question: <em>&ldquo;If I were a historical figure based on my OS, who would I be?&rdquo;</em> It answered: <strong>&ldquo;Because of your focus on reflection and leadership, you&rsquo;d be Marcus Aurelius.&rdquo;</strong> The machine wasn&rsquo;t inventing him or replacing him. It was reading back what he&rsquo;d just told it about himself &mdash; and he recognized the reflection. That was day one. We hadn&rsquo;t taught a single feature yet.
+      </p>
     </div>
   </div>
 </section>
@@ -181,34 +174,37 @@
 <section class="section section-work">
   <div class="section-inner">
     <div class="section-label">03</div>
-    <h2 class="section-title">The architecture, and why it's built bottom-up.</h2>
+    <h2 class="section-title">The architecture, and why it&rsquo;s built bottom-up.</h2>
     <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Plan (part 1) — the structure the guide hands the hero. -->
     <p class="lede-text">
-      <em>[INTENT: The held-back tier. The public page only NAMES the four layers; here we explain each in depth and — critically — why the sequence is load-bearing. Source Code (beliefs about how people learn) → Architecture (the visible structures that carry those beliefs) → Scheduler (the year as a designed arc) → Applications (the live AI/Gems/sub-plans that run on top). Each layer must precede the next because the later layers have nothing true to reflect until the earlier ones exist. NO templates, NO doc structures, NO Thinking Map how-to — architecture and rationale only.]</em>
+      An operating system is the invisible layer that decides how everything else runs. Most teachers inherit theirs by accident &mdash; assembled from old habits, district mandates, and whatever survived the last in-service. Classroom OS rebuilds it on purpose, in four layers, in a deliberate order. The order <em>is</em> the method. Each layer exists to give the next one something true to stand on, which is why you can&rsquo;t skip ahead: a tool built on an empty foundation has nothing to reflect but the void.
     </p>
-    <!-- Four layer cards (names public; the WHY-sequenced depth is the paper's value) -->
     <div class="method-grid">
       <article class="method-card">
         <div class="method-step">Layer 1 &middot; foundation</div>
         <h3>Source Code</h3>
-        <p><em>[INTENT: what it is + why it must come first]</em></p>
+        <p>What you actually believe about how people learn &mdash; the real version, not the one in your evaluation rubric. This is bedrock, because every later decision is downstream of it. Skip it and you&rsquo;re decorating a house with no frame.</p>
       </article>
       <article class="method-card">
         <div class="method-step">Layer 2</div>
         <h3>Architecture</h3>
-        <p><em>[INTENT: structures that carry the Source Code without the teacher's voice carrying it]</em></p>
+        <p>The visible structures &mdash; routines, layout, transitions, the way the room speaks &mdash; that carry your beliefs without you having to say them out loud. Architecture is how a value becomes a wall, a procedure, a place a student knows to be. It&rsquo;s only honest if the Source Code under it is.</p>
       </article>
       <article class="method-card">
         <div class="method-step">Layer 3</div>
         <h3>Scheduler</h3>
-        <p><em>[INTENT: the year as a designed arc, not a pacing guide]</em></p>
+        <p>The year as a designed arc instead of a handed-down pacing guide. Where are students going, and do they know it? This layer turns a calendar into a story with a direction &mdash; but only once you know what the year is <em>for</em>, which is the layer beneath it.</p>
       </article>
       <article class="method-card">
         <div class="method-step">Layer 4 &middot; runs on top</div>
         <h3>Applications</h3>
-        <p><em>[INTENT: the live layer — AI Gems, sub plans — that can only reflect what the lower layers contain]</em></p>
+        <p>The live tools that run on everything below &mdash; AI Gems trained on your content, sub plans, the day-to-day output. This is the layer everyone wants to start with. It&rsquo;s last on purpose: an application can only reflect what the lower layers contain. Build it first and it reflects nothing.</p>
       </article>
     </div>
+    <p class="lede-text" style="margin-top:36px;">
+      This is why a feature tour fails and a build holds. The tour starts at Layer 4 and never touches the three layers that would make it yours. The build starts at the bottom, where the expertise already lives, and earns its way up.
+    </p>
   </div>
 </section>
 
@@ -220,64 +216,65 @@
     <div class="section-label">04</div>
     <h2 class="section-title">Human, then analog, then digital.</h2>
     <div class="rufous-rule section-rule"></div>
-    <!-- SB7: Plan — the clear, repeatable process the guide offers the hero. -->
+    <!-- SB7: Plan (part 2) — the repeatable process the hero can carry home. -->
     <p class="lede-text">
-      <em>[INTENT: The named "right tool for the job" scaffold and its rationale — analog protects the thinking (slows it down, lowers the barrier) before any tool speeds it up; digital then does what only digital can (translate, adapt to one learner, extend one teacher's reach, reflect work back in the teacher's voice). The meta-move: we ran the week the way we want them to run their rooms — the medium is the lesson. NO facilitation script, NO exact prompts.]</em>
-    </p>
-    <div class="ab-callout" style="margin-top:32px;">
-      <div class="case-kicker">"Who are you?" — not "what's your why?"</div>
-      <p>
-        <em>[INTENT: The identity question as a deliberate design choice — identity is generative; the "why" falls out of it, not the reverse. THE ANECDOTE: after Day 1, a teacher described the question sending her back through the "historical index" of her experiences — why she became a teacher, why she's still one, what shaped who she is. The psychological power of identity, shown not asserted. Frame with dignity: it surfaced expertise she already had.]</em>
-      </p>
-    </div>
-    <p class="lede-text" style="margin-top:32px;">
-      <em>[INTENT — how we get people thinking, with the research named but light:
-        - OBLIQUE STRATEGIES (Eno & Schmidt, 1975) — oblique prompts to break a deadlock and provoke fresh thinking, used as a creativity technique (not a recipe).
-        - PSYCHOLOGICAL SAFETY as a first-class constraint — opt-in, graduated disclosure; "we hate over-sharing icebreakers too"; forced vulnerability isn't safety. Tie to the SOCIAL PRESENCE MODEL (Whiteside; Garrett Dikkers): affective association + community cohesion + instructor involvement as designable conditions.
-        - SMALL CREWS (two to four, sizes varied) as team learning (Miyake & Kirschner, 2014) — the small group as the unit of constructive, interactive engagement.
-        - MOTIVATION designed White-Hat, not Black-Hat (Chou / Octalysis) — we engineer for durable intrinsic motivation, not compulsion loops. Keep all of these interleaved and earned, never a lit-review dump.]</em>
+      We ran every morning the same way, on a rhythm we wanted teachers to carry straight into their own rooms: start with the human, move to analog, reach for digital only when it earns its place. It&rsquo;s the right-tool-for-the-job question turned into a routine. No-tech and all-tech are both abdications; this is the discipline in between.
     </p>
     <div class="method-grid">
       <article class="method-card">
         <div class="method-step">First</div>
         <h3>Human</h3>
-        <p><em>[INTENT: identity + context, the question only a person can answer]</em></p>
+        <p>The morning opened with a conversation and a question only a person can answer &mdash; who are you, what do you believe, what does this room actually need. No screen until the thinking was real. The human comes first because the human is the source everything downstream draws from.</p>
       </article>
       <article class="method-card">
         <div class="method-step">Then</div>
         <h3>Analog</h3>
-        <p><em>[INTENT: blank paper protects the thinking before tools accelerate it]</em></p>
+        <p>Before anything went digital, it got drawn, mapped, and talked through on paper. Slower on purpose. Blank paper lowers the barrier and slows the thinking down before a tool speeds it up &mdash; analog is where an idea gets clear enough to be worth building. The paper protects the thinking from the tool.</p>
       </article>
       <article class="method-card">
         <div class="method-step">Only once it earns it</div>
         <h3>Digital</h3>
-        <p><em>[INTENT: the tool executes what the human already authored]</em></p>
+        <p>Then, and only then, the laptops opened &mdash; and the tech did what only tech can: translate for a newcomer, adapt to a single learner, stretch one teacher&rsquo;s reach across more kids, and reflect the teacher&rsquo;s own work back in their own voice. The tool executes what the human already authored.</p>
       </article>
     </div>
+
+    <div class="ab-callout" style="margin-top:40px;">
+      <div class="case-kicker">&ldquo;Who are you?&rdquo; &mdash; not &ldquo;what&rsquo;s your why?&rdquo;</div>
+      <p>
+        Every keynote asks teachers &ldquo;what&rsquo;s your why?&rdquo; We asked something harder to perform: <em>who are you as a teacher?</em> &ldquo;Why&rdquo; invites a rehearsed mission statement. &ldquo;Who&rdquo; asks for an identity &mdash; concrete, harder to fake, and generative: once you know who you are, the why falls out of it on its own. The reverse isn&rsquo;t true. After the first day, one teacher described the question sending her back through the whole historical index of her experiences &mdash; why she became a teacher, why she&rsquo;s still one, what shaped the person standing in front of her students. We didn&rsquo;t hand her that. The question gave expertise she already owned a place to land. That&rsquo;s the psychological power of identity, and it&rsquo;s the foundation the rest of the week is built on.
+      </p>
+    </div>
+
+    <p class="lede-text" style="margin-top:36px;">
+      Getting people to think that openly takes design, not luck, and we leaned on a few traditions to do it. We used <strong>oblique strategies</strong> &mdash; sideways prompts, in the spirit of Brian Eno and Peter Schmidt&rsquo;s deck &mdash; to knock loose thinking that a direct question would only stiffen. We treated <strong>psychological safety</strong> as a first-class design constraint rather than a nicety: disclosure stayed opt-in and graduated, because forced vulnerability isn&rsquo;t safety &mdash; it&rsquo;s the thing that kills it. (We said out loud that we hate over-sharing icebreakers too; that admission did more for the room than any trust-fall ever has.) That instinct has a research home in the <strong>social presence</strong> work of Whiteside and Garrett Dikkers, who treat belonging, cohesion, and a facilitator&rsquo;s genuine involvement as conditions you can deliberately build. We worked in <strong>small crews</strong> &mdash; two to four teachers &mdash; because the small group is where engagement turns interactive, the most generative mode in the collaborative-learning research of Miyake and Kirschner. And we designed the motivation to be durable: in Yu-kai Chou&rsquo;s terms, &ldquo;White Hat&rdquo; &mdash; built on meaning, mastery, and creativity rather than the &ldquo;Black Hat&rdquo; pressure loops that win compliance for a week and resentment after.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Underneath all of it, one house rule: <strong>clear rather than clever.</strong> And one quiet move that mattered more than any single activity &mdash; we ran the week the way we want teachers to run their classrooms. The medium was the lesson.
+    </p>
   </div>
 </section>
 
 <!-- ============================================================
-     6 · THEORY, INTERLEAVED  (Sweller · Chi · Schlechty)
+     6 · THEORY, INTERLEAVED  (Sweller/Mayer · Chi/Schlechty · …)
      ============================================================ -->
 <section class="section section-work">
   <div class="section-inner">
     <div class="section-label">05</div>
-    <h2 class="section-title">Theory, earned — not lectured.</h2>
+    <h2 class="section-title">Theory, earned &mdash; not lectured.</h2>
     <div class="rufous-rule section-rule"></div>
     <!-- SB7: Authority — the guide proves competence (real research, real results). -->
     <p class="lede-text">
-      <em>[INTENT: We did NOT skip theory; we interleaved it and taught it AFTER the hands-on application that made it land — practice first, then name the research. That sequencing is itself a methodology point. Keep the lines DISTINCT (don't collapse them into one "theory"): cognitive load (Sweller) and multimedia design (Mayer) for the design-system / Brand-Kit / audiogram rationale; engagement (Chi's ICAP, Schlechty); collaboration (Miyake & Kirschner); social presence (Whiteside & Dikkers); motivation (Chou / Octalysis). Plus accessibility (high contrast, color-vision deficiency) and the tech-in-education debate with nuance — what digital can do that paper can't, and where analog is the right tool. All citations verified — see Appendix.]</em>
+      We did not skip the research. We taught a lot of it &mdash; but interleaved with the practice, and almost always <em>after</em> the hands-on work that made the concept land. Practice first, then name the theory. That sequence isn&rsquo;t an accident; it&rsquo;s the same scaffold we use on everything. You feel the payoff, then you get the word for it, and the word sticks because it&rsquo;s attached to something you did. A few distinct lines ran through the week, and we kept them distinct on purpose &mdash; they&rsquo;re different ideas, not one blurry &ldquo;theory of learning.&rdquo;
     </p>
     <div class="ab-callout">
       <div class="case-kicker">The research we named, after the practice that earned it</div>
-      <p><em>[INTENT: brief, distinct one-liners, each tied to a concrete moment from the week —
-        Sweller / cognitive load (consistent font + color = less extraneous load) and Mayer / multimedia learning (words + pictures, dual channels — the audiogram sound→print bridge);
-        Chi / ICAP (passive→active→constructive→interactive) and Schlechty / Working on the Work (designing for engagement);
-        Miyake & Kirschner (the small crews — two to four — as team learning);
-        Whiteside & Dikkers (social presence → the psychological-safety design);
-        Chou / Octalysis (White-Hat motivation). Full references in the Appendix.]</em></p>
+      <p>
+        <strong>Cognitive load</strong> (Sweller) and <strong>multimedia learning</strong> (Mayer): a consistent font and a consistent color scheme cut the extraneous load students carry, which is why teachers built Brand Kits &mdash; and why an audiogram, pairing a word&rsquo;s sound to its written shape across two channels at once, is such a clean bridge for an emerging reader. <strong>Engagement</strong> (Chi&rsquo;s ICAP ladder &mdash; passive to active to constructive to interactive; Schlechty&rsquo;s work on designing tasks worth doing): we built activities that climbed the ladder rather than parking students at the bottom. <strong>Collaboration</strong> (Miyake and Kirschner): the crews. <strong>Social presence</strong> (Whiteside and Garrett Dikkers): the safety. <strong>Motivation</strong> (Chou): the White-Hat design. Every name in this paper is one we can cite &mdash; full references are in the appendix.
+      </p>
     </div>
+    <p class="lede-text" style="margin-top:36px;">
+      We taught accessibility the same way &mdash; high-contrast choices, sensitivity to color-vision deficiency, designing for the actual range of learners in the room &mdash; and we taught the technology debate with its nuance intact: what digital genuinely does that paper can&rsquo;t (translate, individualize, scale a teacher&rsquo;s reach), and where paper is still the right tool (to center the human and slow the thinking down before a screen speeds it up). None of it arrived as a lecture. All of it arrived as a name for something they&rsquo;d already felt work.
+    </p>
   </div>
 </section>
 
@@ -287,14 +284,16 @@
 <section class="section section-crew">
   <div class="section-inner">
     <div class="section-label">06</div>
-    <h2 class="section-title">The test that proved it — and stayed honest.</h2>
+    <h2 class="section-title">The test that proved it &mdash; and stayed honest.</h2>
     <div class="rufous-rule section-rule"></div>
     <p class="lede-text">
-      <em>[INTENT: Present the A/B test as a credibility instrument, not a recipe. The design: same prompt ("Create a lesson plan template that meets the requirements for my district") to plain Gemini vs. Gemini seated with the teacher's Course Brain. What it reveals AND the honest nuance: teachers who did the work got back something in their voice; teachers who didn't, didn't. "The system doesn't invent you — it reflects back exactly what you put in." This honesty is the selling point — it's a mirror, not magic.]</em>
+      On Thursday we ran the experiment that made the whole week concrete. Same prompt, two conditions. We typed <em>&ldquo;Create a lesson plan template that meets the requirements for my district&rdquo;</em> into plain, out-of-the-box Gemini &mdash; and then typed the exact same words into Gemini seated with the teacher&rsquo;s Course Brain, the AI they&rsquo;d spent the week training on their content and their voice. The contrast was the lesson. For teachers who&rsquo;d done the work, the second answer came back unmistakably theirs &mdash; their phrasing, their priorities, matched to their classroom. For teachers who&rsquo;d left their Classroom OS docs thin, the two answers looked about the same.
     </p>
     <div class="ab-callout">
       <div class="case-kicker">The peak of the week</div>
-      <p><em>[INTENT: the moment teachers could SEE the work was worth it — documents produced almost effortlessly, matched to voice and classroom.]</em></p>
+      <p>
+        We could have hidden that second result, and a slicker pitch would have. We didn&rsquo;t &mdash; because it&rsquo;s the most honest and most important thing the week proved: <strong>the system doesn&rsquo;t invent you. It reflects back exactly what you put in.</strong> That&rsquo;s not a limitation to apologize for; it&rsquo;s the entire point. A mirror that flattered you regardless would be worthless. This one only gets as good as the teacher behind it &mdash; which means the teacher, not the tool, stays the source of the quality. For most of the room, Thursday was the moment the week&rsquo;s work visibly paid off: documents in their own voice, produced almost effortlessly, because the effort had already gone in upstream.
+      </p>
     </div>
   </div>
 </section>
@@ -307,25 +306,28 @@
     <div class="section-label section-label-dark">07</div>
     <h2 class="section-title section-title-dark">What moved, and how we measured it.</h2>
     <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Success (part 1) — measured proof, stated honestly. -->
     <p class="lede-text lede-text-dark">
-      <em>[INTENT: Full Pulse methodology — start-of-week (Mon) + end-of-week (Fri) surveys, same questions, same people, matched before→after pairs. State n HONESTLY: 7 matched pairs of ~15 attendees across 4 crews; a small pilot, named as such — that honesty is part of the credibility. Then the numbers.]</em>
+      We don&rsquo;t ask you to take our word for it. On Monday morning, before we&rsquo;d taught anything, teachers rated their own classrooms on a set of statements. On Friday, the same teachers rated the same statements again. Same people, same questions, four days apart &mdash; a matched before-and-after, which is the only honest way to claim something moved. We&rsquo;ll be precise about the size: this was a small first cohort, about fifteen teachers across four crews, and seven of them completed both the Monday and Friday surveys to form matched pairs. Seven is a pilot, not a meta-analysis, and we&rsquo;d rather say that out loud than dress it up. What the seven show is worth your attention.
     </p>
+
     <div class="pulse-stats">
       <div class="stat-card">
         <div class="stat-num stat-shift"><span class="stat-before">3.7</span><span class="stat-arrow" aria-hidden="true">&rarr;</span><span class="stat-after">4.4</span></div>
-        <div class="stat-label"><em>[INTENT: "my classroom runs without me," 1–5, matched pairs (+0.71)]</em></div>
+        <div class="stat-label">&ldquo;My classroom runs without me,&rdquo; rated 1&ndash;5 &mdash; the matched group&rsquo;s average rose <strong>+0.7</strong> in four days</div>
       </div>
       <div class="stat-card">
         <div class="stat-num stat-shift"><span class="stat-before">3.3</span><span class="stat-arrow" aria-hidden="true">&rarr;</span><span class="stat-after">4.4</span></div>
-        <div class="stat-label"><em>[INTENT: "runs on systems, not my presence," 1–5 (+1.14)]</em></div>
+        <div class="stat-label">&ldquo;It runs on systems, not on my presence&rdquo; &mdash; the same teachers, up <strong>+1.1</strong>, the largest single shift we measured</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">86<span style="font-size:0.45em;color:rgba(15,20,25,0.45);">%</span></div>
-        <div class="stat-label"><em>[INTENT: of scores rose; none dropped]</em></div>
+        <div class="stat-label">of individual scores on those questions <strong>rose</strong> over the week. Not one dropped.</div>
       </div>
     </div>
+
     <p class="lede-text lede-text-dark" style="margin-top:32px;">
-      <em>[INTENT: end-of-week ratings (n=8): average value 4.75/5; NPS +88 (7 promoters, 1 passive, 0 detractors). Standout qualitative (Dawn "I'm the human"; Ana "paper plane"). And a behavioral signal of real engagement, not just satisfaction: a teacher went home after Day 3 and finished building her classroom commercial on her own time — the White-Hat motivation working as designed. Honest framing: directional evidence from a small first cohort, consistent across every matched teacher.]</em>
+      Beyond the shift, the end-of-week read was strong on its own terms: across eight respondents, an average value rating of <strong>4.8 out of 5</strong> and a <strong>Net Promoter Score of +88</strong> &mdash; seven promoters, one passive, zero detractors. The qualitative tracked the quantitative. One teacher wrote simply, <em>&ldquo;I&rsquo;m the human. I learned how to better communicate with AI to achieve the results I&rsquo;m looking for.&rdquo;</em> Another reached for the paper-plane image. And the engagement showed up in behavior, not just ratings: a teacher went home after the third day and finished her classroom commercial on her own time, because she wanted to, not because anyone asked. Directional evidence from one small cohort &mdash; stated as exactly that &mdash; pointing unambiguously in one direction.
     </p>
   </div>
 </section>
@@ -338,26 +340,36 @@
     <div class="section-label">08</div>
     <h2 class="section-title">She was already the expert. The tools caught up.</h2>
     <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Success (part 2) — the transformation made human. -->
 
     <div class="case-study">
       <div class="case-kicker">Case study &middot; Earned, not sold</div>
-      <h3 class="case-name"><em>[INTENT: Dawn, 5th grade, Snyder ES — named, with release]</em></h3>
+      <h3 class="case-name">Dawn &mdash; 5th grade &middot; Snyder ES</h3>
       <p class="case-lede">
-        <em>[INTENT: The full version the public page only gestured at. A ~16-year veteran whose Wednesday skepticism about customizing a generic AI was GOOD JUDGMENT (voice principle: her doubt was sound; the tool had to earn her). The ~24-hour Wed→Thu turn. By Friday: "I'm the human. I learned how to better communicate with AI to achieve the results I'm looking for." She arrived an expert and left with tools that finally had the range to match her — a coherent, branded classroom kit in her own colors and fonts that lowered her students' cognitive load (ties back to Sweller).]</em>
+        Dawn is a sixteen-year veteran. On Wednesday, she said &mdash; plainly &mdash; that she didn&rsquo;t really see the value in customizing the Gemini Gems. We want to be careful how we tell this, because the easy version is a lie. This is not a story about a skeptic who &ldquo;didn&rsquo;t get it.&rdquo; Her doubt was good judgment. A generic AI <em>is</em> generic, and a teacher who knows her room, her students, and her standards cold is right to be unimpressed by a tool that knows none of them. The ask was never &ldquo;trust the tool.&rdquo; It was: teach the tool who you are, and see whether it stops being generic. She did &mdash; and in about twenty-four hours, the thing turned. By Friday she&rsquo;d written, <em>&ldquo;I&rsquo;m the human. I learned how to better communicate with AI to achieve the results I&rsquo;m looking for.&rdquo;</em> She didn&rsquo;t arrive empty and leave full. She arrived an expert and left with tools that finally had the range to match her.
       </p>
       <div class="case-ba">
         <div class="case-col case-before">
           <h4>Where she started</h4>
-          <p><em>[INTENT: Wed — "I don't really see the value in customizing the Gems." A fair read from someone who knew her craft cold.]</em></p>
+          <p>Wednesday: <em>&ldquo;I don&rsquo;t really see the value in customizing the Gems.&rdquo;</em> A fair question, from someone who already knew her craft cold.</p>
         </div>
         <div class="case-col case-after">
-          <h4>By Friday — what she built</h4>
+          <h4>By Friday &mdash; what she built</h4>
           <ul>
-            <li><em>[INTENT: the full artifact list — Source Code &amp; Architecture, Brand Kit, place cards, first-week letter, 12-week multiplication-mastery plan + HTML practice tool, classroom commercial, science podcast, sentence-building Gem, multiplication anchor chart + interactive]</em></li>
+            <li>Source Code &amp; Architecture docs</li>
+            <li>A Brand Kit in her own colors and fonts</li>
+            <li>Table place cards and a first-week-of-school letter</li>
+            <li>A 12-week plan to get her students&rsquo; multiplication facts mastered &mdash; with an HTML practice tool to run it</li>
+            <li>A classroom commercial and a science podcast</li>
+            <li>A sentence-building Gem and a multiplication anchor chart with an interactive activity</li>
           </ul>
         </div>
       </div>
     </div>
+
+    <p class="lede-text" style="margin-top:36px;">
+      Every one of those was in her own colors and fonts, on purpose &mdash; a coherent, branded classroom kit that lowered her students&rsquo; cognitive load precisely because it was consistent. That&rsquo;s the Sweller point, built by a teacher who&rsquo;d felt the reason for it before she ever heard the name. The tools didn&rsquo;t make Dawn an expert. They finally gave her expertise somewhere to go.
+    </p>
   </div>
 </section>
 
@@ -370,7 +382,10 @@
     <h2 class="section-title">The case for the spend.</h2>
     <div class="rufous-rule section-rule"></div>
     <p class="lede-text">
-      <em>[INTENT: Translate the method into administrator value. The cost of a presence-dependent faculty — substitute days that lose instruction, the fragility of rooms that only run when the teacher is "on," burnout and turnover. Against that: a system-based classroom that holds on a Tuesday someone's out, AI that extends each teacher's reach to more learners, and PD that compounds (a system they keep building all year) rather than a one-off that's forgotten by September. Soft, honest, not overclaimed — anchored to the pilot's directional evidence.]</em>
+      Here&rsquo;s the administrator&rsquo;s version of all of this. A faculty whose classrooms run on personal presence is a faculty running at the edge of its own stamina. Every absence becomes a lost instructional day papered over with a thin sub plan. Every great teacher who burns out or leaves takes their undocumented system with them, and the next hire rebuilds from scratch. Restriction policies &mdash; ban the phones, ban the AI &mdash; manage the symptom and spend political capital doing it, while the dependence underneath stays exactly where it was.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Classroom OS spends the same budget on the opposite thing: a system that holds when a teacher steps away, AI that extends each teacher&rsquo;s reach to more learners instead of replacing them, and PD that compounds &mdash; teachers leave with an operating system they keep building all year, not a binder they shelve by September. We won&rsquo;t oversell a seven-person pilot, and we won&rsquo;t pretend the numbers are bigger than they are. But the logic is sound and the early evidence points one way: the classroom that runs without you is cheaper to run, steadier under stress, and far more resilient to turnover than the one that depends on a person being at full strength every single day.
     </p>
   </div>
 </section>
@@ -381,8 +396,10 @@
 <section class="cta-band">
   <div class="cta-inner">
     <!-- SB7: Call to action + the Success/Failure stakes restated in one breath. -->
-    <h2 class="cta-title"><em>[INTENT: "Bring this to your school." / next cohort]</em></h2>
-    <p class="cta-sub"><em>[INTENT: soft forward — district/partnership inquiry. Restate the through-line in one sentence and close the StoryBrand arc: the success (a faculty whose classrooms run on systems, not on presence) against the failure (defaulting to bans and restriction while dependence stays). "We read every email."]</em></p>
+    <h2 class="cta-title">Want this at your school?</h2>
+    <p class="cta-sub">
+      Bring Classroom OS to your faculty, or start with a single cohort. The choice in front of every school right now isn&rsquo;t really &ldquo;allow technology&rdquo; or &ldquo;ban it&rdquo; &mdash; it&rsquo;s whether your classrooms run on systems or on the people holding them up by hand. We&rsquo;d rather help you build the system. Group and district inquiries welcome &mdash; we read every email.
+    </p>
     <a href="mailto:whenindoubt@theintelligenthoodlums.com?subject=Classroom%20OS%20%E2%80%94%20Bring%20it%20to%20our%20school" class="btn btn-bone">Start the Conversation</a>
   </div>
 </section>
@@ -396,17 +413,25 @@
     <h2 class="section-title">Notes, methodology &amp; references.</h2>
     <div class="rufous-rule section-rule"></div>
     <p class="lede-text">
-      <em>[INTENT: (A) The Pulse instrument — the exact item wording + scale + how matched pairs were computed. (B) Full, verified references:</em><br>
-      &middot; Chi, M. T. H., &amp; Wylie, R. (2014). The ICAP Framework: Linking Cognitive Engagement to Active Learning Outcomes. <em>Educational Psychologist</em>, 49(4), 219–243.<br>
-      &middot; Chou, Y. (2015). <em>Actionable Gamification: Beyond Points, Badges, and Leaderboards</em>. (Octalysis framework.)<br>
+      <strong>The Pulse instrument.</strong> Teachers responded to a short set of statements on a 1&ndash;5 agreement scale at the start of the week (Monday) and again at the end (Friday). The two items reported here &mdash; &ldquo;my classroom runs without me&rdquo; and &ldquo;my classroom runs on systems, not on my presence&rdquo; &mdash; were scored for the seven teachers who completed both surveys, and the matched pairs were compared directly. The end-of-week value rating and Net Promoter Score reflect eight respondents. Raw responses contain participant emails and are held privately, off-repository.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <strong>Scope.</strong> These are directional results from a single small pilot cohort in Las Vegas, June 2026. We report them as such &mdash; a strong first signal, not a final study.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <strong>References.</strong><br>
+      &middot; Chi, M. T. H., &amp; Wylie, R. (2014). The ICAP Framework: Linking Cognitive Engagement to Active Learning Outcomes. <em>Educational Psychologist</em>, 49(4), 219&ndash;243.<br>
+      &middot; Chou, Y. (2015). <em>Actionable Gamification: Beyond Points, Badges, and Leaderboards</em>. (The Octalysis framework.)<br>
       &middot; Eno, B., &amp; Schmidt, P. (1975). <em>Oblique Strategies: Over One Hundred Worthwhile Dilemmas</em>.<br>
       &middot; Mayer, R. E. (2009). <em>Multimedia Learning</em> (2nd ed.). Cambridge University Press.<br>
       &middot; Miller, D. (2017). <em>Building a StoryBrand</em>. HarperCollins Leadership.<br>
       &middot; Miyake, N., &amp; Kirschner, P. A. (2014). The Social and Interactive Dimensions of Collaborative Learning. In R. K. Sawyer (Ed.), <em>The Cambridge Handbook of the Learning Sciences</em> (2nd ed., ch. 21). Cambridge University Press.<br>
       &middot; Schlechty, P. C. (2002). <em>Working on the Work: An Action Plan for Teachers, Principals, and Superintendents</em>. Jossey-Bass. (Expanded as <em>Engaging Students: The Next Level of Working on the Work</em>, 2011.)<br>
-      &middot; Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. <em>Cognitive Science</em>, 12(2), 257–285.<br>
-      &middot; Whiteside, A. L. (2015). Introducing the Social Presence Model to Explore Online and Blended Learning Experiences. <em>Online Learning</em>, 19(2). (Expanded in Whiteside, Garrett Dikkers, &amp; Swan, 2017, <em>Social Presence in Online Learning</em>.)<br>
-      <em>(C) About The Intelligent Hoodlums + a one-line scope note: directional results from a single small pilot cohort, June 2026.]</em>
+      &middot; Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. <em>Cognitive Science</em>, 12(2), 257&ndash;285.<br>
+      &middot; Whiteside, A. L. (2015). Introducing the Social Presence Model to Explore Online and Blended Learning Experiences. <em>Online Learning</em>, 19(2). (Expanded in Whiteside, Garrett Dikkers, &amp; Swan, 2017, <em>Social Presence in Online Learning</em>.)
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <strong>About.</strong> The Intelligent Hoodlums &mdash; Las Vegas, est. 2014. Design &middot; Disrupt &middot; Deliver.
     </p>
   </div>
 </section>
