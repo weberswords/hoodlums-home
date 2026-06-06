@@ -50,6 +50,10 @@
 <link rel="stylesheet" href="/styles.css">
 
 <style>
+  /* White-paper body text: brighter than the site-default cadet for a long read.
+     :not(.lede-text-dark) leaves the bone-background data section's dark text alone. */
+  .lede-text:not(.lede-text-dark) { color: var(--hm-bone); }
+
   /* ── PRINT / SAVE AS PDF: clean, light, ink-friendly document ─ */
   @media print {
     *, *::before, *::after { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
