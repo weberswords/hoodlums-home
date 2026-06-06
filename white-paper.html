@@ -89,6 +89,8 @@
     /* Grids/flex ignore break-inside on their children, so make them block in print. */
     .method-grid, .pulse-stats, .case-ba { display: block !important; break-inside: auto; page-break-inside: auto; }
     .case-study { break-inside: auto; page-break-inside: auto; }
+    /* Each chapter (Executive Summary, 01-12, the method section, Appendix) starts a fresh page. */
+    .section { break-before: page; page-break-before: always; }
     /* Keep small blocks whole; stack them with spacing. */
     .method-card, .stat-card, .case-col, .ab-callout, .quote-feature {
       display: block; margin-bottom: 14px; break-inside: avoid; page-break-inside: avoid;
