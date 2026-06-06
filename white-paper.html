@@ -50,22 +50,12 @@
 <link rel="stylesheet" href="/styles.css">
 
 <style>
-  /* ── "Download PDF" control (screen only) ─────────────────── */
-  .btn-print {
-    font-family: var(--font-family); font-weight: 700; font-size: 12px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--hm-ink); background: var(--hm-bone);
-    border: none; padding: 8px 16px; cursor: pointer; white-space: nowrap;
-    transition: background-color 150ms ease-in-out;
-  }
-  .btn-print:hover, .btn-print:focus-visible { background: #fff; }
-
   /* ── PRINT / SAVE AS PDF: clean, light, ink-friendly document ─ */
   @media print {
     *, *::before, *::after { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     body { background: #fff !important; color: var(--hm-ink) !important; }
     body::before { display: none !important; }                 /* halftone grit */
-    .site-nav, .hero-badge, .btn-print { display: none !important; }
+    .site-nav, .hero-badge, .hero-cta { display: none !important; }
 
     .masthead, .hero, .section, .cta-band, .site-footer {
       background: #fff !important; color: var(--hm-ink) !important;
@@ -121,7 +111,6 @@
   <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
   <ul class="nav-links">
     <li><a href="/classroom-os" class="nav-back">&larr; The Retrospective</a></li>
-    <li><button type="button" class="btn-print" onclick="window.print()">Download PDF</button></li>
   </ul>
 </nav>
 
@@ -139,6 +128,9 @@
     <p class="hero-tagline">
       Teacher turnover and absence drain budgets and depress test scores, and they fall hardest on your highest-need schools. This paper traces both costs to a single fixable cause and documents a five-day program that helps teachers build classrooms, and teams, that keep working when someone is out. Inside: the method, the research behind it, and the data from the June 2026 pilot.
     </p>
+    <div class="hero-cta">
+      <button type="button" class="btn btn-bone" onclick="window.print()">Download PDF</button>
+    </div>
     <!-- INTENT (build phase): post-reveal actions bar — "Download the PDF" + Google
          "Save to Drive" button. (Email delivery handled by the gate Apps Script.) -->
     <div class="pulse-stats" style="margin-top:40px;">
