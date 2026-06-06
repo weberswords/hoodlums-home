@@ -77,15 +77,20 @@
     .rufous-rule { background: var(--hm-rufous) !important; }
     .stat-before { color: rgba(15,20,25,0.45) !important; }
 
-    /* cards and callouts: white with a light border, kept whole on a page */
-    .method-card, .stat-card, .case-study, .ab-callout, .quote-feature, .case-col {
+    /* cards and callouts: white with a light border */
+    .method-card, .stat-card, .ab-callout, .quote-feature, .case-col {
       background: #fff !important; border: 1px solid rgba(15,20,25,0.22) !important;
-      box-shadow: none !important; break-inside: avoid;
+      box-shadow: none !important;
     }
+    .case-study { background: #fff !important; box-shadow: none !important; }
     .btn { background: #fff !important; color: var(--hm-ink) !important; border: 1px solid var(--hm-rufous) !important; }
 
-    h1, h2, h3, h4 { break-after: avoid; }
-    .method-grid, .pulse-stats, .case-ba, .quote-feature, .ab-callout, .case-study { break-inside: avoid; }
+    /* pagination: keep small blocks whole, let big containers flow across pages,
+       and avoid stranded headings or orphan/widow lines */
+    .method-card, .stat-card, .ab-callout, .quote-feature, .case-col { break-inside: avoid; }
+    .case-study, .method-grid, .pulse-stats, .case-ba { break-inside: auto; }
+    h1, h2, h3, h4, .section-label, .section-label-dark, .case-kicker { break-after: avoid; }
+    p, li { orphans: 3; widows: 3; }
 
     .footer-social { display: none !important; }
     .site-footer { border-top: 1px solid rgba(15,20,25,0.2) !important; }
