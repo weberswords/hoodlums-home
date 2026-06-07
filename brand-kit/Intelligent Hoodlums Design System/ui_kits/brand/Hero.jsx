@@ -6,7 +6,7 @@ const Hero = ({ onCtaClick }) => {
     <section style={{
       background: '#0F1419', color: '#F2E8D5',
       padding: '80px 64px', position: 'relative', overflow: 'hidden',
-      fontFamily: "'Avocado Sans', sans-serif",
+      fontFamily: "'DM Sans', sans-serif",
       minHeight: 420, display: 'flex', alignItems: 'center',
     }}>
       {/* Halftone overlay */}
@@ -29,10 +29,10 @@ const Hero = ({ onCtaClick }) => {
 
           {/* Hero headline */}
           <h1 style={{
-            fontFamily: "'Avocado Sans', sans-serif",
-            fontWeight: 700, fontSize: 72, lineHeight: 1.0,
-            letterSpacing: '0.01em', color: '#F2E8D5',
-            margin: '0 0 8px',
+            fontFamily: "'Grift', sans-serif",
+            fontWeight: 900, fontSize: 72, lineHeight: 1.0,
+            letterSpacing: '0.02em', color: '#F2E8D5',
+            margin: '0 0 8px', textTransform: 'uppercase',
           }}>
             Design.<br />Disrupt.<br />Deliver.
           </h1>
@@ -51,7 +51,7 @@ const Hero = ({ onCtaClick }) => {
           {/* CTAs */}
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <button onClick={onCtaClick} style={{
-              fontFamily: "'Avocado Sans', sans-serif", fontWeight: 700,
+              fontFamily: "'DM Sans', sans-serif", fontWeight: 700,
               fontSize: 12, letterSpacing: '0.06em', textTransform: 'uppercase',
               padding: '12px 24px', background: '#B7280F', color: '#F2E8D5',
               border: '2px solid #B7280F', cursor: 'pointer',
@@ -61,7 +61,7 @@ const Hero = ({ onCtaClick }) => {
               onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
             >Trust a Hoodlum</button>
             <button style={{
-              fontFamily: "'Avocado Sans', sans-serif", fontWeight: 700,
+              fontFamily: "'DM Sans', sans-serif", fontWeight: 700,
               fontSize: 12, letterSpacing: '0.06em', textTransform: 'uppercase',
               padding: '12px 24px', background: 'transparent', color: '#F2E8D5',
               border: '2px solid #F2E8D5', cursor: 'pointer',

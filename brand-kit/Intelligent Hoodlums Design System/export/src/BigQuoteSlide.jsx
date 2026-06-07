@@ -1,4 +1,4 @@
-// BigQuoteSlide.jsx — Bone bg, massive pull quote
+// BigQuoteSlide.jsx — Bone bg, massive Director's Commentary quote
 
 const BigQuoteSlide = ({
   quote = 'When in doubt, trust a Hoodlum.',
@@ -14,9 +14,10 @@ const BigQuoteSlide = ({
       width: '100%', height: '100%',
       background: bg, position: 'relative', overflow: 'hidden',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontFamily: DM,
+      fontFamily: "'Avocado Sans', sans-serif",
     }}>
       {dark && <Halftone opacity={0.12} color={HM.bone} size={7} />}
+
       <Masthead light={!dark} />
 
       {/* Left Rufous stripe */}
@@ -26,35 +27,30 @@ const BigQuoteSlide = ({
       <div style={{ padding: '80px 100px', position: 'relative', zIndex: 1, maxWidth: 1100, textAlign: 'center' }}>
         {/* Opening quote mark */}
         <div style={{
-          fontFamily: GRIFT,
-          fontWeight: 900, fontSize: 200, lineHeight: 0.5,
-          color: HM.rufous, opacity: 0.4, marginBottom: -10,
+          fontWeight: 700, fontSize: 180, lineHeight: 0.6,
+          color: HM.rufous, opacity: 0.5, marginBottom: -20,
           letterSpacing: '-0.05em',
         }}>"</div>
 
         <blockquote style={{
-          fontFamily: GRIFT,
-          fontWeight: 700, fontSize: 76, lineHeight: 1.05,
+          fontWeight: 700, fontSize: 72, lineHeight: 1.05,
           letterSpacing: '0.01em', color: textColor,
           margin: '0 0 40px',
         }}>{quote}</blockquote>
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <RufousRule width={48} />
-        </div>
+        <RufousRule width={48} />
+        <div style={{ marginTop: 0, display: 'flex', justifyContent: 'center' }}></div>
 
         {context && (
           <p style={{
-            fontFamily: DM,
             fontWeight: 400, fontSize: 20, lineHeight: 1.6,
             color: dark ? 'rgba(242,232,213,0.6)' : 'rgba(15,20,25,0.55)',
-            marginTop: 28, maxWidth: 640, margin: '24px auto 0',
+            marginTop: 32, maxWidth: 640, margin: '24px auto 0',
           }}>{context}</p>
         )}
 
         <div style={{
-          marginTop: 32, fontFamily: DM,
-          fontWeight: 300, fontSize: 13,
+          marginTop: 32, fontWeight: 100, fontSize: 13,
           letterSpacing: '0.12em', textTransform: 'uppercase',
           color: HM.tuscany,
         }}>— {attribution}</div>
@@ -65,8 +61,7 @@ const BigQuoteSlide = ({
         position: 'absolute', bottom: 0, left: 0, right: 0,
         background: HM.prussian, padding: '12px 56px',
         display: 'flex', justifyContent: 'space-between',
-        fontFamily: DM,
-        fontWeight: 300, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+        fontWeight: 100, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
         color: 'rgba(242,232,213,0.4)',
       }}>
         <span>The Intelligent Hoodlums</span>

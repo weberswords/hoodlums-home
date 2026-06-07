@@ -16,9 +16,12 @@ const BodySlide = ({
   <div style={{
     width: '100%', height: '100%',
     background: HM.bone, position: 'relative', overflow: 'hidden',
-    display: 'flex', fontFamily: DM,
+    display: 'flex',
+    fontFamily: "'Avocado Sans', sans-serif",
   }}>
     <Masthead light />
+
+    {/* Left rufous stripe */}
     <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, background: HM.rufous }} />
 
     {/* Left column */}
@@ -29,15 +32,13 @@ const BodySlide = ({
     }}>
       <ChapterTag color={HM.tuscany}>Chapter · {chapter} — {tag}</ChapterTag>
       <h2 style={{
-        fontFamily: GRIFT,
-        fontWeight: 800, fontSize: 58, lineHeight: 1.02,
+        fontWeight: 700, fontSize: 56, lineHeight: 1.05,
         color: HM.ink, margin: '0 0 28px', letterSpacing: '0.01em',
         whiteSpace: 'pre-line',
       }}>{title}</h2>
       <RufousRule width={48} />
       <div style={{
-        marginTop: 28, fontFamily: DM,
-        fontWeight: 300, fontSize: 13, letterSpacing: '0.08em',
+        marginTop: 32, fontWeight: 100, fontSize: 13, letterSpacing: '0.08em',
         textTransform: 'uppercase', color: HM.cadet, lineHeight: 1.8,
       }}>
         These aren't values on a wall.<br />
@@ -58,16 +59,26 @@ const BodySlide = ({
           borderBottom: `1px solid rgba(15,20,25,0.1)`,
         }}>
           <span style={{
-            fontFamily: DM, fontWeight: 300, fontSize: 12,
-            color: HM.tuscany, letterSpacing: '0.1em', textTransform: 'uppercase',
-            flexShrink: 0, paddingTop: 4, minWidth: 24,
+            fontWeight: 100, fontSize: 12, color: HM.tuscany,
+            letterSpacing: '0.1em', textTransform: 'uppercase',
+            flexShrink: 0, paddingTop: 2, minWidth: 24,
           }}>0{i + 1}</span>
-          <span style={{ fontFamily: DM, fontWeight: 400, fontSize: 22, lineHeight: 1.45, color: HM.ink }}>{item}</span>
+          <span style={{ fontWeight: 400, fontSize: 22, lineHeight: 1.45, color: HM.ink }}>{item}</span>
         </div>
       ))}
     </div>
 
-    <BottomStrip />
+    {/* Bottom strip */}
+    <div style={{
+      position: 'absolute', bottom: 0, left: 0, right: 0,
+      background: HM.prussian, padding: '12px 56px',
+      display: 'flex', justifyContent: 'space-between',
+      fontWeight: 100, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+      color: 'rgba(242,232,213,0.4)',
+    }}>
+      <span>The Intelligent Hoodlums</span>
+      <span style={{ color: HM.tuscany }}>Design · Disrupt · Deliver</span>
+    </div>
   </div>
 );
 

@@ -4,28 +4,24 @@
    ============================================================ */
 
 /* ── FONTS ─────────────────────────────────────────────────── */
-
-/* Grift — display/headline family (full weight stack) */
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-Thin.woff2') format('woff2'); font-weight: 100; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-ThinItalic.woff2') format('woff2'); font-weight: 100; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-ExtraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-LightItalic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-MediumItalic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-SemiBoldItalic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-BoldItalic.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-ExtraBoldItalic.woff2') format('woff2'); font-weight: 800; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-Black.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Grift'; src: url('./fonts/Grift-BlackItalic.woff2') format('woff2'); font-weight: 900; font-style: italic; font-display: swap; }
-
-/* DM Sans — body, labels, mono/crew talk */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+@font-face {
+  font-family: 'Avocado Sans';
+  src: url('./fonts/AvocadoSans-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avocado Sans';
+  src: url('./fonts/AvocadoSans-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avocado Sans';
+  src: url('./fonts/AvocadoSans-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
 
 /* ── COLOR PRIMITIVES ───────────────────────────────────────── */
 :root {
@@ -71,32 +67,34 @@
 
 /* ── TYPE SCALE (SCREEN) ────────────────────────────────────── */
 :root {
-  /* Role: Display — Grift Bold, headlines / pull quotes */
-  --font-display:          'Grift', sans-serif;
-  --font-display-weight:   700;
-  --font-display-tracking: 0.01em;
+  /* Role: Display — Avocado Sans Bold, headlines / pull quotes */
+  --font-display:         'Avocado Sans', sans-serif;
+  --font-display-weight:  700;
+  --font-display-tracking: 0.015em; /* +15/1000 */
 
-  /* Role: Splash — Grift Black ALL CAPS, masthead / cover wordmark */
-  --font-splash:           'Grift', sans-serif;
-  --font-splash-weight:    900;
-  --font-splash-tracking:  0.06em;
+  /* Role: Splash — ALL CAPS only, masthead / cover wordmark */
+  --font-splash:          'Avocado Sans', sans-serif;
+  --font-splash-weight:   700;
+  --font-splash-tracking: 0.06em; /* +60/1000 */
   --font-splash-transform: uppercase;
 
-  /* Role: Condensed — DM Sans SemiBold ALL CAPS, section labels, taglines */
-  --font-condensed:           'DM Sans', sans-serif;
-  --font-condensed-weight:    600;
-  --font-condensed-tracking:  0.1em;
+  /* Role: Condensed — section labels, taglines, credits */
+  /* NOTE: No condensed variant in supplied files — using Regular at
+     tighter tracking as a stand-in. Flag: request Condensed OTF. */
+  --font-condensed:         'Avocado Sans', sans-serif;
+  --font-condensed-weight:  400;
+  --font-condensed-tracking: 0.09em; /* +90/1000 */
   --font-condensed-transform: uppercase;
 
-  /* Role: Body — DM Sans Regular */
-  --font-body:            'DM Sans', sans-serif;
+  /* Role: Body — Avocado Sans Regular */
+  --font-body:            'Avocado Sans', sans-serif;
   --font-body-weight:     400;
   --font-body-size:       17px;
   --font-body-leading:    1.6;
 
-  /* Role: Mono / Crew Talk — DM Sans Light */
-  --font-mono:            'DM Sans', sans-serif;
-  --font-mono-weight:     300;
+  /* Role: Mono — Avocado Sans Thin (Crew Talk) */
+  --font-mono:            'Avocado Sans', sans-serif;
+  --font-mono-weight:     100;
   --font-mono-size:       12px;
   --font-mono-leading:    1.55;
 
