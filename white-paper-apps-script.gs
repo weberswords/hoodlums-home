@@ -102,30 +102,45 @@ function doPost(e) {
 function sendPaper_(data) {
   var first = String(data.first_name || '').trim();
   var paper = CONFIG.PAPER_URL;
-  var pdfLine = CONFIG.PDF_URL
-    ? '\n\nPrefer a PDF to forward or print? ' + CONFIG.PDF_URL
+
+  var pdfText = CONFIG.PDF_URL ? '\n\nPrefer a PDF to forward or print? ' + CONFIG.PDF_URL : '';
+  var pdfHtml = CONFIG.PDF_URL
+    ? '<p style="margin:0 0 22px;">Prefer a PDF to forward or print? <a href="' + CONFIG.PDF_URL + '" style="color:#B7280F;font-weight:700;">Download it here</a>.</p>'
     : '';
 
   var text =
     'Hi ' + first + ',\n\n' +
-    'Here\'s the Classroom OS white paper:\n' + paper + pdfLine + '\n\n' +
-    'It goes past the story to the architecture, the research it stands on, the full ' +
-    'Pulse Check methodology with the Monday-to-Friday data, and the case study in full.\n\n' +
-    'Reply to this email if you\'d like to talk about bringing it to your school or district — ' +
-    'we read every one.\n\n' +
-    '— The Intelligent Hoodlums\n' +
-    'Las Vegas · Est 2014';
+    'Here\'s the Classroom OS white paper. The big idea in one line: the biggest lever you have ' +
+    'on learner achievement is the teacher in the room, and this is how you invest in it.\n\n' +
+    'Read it here:\n' + paper + pdfText + '\n\n' +
+    'Inside is the method, the research behind it, and the data from our June pilot. Forward it ' +
+    'to your team. If you want to talk about bringing it to your school or district, just reply. ' +
+    'We read every one.\n\n' +
+    'When in doubt, trust a Hoodlum.\n\n' +
+    'Mike & Webs\n' +
+    'The Intelligent Hoodlums · Las Vegas · Est 2014';
 
+  var f = escapeHtml_(first);
   var html =
-    '<p>Hi ' + escapeHtml_(first) + ',</p>' +
-    '<p>Here\'s the Classroom OS white paper:</p>' +
-    '<p><a href="' + paper + '">' + paper + '</a></p>' +
-    (CONFIG.PDF_URL ? '<p>Prefer a PDF to forward or print? <a href="' + CONFIG.PDF_URL + '">Download it here</a>.</p>' : '') +
-    '<p>It goes past the story to the architecture, the research it stands on, the full ' +
-    'Pulse Check methodology with the Monday-to-Friday data, and the case study in full.</p>' +
-    '<p>Reply to this email if you\'d like to talk about bringing it to your school or district — ' +
-    'we read every one.</p>' +
-    '<p>&mdash; The Intelligent Hoodlums<br>Las Vegas &middot; Est 2014</p>';
+    '<div style="background:#0F1419;padding:24px 16px;font-family:\'Helvetica Neue\',Arial,sans-serif;">' +
+      '<div style="max-width:560px;margin:0 auto;background:#F2E8D5;">' +
+        '<div style="background:#0F1419;padding:18px 28px;border-bottom:2px solid #B7280F;">' +
+          '<div style="color:#F2E8D5;font-size:15px;letter-spacing:3px;font-weight:700;">THE INTELLIGENT HOODLUMS</div>' +
+          '<div style="color:#8CA3B5;font-size:11px;letter-spacing:2px;margin-top:5px;">LAS VEGAS &middot; EST 2014</div>' +
+        '</div>' +
+        '<div style="padding:28px;color:#0F1419;font-size:16px;line-height:1.6;">' +
+          '<p style="margin:0 0 16px;">Hi ' + f + ',</p>' +
+          '<p style="margin:0 0 16px;">Here\'s the Classroom OS white paper. The big idea in one line: the biggest lever you have on learner achievement is the teacher in the room, and this is how you invest in it.</p>' +
+          '<p style="margin:0 0 24px;">Inside is the method, the research behind it, and the data from our June pilot.</p>' +
+          '<p style="margin:0 0 24px;"><a href="' + paper + '" style="display:inline-block;background:#B7280F;color:#F2E8D5;text-decoration:none;font-weight:700;letter-spacing:1px;padding:13px 26px;">READ THE WHITE PAPER</a></p>' +
+          pdfHtml +
+          '<p style="margin:0 0 16px;">Forward it to your team. If you want to talk about bringing it to your school or district, just reply. We read every one.</p>' +
+          '<p style="margin:24px 0 4px;font-weight:700;">When in doubt, trust a Hoodlum.</p>' +
+          '<p style="margin:0;color:#0B2545;">Mike &amp; Webs<br><span style="color:#0F1419;">The Intelligent Hoodlums</span></p>' +
+        '</div>' +
+        '<div style="height:6px;background:#B7280F;"></div>' +
+      '</div>' +
+    '</div>';
 
   MailApp.sendEmail({
     to: data.email,

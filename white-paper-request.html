@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="/styles.css">
 
 <style>
+  /* The hidden attribute must win even on .btn (which sets display:inline-block). */
+  [hidden] { display: none !important; }
   /* what they get — scoped to this page */
   .wp-promise { border: 1px solid var(--bone-08); background: var(--bone-06); border-radius: 8px; padding: var(--space-5) var(--space-6); margin-bottom: var(--space-6); }
   .wp-promise h3 { font-size: var(--text-sm); letter-spacing: 0.18em; text-transform: uppercase; color: var(--hm-tuscany); margin-bottom: var(--space-3); }
