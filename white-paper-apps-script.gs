@@ -37,6 +37,7 @@ var COLUMNS = [
   'email',
   'role',
   'school_org',
+  'marketing_opt_in',     // 'Yes' / 'No' — consent to marketing emails
   'source',               // which page/CTA sent them
   'emailed',              // 'Yes' / 'No' — did the delivery email send
   'user_agent',

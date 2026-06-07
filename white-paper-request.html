@@ -121,6 +121,11 @@
         </div>
       </fieldset>
 
+      <label class="check-field" style="margin-top: var(--space-5);">
+        <input type="checkbox" id="f_marketing" name="marketing_opt_in" value="Yes">
+        <span>Keep me posted on workshops, events, and new resources from The Intelligent Hoodlums. No spam, and you can opt out anytime.</span>
+      </label>
+
       <div class="survey-actions">
         <button type="submit" class="btn btn-primary" id="submitBtn">Send Me the White Paper</button>
         <p class="survey-note" id="formNote" role="status" aria-live="polite" tabindex="-1"></p>
@@ -189,6 +194,7 @@
       email: form.email.value.trim().toLowerCase(),
       role: form.role.value,
       school_org: form.school_org.value.trim(),
+      marketing_opt_in: form.marketing_opt_in.checked ? 'Yes' : 'No',
       source: form.source.value,
       user_agent: navigator.userAgent,
       page_url: form.page_url.value,
