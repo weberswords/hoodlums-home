@@ -21,7 +21,7 @@ const CaseStudy = () => {
   const cs = caseStudies[active];
 
   return (
-    <div style={{ fontFamily: "'Avocado Sans', sans-serif" }}>
+    <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
 
       {/* Case studies section */}
       <section style={{ background: '#0B2545', padding: '64px 64px' }}>
@@ -39,7 +39,7 @@ const CaseStudy = () => {
         <div style={{ display: 'flex', gap: 0, marginBottom: 24, borderBottom: '1px solid rgba(242,232,213,0.2)' }}>
           {caseStudies.map((c, i) => (
             <button key={i} onClick={() => setActive(i)} style={{
-              fontFamily: "'Avocado Sans', sans-serif", fontWeight: 100,
+              fontFamily: "'DM Sans', sans-serif", fontWeight: 100,
               fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase',
               padding: '8px 16px', background: 'transparent',
               color: active === i ? '#F2E8D5' : '#8CA3B5',

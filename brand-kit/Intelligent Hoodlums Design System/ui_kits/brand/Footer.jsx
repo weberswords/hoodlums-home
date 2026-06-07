@@ -4,7 +4,7 @@ const Footer = () => (
   <footer style={{
     background: '#0F1419', color: '#F2E8D5',
     padding: '48px 64px 32px',
-    fontFamily: "'Avocado Sans', sans-serif",
+    fontFamily: "'DM Sans', sans-serif",
   }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 40 }}>
       {/* Left: logo + tagline */}

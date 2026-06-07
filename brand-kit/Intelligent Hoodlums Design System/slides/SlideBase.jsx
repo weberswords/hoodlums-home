@@ -10,6 +10,9 @@ const HM = {
   ink:      '#0F1419',
 };
 
+const GRIFT = "'Grift', sans-serif";
+const DM    = "'DM Sans', sans-serif";
+
 // Halftone overlay (ben-day dots)
 const Halftone = ({ opacity = 0.18, color = HM.bone, size = 7 }) => (
   <div style={{
@@ -28,13 +31,13 @@ const Masthead = ({ light = false }) => (
     borderBottom: `2px solid ${light ? HM.ink : 'transparent'}`,
     padding: '14px 56px',
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    fontFamily: "'Avocado Sans', sans-serif",
-    fontWeight: 100, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
+    fontFamily: DM,
+    fontWeight: 300, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
     color: light ? HM.ink : HM.bone,
     zIndex: 10,
   }}>
     <span>The Intelligent Hoodlums · Vol.01</span>
-    <span style={{ fontWeight: 700, fontSize: 14, letterSpacing: '0.06em' }}>Design · Disrupt · Deliver</span>
+    <span style={{ fontWeight: 600, fontSize: 13, letterSpacing: '0.08em' }}>Design · Disrupt · Deliver</span>
     <span>LV · EST 2014 · NV</span>
   </div>
 );
@@ -47,11 +50,29 @@ const RufousRule = ({ width = 56 }) => (
 // Chapter tag / label
 const ChapterTag = ({ children, color = HM.tuscany }) => (
   <div style={{
-    fontFamily: "'Avocado Sans', sans-serif",
-    fontWeight: 100, fontSize: 14, letterSpacing: '0.14em',
+    fontFamily: DM,
+    fontWeight: 600, fontSize: 12, letterSpacing: '0.14em',
     textTransform: 'uppercase', color,
     marginBottom: 16,
   }}>{children}</div>
 );
 
-Object.assign(window, { HM, Halftone, Masthead, RufousRule, ChapterTag });
+// Bottom strip — shared utility
+const BottomStrip = ({ left = 'The Intelligent Hoodlums', center = null, right = 'Design · Disrupt · Deliver', dark = true }) => (
+  <div style={{
+    position: 'absolute', bottom: 0, left: 0, right: 0,
+    background: dark ? HM.prussian : HM.bone,
+    borderTop: dark ? 'none' : `1px solid rgba(15,20,25,0.15)`,
+    padding: '12px 56px',
+    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+    fontFamily: DM,
+    fontWeight: 300, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+    color: dark ? 'rgba(242,232,213,0.4)' : 'rgba(15,20,25,0.4)',
+  }}>
+    <span>{left}</span>
+    {center && <span style={{ color: HM.tuscany }}>{center}</span>}
+    <span style={{ color: HM.tuscany }}>{right}</span>
+  </div>
+);
+
+Object.assign(window, { HM, GRIFT, DM, Halftone, Masthead, RufousRule, ChapterTag, BottomStrip });

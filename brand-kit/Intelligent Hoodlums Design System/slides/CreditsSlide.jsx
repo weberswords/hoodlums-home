@@ -5,12 +5,10 @@ const CreditsSlide = () => (
     width: '100%', height: '100%',
     background: HM.ink, position: 'relative', overflow: 'hidden',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontFamily: "'Avocado Sans', sans-serif",
+    fontFamily: DM,
   }}>
     <Halftone opacity={0.12} color={HM.bone} size={8} />
     <Masthead />
-
-    {/* Left rufous stripe */}
     <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, background: HM.rufous }} />
 
     <div style={{
@@ -25,9 +23,9 @@ const CreditsSlide = () => (
 
       {/* Right: hook + credits */}
       <div>
-        {/* Closing hook */}
         <h2 style={{
-          fontWeight: 700, fontSize: 72, lineHeight: 1.0,
+          fontFamily: GRIFT,
+          fontWeight: 800, fontSize: 74, lineHeight: 1.0,
           color: HM.bone, margin: '0 0 16px', letterSpacing: '0.01em',
         }}>
           When in doubt,<br />
@@ -39,7 +37,7 @@ const CreditsSlide = () => (
         {/* Credits box */}
         <div style={{
           marginTop: 36,
-          fontWeight: 100, fontSize: 14, lineHeight: 2.4,
+          fontFamily: DM, fontWeight: 300, fontSize: 14, lineHeight: 2.4,
         }}>
           {[
             ['Firm',    'The Intelligent Hoodlums'],
@@ -49,8 +47,8 @@ const CreditsSlide = () => (
             ['Contact', 'theintelligenthoodlums.com'],
           ].map(([label, val]) => (
             <div key={label} style={{ display: 'flex', gap: 28 }}>
-              <span style={{ color: HM.tuscany, textTransform: 'uppercase', letterSpacing: '0.1em', minWidth: 100 }}>{label}</span>
-              <span style={{ color: HM.bone }}>{val}</span>
+              <span style={{ fontFamily: DM, fontWeight: 600, color: HM.tuscany, textTransform: 'uppercase', letterSpacing: '0.1em', minWidth: 100 }}>{label}</span>
+              <span style={{ fontFamily: DM, fontWeight: 300, color: HM.bone }}>{val}</span>
             </div>
           ))}
         </div>
@@ -62,7 +60,8 @@ const CreditsSlide = () => (
       position: 'absolute', bottom: 0, left: 0, right: 0,
       background: HM.prussian, padding: '12px 56px',
       display: 'flex', justifyContent: 'space-between',
-      fontWeight: 100, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+      fontFamily: DM, fontWeight: 300, fontSize: 12,
+      letterSpacing: '0.1em', textTransform: 'uppercase',
       color: 'rgba(242,232,213,0.4)',
     }}>
       <span>Brand Kit · Vol.01 · Issue 001</span>

@@ -3,34 +3,27 @@
    Static site · built on brand kit Vol.01
    ============================================================ */
 
-/* ── FONTS (self-hosted Avocado Sans) ────────────────────── */
-/* unicode-range limits Avocado Sans to the codepoints it actually draws;
-   anything outside (em/en dashes, middle dot, ©, arrows, math, etc.)
-   falls through to the next font in the stack. */
-@font-face {
-  font-family: 'Avocado Sans';
-  src: url('/fonts/AvocadoSans-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0020-0024, U+0026-0029, U+002C-003B, U+003F-005A, U+005F, U+0061-007A, U+007C, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2122;
-}
-@font-face {
-  font-family: 'Avocado Sans';
-  src: url('/fonts/AvocadoSans-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0020-0024, U+0026-0029, U+002C-003B, U+003F-005A, U+005F, U+0061-007A, U+007C, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2122;
-}
-@font-face {
-  font-family: 'Avocado Sans';
-  src: url('/fonts/AvocadoSans-Thin.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0020-0024, U+0026-0029, U+002C-003B, U+003F-005A, U+005F, U+0061-007A, U+007C, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2122;
-}
+/* ── FONTS — Brand Kit Vol.02 ────────── */
+/* Grift = display/headlines (self-hosted). DM Sans = body/labels (Google Fonts). */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-Thin.woff2') format('woff2'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-ThinItalic.woff2') format('woff2'); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-ExtraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-LightItalic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-MediumItalic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-SemiBoldItalic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-BoldItalic.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-ExtraBoldItalic.woff2') format('woff2'); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-Black.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Grift'; src: url('/fonts/Grift-BlackItalic.woff2') format('woff2'); font-weight: 900; font-style: italic; font-display: swap; }
 
 /* ── TOKENS ──────────────────────────────────────────────── */
 :root {
@@ -42,6 +35,12 @@
   --hm-bone:        #F2E8D5;
   --hm-cadet:       #8CA3B5;
   --hm-ink:         #0F1419;
+  --hm-prussian-80: #2A4465;
+  --hm-prussian-40: #6A87A3;
+  --hm-bone-dark:   #E8D8BC;
+  --hm-bone-darker: #D4C09A;
+  --hm-rufous-light:#D94A2A;
+  --hm-tuscany-dark:#C4883A;
 
   --bone-60: rgba(242,232,213,0.6);
   --bone-40: rgba(242,232,213,0.4);
@@ -49,7 +48,8 @@
   --bone-06: rgba(242,232,213,0.06);
 
   /* type */
-  --font-family: 'Avocado Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Grift', 'DM Sans', sans-serif;
 
   /* scale */
   --text-xs:   11px;
@@ -59,6 +59,8 @@
   --text-lg:   26px;
   --text-xl:   36px;
   --text-2xl:  52px;
+  --text-3xl:  72px;
+  --text-4xl:  96px;
 
   /* spacing */
   --space-3:  12px;
@@ -1603,3 +1605,13 @@ body::before {
   color: var(--hm-cadet);
 }
 .quote-feature cite strong { color: var(--hm-bone); font-weight: 700; }
+
+
+/* ── Brand Kit Vol.02 · Grift display type ─────── */
+h1, h2, h3,
+.masthead, .nav-logo,
+.hero-title, .section-title, .section-title-dark, .cta-title,
+.survey-title, .survey-result-title, .case-name, .day-title,
+.stat-num, .quote-feature blockquote, .footer-brand h3 {
+  font-family: var(--font-display);
+}

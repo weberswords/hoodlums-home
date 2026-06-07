@@ -5,7 +5,7 @@ const SectionOpenerSlide = ({ chapter = '01', title = 'The Origin', lede = '', t
     width: '100%', height: '100%',
     background: HM.prussian, position: 'relative', overflow: 'hidden',
     display: 'flex', alignItems: 'center',
-    fontFamily: "'Avocado Sans', sans-serif",
+    fontFamily: DM,
   }}>
     <Halftone opacity={0.1} color={HM.bone} size={7} />
     <Masthead />
@@ -13,10 +13,10 @@ const SectionOpenerSlide = ({ chapter = '01', title = 'The Origin', lede = '', t
     {/* Large chapter number — background watermark */}
     <div style={{
       position: 'absolute', right: -20, top: '50%', transform: 'translateY(-50%)',
-      fontWeight: 700, fontSize: 420, lineHeight: 1,
-      color: 'rgba(11,37,69,0.6)', letterSpacing: '-0.05em',
+      fontFamily: GRIFT,
+      fontWeight: 900, fontSize: 420, lineHeight: 1,
+      color: 'rgba(11,37,69,0.55)', letterSpacing: '-0.03em',
       userSelect: 'none', pointerEvents: 'none',
-      fontFamily: "'Avocado Sans', sans-serif",
     }}>{chapter.padStart(2, '0')}</div>
 
     {/* Left rufous stripe */}
@@ -27,7 +27,8 @@ const SectionOpenerSlide = ({ chapter = '01', title = 'The Origin', lede = '', t
       <ChapterTag color={HM.tuscany}>Chapter · {chapter.padStart(2, '0')} — {tag}</ChapterTag>
 
       <h2 style={{
-        fontWeight: 700, fontSize: 96, lineHeight: 0.95,
+        fontFamily: GRIFT,
+        fontWeight: 800, fontSize: 96, lineHeight: 0.95,
         letterSpacing: '0.01em', color: HM.bone,
         margin: '0 0 32px',
       }}>{title}</h2>
@@ -36,6 +37,7 @@ const SectionOpenerSlide = ({ chapter = '01', title = 'The Origin', lede = '', t
 
       {lede && (
         <p style={{
+          fontFamily: DM,
           fontWeight: 400, fontSize: 24, lineHeight: 1.6,
           color: 'rgba(242,232,213,0.7)', marginTop: 32, maxWidth: 580,
         }}>{lede}</p>
@@ -48,7 +50,8 @@ const SectionOpenerSlide = ({ chapter = '01', title = 'The Origin', lede = '', t
       borderTop: '1px solid rgba(242,232,213,0.15)',
       padding: '12px 56px',
       display: 'flex', justifyContent: 'space-between',
-      fontWeight: 100, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+      fontFamily: DM,
+      fontWeight: 300, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
       color: 'rgba(242,232,213,0.35)',
     }}>
       <span>The Intelligent Hoodlums</span>

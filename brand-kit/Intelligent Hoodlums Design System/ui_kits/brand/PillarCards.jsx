@@ -28,7 +28,7 @@ const PillarCards = () => {
   return (
     <section style={{
       background: '#F2E8D5', padding: '64px 64px',
-      fontFamily: "'Avocado Sans', sans-serif",
+      fontFamily: "'DM Sans', sans-serif",
     }}>
       {/* Section header */}
       <div style={{ marginBottom: 40 }}>

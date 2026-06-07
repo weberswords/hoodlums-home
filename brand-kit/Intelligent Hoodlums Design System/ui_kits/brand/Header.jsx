@@ -4,7 +4,7 @@
 const Header = ({ activePage = 'home' }) => {
   const navItems = ['Design', 'Disrupt', 'Deliver', 'Case Studies', 'The Bond'];
   return (
-    <header style={{ fontFamily: "'Avocado Sans', sans-serif" }}>
+    <header style={{ fontFamily: "'DM Sans', sans-serif" }}>
       {/* Masthead band */}
       <div style={{
         background: '#0B2545', color: '#F2E8D5',
