@@ -93,9 +93,11 @@
     /* Keep the closing CTA whole so its last line never strands on a new page. */
     .cta-band { break-inside: avoid; page-break-inside: avoid; }
     /* Keep small blocks whole; stack them with spacing. */
-    .method-card, .stat-card, .case-col, .ab-callout, .quote-feature {
+    .method-card, .stat-card, .case-col {
       display: block; margin-bottom: 14px; break-inside: avoid; page-break-inside: avoid;
     }
+    /* Callouts/quotes may break across pages (kept-whole + a pinned heading can force a blank page). */
+    .ab-callout, .quote-feature { display: block; margin-bottom: 14px; }
     /* Keep a heading (and its rule) with the text that follows, so it never strands at a page bottom. */
     h1, h2, h3, h4, .section-label, .section-label-dark, .case-kicker, .rufous-rule {
       break-after: avoid; page-break-after: avoid;
