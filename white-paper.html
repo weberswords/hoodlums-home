@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  CLASSROOM OS — WHITE PAPER
+  ============================================================
+  Tier discipline (per CONTENT-TIERING.md): reveals the WHAT + WHY
+  in depth (architecture, sequencing, theory, full methodology,
+  case study). Deliberately HOLDS BACK the executional HOW
+  (templates, the trademarked visual-mapping routines + how-to,
+  prompt method/library, "Slopped" mechanics, tool-chain steps,
+  facilitation moves) for the paid room.
+
+  STORY STRUCTURE (StoryBrand / SB7, Miller 2017): the reader is
+  the HERO (teacher + administrator); the Hoodlums are the GUIDE.
+  Beats are tagged inline with SB7 markers in the section comments.
+
+  VOICE / STYLE (locked): part sales letter, part academic paper.
+  No em-dashes. No sentence-initial conjunctions. No "utilize."
+  No "it's not X, it's Y" antithesis. Every claim supported; the
+  arguments reinforce one another. Unofficial persona: the
+  superintendent of a large district (Clark County). Portrait of a
+  Learner woven through Source Code, Scheduler, and the budget case.
+
+  TRADEMARK NOTE: "Thinking Maps" + the eight maps are registered
+  trademarks of Thinking Maps, Inc. — not named here by design.
+
+  Gated: noindex; revealed after the lead-capture form (separate
+  build task). Must be DOWNLOADABLE (hosted branded PDF), EMAILABLE
+  (gate Apps Script mails the PDF/link), and SAVE-TO-DRIVE.
+  Reuses styles.css tokens + components.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom OS — The Method, the Theory, and What Moved · A White Paper · The Intelligent Hoodlums</title>
+<meta name="description" content="A white paper for school and district leaders: the architecture behind Classroom OS, the theory it's built on, the Monday-to-Friday data from the June 2026 pilot, and the case study in full.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F1419">
+<meta name="author" content="The Intelligent Hoodlums">
+
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/HM-favicon-64.png">
+
+<link rel="preload" href="/fonts/Grift-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Grift-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+  /* White-paper body text: brighter than the site-default cadet for a long read.
+     :not(.lede-text-dark) leaves the bone-background data section's dark text alone. */
+  .lede-text:not(.lede-text-dark) { color: var(--hm-bone); }
+
+  /* ── PRINT / SAVE AS PDF: clean, light, ink-friendly document ─ */
+  @media print {
+    *, *::before, *::after { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: #fff !important; color: var(--hm-ink) !important; }
+    body::before { display: none !important; }                 /* halftone grit */
+    .site-nav, .hero-badge, .hero-cta, .cta-band .btn { display: none !important; }
+
+    .masthead, .hero, .section, .cta-band, .site-footer {
+      background: #fff !important; color: var(--hm-ink) !important;
+    }
+    .masthead { border-bottom: 2px solid var(--hm-rufous) !important; }
+    .hero { min-height: auto !important; padding: 18px 0 28px !important; }
+    .section { padding: 18px 0 !important; }
+    .hero::before, .section::before, .cta-band::before, .section-leaders::before { display: none !important; }
+
+    .hero *, .section *, .cta-band *, .site-footer * { color: var(--hm-ink) !important; }
+
+    /* brand accents stay rufous */
+    .hero-pillars, .section-label, .section-label-dark, .method-step,
+    .case-kicker, .stat-num, .stat-after, .quote-feature-mark { color: var(--hm-rufous) !important; }
+    .rufous-rule { background: var(--hm-rufous) !important; }
+    .stat-before { color: rgba(15,20,25,0.45) !important; }
+
+    /* cards and callouts: white with a light border */
+    .method-card, .stat-card, .ab-callout, .quote-feature, .case-col {
+      background: #fff !important; border: 1px solid rgba(15,20,25,0.22) !important;
+      box-shadow: none !important;
+    }
+    .case-study { background: #fff !important; box-shadow: none !important; }
+    .btn { background: #fff !important; color: var(--hm-ink) !important; border: 1px solid var(--hm-rufous) !important; }
+
+    /* pagination */
+    /* Grids/flex ignore break-inside on their children, so make them block in print. */
+    .method-grid, .pulse-stats, .case-ba { display: block !important; break-inside: auto; page-break-inside: auto; }
+    .case-study { break-inside: auto; page-break-inside: auto; }
+    /* Each chapter (Executive Summary, 01-12, the method section, Appendix) starts a fresh page. */
+    .section { break-before: page; page-break-before: always; }
+    /* Keep the closing CTA whole so its last line never strands on a new page. */
+    .cta-band { break-inside: avoid; page-break-inside: avoid; }
+    /* Keep small blocks whole; stack them with spacing. */
+    .method-card, .stat-card, .case-col {
+      display: block; margin-bottom: 14px; break-inside: avoid; page-break-inside: avoid;
+    }
+    /* Callouts/quotes may break across pages (kept-whole + a pinned heading can force a blank page). */
+    .ab-callout, .quote-feature { display: block; margin-bottom: 14px; }
+    /* Keep a heading (and its rule) with the text that follows, so it never strands at a page bottom. */
+    h1, h2, h3, h4, .section-label, .section-label-dark, .case-kicker, .rufous-rule {
+      break-after: avoid; page-break-after: avoid;
+    }
+    h1, h2, h3, h4 { break-inside: avoid; page-break-inside: avoid; }
+    p, li { orphans: 3; widows: 3; }
+
+    /* End colophon: tidy, centered, kept together, separated from the appendix. */
+    .footer-social { display: none !important; }
+    .site-footer { margin-top: 28px; padding: 16px 0 0 !important; border-top: 1px solid rgba(15,20,25,0.2) !important; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+    .footer-inner { display: block !important; text-align: center; padding: 0 !important; }
+    .footer-bottom { display: block !important; text-align: center; margin-top: 8px; padding-top: 8px !important; border-top: 0 !important; }
+    .footer-tagline { display: block; margin-top: 4px; }
+
+    a { color: var(--hm-ink) !important; text-decoration: none !important; }
+    @page { margin: 16mm 15mm; }
+  }
+</style>
+<!-- Note: the print stylesheet above makes "Save as PDF" produce a clean light
+     document. To light up the request page's "Download the PDF" + Google "Save to
+     Drive" buttons, export this page to PDF, host it (e.g. /assets/), and set
+     PDF_URL in white-paper-request.html and white-paper-apps-script.gs. -->
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span>The Intelligent Hoodlums</span>
+  <span class="dot">&middot;</span>
+  <span>Las Vegas</span>
+  <span class="dot">&middot;</span>
+  <span>Est 2014</span>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
+  <ul class="nav-links">
+    <li><a href="/classroom-os" class="nav-back">&larr; The Retrospective</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+<!-- ============================================================
+     COVER BLOCK
+     ============================================================ -->
+<section class="hero hero-event">
+  <div class="hero-inner">
+    <div class="hero-pillars">A White Paper &nbsp;&middot;&nbsp; For School &amp; District Leaders &nbsp;&middot;&nbsp; June 2026</div>
+    <h1 class="hero-title">Your best ed-tech is already on payroll.</h1>
+    <div class="rufous-rule hero-rule"></div>
+    <!-- SB7: Hero / big idea — invest in the biggest lever (the teacher), so every tool a district owns pays off. -->
+    <p class="hero-tagline">
+      Districts spend millions on classroom technology, and its return depends entirely on the teacher deploying it. The largest in-school driver of learner achievement is the teacher in the room (Rivkin, Hanushek &amp; Kain, 2005), and teachers are most of your budget. A tool a teacher understands deeply becomes powerful in their hands, and the same tool used without that understanding becomes one more hour of low-value screen time. Classroom OS invests in the teacher. It uses AI to sharpen each teacher&rsquo;s craft and automate the routine work that drains their time, making the people you already employ measurably better and more capable with every tool you own, so your technology works harder and your district becomes the one others come to learn from.
+    </p>
+    <div class="hero-cta">
+      <button type="button" class="btn btn-bone" onclick="window.print()">Download PDF</button>
+    </div>
+    <!-- INTENT (build phase): post-reveal actions bar — "Download the PDF" + Google
+         "Save to Drive" button. (Email delivery handled by the gate Apps Script.) -->
+    <img src="/assets/HM-badge-full.png" alt="" aria-hidden="true" class="hero-badge">
+  </div>
+</section>
+
+<!-- ============================================================
+     1 · EXECUTIVE SUMMARY
+     ============================================================ -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">Executive Summary</div>
+    <h2 class="section-title">The case in brief.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      The biggest lever a district has on learner achievement is also its biggest expense: the teacher in the room (Rivkin, Hanushek &amp; Kain, 2005). The technology a district buys only returns what the teacher deploying it can draw out, and most professional development never builds that capacity. Classroom OS does. It uses AI to make the people you already employ measurably better, and capable enough with these tools that the rest of your technology, the learner-facing tools included, finally delivers what it promised.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Classroom OS is a five-day professional development program. In it, each teacher builds the operating system their classroom runs on: what they believe about how learners learn, the structures that put those beliefs into practice, a plan for the year, and a set of tools, including AI, trained on all of it. Curator, the platform that operationalizes Classroom OS, builds the folders and sheets behind that system in the teacher&rsquo;s own Google Drive, so the work is theirs to keep. The same week is a rigorous course in pedagogy. It covers standards, differentiation, collaboration, accessibility, and assessment, it works as well for a second-grade teacher as for a high school algebra teacher, and it builds on the Portrait of a Nevada Learner, the state&rsquo;s vision for every graduate. Teachers leave more effective, better supported, and more likely to stay, which is the cheapest way a district ever buys back the roughly $25,000 it spends to replace each teacher who walks out the door (Learning Policy Institute, 2017).
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      The approach does not rest on hope. Its design follows the features that peer-reviewed research links to stronger achievement (Darling-Hammond, Hyler &amp; Gardner, 2017), and it strengthens the kind of teacher collaboration shown to raise math and reading results (Ronfeldt et al., 2015). Fifteen teachers took part in the June 2026 pilot and rated it 4.8 out of 5, and the pages that follow document the method, the research, and the data in full. A district can begin with a single school, department, or grade level, and set out to become the place other districts visit to learn how it builds teachers this good.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     2 · THE PROBLEM  (name the moment + the failure mode)
+     ============================================================ -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">01</div>
+    <h2 class="section-title">The problem underneath.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Problem — empathy first (we know the reality), then the diagnosis. -->
+    <p class="lede-text">
+      Anyone who runs schools knows the pressures that never make it into a strategic plan. There are rarely enough substitutes to cover the absences. The strongest teachers are the ones other districts try to hire away. Last year&rsquo;s professional development is a binder nobody has opened since the in-service. Artificial intelligence has arrived faster than any policy for it, and staff are at once curious about it and afraid of it. This is the daily work of keeping classrooms running, and it is where this paper starts.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Most schools handle technology in one of two blunt ways. Some ban it: phones away, screens off, no AI. Others adopt everything fast, so they do not fall behind. Both are reacting to real pressures: distraction, the pace of change, and the fear that learners will hand their thinking to a machine. Neither answers the question a teacher actually faces on a Tuesday: <strong>what is the right tool for this task, for these learners, right now?</strong> Classroom OS is built on that question. It teaches teachers to choose tools deliberately, sometimes analog and sometimes digital, according to the work in front of them.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      A second problem predates AI and outlasts any single tool. Most professional development presents a product, tours its features, and issues a certificate, treating the teacher as an empty vessel for a vendor&rsquo;s content. The technology itself keeps arriving faster than the capacity to use it well, so powerful tools deliver a fraction of what they could, and screen time stands in for instruction a confident teacher would have led. Rarely does anyone stop to ask whether a given tool is worth using at all. The teachers in this pilot were experts in their rooms. What they needed was the capacity to get everything out of the tools they already had, and the time to learn it. None of this is unique to any one district; it is the default almost everywhere. At the scale of Clark County, closing the gap between the tools a district owns and the teachers who make them work is the highest-leverage move a leader can make.
+      <!-- SB7: Stakes/Failure seeded (restriction = losing path; presence-dependence = fragility). -->
+    </p>
+    <!-- SB7: Guide authority + empathy — we have lived both ends of this. -->
+    <p class="lede-text" style="margin-top:24px;">
+      The two of us behind this are Clark County educators, not outside consultants. Mike taught for eighteen years, including in the district, and has since substituted in more than forty of its schools, a fast education in the difference between a teacher with a system behind them and a teacher improvising alone. Webs spent ten years in Clark County classrooms, builds machine-learning tools, and is a PhD candidate in learning sciences, so she understands both what the technology can do and what the research says actually moves learning. Both of us are Apple Distinguished Educators, and Mike is a PBS Digital Innovator and a Heart of Education award winner. The method in these pages comes from both of those vantage points.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     3 · THE THESIS  (the machine as mirror)
+     ============================================================ -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">02</div>
+    <h2 class="section-title">Why the AI has to know your classroom.</h2>
+    <div class="rufous-rule section-rule"></div>
+
+    <figure class="quote-feature">
+      <span class="quote-feature-mark" aria-hidden="true">&ldquo;</span>
+      <blockquote>AI is not my competition. It is the paper plane I can customize, maneuver and hop on to reach new heights.</blockquote>
+      <cite><strong>Ana</strong> &middot; 2nd grade teacher</cite>
+    </figure>
+
+    <p class="lede-text">
+      Most teachers who try AI come away unimpressed, and they are right to be. A general-purpose model gives everyone the same generic answers. It becomes useful only when it is taught the specifics of a teacher&rsquo;s work: the subject and standards they teach, how their classroom runs, and the way they speak to their learners. Given that information, the same model produces lesson materials in the teacher&rsquo;s own voice and aligned to the teacher&rsquo;s own classroom. The program teaches one concrete skill, which is giving the AI enough about your practice that its output is worth using. A teacher who has taught the AI their own classroom also understands it well enough to decide when, and whether, to put it in front of learners.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     3 · MORE THAN A TOOL  (breadth of value + range of teachers)
+     ============================================================ -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">03</div>
+    <h2 class="section-title">More than a tool.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Guide demonstrates competence and stakes-relevant value to the hero. -->
+    <p class="lede-text">
+      Customizing the AI was only one part of the week. The five mornings were a course in pedagogy that happened to use modern technology. Teachers worked through standards alignment, differentiation, collaboration, accessibility, and visual design. They practiced analog instructional strategies before any screen appeared, and they watched the facilitators model those strategies live, so each method was demonstrated rather than described. They built on the Portrait of a Nevada Learner, the state&rsquo;s framework for the skills every learner should leave with, and they used technology with no connection to AI alongside the tools that depend on it. AI was one instrument among many. The craft of teaching was the subject throughout.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      The harder accomplishment was reaching every teacher in the room at once. The cohort included a high school librarian, a second-grade teacher, a fifth-grade generalist who covers every subject, a high school algebra teacher, a gifted-and-talented specialist, a computer science teacher, and a financial literacy specialist. Their experience ranged from a third year in the classroom to a sixteenth. A single workshop rarely serves that spread, because what lands for a new teacher often misses a veteran, and what a subject specialist needs seldom fits a generalist. Classroom OS served all of them from the same five mornings, because the method begins from each teacher&rsquo;s own context instead of a fixed curriculum. Each person built a system for the classroom they actually run, so one process produced a different and appropriate result for everyone in the room. That is differentiation modeled on the teachers themselves.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      The range held together because every teacher built on the same four layers, assembled in the same order.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     4 · THE FRAMEWORK  (architecture + why it's sequenced)
+     ============================================================ -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">04</div>
+    <h2 class="section-title">The architecture, and why it&rsquo;s built bottom-up.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Plan (part 1) — the structure the guide hands the hero. -->
+    <p class="lede-text">
+      An operating system is the layer that governs how everything above it runs. Most teachers inherit theirs by accident, assembled from old habits, district mandates, and whatever survived the last in-service. Classroom OS rebuilds it deliberately, in four layers, in a fixed order. The order carries the method. Each layer gives the next one something true to operate on, which is why the sequence cannot be skipped. A tool built on an empty foundation produces generic content, the same for every teacher.
+    </p>
+    <div class="method-grid">
+      <article class="method-card">
+        <div class="method-step">Layer 1 &middot; foundation</div>
+        <h3>Source Code</h3>
+        <p>What the teacher actually believes about how people learn, stated plainly, and anchored to the Portrait of a Nevada Learner. The state&rsquo;s Portrait names four things school should grow in a learner, Empowering, Connecting, Impacting, and Thriving, and teachers build their work toward them, with academic standards living underneath as the evidence. Every later layer follows from this foundation, which is why it comes first.</p>
+      </article>
+      <article class="method-card">
+        <div class="method-step">Layer 2</div>
+        <h3>Architecture</h3>
+        <p>The visible structures, including routines, layout, and transitions, that carry those beliefs without the teacher having to voice them. Architecture turns a stated value into a procedure that a learner can follow, and so can a substitute, another teacher, or an administrator who walks in. Its honesty depends on the Source Code beneath it.</p>
+      </article>
+      <article class="method-card">
+        <div class="method-step">Layer 3</div>
+        <h3>Scheduler</h3>
+        <p>The shape of the year, built from the district&rsquo;s own pacing guide and calendar so the system knows the real sequence of units, breaks, and assessments. Once the year is mapped, the tools work in the right order instead of in the abstract.</p>
+      </article>
+      <article class="method-card">
+        <div class="method-step">Layer 4 &middot; runs on top</div>
+        <h3>Applications</h3>
+        <p>The live tools that run on everything beneath them, including AI Gems trained on the teacher&rsquo;s content, sub plans, and daily materials. Teachers want to start here, and the method places it last for a reason. An application can only reflect what the lower layers contain.</p>
+      </article>
+    </div>
+    <p class="lede-text" style="margin-top:36px;">
+      This sequence explains why a feature tour rarely survives the year while a built system does. A tour begins at the top layer and never touches the three beneath it that would make the tool the teacher&rsquo;s own. A built system begins at the foundation, where the expertise already lives, and builds up from there. It also gives a district something a one-off cannot: classroom practice that is documented, coherent, and built to outlast the teacher who made it.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     5 · THE METHOD  (human → analog → digital)
+     ============================================================ -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">05</div>
+    <h2 class="section-title">Human, then analog, then digital.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Plan (part 2) — the repeatable process the hero can carry home. -->
+    <p class="lede-text">
+      Teachers did not receive those four layers as readings. They built each one, on the same sequence every morning, a rhythm they could carry directly into their own rooms: begin with the human, move to analog, reach for digital only when the task calls for it. The sequence turns the right-tool question into a daily habit. A blanket refusal of technology and a blanket embrace of it both skip the only decision that matters, which is the deliberate choice the method teaches.
+    </p>
+    <div class="method-grid">
+      <article class="method-card">
+        <div class="method-step">First</div>
+        <h3>Human</h3>
+        <p>The morning opened with the person, never a screen. Teachers answered questions only they can answer: who are you as a teacher, what matters to you, what do you want learners to feel in your room, even what it sounds and smells like. Beginning here taps what Yu-kai Chou (2015) calls epic meaning and ownership, so the work that follows is genuinely theirs. Psychological safety made that honesty possible, on the social-presence principles of Whiteside and Garrett Dikkers (2017).</p>
+      </article>
+      <article class="method-card">
+        <div class="method-step">Then</div>
+        <h3>Analog</h3>
+        <p>Before any device opened, teachers drew, mapped, and drafted on blank paper, including the first prompts they would later give the AI. Working by hand keeps the thinking clear of the computer interface, which lowers the load on working memory (Sweller, 1988) and reflects the advantage longhand has shown over typing for processing ideas (Mueller and Oppenheimer, 2014). Paper is where an idea gets sharp enough to be worth building.</p>
+      </article>
+      <article class="method-card">
+        <div class="method-step">Only when it helps</div>
+        <h3>Digital</h3>
+        <p>Technology came last, and never automatically. The test was simple: can a digital tool do something paper and a person cannot? Often it can. A lesson recorded once lets a learner replay it as many times as they need. Gemini can scaffold an English learner in the moment, instead of pulling another learner away to translate. When the gain is real, the tool goes in, and the benefit is the dual-channel kind multimedia research describes (Mayer, 2009).</p>
+      </article>
+    </div>
+
+    <div class="ab-callout" style="margin-top:40px;">
+      <div class="case-kicker">&ldquo;Who are you?&rdquo; before &ldquo;what&rsquo;s your why?&rdquo;</div>
+      <p>
+        Most keynotes ask teachers, &ldquo;What&rsquo;s your why?&rdquo; This pilot asked a question that is harder to perform: <em>who are you as a teacher?</em> A &ldquo;why&rdquo; invites a rehearsed mission statement. An identity asks for something concrete and difficult to fake, and it is generative, because once a teacher knows who they are, their reasons follow on their own. The reverse rarely holds. After the first day, one teacher described the question sending her back through the full record of her experience: why she became a teacher, why she remains one, and what shaped the person now standing in front of her learners. The question surfaced expertise she already had. That is the practical power of identity, and it anchors everything the week builds afterward.
+      </p>
+    </div>
+
+    <p class="lede-text" style="margin-top:36px;">
+      Thinking that openly is a design outcome rather than a happy accident, and several traditions informed the design. <strong>Oblique prompts</strong>, in the spirit of Brian Eno and Peter Schmidt&rsquo;s 1975 deck, loosened thinking that a direct question would have stiffened. <strong>Psychological safety</strong> functioned as a first-class constraint rather than a courtesy, so disclosure stayed opt-in and graduated, on the evidence that forced vulnerability undermines the safety it is meant to create. The facilitators said openly that they dislike over-sharing icebreakers, and that candor did more for the room than a trust exercise would have. The instinct has a research basis in the <strong>social presence</strong> work of Whiteside and Garrett Dikkers (2017), who treat belonging, cohesion, and a facilitator&rsquo;s genuine involvement as conditions a designer can build. Teachers worked in <strong>small crews of two to four</strong>, the group size at which engagement becomes interactive, the most productive mode in the collaborative-learning research of Miyake and Kirschner (2014). The motivation was designed to last, in the terms of Yu-kai Chou (2015), &ldquo;White Hat,&rdquo; resting on meaning, mastery, and creativity rather than pressure tactics that produce short-term compliance and lasting resentment.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      One rule governed all of it: <strong>clear rather than clever.</strong> One quieter choice mattered more than any single activity. The week was run the way the teachers were being taught to run their own classrooms, so they experienced the method before they were asked to use it.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     6 · THEORY, INTERLEAVED  (Sweller/Mayer · Chi/Schlechty · …)
+     ============================================================ -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">06</div>
+    <h2 class="section-title">Theory, earned in practice.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Authority — the guide proves competence (real research, real results). -->
+    <p class="lede-text">
+      None of the week&rsquo;s moves were improvised. The pilot did not skip research. It interleaved research with practice and named each concept after the hands-on work that made it land. Practice came first, then the term for what the practice had just demonstrated, which is the same scaffold the method uses throughout. A concept attached to something a teacher has already done is one a teacher remembers. Several distinct lines of research ran through the week, kept distinct on purpose, because they are different ideas rather than one blurred theory of learning.
+    </p>
+    <div class="ab-callout">
+      <div class="case-kicker">The research behind each move</div>
+      <p>
+        <strong>Cognitive load</strong> (Sweller, 1988) and <strong>multimedia learning</strong> (Mayer, 2009) explain the design-system work. A consistent font and color scheme reduce the extraneous load a learner carries, and an audiogram, which pairs a word&rsquo;s sound with its written form across two channels at once, gives an emerging reader a cleaner path to fluency. <strong>Engagement</strong> research (Chi and Wylie, 2014, on the ICAP progression from passive to active to constructive to interactive, and Schlechty, 2002, on designing tasks worth doing) shaped activities that climbed that progression rather than settling at the bottom. <strong>Collaboration</strong> research (Miyake and Kirschner, 2014) shaped the crews. <strong>Social presence</strong> research (Whiteside and Garrett Dikkers, 2017) shaped the safety. <strong>Motivation</strong> research (Chou, 2015) shaped the design for durable engagement. Every name in this paragraph appears in the appendix with a full citation.
+      </p>
+    </div>
+    <p class="lede-text" style="margin-top:36px;">
+      Accessibility was taught the same way, through high-contrast choices, attention to color-vision deficiency, and design for the actual range of learners in a room. The technology debate was taught with its nuance intact, covering what digital genuinely does that paper cannot, including translation, individualization, and scale, and where paper remains the better instrument, which is wherever the goal is to center the human and slow the thinking before a screen speeds it up. None of this arrived as a lecture. Each concept arrived as a name for something the teachers had already felt work.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     7 · THE DIAGNOSTIC  (the A/B test — design + what it reveals)
+     ============================================================ -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">07</div>
+    <h2 class="section-title">What the A/B test showed.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      On Thursday, the pilot ran a direct test of whether the customization mattered. The same prompt, <em>&ldquo;Create a lesson plan template that meets the requirements for my district,&rdquo;</em> went first to a plain, out-of-the-box instance of Gemini, then to an instance seated with the teacher&rsquo;s Course Brain, the AI they had spent the week training on their content and their voice. The contrast carried the lesson. For teachers who had done the underlying work, the second response returned in their own language, matched to their classroom. For teachers whose Classroom OS documents were still thin, the two responses looked much alike.
+    </p>
+    <div class="ab-callout">
+      <div class="case-kicker">The peak of the week</div>
+      <p>
+        A slicker pitch would have hidden the second finding. The pilot reports it because it is the most important thing the week established: <strong>the system reflects back exactly what the teacher puts in, and no more.</strong> That property is the point of the method rather than a flaw in it. A tool that produced the same polished result for everyone would prove nothing. This one improves only as the teacher invests in it, which keeps the quality in the teacher&rsquo;s hands. For most of the room, Thursday was the moment the week&rsquo;s work became visible, as documents arrived in each teacher&rsquo;s voice with little effort, because the work had already been done earlier in the week.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8 · THE PILOT  (Pulse methodology + Monday→Friday data)
+     ============================================================ -->
+<section class="section section-leaders">
+  <div class="section-inner">
+    <div class="section-label section-label-dark">08</div>
+    <h2 class="section-title section-title-dark">What moved, and how we measured it.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Success (part 1) — measured proof, stated honestly. -->
+    <p class="lede-text lede-text-dark">
+      The test showed the mechanism working for individuals. The Pulse survey measured whether the week moved the group. The results were measured, not asserted. Fifteen teachers took part in the June 2026 pilot, offered free over the summer across four crews. On Monday morning, before any instruction, they rated their own classrooms on a short set of statements, and on Friday they rated the same statements again. Comparing each teacher&rsquo;s Monday answer with their own Friday answer is how the survey isolates what changed. The figures below come from the teachers who rated their classrooms at both points.
+    </p>
+
+    <div class="pulse-stats">
+      <div class="stat-card">
+        <div class="stat-num stat-shift"><span class="stat-before">3.7</span><span class="stat-arrow" aria-hidden="true">&rarr;</span><span class="stat-after">4.4</span></div>
+        <div class="stat-label">&ldquo;My classroom runs without me,&rdquo; rated 1&ndash;5. The group&rsquo;s average rose <strong>0.7</strong> in four days.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num stat-shift"><span class="stat-before">3.3</span><span class="stat-arrow" aria-hidden="true">&rarr;</span><span class="stat-after">4.4</span></div>
+        <div class="stat-label">&ldquo;It runs on systems, not on my presence.&rdquo; The same teachers rose <strong>1.1</strong>, the largest single shift recorded.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">86<span style="font-size:0.45em;color:rgba(15,20,25,0.45);">%</span></div>
+        <div class="stat-label">of individual scores on those questions <strong>rose</strong> over the week, and none dropped.</div>
+      </div>
+    </div>
+
+    <p class="lede-text lede-text-dark" style="margin-top:32px;">
+      The end-of-week results held up on their own terms. Across eight respondents, the average value rating was <strong>4.8 out of 5</strong>, and seven of the eight said they would recommend it to another teacher, with none against it. The qualitative responses matched the numbers. One teacher wrote, <em>&ldquo;I&rsquo;m the human. I learned how to better communicate with AI to achieve the results I&rsquo;m looking for.&rdquo;</em> Another reached for the paper-plane image. Engagement also showed up in behavior. A teacher went home after the third day and finished her classroom commercial on her own time, with no assignment requiring it. The evidence is early and directional, and it points consistently in one direction.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     9 · CASE STUDY IN FULL  (Dawn — named, released)
+     ============================================================ -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">09</div>
+    <h2 class="section-title">She was already the expert. The tools caught up.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: Success (part 2) — the transformation made human. -->
+
+    <p class="lede-text" style="margin-bottom:36px;">
+      The numbers describe a group. Dawn shows what it looked like for one person.
+    </p>
+
+    <div class="case-study">
+      <div class="case-kicker">Case study &middot; The tool had to earn her trust</div>
+      <h3 class="case-name">Dawn &middot; 5th grade &middot; Snyder ES</h3>
+      <p class="case-lede">
+        Dawn is a sixteen-year veteran. On Wednesday she said plainly that she did not see the value in customizing the Gemini Gems. Her doubt was sound judgment. A general-purpose AI is general-purpose, and a teacher who knows her room, her learners, and her standards has every reason to be unimpressed by a tool that knows none of them. The request was never that she trust the tool. The request was that she teach the tool who she is and judge the result for herself. She did, and within roughly twenty-four hours the result changed. By Friday she had written, <em>&ldquo;I&rsquo;m the human. I learned how to better communicate with AI to achieve the results I&rsquo;m looking for.&rdquo;</em> She arrived an expert and left with tools that had finally gained the range to match her.
+      </p>
+      <div class="case-ba">
+        <div class="case-col case-before">
+          <h4>Where she started</h4>
+          <p>Wednesday: <em>&ldquo;I don&rsquo;t really see the value in customizing the Gems.&rdquo;</em> A fair question from someone who already knew her craft.</p>
+        </div>
+        <div class="case-col case-after">
+          <h4>By Friday, what she built</h4>
+          <ul>
+            <li>Source Code and Architecture docs</li>
+            <li>A Brand Kit in her own colors and fonts</li>
+            <li>Table place cards and a first-week-of-school letter</li>
+            <li>A 12-week plan to get her learners&rsquo; multiplication facts mastered, with an HTML practice tool to run it</li>
+            <li>A classroom commercial and a science podcast</li>
+            <li>A sentence-building Gem and a multiplication anchor chart with an interactive activity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="lede-text" style="margin-top:36px;">
+      Each artifact used her own colors and fonts by design, producing a coherent classroom kit that lowered her learners&rsquo; cognitive load precisely because it was consistent. That is the Sweller principle in practice, built by a teacher who had felt the reason for it before she heard the term. Dawn&rsquo;s expertise was never in question. What the week added was a set of tools with the range to carry that expertise into every corner of her classroom.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     10 · THE BUDGET CASE  (administrator-framed)
+     ============================================================ -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">10</div>
+    <h2 class="section-title">The administrator&rsquo;s bottom line.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      Dawn&rsquo;s week answers the question a teacher asks about value. A district leader weighs two others: does it raise learner achievement, and does it justify its cost. This pilot did not run long enough to measure test scores, and this paper will not claim that it did. What the paper can show is that Classroom OS is built around the variables that decades of research connect to higher achievement and lower spending, and that the pilot moved the leading indicator of those variables in five days.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Cost comes first, because the figures are concrete. The Learning Policy Institute (2017) estimates that replacing one teacher costs a large district on the order of $25,000 once recruiting, hiring, and lost productivity are counted. Absence carries its own price. Miller, Murnane, and Willett (2008) found that ten additional days of teacher absence lower fourth-grade mathematics achievement by roughly three percent of a standard deviation, a loss no substitute plan recovers. Both are symptoms of the same thing: a workforce stretched past what is sustainable. A teacher who feels replaceable by a tool has one more reason to leave. A teacher made measurably better at the work, and given a system that makes it sustainable, has one more reason to stay. Classroom OS invests in that teacher, returning teachers to the center of their own practice, the professional agency that supports retention.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Achievement turns on a different question: whether the design matches what works. Darling-Hammond, Hyler, and Gardner (2017) reviewed the research on effective professional development and named the features that separate the programs that change teaching from the ones that do not. Effective development is content-focused, active rather than passive, collaborative, built on modeling, and sustained over time. Classroom OS was designed against that list. Teachers worked on their own content, built instead of watching, collaborated in crews, learned from strategies the facilitators modeled live, and left with a system they keep developing after the week. A one-off feature tour satisfies none of those conditions, which explains how little of it reaches a classroom.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      On collaboration, the evidence is unusually direct. Ronfeldt and colleagues (2015) studied more than nine thousand teachers across Miami-Dade and found that learners gain more in mathematics and reading where teacher collaboration is stronger, and that teachers improve faster in those schools. The shared NotebookLM introduced on Wednesday is a practical instrument for that collaboration. A professional learning community can hold its materials and decisions in one notebook, question them together, and keep that knowledge when a member is absent or moves on. The method strengthens the collaboration the research rewards, and the shared notebook keeps what the team learns when its members change.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      The damage from turnover is not only financial. Ronfeldt, Loeb, and Wyckoff (2013) found that higher teacher turnover lowers learner achievement in both English and mathematics, with the steepest losses in the schools serving the most vulnerable learners. A district that keeps more of its teachers protects its budget and its scores together, and protects them most where the need runs deepest. Classroom OS also brings the Portrait of a Nevada Learner, which the state has adopted, into the daily work of the classroom, so the spend reinforces a direction the state has already set rather than adding one more competing initiative. The pilot moved teachers&rsquo; sense that their classrooms run on a system they built rather than on daily improvisation, the change that sits upstream of the effectiveness, retention, and collaboration effects that research ties to achievement and cost. At the scale of a large district, those effects compound across every school.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     11 · BUILT TO SCALE  (the rollout strategy, Clark County size)
+     ============================================================ -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">11</div>
+    <h2 class="section-title">From one cohort to a district.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      A district of roughly 277,000 learners across more than 350 schools will ask how a five-day program reaches that many classrooms. The first part of the answer is that there is less to scale than it appears. The same five mornings served a librarian, a second-grade teacher, an algebra teacher, and a computer science specialist, because the method adapts to each teacher&rsquo;s context rather than shipping a fixed curriculum. A district does not need a separate program for every subject, grade, and building. One method reaches all of them, so the thing being scaled stays small and consistent.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Much district-wide professional development loses its quality as it spreads, because each new layer of people retrained to deliver it understands it a little less than the last. Classroom OS does not scale by that cascade. The work that has to be tailored to each teacher is carried by the tools, not by a chain of facilitators. Each teacher&rsquo;s Course Brain and each team&rsquo;s shared NotebookLM do the individual fitting that would otherwise demand enormous facilitator time. The same leverage the program gives a teacher, using technology to reach more learners, lets a small expert team support far more teachers while keeping delivery in the hands of the people who built the method.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Two more features keep the scale manageable. The systems teachers build do not expire when the week ends. Curator builds the folders and sheets behind each teacher&rsquo;s system in their own Google Drive, so the data is the teacher&rsquo;s from the start and a district is never locked in: leave Curator and everything is already in Drive. A teacher keeps developing their system, and a professional learning community keeps its shared work as a memory that survives the people who move between buildings, so the program adds capability that compounds instead of work that must be redone each year. The rollout also plugs into structures a district already runs. Professional learning communities become the unit of growth. Delivery moves in deliberate stages, starting with a department or a grade level, then a school, then a region.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      A rollout that size has to be measured rather than assumed. The same Pulse instrument used in the pilot runs just as well across a region, and it pairs with the numbers a district already tracks: teacher retention, absence and substitute spending, and the achievement data the board reviews. That lets a leadership team watch a rollout in real numbers and steer it. Classroom OS is built to scale on three things working together: a method uniform enough to reach every teacher, tools that carry the part that has to be individual, and systems that keep working after we leave. Prove it on one school. When the numbers move, grow it from there.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     12 · WHAT COULD BE  (Duarte: paint the aspirational future)
+     ============================================================ -->
+<section class="section section-crew">
+  <div class="section-inner">
+    <div class="section-label">12</div>
+    <h2 class="section-title">What becomes possible.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <!-- SB7: the vision of success — the new normal the reader is buying into. -->
+    <p class="lede-text">
+      Picture the district a year in. Teaching is visibly stronger, not in one celebrated classroom but across the building, because every teacher is working from a system they built and an AI that sounds like them. New hires reach in months the level it used to take years to reach, because they inherit something real instead of a blank room. Teachers who would have left for an easier job stay, because this one finally feels possible. The technology learners use is chosen and run by a teacher who knows it cold, so their time on screens is finally worth it.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      For teachers, the change feels like relief and ownership. They spend less of themselves holding the room together by force, and more of it on the work they came to do. The technology extends their reach rather than threatening their place. For a district, it shows up as stronger instruction across more schools, lower turnover, and a reputation that recruits on its own: the place other districts visit to learn how it builds teachers this good. None of this asks a teacher to be heroic every day. It asks a district to invest in the teacher, the rarest and highest-leverage spend it can make.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     13 · CONCLUSION + SOFT CTA
+     ============================================================ -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <!-- SB7: Call to action + the Success/Failure stakes restated in one breath. -->
+    <h2 class="cta-title">Become the district others learn from.</h2>
+    <p class="cta-sub">
+      Begin with a single school, department, or grade level, or plan a district-wide rollout. The highest-leverage investment a district can make is in the effectiveness of the teachers it already employs. Classroom OS is how you make it. Group and district inquiries are welcome at <a href="mailto:whenindoubt@theintelligenthoodlums.com?subject=Classroom%20OS%20%E2%80%94%20Bring%20it%20to%20our%20school" style="color:var(--hm-bone);text-decoration:underline;">whenindoubt@theintelligenthoodlums.com</a>, and we read every message.
+    </p>
+    <a href="mailto:whenindoubt@theintelligenthoodlums.com?subject=Classroom%20OS%20%E2%80%94%20Bring%20it%20to%20our%20school" class="btn btn-bone">Start the Conversation</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     APPENDIX
+     ============================================================ -->
+<section class="section section-work">
+  <div class="section-inner">
+    <div class="section-label">Appendix</div>
+    <h2 class="section-title">Notes &amp; references.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      <strong>The Pulse instrument.</strong> Fifteen teachers took part in the pilot. They responded to a short set of statements on a 1&ndash;5 agreement scale at the start of the week (Monday) and again at the end (Friday). The two items reported here, &ldquo;my classroom runs without me&rdquo; and &ldquo;my classroom runs on systems, not on my presence,&rdquo; were scored for the teachers who completed both surveys (seven of the fifteen), and each teacher&rsquo;s own before-and-after answers were compared directly. The end-of-week value rating and the recommendation question reflect the eight end-of-week respondents. Raw responses contain participant emails and are held privately, off-repository.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <strong>Scope.</strong> These are directional results from the June 2026 pilot cohort in Las Vegas. This paper reports them as a strong early signal. The cost and achievement figures cited in &ldquo;The administrator&rsquo;s bottom line&rdquo; come from the external research listed below, not from this pilot.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <strong>References.</strong><br>
+      &middot; Chi, M. T. H., &amp; Wylie, R. (2014). The ICAP Framework: Linking Cognitive Engagement to Active Learning Outcomes. <em>Educational Psychologist</em>, 49(4), 219&ndash;243.<br>
+      &middot; Chou, Y. (2015). <em>Actionable Gamification: Beyond Points, Badges, and Leaderboards</em>. (The Octalysis framework.)<br>
+      &middot; Darling-Hammond, L., Hyler, M. E., &amp; Gardner, M. (2017). <em>Effective Teacher Professional Development</em>. Learning Policy Institute.<br>
+      &middot; Eno, B., &amp; Schmidt, P. (1975). <em>Oblique Strategies: Over One Hundred Worthwhile Dilemmas</em>.<br>
+      &middot; Learning Policy Institute. (2017; updated 2024). <em>What&rsquo;s the Cost of Teacher Turnover?</em><br>
+      &middot; Mayer, R. E. (2009). <em>Multimedia Learning</em> (2nd ed.). Cambridge University Press.<br>
+      &middot; Miller, D. (2017). <em>Building a StoryBrand</em>. HarperCollins Leadership.<br>
+      &middot; Miller, R. T., Murnane, R. J., &amp; Willett, J. B. (2008). Do Teacher Absences Impact Student Achievement? <em>Educational Evaluation and Policy Analysis</em>, 30(2), 181&ndash;200.<br>
+      &middot; Miyake, N., &amp; Kirschner, P. A. (2014). The Social and Interactive Dimensions of Collaborative Learning. In R. K. Sawyer (Ed.), <em>The Cambridge Handbook of the Learning Sciences</em> (2nd ed., ch. 21). Cambridge University Press.<br>
+      &middot; Mueller, P. A., &amp; Oppenheimer, D. M. (2014). The Pen Is Mightier Than the Keyboard: Advantages of Longhand Over Laptop Note Taking. <em>Psychological Science</em>, 25(6), 1159&ndash;1168.<br>
+      &middot; Rivkin, S. G., Hanushek, E. A., &amp; Kain, J. F. (2005). Teachers, Schools, and Academic Achievement. <em>Econometrica</em>, 73(2), 417&ndash;458.<br>
+      &middot; Ronfeldt, M., Farmer, S. O., McQueen, K., &amp; Grissom, J. A. (2015). Teacher Collaboration in Instructional Teams and Student Achievement. <em>American Educational Research Journal</em>, 52(3), 475&ndash;514.<br>
+      &middot; Ronfeldt, M., Loeb, S., &amp; Wyckoff, J. (2013). How Teacher Turnover Harms Student Achievement. <em>American Educational Research Journal</em>, 50(1), 4&ndash;36.<br>
+      &middot; Schlechty, P. C. (2002). <em>Working on the Work: An Action Plan for Teachers, Principals, and Superintendents</em>. Jossey-Bass. (Expanded as <em>Engaging Students: The Next Level of Working on the Work</em>, 2011.)<br>
+      &middot; Sweller, J. (1988). Cognitive Load During Problem Solving: Effects on Learning. <em>Cognitive Science</em>, 12(2), 257&ndash;285.<br>
+      &middot; Whiteside, A. L. (2015). Introducing the Social Presence Model to Explore Online and Blended Learning Experiences. <em>Online Learning</em>, 19(2). (Expanded in Whiteside, Garrett Dikkers, &amp; Swan, 2017, <em>Social Presence in Online Learning</em>.)
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <strong>About.</strong> The Intelligent Hoodlums, Las Vegas, est. 2014. Design &middot; Disrupt &middot; Deliver.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>The Intelligent Hoodlums</h3>
+      <p class="mono">
+        Las Vegas, Nevada &middot; Est 2014<br>
+        Design &middot; Disrupt &middot; Deliver
+      </p>
+    </div>
+    <div class="footer-social">
+      <h4>The Streets</h4>
+      <ul class="social-links">
+        <li><a href="https://blog.theintelligenthoodlums.com/" target="_blank" rel="noopener">Blog</a></li>
+        <li><a href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.instagram.com/theintelligenthoodlums/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@webswebswebs" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://www.linkedin.com/company/the-intelligent-hoodlums" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/theintelligenthoodlums/" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mono">&copy; 2014&ndash;2026 The Intelligent Hoodlums</p>
+    <span class="footer-tagline">When In Doubt, Trust A Hoodlum.</span>
+  </div>
+</footer>
+
+</body>
+</html>

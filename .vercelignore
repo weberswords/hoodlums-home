@@ -1,0 +1,19 @@
+# Files in this repo that should NOT be published to the live site.
+# Vercel serves the repo root statically, so anything not excluded here is
+# fetchable at the domain. Keep internal docs, backend scripts, the design
+# system, and dev utilities out of the deployment.
+
+# Internal notes & docs (strategy, reflections, testimonials, setup guides)
+*.md
+
+# Google Apps Script backends (booth / release / survey endpoints)
+*.gs
+
+# Brand kit / design system source (fonts are served separately from /fonts)
+brand-kit
+
+# Dev utilities
+scripts
+
+# Work-in-progress prototype, not for public
+tih-site-prototype.html
