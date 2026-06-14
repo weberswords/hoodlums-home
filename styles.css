@@ -426,7 +426,7 @@ body::before {
   padding-left: 20px;
 }
 
-.crew-name h4 {
+.crew-name h3 {
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 20px;
@@ -585,7 +585,7 @@ body::before {
 
 .cta-sub {
   font-size: 16px;
-  color: rgba(242,232,213,0.85);
+  color: var(--hm-bone); /* 5.2:1 on Rufous — .85 alpha failed 1.4.3 (4.1:1) */
   margin-bottom: 32px;
 }
 
@@ -727,7 +727,7 @@ body::before {
 }
 .announce-bar .dot {
   margin: 0 0.5em;
-  color: var(--hm-tuscany);
+  color: var(--hm-bone); /* 5.2:1 on Rufous — tuscany failed 1.4.3 (2.9:1) */
   letter-spacing: normal;
 }
 .announce-bar .arrow {
