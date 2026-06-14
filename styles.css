@@ -488,6 +488,15 @@ body::before {
   color: var(--hm-cadet);
   white-space: nowrap;
 }
+.event-note {
+  margin-top: 28px;
+  max-width: 720px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--hm-cadet); /* 5.9:1 on Prussian */
+}
+.event-note strong { color: var(--hm-bone); font-weight: 700; }
 
 /* ── FOR LEADERS (Bone bg for contrast with Ink neighbors) ─ */
 .section-leaders {
