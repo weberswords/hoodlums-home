@@ -1606,7 +1606,7 @@ body::before {
   justify-content: center;
   gap: 8px;
 }
-.section-leaders .stat-before { color: rgba(15,20,25,0.35); }
+.section-leaders .stat-before { color: var(--hm-prussian-80); } /* was rgba .35 (~1.8:1 on Bone) — now 8:1 */
 .section-leaders .stat-after  { color: var(--hm-rufous); }
 .stat-arrow { color: var(--hm-tuscany); font-size: 0.7em; }
 
