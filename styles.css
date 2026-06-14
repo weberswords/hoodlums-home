@@ -444,6 +444,51 @@ body::before {
   line-height: 1.7;
 }
 
+/* ── LIVE / ISTE (Prussian bg, rufous divider from The Work) ─ */
+.section-live {
+  background: var(--hm-prussian);
+  border-top: 2px solid var(--hm-rufous);
+}
+.section-live::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--hm-bone) 0.8px, transparent 0.8px);
+  background-size: 12px 12px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.event-meta {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+}
+.event-meta li {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--hm-bone);
+  padding-left: 16px;
+  border-left: 3px solid var(--hm-tuscany);
+}
+.event-meta-label {
+  display: inline-block;
+  min-width: 84px;
+  font-weight: 100;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hm-tuscany);
+  margin-right: 8px;
+}
+.event-meta-alt {
+  color: var(--hm-cadet);
+  white-space: nowrap;
+}
+
 /* ── FOR LEADERS (Bone bg for contrast with Ink neighbors) ─ */
 .section-leaders {
   background: var(--hm-bone);
