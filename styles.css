@@ -497,6 +497,13 @@ body::before {
   color: var(--hm-cadet); /* 5.9:1 on Prussian */
 }
 .event-note strong { color: var(--hm-bone); font-weight: 700; }
+.event-note a {
+  color: var(--hm-tuscany); /* 7.05:1 on Prussian */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.event-note a:hover,
+.event-note a:focus-visible { color: var(--hm-bone); }
 
 /* ── FOR LEADERS (Bone bg for contrast with Ink neighbors) ─ */
 .section-leaders {
