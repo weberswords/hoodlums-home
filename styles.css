@@ -426,7 +426,7 @@ body::before {
   padding-left: 20px;
 }
 
-.crew-name h4 {
+.crew-name h3 {
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 20px;
@@ -443,6 +443,67 @@ body::before {
   color: var(--hm-cadet);
   line-height: 1.7;
 }
+
+/* ── LIVE / ISTE (Prussian bg, rufous divider from The Work) ─ */
+.section-live {
+  background: var(--hm-prussian);
+  border-top: 2px solid var(--hm-rufous);
+}
+.section-live::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--hm-bone) 0.8px, transparent 0.8px);
+  background-size: 12px 12px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.event-meta {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+}
+.event-meta li {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--hm-bone);
+  padding-left: 16px;
+  border-left: 3px solid var(--hm-tuscany);
+}
+.event-meta-label {
+  display: inline-block;
+  min-width: 84px;
+  font-weight: 100;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hm-tuscany);
+  margin-right: 8px;
+}
+.event-meta-alt {
+  color: var(--hm-cadet);
+  white-space: nowrap;
+}
+.event-note {
+  margin-top: 28px;
+  max-width: 720px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--hm-cadet); /* 5.9:1 on Prussian */
+}
+.event-note strong { color: var(--hm-bone); font-weight: 700; }
+.event-note a {
+  color: var(--hm-tuscany); /* 7.05:1 on Prussian */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.event-note a:hover,
+.event-note a:focus-visible { color: var(--hm-bone); }
 
 /* ── FOR LEADERS (Bone bg for contrast with Ink neighbors) ─ */
 .section-leaders {
@@ -540,7 +601,7 @@ body::before {
 
 .cta-sub {
   font-size: 16px;
-  color: rgba(242,232,213,0.85);
+  color: var(--hm-bone); /* 5.2:1 on Rufous — .85 alpha failed 1.4.3 (4.1:1) */
   margin-bottom: 32px;
 }
 
@@ -682,7 +743,7 @@ body::before {
 }
 .announce-bar .dot {
   margin: 0 0.5em;
-  color: var(--hm-tuscany);
+  color: var(--hm-bone); /* 5.2:1 on Rufous — tuscany failed 1.4.3 (2.9:1) */
   letter-spacing: normal;
 }
 .announce-bar .arrow {
@@ -1561,7 +1622,7 @@ body::before {
   justify-content: center;
   gap: 8px;
 }
-.section-leaders .stat-before { color: rgba(15,20,25,0.35); }
+.section-leaders .stat-before { color: var(--hm-prussian-80); } /* was rgba .35 (~1.8:1 on Bone) — now 8:1 */
 .section-leaders .stat-after  { color: var(--hm-rufous); }
 .stat-arrow { color: var(--hm-tuscany); font-size: 0.7em; }
 
