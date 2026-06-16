@@ -46,29 +46,39 @@
 
   .kicker{
     font-family:'Helvetica Neue', Arial, sans-serif;
-    font-weight:700; font-size:17px; letter-spacing:0.22em;
+    font-weight:700; font-size:15px; letter-spacing:0.2em;
     text-transform:uppercase; color:var(--tuscany);
-    display:flex; align-items:center; gap:14px;
+    display:flex; align-items:center; gap:12px;
   }
-  .kicker .dot{ width:9px; height:9px; background:var(--tuscany); border-radius:999px; }
+  .kicker .pill{
+    background:var(--rufous); color:var(--bone);
+    font-size:14px; letter-spacing:0.18em; font-weight:700;
+    padding:5px 11px;
+  }
 
   h1{
     font-family:'Grift', sans-serif; font-weight:900; text-transform:uppercase;
-    color:var(--bone); line-height:0.92; letter-spacing:0.01em;
-    margin:18px 0 0;
+    color:var(--bone); line-height:0.9; letter-spacing:0.01em;
+    margin:16px 0 0;
   }
-  h1 .line1{ display:block; font-size:54px; color:rgba(242,232,213,0.92); }
-  h1 .line2{ display:block; font-size:104px; color:var(--tuscany); margin-top:2px; }
+  h1 .line1{ display:block; font-size:46px; color:rgba(242,232,213,0.92); }
+  h1 .line2{ display:block; font-size:96px; color:var(--tuscany); margin-top:2px; }
 
-  .rule{ width:72px; height:4px; background:var(--rufous); border:0; margin:26px 0 22px; }
+  .rule{ width:72px; height:4px; background:var(--rufous); border:0; margin:22px 0 18px; }
 
   .meta{
     font-family:'Grift', sans-serif; font-weight:700;
-    font-size:24px; letter-spacing:0.02em; color:var(--bone);
+    font-size:23px; line-height:1.15; letter-spacing:0.01em; color:var(--bone);
+    max-width:580px;
+  }
+  .when{
+    font-family:'Helvetica Neue', Arial, sans-serif; font-weight:600;
+    font-size:15px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--cadet); margin-top:10px;
   }
   .hook{
     font-family:'Helvetica Neue', Arial, sans-serif; font-weight:400;
-    font-size:19px; line-height:1.5; color:rgba(242,232,213,0.66);
+    font-size:18px; line-height:1.5; color:rgba(242,232,213,0.66);
     margin-top:12px; max-width:560px;
   }
 
@@ -92,15 +102,16 @@
     <div class="stage">
       <img class="badge" src="../HM-badge-full.png" alt="The Intelligent Hoodlums badge">
       <div class="copy">
-        <div class="kicker"><span class="dot"></span>June 28 – July 1 · Orlando, FL</div>
+        <div class="kicker"><span class="pill">Virtual</span>Idea Lab · ISTELive&nbsp;26 + ASCD Annual</div>
         <h1>
           <span class="line1">We're presenting at</span>
           <span class="line2">ISTELive&nbsp;26</span>
         </h1>
         <hr class="rule">
-        <div class="meta">Find us on the floor. Design. Disrupt. Deliver.</div>
-        <p class="hook">We're bringing instruction that survives a Tuesday to the
-        biggest stage in edtech. Pull up — let's build.</p>
+        <div class="meta">Human-Centered AI Collaboration for Beginners</div>
+        <div class="when">Sat, June&nbsp;27 · 11:00&nbsp;a.m. PT / 2:00&nbsp;p.m. ET · 50&nbsp;min</div>
+        <p class="hook">Join us online from wherever you are — no flight to
+        Orlando required.</p>
       </div>
     </div>
 
