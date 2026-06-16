@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ISTELive 26 — We're Presenting (Virtual) · The Intelligent Hoodlums</title>
+<style>
+  /* ── Grift display family (local) ───────────────────────── */
+  @font-face { font-family:'Grift'; src:url('../../fonts/Grift-Black.woff2') format('woff2'); font-weight:900; font-style:normal; }
+  @font-face { font-family:'Grift'; src:url('../../fonts/Grift-Bold.woff2')  format('woff2'); font-weight:700; font-style:normal; }
+  @font-face { font-family:'Grift'; src:url('../../fonts/Grift-SemiBold.woff2') format('woff2'); font-weight:600; font-style:normal; }
+
+  :root{
+    --ink:#0F1419; --prussian:#0B2545; --rufous:#B7280F;
+    --tuscany:#E0A458; --bone:#F2E8D5; --cadet:#8CA3B5;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:#333; }
+
+  .card{
+    position:relative; overflow:hidden;
+    background:var(--ink); color:var(--bone);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+  }
+  /* Ben-day halftone field */
+  .card::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:radial-gradient(circle, var(--bone) 1px, transparent 1px);
+    background-size:9px 9px; opacity:0.06; z-index:1;
+  }
+  .stripe{ position:absolute; left:0; top:0; bottom:0; width:8px; background:var(--rufous); z-index:3; }
+  .frame{ position:absolute; inset:26px; border:1px solid rgba(242,232,213,0.18); pointer-events:none; z-index:3; }
+
+  .stage{ position:relative; z-index:2; height:100%; display:flex; }
+  .badge{ flex-shrink:0; object-fit:contain; }
+
+  .kicker{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--tuscany); display:flex; align-items:center; gap:12px;
+  }
+  .kicker .pill{ background:var(--rufous); color:var(--bone); font-weight:700; }
+
+  h1{
+    font-family:'Grift', sans-serif; font-weight:900; text-transform:uppercase;
+    color:var(--bone); line-height:0.9; letter-spacing:0.01em;
+  }
+  h1 .line1{ display:block; color:rgba(242,232,213,0.92); }
+  h1 .line2{ display:block; color:var(--tuscany); margin-top:2px; }
+
+  .rule{ height:4px; background:var(--rufous); border:0; }
+  .meta{ font-family:'Grift', sans-serif; font-weight:700; line-height:1.15; color:var(--bone); }
+  .when{
+    font-family:'Helvetica Neue', Arial, sans-serif; font-weight:600;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--cadet);
+  }
+  .hook{ font-family:'Helvetica Neue', Arial, sans-serif; font-weight:400; line-height:1.5; color:rgba(242,232,213,0.66); }
+
+  .strip{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--prussian);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    letter-spacing:0.14em; text-transform:uppercase;
+  }
+  .strip .left{ color:var(--bone); font-weight:600; }
+  .strip .right{ color:var(--tuscany); font-weight:600; }
+
+  /* ══ FORMAT: FACEBOOK 1200×630 (row) ══════════════════════ */
+  body[data-f="fb"] .card{ width:1200px; height:630px; }
+  body[data-f="fb"] .stage{ flex-direction:row; align-items:center; gap:64px; padding:64px 72px 64px 96px; }
+  body[data-f="fb"] .badge{ width:300px; height:300px; }
+  body[data-f="fb"] .copy{ flex:1; }
+  body[data-f="fb"] .kicker{ font-size:15px; }
+  body[data-f="fb"] .kicker .pill{ font-size:14px; letter-spacing:0.18em; padding:5px 11px; }
+  body[data-f="fb"] h1{ margin:16px 0 0; }
+  body[data-f="fb"] h1 .line1{ font-size:46px; }
+  body[data-f="fb"] h1 .line2{ font-size:96px; }
+  body[data-f="fb"] .rule{ width:72px; margin:22px 0 18px; }
+  body[data-f="fb"] .meta{ font-size:23px; max-width:580px; }
+  body[data-f="fb"] .when{ font-size:15px; margin-top:10px; }
+  body[data-f="fb"] .hook{ font-size:18px; margin-top:12px; max-width:560px; }
+  body[data-f="fb"] .strip{ padding:14px 40px; font-size:13px; }
+
+  /* ══ FORMAT: SQUARE 1080×1080 (column) ════════════════════ */
+  body[data-f="sq"] .card{ width:1080px; height:1080px; }
+  body[data-f="sq"] .stage{ flex-direction:column; align-items:center; justify-content:center;
+                            text-align:center; gap:0; padding:96px 90px 150px; }
+  body[data-f="sq"] .badge{ width:300px; height:300px; margin-bottom:40px; }
+  body[data-f="sq"] .copy{ display:flex; flex-direction:column; align-items:center; }
+  body[data-f="sq"] .kicker{ font-size:18px; justify-content:center; }
+  body[data-f="sq"] .kicker .pill{ font-size:17px; letter-spacing:0.18em; padding:6px 13px; }
+  body[data-f="sq"] h1{ margin:24px 0 0; }
+  body[data-f="sq"] h1 .line1{ font-size:54px; }
+  body[data-f="sq"] h1 .line2{ font-size:118px; }
+  body[data-f="sq"] .rule{ width:84px; margin:32px 0 26px; }
+  body[data-f="sq"] .meta{ font-size:30px; max-width:760px; }
+  body[data-f="sq"] .when{ font-size:19px; margin-top:16px; }
+  body[data-f="sq"] .hook{ font-size:22px; margin-top:18px; max-width:720px; }
+  body[data-f="sq"] .strip{ padding:20px 48px; font-size:16px; }
+
+  /* ══ FORMAT: TIKTOK 1080×1920 (9:16 vertical) ═════════════ */
+  body[data-f="tt"] .card{ width:1080px; height:1920px; }
+  body[data-f="tt"] .stage{ flex-direction:column; align-items:center; justify-content:center;
+                            text-align:center; gap:0; padding:200px 96px 320px; }
+  body[data-f="tt"] .badge{ width:420px; height:420px; margin-bottom:64px; }
+  body[data-f="tt"] .copy{ display:flex; flex-direction:column; align-items:center; }
+  body[data-f="tt"] .kicker{ font-size:21px; justify-content:center; flex-wrap:wrap; }
+  body[data-f="tt"] .kicker .pill{ font-size:20px; letter-spacing:0.18em; padding:8px 16px; }
+  body[data-f="tt"] h1{ margin:36px 0 0; }
+  body[data-f="tt"] h1 .line1{ font-size:64px; }
+  body[data-f="tt"] h1 .line2{ font-size:140px; }
+  body[data-f="tt"] .rule{ width:96px; height:5px; margin:44px 0 36px; }
+  body[data-f="tt"] .meta{ font-size:40px; max-width:880px; }
+  body[data-f="tt"] .when{ font-size:25px; margin-top:24px; }
+  body[data-f="tt"] .hook{ font-size:30px; margin-top:28px; max-width:840px; }
+  body[data-f="tt"] .strip{ padding:28px 56px; font-size:20px; }
+  /* TikTok safe zone: keep the strip clear of the right-side UI rail */
+  body[data-f="tt"] .strip{ flex-direction:column; gap:6px; padding-bottom:120px; }
+</style>
+</head>
+<body data-f="fb">
+  <div class="card">
+    <div class="stripe"></div>
+    <div class="frame"></div>
+
+    <div class="stage">
+      <img class="badge" src="../HM-badge-full.png" alt="The Intelligent Hoodlums badge">
+      <div class="copy">
+        <div class="kicker"><span class="pill">Virtual</span>Idea Lab · ISTELive&nbsp;26 + ASCD Annual</div>
+        <h1>
+          <span class="line1">We're presenting at</span>
+          <span class="line2">ISTELive&nbsp;26</span>
+        </h1>
+        <hr class="rule">
+        <div class="meta">Human-Centered AI Collaboration for Beginners</div>
+        <div class="when">Sat, June&nbsp;27 · 11:00&nbsp;a.m. PT / 2:00&nbsp;p.m. ET · 50&nbsp;min</div>
+        <p class="hook">Join us online from wherever you are — no flight to
+        Orlando required.</p>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span class="left">The Intelligent Hoodlums</span>
+      <span class="right">When in doubt, trust a Hoodlum.</span>
+    </div>
+  </div>
+
+  <script>
+    // Format from ?f=fb|sq|tt (default fb)
+    const f = new URLSearchParams(location.search).get('f');
+    if (f) document.body.setAttribute('data-f', f);
+  </script>
+</body>
+</html>
