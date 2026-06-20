@@ -119,6 +119,24 @@ body::before {
   z-index: 9999;
 }
 
+/* ── SKIP LINK (keyboard: jump past the chrome) ──────────── */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 200;
+  background: var(--hm-rufous);
+  color: var(--hm-bone);
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: top 150ms ease-in-out;
+}
+.skip-link:focus { top: 12px; outline: 2px solid var(--hm-tuscany); outline-offset: 2px; }
+
 /* ── MASTHEAD ────────────────────────────────────────────── */
 .masthead {
   background: var(--hm-prussian);
