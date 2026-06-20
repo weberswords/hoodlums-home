@@ -67,6 +67,17 @@ testimonial record. Only rows where the box was checked **and** a name was signe
 - The page degrades gracefully: if a browser can't record in-page (rare), the Record button
   is disabled and the visitor is steered to Write or Upload.
 
+## Testimonials are not just messages
+
+Every row carries a **`consent_type`** column that reads
+*TESTIMONIAL — signed release on file; OK to publish per release terms*. That's your
+green light: these people signed the release, so you can quote and publish them.
+
+Don't confuse them with the **messages** from [`/iste`](./ISTE-SETUP.md), which live
+on their own sheet and read *MESSAGE — reply only; do NOT publish*. Those folks left
+a note but signed nothing. If you ever merge both into one CRM view, sort on
+`consent_type` before you publish anything.
+
 ## Notes
 
 - **18+ only.** The release states the signer is an adult. Don't publish identifiable minors

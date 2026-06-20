@@ -79,6 +79,23 @@ session. In the room: teach, then say "leave us a message at the link." Everythi
 commercial happens one compliant step later, on our turf. (See the conference's
 presenter and exhibitor policies for the current wording.)
 
+## Messages are not testimonials
+
+Every row carries a **`consent_type`** column that says, in plain English, what
+you're cleared to do with it. On this sheet it always reads:
+
+> **MESSAGE — reply only; NOT a testimonial, no release on file, do NOT publish**
+
+That's the guardrail. People here left a note; they did **not** sign a publicity
+release. The signed testimonials — the ones you *can* quote publicly — live in the
+separate [`/for-the-record`](./FOR-THE-RECORD-SETUP.md) sheet, where every row reads
+*TESTIMONIAL — signed release on file*. Keep the two straight, especially if you
+ever pull both into one CRM view: filter or sort on `consent_type` before you
+publish anything.
+
+If someone leaves a message with a quote worth using, **send them to
+`/for-the-record`** to sign the release first. Then it's cleared.
+
 ## Notes
 
 - **Newsletter consent** is the `newsletter` column (`Yes`/`No`) — only mail people

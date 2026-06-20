@@ -29,6 +29,14 @@ var MEDIA_FOLDER_ID = '';
 // Reject payloads larger than this (decoded). The client also caps at 45 MB.
 var MAX_MEDIA_BYTES = 48 * 1024 * 1024;
 
+// Per-row consent label — the reminder, stamped on every row, that these people
+// left a MESSAGE and did NOT sign a release. They're cleared for us to reply (and
+// to email if newsletter = Yes) — NOT to publish. Testimonials with a signed
+// release live in the separate /for-the-record sheet (for-the-record-apps-script.gs).
+// If a message-leaver gives you a quote worth using, send them to /for-the-record
+// to sign the release before it goes anywhere public.
+var CONSENT_TYPE = 'MESSAGE — reply only; NOT a testimonial, no release on file, do NOT publish';
+
 // Fixed column order. The header row is written automatically on first run.
 var COLUMNS = [
   'received_at',          // server timestamp (added here) — the official "left at"
@@ -48,7 +56,8 @@ var COLUMNS = [
   'media_type',
   'media_size',           // bytes
   'user_agent',           // browser/device string
-  'page_url'
+  'page_url',
+  'consent_type'          // plain-English usage rights — message vs testimonial
 ];
 
 function doPost(e) {
@@ -89,12 +98,10 @@ function doPost(e) {
     }
 
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(COLUMNS);
-      sheet.setFrozenRows(1);
-    }
+    ensureHeader_(sheet);
 
     data.received_at = new Date();
+    data.consent_type = CONSENT_TYPE;
 
     var row = COLUMNS.map(function (key) {
       var v = data[key];
@@ -108,6 +115,26 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
+}
+
+/**
+ * Make sure row 1 carries every column. Columns are only ever appended to the
+ * end of COLUMNS, so reconciling the header is safe for sheets that already hold
+ * data: existing values keep their positions and any new trailing column just
+ * gets its label.
+ */
+function ensureHeader_(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(COLUMNS);
+    sheet.setFrozenRows(1);
+    return;
+  }
+  var header = sheet.getRange(1, 1, 1, COLUMNS.length).getValues()[0];
+  var changed = false;
+  for (var i = 0; i < COLUMNS.length; i++) {
+    if (header[i] !== COLUMNS[i]) { header[i] = COLUMNS[i]; changed = true; }
+  }
+  if (changed) sheet.getRange(1, 1, 1, COLUMNS.length).setValues([header]);
 }
 
 /**
