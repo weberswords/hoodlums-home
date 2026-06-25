@@ -549,6 +549,21 @@ body::before {
   margin-top: 36px;
 }
 
+/* secondary "read more" under the leaders CTA (Bone bg → dark text) */
+.leaders-more {
+  margin-top: 20px;
+  font-size: 15px;
+  color: var(--hm-prussian);
+}
+.leaders-more a {
+  color: var(--hm-rufous); /* 5.2:1 on Bone — passes AA for body text */
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.leaders-more a:hover,
+.leaders-more a:focus-visible { color: var(--hm-ink); }
+
 /* ── WATCH ───────────────────────────────────────────────── */
 .section-watch {
   background: var(--hm-prussian);
