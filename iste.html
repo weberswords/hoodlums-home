@@ -519,8 +519,10 @@
 <script>
 (function () {
   // ── CONFIG ──────────────────────────────────────────────────
-  // Paste the deployed Apps Script /exec URL here (see ISTE-SETUP.md).
-  var MSG_ENDPOINT = '';
+  // Shared CRM intake — the SAME deployed Apps Script as /for-the-record. Both
+  // pages feed one Google Sheet; this page tags its rows form_type = 'message'.
+  // (See ISTE-SETUP.md / FOR-THE-RECORD-SETUP.md.)
+  var MSG_ENDPOINT = 'https://script.google.com/macros/s/AKfycbywUwwl_fO40mvNMAtIMKH49hMsLIHB-2uYYFzvgjDW_IzvmNZEBm7E5N1rE51LfDoAiQ/exec';
 
   var MAX_BYTES = 45 * 1024 * 1024; // keep POST under Apps Script's limit
   var MAX_SECONDS = 120;
@@ -767,6 +769,7 @@
     var mode = currentMode();
     var base = {
       submitted_at_client: new Date().toISOString(),
+      form_type: 'message',
       mode: mode,
       event_name: form.event_name.value,
       first_name: form.first_name.value.trim(),

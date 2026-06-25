@@ -11,99 +11,51 @@ no-promotion rules):
 1. **Leave us a message** — the confession-booth component, repurposed. Visitors
    **write**, **record** (in-browser, up to 2 min), or **upload** a message. No
    testimonial release — it's a note, not a publicity grant.
-2. **Email capture → Google Sheet** — every message lands as a row in a Sheet, the
-   lightweight backing for our own CRM (name, email, role, school).
+2. **Email capture → the CRM sheet** — every message lands as a row (name, email,
+   role, school).
 3. **What brings you + newsletter** — structured interest checkboxes (on-site PD,
-   virtual PD, custom development, just saying hi) and a newsletter opt-in, so the
-   right Hoodlum can follow up and we honor marketing consent.
+   virtual PD, custom development, just saying hi) and a newsletter opt-in.
 
-It works like [`/for-the-record`](./FOR-THE-RECORD-SETUP.md) and
-[`/survey`](./SURVEY-SETUP.md) — a static HTML page that POSTs JSON to a Google
-Apps Script web app, with recorded/uploaded media decoded to a **Drive folder**.
+## It shares ONE backend with the booth — there's nothing new to deploy
 
-> **Keep it on its own Sheet and its own deployment** so ISTE leads stay separate
-> from testimonial and survey data.
+`/iste` and `/for-the-record` post to the **same** Apps Script web app and land in
+the **same** Google Sheet — the start of our custom CRM, one list of every potential
+contact. The page is already wired to that endpoint (`MSG_ENDPOINT` in
+[`iste.html`](./iste.html) holds the booth's `/exec` URL). It tags its rows
+`form_type = 'message'`; the booth tags `form_type = 'testimonial'`.
 
-## 1. Make the Sheet + the media folder
+So to turn `/iste` on, you don't deploy anything new — you just **update and redeploy
+the one shared script** so it knows how to handle messages:
 
-1. Create a **new** Google Sheet (e.g. "ISTE 26 — Leave a Message").
-2. In Google Drive, create a **folder** for any media (e.g. "ISTE — Media"). Open it
-   and copy the folder ID from the URL:
-   `drive.google.com/drive/folders/`**`<THIS_PART>`**.
+1. Open the CRM Sheet → **Extensions → Apps Script**.
+2. Paste the latest [`for-the-record-apps-script.gs`](./for-the-record-apps-script.gs)
+   (it now routes both testimonials and messages).
+3. **Deploy → Manage deployments → (edit the existing web app) → New version → Deploy.**
+   The `/exec` URL stays the same, so both pages keep working — no URL to change.
 
-## 2. Deploy the script
+That's it. See [FOR-THE-RECORD-SETUP.md](./FOR-THE-RECORD-SETUP.md) for the full
+backend reference.
 
-1. In the Sheet: **Extensions → Apps Script**. Delete the stub and paste all of
-   [`iste-apps-script.gs`](./iste-apps-script.gs).
-2. At the top, set the folder ID:
-   ```js
-   var MEDIA_FOLDER_ID = 'paste-the-folder-id-here';
-   ```
-   (Leave it `''` and media lands in your Drive root — a folder is recommended.)
-3. **Deploy → New deployment → Web app**
-   - **Execute as:** Me
-   - **Who has access:** Anyone
-4. Authorize when prompted. Because the script writes files, it asks for **Drive**
-   permission as well as Sheets — that's expected. Copy the **`/exec` URL**.
+## Messages are not testimonials (same sheet, still distinct)
 
-Health check: visiting the `/exec` URL in a browser should return
-`{"result":"ok","service":"iste-leave-a-message"}`.
+Everyone lands in one sheet, but two columns keep the consent line bright:
 
-## 3. Wire up the page
+- **`form_type`** — `message` vs `testimonial`.
+- **`consent_type`** — for messages it reads
+  *MESSAGE — reply only; NOT a testimonial, do NOT publish*; for testimonials,
+  *TESTIMONIAL — signed release on file; OK to publish*.
 
-Open [`iste.html`](./iste.html) and paste the URL into:
-
-```js
-var MSG_ENDPOINT = ''; // ← your https://script.google.com/macros/s/…/exec
-```
-
-Until this is set, the form validates but tells the visitor it isn't wired up yet.
-
-## 4. Point people to it
-
-Share **`/iste`** — say it out loud in the session, drop it in the session chat, and
-put it on the closing slide. You can tag context so it lands in the Sheet:
-`/iste?event_name=ISTELive%2026%20Idea%20Lab`.
-
-Each row records: server receipt time, the mode (write / record / upload), name,
-email, role, school, the written message, a **Drive link** to any recording/upload,
-what brings them, the newsletter opt-in, and the device's user agent — a timestamped
-CRM contact. Only rows with an email **and** something to act on (a message, media,
-an interest, or a newsletter opt-in) are saved.
+Filter or sort on either before you publish anything. A message is consent to
+**reply**, not to market or quote — only the **`newsletter` = Yes** rows opted into
+mail, and only **testimonial** rows are cleared to publish. If a message-leaver gives
+you a quote worth using, send them to `/for-the-record` to sign the release first.
 
 ## A note on ISTE's rules
 
 The session itself can't be a sales pitch and you can't solicit inside it — but this
 page is on **our** site, so the PD/booking calls to action live here, not in the
 session. In the room: teach, then say "leave us a message at the link." Everything
-commercial happens one compliant step later, on our turf. (See the conference's
-presenter and exhibitor policies for the current wording.)
-
-## Messages are not testimonials
-
-Every row carries a **`consent_type`** column that says, in plain English, what
-you're cleared to do with it. On this sheet it always reads:
-
-> **MESSAGE — reply only; NOT a testimonial, no release on file, do NOT publish**
-
-That's the guardrail. People here left a note; they did **not** sign a publicity
-release. The signed testimonials — the ones you *can* quote publicly — live in the
-separate [`/for-the-record`](./FOR-THE-RECORD-SETUP.md) sheet, where every row reads
-*TESTIMONIAL — signed release on file*. Keep the two straight, especially if you
-ever pull both into one CRM view: filter or sort on `consent_type` before you
-publish anything.
-
-If someone leaves a message with a quote worth using, **send them to
-`/for-the-record`** to sign the release first. Then it's cleared.
-
-## Notes
-
-- **Newsletter consent** is the `newsletter` column (`Yes`/`No`) — only mail people
-  who opted in. Leaving a message is consent to *reply*, not to market.
-- **Sharing:** saved media is set to *anyone with the link can view* so the team can
-  play it from the Sheet. Tighten the `setSharing` call in the script if needed.
-- **Upload cap:** 45 MB client-side (Apps Script's POST body caps near 50 MB and
-  base64 inflates a file ~33%). Bigger files are bounced to email.
+commercial happens one compliant step later, on our turf.
 
 ---
 
