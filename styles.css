@@ -223,6 +223,10 @@ body::before {
   transition: background-color 150ms ease-in-out, color 150ms ease-in-out, box-shadow 150ms ease-in-out;
 }
 
+/* a .btn toggled via the hidden attribute must actually hide — the class's
+   display would otherwise outrank [hidden] (recorder Start/Stop/Save controls) */
+.btn[hidden] { display: none; }
+
 .btn-primary {
   background: var(--hm-rufous);
   color: var(--hm-bone);
@@ -1096,7 +1100,8 @@ body::before {
   margin-bottom: 48px;
 }
 
-.survey-form { display: block; }
+/* (no display rule — a <form> is block by default, and forcing it here would
+   override the [hidden] attribute we use to swap the form for the success state) */
 
 /* honeypot — visually + assistively hidden, still in the DOM */
 .hp-field {
