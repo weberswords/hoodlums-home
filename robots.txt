@@ -1,0 +1,7 @@
+# https://theintelligenthoodlums.com/
+# Public pages are crawlable. Form/utility pages carry their own
+# noindex meta tags, so they're kept out of search results that way.
+User-agent: *
+Allow: /
+
+Sitemap: https://theintelligenthoodlums.com/sitemap.xml
