@@ -3,14 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Confession Booth — The Intelligent Hoodlums</title>
-<meta name="description" content="Step inside the booth and leave a testimonial. Write it, record it, or upload it — tell us what the work did for you.">
+<title>Human-Centered AI Collaboration for Beginners — ISTELive 26 · The Intelligent Hoodlums</title>
+<meta name="description" content="Catch the Hoodlums' virtual Idea Lab at ISTELive 26 — Human-Centered AI Collaboration for Beginners. Leave us a message, grab the resources, and book us for PD at your school.">
 <meta name="theme-color" content="#0F1419">
 <meta name="author" content="The Intelligent Hoodlums">
-<meta name="robots" content="noindex, nofollow">
+
+<link rel="canonical" href="https://theintelligenthoodlums.com/iste">
 
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
 <link rel="apple-touch-icon" href="/assets/HM-favicon-64.png">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="The Intelligent Hoodlums">
+<meta property="og:title" content="Human-Centered AI Collaboration for Beginners — ISTELive 26">
+<meta property="og:description" content="Our virtual Idea Lab at ISTELive 26. Leave us a message, grab the resources, and book us for PD.">
+<meta property="og:url" content="https://theintelligenthoodlums.com/iste">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://theintelligenthoodlums.com/assets/HM-og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Intelligent Hoodlums wordmark on Ink — Las Vegas, Est 2014.">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Human-Centered AI Collaboration for Beginners — ISTELive 26">
+<meta name="twitter:description" content="Our virtual Idea Lab at ISTELive 26. Leave us a message and book us for PD.">
+<meta name="twitter:image" content="https://theintelligenthoodlums.com/assets/HM-og.png">
 
 <link rel="preload" href="/fonts/Grift-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Grift-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -18,40 +38,10 @@
 <link rel="stylesheet" href="/styles.css">
 
 <style>
-  /* ── Booth-specific, scoped to this page ───────────────────── */
+  /* ── "Leave us a message" — booth infrastructure, repurposed ─────────
+     Ported from /for-the-record. Same write / record / upload component,
+     reframed as a message (no testimonial release). Scoped to this page. */
 
-  /* a little more hush than the survey: tighter, darker, intimate */
-  .booth-curtain {
-    height: 6px;
-    background:
-      repeating-linear-gradient(90deg,
-        var(--hm-rufous) 0, var(--hm-rufous) 14px,
-        var(--hm-rufous-dark) 14px, var(--hm-rufous-dark) 28px);
-    width: 100%;
-  }
-
-  .booth-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-family);
-    font-weight: 700;
-    font-size: 10px;
-    letter-spacing: 0.33em;
-    text-transform: uppercase;
-    color: var(--hm-tuscany);
-    margin-bottom: 14px;
-  }
-  .booth-kicker .lamp {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--hm-rufous);
-    box-shadow: 0 0 10px 2px rgba(183,40,15,0.8);
-    animation: boothPulse 2.6s ease-in-out infinite;
-  }
-  @keyframes boothPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-  @media (prefers-reduced-motion: reduce) { .booth-kicker .lamp { animation: none; } }
-
-  /* ── Mode toggle (Write / Record / Upload) ─────────────────── */
   .booth-modes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -59,9 +49,7 @@
     margin-bottom: var(--space-6);
   }
   .booth-mode { position: relative; cursor: pointer; }
-  .booth-mode input {
-    position: absolute; opacity: 0; width: 0; height: 0;
-  }
+  .booth-mode input { position: absolute; opacity: 0; width: 0; height: 0; }
   .booth-mode > span {
     display: flex;
     flex-direction: column;
@@ -100,12 +88,7 @@
     padding: 14px 18px;
     margin-bottom: var(--space-5);
   }
-  .booth-prompts p {
-    font-size: var(--text-sm);
-    color: var(--hm-cadet);
-    line-height: 1.6;
-    margin: 0 0 6px;
-  }
+  .booth-prompts p { font-size: var(--text-sm); color: var(--hm-cadet); line-height: 1.6; margin: 0 0 6px; }
   .booth-prompts ul { margin: 0; padding-left: 18px; }
   .booth-prompts li { font-size: var(--text-sm); color: var(--bone-60); line-height: 1.7; }
   .booth-prompts strong { color: var(--hm-bone); }
@@ -123,13 +106,7 @@
     margin-bottom: var(--space-4);
   }
   .recorder-stage video { width: 100%; height: 100%; object-fit: cover; background: #000; }
-  .recorder-placeholder {
-    color: var(--hm-cadet);
-    font-size: var(--text-sm);
-    text-align: center;
-    padding: 0 24px;
-    line-height: 1.6;
-  }
+  .recorder-placeholder { color: var(--hm-cadet); font-size: var(--text-sm); text-align: center; padding: 0 24px; line-height: 1.6; }
   .rec-badge {
     position: absolute; top: 12px; left: 12px;
     display: none; align-items: center; gap: 7px;
@@ -143,16 +120,14 @@
   .rec-badge .dot {
     width: 9px; height: 9px; border-radius: 50%;
     background: var(--hm-rufous);
-    animation: boothPulse 1.1s ease-in-out infinite;
+    animation: recPulse 1.1s ease-in-out infinite;
   }
+  @keyframes recPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @media (prefers-reduced-motion: reduce) { .rec-badge .dot { animation: none; } }
   .recorder-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .booth-audio-only { display: flex; align-items: center; gap: 8px; margin-bottom: var(--space-4); }
 
-  .btn-ghost {
-    background: transparent;
-    color: var(--hm-bone);
-    border: 1px solid var(--bone-40);
-  }
+  .btn-ghost { background: transparent; color: var(--hm-bone); border: 1px solid var(--bone-40); }
   .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--hm-bone); }
   .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
 
@@ -192,38 +167,28 @@
   }
   .booth-filechip button:hover { color: var(--hm-bone); border-color: var(--hm-bone); }
 
-  .booth-progress {
-    display: none;
-    height: 4px; width: 100%;
-    background: var(--bone-08);
-    margin-top: var(--space-4);
-    overflow: hidden;
-  }
+  .booth-progress { display: none; height: 4px; width: 100%; background: var(--bone-08); margin-top: var(--space-4); overflow: hidden; }
   .booth-progress.is-on { display: block; }
-  .booth-progress > i {
-    display: block; height: 100%; width: 30%;
-    background: var(--hm-rufous);
-    animation: boothSlide 1.1s ease-in-out infinite;
-  }
-  @keyframes boothSlide { 0% { transform: translateX(-120%); } 100% { transform: translateX(420%); } }
+  .booth-progress > i { display: block; height: 100%; width: 30%; background: var(--hm-rufous); animation: recSlide 1.1s ease-in-out infinite; }
+  @keyframes recSlide { 0% { transform: translateX(-120%); } 100% { transform: translateX(420%); } }
 
-  /* release block, borrowed from /release */
-  .release-terms {
-    border: 1px solid var(--bone-08);
-    background: var(--bone-06);
-    border-radius: 8px;
-    padding: var(--space-5) var(--space-6);
-    margin-bottom: var(--space-5);
-    max-height: 260px;
-    overflow-y: auto;
-    font-size: var(--text-sm);
-    line-height: 1.7;
-    color: var(--bone-60);
+  /* small kicker lamp on the message section */
+  .msg-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-family); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.33em; text-transform: uppercase;
+    color: var(--hm-tuscany); margin-bottom: 14px;
   }
-  .release-terms p { margin-bottom: var(--space-4); }
-  .release-terms strong { color: var(--hm-bone); }
-  .release-meta { color: var(--bone-40); font-size: var(--text-xs); margin-top: var(--space-4); }
-  .release-sign label .req { color: var(--hm-tuscany); }
+  .msg-kicker .lamp {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--hm-rufous);
+    box-shadow: 0 0 10px 2px rgba(183,40,15,0.8);
+    animation: recPulse 2.6s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .msg-kicker .lamp { animation: none; } }
+
+  /* a quiet group of checkboxes for "what brings you" + newsletter */
+  .msg-consent { margin-top: var(--space-4); }
 
   @media (max-width: 560px) {
     .booth-mode > span { padding: 12px 6px; font-size: 12px; }
@@ -232,7 +197,7 @@
 </head>
 <body>
 
-<div class="booth-curtain" aria-hidden="true"></div>
+<a href="#message" class="skip-link">Skip to leave a message</a>
 
 <!-- MASTHEAD -->
 <div class="masthead">
@@ -243,29 +208,77 @@
   <span>Est 2014</span>
 </div>
 
-<!-- NAV (minimal — this page is unlisted) -->
+<!-- NAV -->
 <nav class="site-nav">
   <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
   <ul class="nav-links">
+    <li><a href="#session">The Session</a></li>
+    <li><a href="#message">Leave a Message</a></li>
+    <li><a href="#leaders">For Leaders</a></li>
     <li><a href="/" class="nav-back">&larr; Home</a></li>
   </ul>
 </nav>
 
-<main id="top">
+<main id="top" tabindex="-1">
 
-<section class="section section-survey" id="booth">
+<!-- HERO -->
+<section class="hero hero-event" id="session" tabindex="-1">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">ISTELive 26 + ASCD Annual &middot; Virtual Idea Lab</div>
+    <h1 class="hero-title" style="margin-top:18px;">Human-Centered AI<br>Collaboration for Beginners.</h1>
+    <div class="rufous-rule hero-rule"></div>
+    <p class="hero-tagline">
+      A 50-minute, plain-language Idea Lab for teachers who are AI-curious and a little
+      AI-wary.
+    </p>
+    <div class="hero-cta">
+      <a href="#message" class="btn btn-primary">Leave us a message</a>
+    </div>
+  </div>
+</section>
+
+<!-- IN THE SESSION -->
+<section class="section section-crew" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">How we&rsquo;ll think about it</div>
+    <h2 class="section-title">Human. Analog. Digital.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      <strong>HAD isn&rsquo;t a proprietary framework</strong> &mdash; it&rsquo;s just how we
+      sequence engagement: human first, then analog, then digital. The order is the point,
+      and the tech earns its place last. We&rsquo;ll work a real example together in the session.
+    </p>
+    <div class="services-grid" style="margin-top: 40px;">
+      <article class="service-card">
+        <h3>Human</h3>
+        <p>Start with people. What you and your students already carry in &mdash; experiences, questions, gut reactions &mdash; surfaced and shared before anything gets plugged in.</p>
+      </article>
+      <article class="service-card">
+        <h3>Analog</h3>
+        <p>Make the thinking visible by hand. Talk it through, sketch it, sort it on paper. The slow, tactile work where ideas actually take shape &mdash; no screen required.</p>
+      </article>
+      <article class="service-card">
+        <h3>Digital</h3>
+        <p>Then bring the tools in &mdash; to capture, extend, and build on the thinking you already did. The tech serves the work; it doesn&rsquo;t start it.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LEAVE US A MESSAGE -->
+<section class="section section-survey" id="message" tabindex="-1">
   <div class="survey-inner">
 
-    <div class="booth-kicker"><span class="lamp" aria-hidden="true"></span> The Confession Booth</div>
-    <h1 class="survey-title">Tell us the truth.</h1>
+    <div class="msg-kicker"><span class="lamp" aria-hidden="true"></span> Leave us a message</div>
+    <h2 class="survey-title">Don&rsquo;t be a stranger.</h2>
     <div class="rufous-rule section-rule"></div>
     <p class="survey-lede">
-      Step inside. No script, no polish required &mdash; just the real story of what the
-      work did for you, your classroom, or your school. Write it, record it, or upload
-      something you already made. We&rsquo;ll keep it honest.
+      Caught the session, or just found your way here? Leave us a note &mdash; a question, a
+      reaction, what landed, what didn&rsquo;t. Type it, record it, or send something you
+      already made. We read every one, and a Hoodlum will write back.
     </p>
 
-    <form id="boothForm" class="survey-form" novalidate>
+    <form id="msgForm" class="survey-form" novalidate>
 
       <!-- honeypot -->
       <div class="hp-field" aria-hidden="true">
@@ -274,13 +287,13 @@
         </label>
       </div>
 
-      <!-- context metadata — hidden, override with ?event_name= etc. -->
-      <input type="hidden" name="event_name" value="">
+      <!-- context metadata — defaults to ISTE; override with ?event_name= -->
+      <input type="hidden" name="event_name" value="ISTELive 26">
       <input type="hidden" name="page_url" value="">
 
       <!-- WHO -->
       <fieldset class="survey-group">
-        <legend class="survey-group-title">Who&rsquo;s in the booth</legend>
+        <legend class="survey-group-title">Who&rsquo;s writing</legend>
         <div class="field-row">
           <div class="field">
             <label for="f_first">First name <span class="req">*</span></label>
@@ -291,39 +304,39 @@
             <input type="text" id="f_last" name="last_name" autocomplete="family-name" required>
           </div>
         </div>
+        <div class="field">
+          <label for="f_email">Email <span class="req">*</span></label>
+          <input type="email" id="f_email" name="email" autocomplete="email" required placeholder="So we can write back">
+          <p class="field-hint">We&rsquo;ll only use it to reply &mdash; and to send the newsletter if you ask for it below. We won&rsquo;t share it.</p>
+        </div>
         <div class="field-row">
           <div class="field">
             <label for="f_role">Your role / title <span class="opt">(optional)</span></label>
-            <input type="text" id="f_role" name="role_title" placeholder="e.g. 8th grade ELA teacher">
+            <input type="text" id="f_role" name="role_title" placeholder="e.g. 4th grade teacher, principal">
           </div>
           <div class="field">
             <label for="f_org">School / organization <span class="opt">(optional)</span></label>
-            <input type="text" id="f_org" name="school_org" placeholder="e.g. Legacy HS, CCSD">
+            <input type="text" id="f_org" name="school_org" placeholder="e.g. Whitney ES, CCSD">
           </div>
-        </div>
-        <div class="field">
-          <label for="f_email">Email <span class="opt">(optional)</span></label>
-          <input type="email" id="f_email" name="email" autocomplete="email" placeholder="So we can say thanks">
-          <p class="field-hint">Only if you want us to follow up. We won&rsquo;t publish it.</p>
         </div>
       </fieldset>
 
-      <!-- THE TESTIMONIAL -->
+      <!-- THE MESSAGE -->
       <fieldset class="survey-group">
-        <legend class="survey-group-title">Your testimonial</legend>
+        <legend class="survey-group-title">Your message</legend>
 
         <div class="booth-prompts">
-          <p>Stuck on where to start? A few prompts &mdash; answer any, ignore the rest:</p>
+          <p>Not sure what to say? A few starters &mdash; pick one, skip the rest:</p>
           <ul>
-            <li><strong>Before us</strong> &mdash; what was the hard part?</li>
-            <li><strong>The moment</strong> &mdash; when did it click?</li>
-            <li><strong>Now</strong> &mdash; what&rsquo;s different in your classroom?</li>
-            <li><strong>Who</strong> &mdash; who would you send our way?</li>
+            <li><strong>One thing</strong> &mdash; what stuck with you from the session?</li>
+            <li><strong>A question</strong> &mdash; what do you wish we&rsquo;d covered?</li>
+            <li><strong>Your room</strong> &mdash; what are you hoping to try with AI?</li>
+            <li><strong>A hello</strong> &mdash; tell us who you are and what you teach.</li>
           </ul>
         </div>
 
         <!-- mode toggle -->
-        <div class="booth-modes" role="radiogroup" aria-label="How you'd like to leave your testimonial">
+        <div class="booth-modes" role="radiogroup" aria-label="How you'd like to leave your message">
           <label class="booth-mode">
             <input type="radio" name="mode" value="write" checked>
             <span><span class="ico" aria-hidden="true">&#9998;</span> Write it</span>
@@ -342,7 +355,7 @@
         <div class="booth-panel is-active" id="panel-write">
           <div class="field">
             <label for="f_text">In your own words</label>
-            <textarea id="f_text" name="testimonial_text" rows="7" placeholder="Take your time. The specific story beats the polished one."></textarea>
+            <textarea id="f_text" name="message_text" rows="6" placeholder="Say as much or as little as you like."></textarea>
           </div>
         </div>
 
@@ -358,8 +371,8 @@
             <video id="recPreview" playsinline muted hidden></video>
             <video id="recPlayback" playsinline controls hidden></video>
             <p class="recorder-placeholder" id="recPlaceholder">
-              Press <strong>Start</strong> when you&rsquo;re ready. You&rsquo;ll get a
-              live preview, and up to 90&nbsp;seconds. Re-record as many times as you like.
+              Press <strong>Start</strong> when you&rsquo;re ready. You&rsquo;ll get a live
+              preview, and up to 2&nbsp;minutes. Re-record as many times as you like.
             </p>
           </div>
 
@@ -370,7 +383,7 @@
             <a class="btn btn-ghost" id="recSave" hidden download>Save a copy</a>
           </div>
           <p class="field-hint" id="recHint">
-            Your browser handles the recording &mdash; nothing uploads until you hit submit.
+            Your browser handles the recording &mdash; nothing uploads until you hit send.
           </p>
         </div>
 
@@ -395,45 +408,41 @@
         </div>
       </fieldset>
 
-      <!-- THE RELEASE -->
+      <!-- WHAT BRINGS YOU -->
       <fieldset class="survey-group">
-        <legend class="survey-group-title">Permission to share</legend>
-        <div class="release-terms" role="region" tabindex="0" aria-label="Testimonial release terms">
-          <p>I grant <strong>The Intelligent Hoodlums LLC</strong> ("the Hoodlums") and
-          anyone they authorize permission to <strong>use, edit, and publish the
-          testimonial I&rsquo;m leaving here</strong> &mdash; my words, image, likeness,
-          and voice &mdash; in any media now known or later developed, including websites,
-          social media, marketing, and presentations to schools and districts,
-          <strong>without further approval, notice, or payment to me.</strong></p>
-
-          <p>I understand my testimonial may be edited, excerpted, or combined with other
-          content, that I <strong>will not own the resulting work</strong>, and that the
-          quote may appear alongside my name and role. This is voluntary, and I confirm I
-          am <strong>18 or older</strong> and that what I&rsquo;m sharing is my own honest
-          experience.</p>
-
-          <p>I may withdraw consent for <strong>future</strong> use at any time by emailing
-          <strong>whenindoubt@theintelligenthoodlums.com</strong>; that won&rsquo;t affect
-          material already published.</p>
-
-          <p class="release-meta">This is a standard testimonial release, not legal advice.
-          If anything here gives you pause, talk to a Hoodlum before you sign.</p>
-        </div>
-
-        <label class="check-field" style="margin-bottom: var(--space-5);">
-          <input type="checkbox" id="f_agree" name="agreed" value="Yes" required>
-          <span>I&rsquo;ve read the release and <strong>I agree</strong> to let the Hoodlums share my testimonial. <span class="req">*</span></span>
-        </label>
-
-        <div class="field release-sign">
-          <label for="f_sign">Type your full name to sign <span class="req">*</span></label>
-          <input type="text" id="f_sign" name="typed_signature" autocomplete="name" placeholder="Your full name = your signature">
-          <p class="field-hint">Typing your name here counts as your electronic signature, dated today.</p>
+        <legend class="survey-group-title">What brings you <span class="opt">(optional)</span></legend>
+        <p class="survey-group-hint">Tell us how we can be useful &mdash; check any that fit, and the right Hoodlum will follow up.</p>
+        <div class="check-group">
+          <label class="check-field">
+            <input type="checkbox" name="interests" value="On-site PD at our school">
+            <span>Bring the Hoodlums to our school for <strong>in-person PD</strong></span>
+          </label>
+          <label class="check-field">
+            <input type="checkbox" name="interests" value="Virtual PD for our staff">
+            <span>Run <strong>virtual PD</strong> for our staff</span>
+          </label>
+          <label class="check-field">
+            <input type="checkbox" name="interests" value="Custom development / consulting">
+            <span>Talk about <strong>building something</strong> &mdash; custom development or consulting</span>
+          </label>
+          <label class="check-field">
+            <input type="checkbox" name="interests" value="Just saying hi / feedback">
+            <span>Just saying hi and sharing feedback</span>
+          </label>
         </div>
       </fieldset>
 
+      <!-- NEWSLETTER -->
+      <fieldset class="survey-group">
+        <legend class="survey-group-title">Stay in the loop</legend>
+        <label class="check-field msg-consent">
+          <input type="checkbox" id="f_news" name="newsletter" value="Yes">
+          <span>Send me the Hoodlums newsletter &mdash; practical ideas for the classroom, no spam, unsubscribe anytime.</span>
+        </label>
+      </fieldset>
+
       <div class="survey-actions">
-        <button type="submit" class="btn btn-primary" id="submitBtn">Leave my testimonial</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Send your message</button>
         <div class="booth-progress" id="progress" aria-hidden="true"><i></i></div>
         <p class="survey-note" id="formNote" role="status" aria-live="polite" tabindex="-1"></p>
       </div>
@@ -442,26 +451,83 @@
     <!-- SUCCESS STATE -->
     <div class="survey-result" id="successState" hidden>
       <div class="rufous-rule"></div>
-      <h2 class="survey-result-title">Heard. Thank you.</h2>
-      <p class="survey-result-body">That&rsquo;s the kind of thing that keeps us in the
-      work. If we use it, we&rsquo;ll do it justice.</p>
+      <h2 class="survey-result-title">Got it. Thank you.</h2>
+      <p class="survey-result-body">Your message is in &mdash; a Hoodlum will be in touch.
+      In the meantime, when in doubt, trust a Hoodlum.</p>
+      <a href="/" class="btn btn-primary">Back to home</a>
     </div>
 
   </div>
 </section>
 
+<!-- FOR LEADERS -->
+<section class="section section-leaders" id="leaders" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label section-label-dark">For School Leaders</div>
+    <h2 class="section-title section-title-dark">Want this for your whole staff?</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text lede-text-dark">
+      If the session was useful, the workshop is better. We bring human-centered AI &mdash;
+      and the rest of our PD &mdash; to schools and districts, in person or virtually. Not a
+      vendor pitch. Not a binder. A partner who&rsquo;s been in the room. Tell us what your
+      teachers need and we&rsquo;ll build the day around it.
+    </p>
+    <a href="#message" class="btn btn-primary leaders-cta">Book us for PD</a>
+    <p class="leaders-more">Want the bigger picture? <a href="/white-paper-request">Read the white paper on the full Classroom&nbsp;OS experience &rarr;</a></p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" tabindex="-1">
+  <div class="cta-inner">
+    <h2 class="cta-title">Let&rsquo;s keep the conversation going.</h2>
+    <p class="cta-sub">Leave a message above, or reach us directly.</p>
+    <a href="mailto:whenindoubt@theintelligenthoodlums.com" class="btn btn-bone">Get in touch</a>
+  </div>
+</section>
+
 </main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>The Intelligent Hoodlums</h3>
+      <p class="mono">
+        Las Vegas, Nevada &middot; Est 2014<br>
+        Design &middot; Disrupt &middot; Deliver
+      </p>
+    </div>
+    <div class="footer-social">
+      <h4>The Streets</h4>
+      <ul class="social-links">
+        <li><a href="https://blog.theintelligenthoodlums.com/" target="_blank" rel="noopener">Blog</a></li>
+        <li><a href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.instagram.com/theintelligenthoodlums/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@webswebswebs" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://www.linkedin.com/company/the-intelligent-hoodlums" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/theintelligenthoodlums/" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mono">&copy; 2014&ndash;2026 The Intelligent Hoodlums</p>
+    <span class="footer-tagline">When In Doubt, Trust A Hoodlum.</span>
+  </div>
+</footer>
 
 <script>
 (function () {
   // ── CONFIG ──────────────────────────────────────────────────
-  // Paste the deployed Apps Script /exec URL here (see FOR-THE-RECORD-SETUP.md).
-  var BOOTH_ENDPOINT = 'https://script.google.com/macros/s/AKfycbywUwwl_fO40mvNMAtIMKH49hMsLIHB-2uYYFzvgjDW_IzvmNZEBm7E5N1rE51LfDoAiQ/exec';
+  // Shared CRM intake — the SAME deployed Apps Script as /for-the-record. Both
+  // pages feed one Google Sheet; this page tags its rows form_type = 'message'.
+  // (See ISTE-SETUP.md / FOR-THE-RECORD-SETUP.md.)
+  var MSG_ENDPOINT = 'https://script.google.com/macros/s/AKfycbywUwwl_fO40mvNMAtIMKH49hMsLIHB-2uYYFzvgjDW_IzvmNZEBm7E5N1rE51LfDoAiQ/exec';
 
   var MAX_BYTES = 45 * 1024 * 1024; // keep POST under Apps Script's limit
-  var MAX_SECONDS = 90;
+  var MAX_SECONDS = 120;
 
-  var form = document.getElementById('boothForm');
+  var form = document.getElementById('msgForm');
   var btn = document.getElementById('submitBtn');
   var note = document.getElementById('formNote');
   var progress = document.getElementById('progress');
@@ -490,6 +556,14 @@
     if (bytes < 1024) return bytes + ' B';
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' KB';
     return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+  }
+
+  function selectedInterests() {
+    var out = [];
+    Array.prototype.forEach.call(form.querySelectorAll('input[name="interests"]:checked'), function (c) {
+      out.push(c.value);
+    });
+    return out;
   }
 
   // ── Mode toggle ─────────────────────────────────────────────
@@ -595,10 +669,10 @@
           recPlayback.src = saveUrl;
           recPlayback.hidden = false;
           recSave.href = saveUrl;
-          recSave.download = 'testimonial' + (type.indexOf('audio') === 0 ? '.webm' : '.webm');
+          recSave.download = 'message.webm';
           recSave.hidden = false;
           recRedo.hidden = false;
-          recHint.textContent = 'Looks good? It’ll upload when you submit. Want another take? Re-record.';
+          recHint.textContent = 'Sound good? It’ll upload when you send. Want another take? Re-record.';
         };
         mediaRecorder.start();
         recBadge.classList.add('is-live');
@@ -665,7 +739,6 @@
     return new Promise(function (resolve, reject) {
       var reader = new FileReader();
       reader.onload = function () {
-        // strip the "data:...;base64," prefix
         var s = String(reader.result);
         resolve(s.slice(s.indexOf(',') + 1));
       };
@@ -677,15 +750,18 @@
   function validate() {
     if (!form.first_name.value.trim() || !form.last_name.value.trim()) return 'Please add your first and last name.';
     var email = form.email.value.trim();
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'That email doesn’t look right — fix it or leave it blank.';
+    if (!email) return 'Add your email so we can write back.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'That email doesn’t look right — give it another look.';
 
     var mode = currentMode();
-    if (mode === 'write' && !form.testimonial_text.value.trim()) return 'Write a few words before you submit.';
-    if (mode === 'record' && !recordedBlob) return 'Record your testimonial, or switch tabs to write or upload one.';
-    if (mode === 'upload' && !uploadedFile) return 'Choose a file to upload, or switch tabs to write or record one.';
+    var hasWritten = !!form.message_text.value.trim();
+    var hasMedia = (mode === 'record' && recordedBlob) || (mode === 'upload' && uploadedFile);
+    var hasInterest = selectedInterests().length > 0 || form.newsletter.checked;
 
-    if (!form.agreed.checked) return 'Please check the box to let us share your testimonial.';
-    if (!form.typed_signature.value.trim()) return 'Type your name to sign the release.';
+    // Need *something* to act on: a message, a recording/upload, or a reason for reaching out.
+    if (mode === 'record' && !recordedBlob && !hasWritten && !hasInterest) return 'Record your message, or switch tabs to write one or pick what brings you.';
+    if (mode === 'upload' && !uploadedFile && !hasWritten && !hasInterest) return 'Choose a file, or switch tabs to write a message or pick what brings you.';
+    if (!hasWritten && !hasMedia && !hasInterest) return 'Leave a message, or check what brings you, so we know how to help.';
     return null;
   }
 
@@ -693,17 +769,17 @@
     var mode = currentMode();
     var base = {
       submitted_at_client: new Date().toISOString(),
-      form_type: 'testimonial',
+      form_type: 'message',
       mode: mode,
       event_name: form.event_name.value,
       first_name: form.first_name.value.trim(),
       last_name: form.last_name.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
       role_title: form.role_title.value.trim(),
       school_org: form.school_org.value.trim(),
-      email: form.email.value.trim().toLowerCase(),
-      testimonial_text: form.testimonial_text.value.trim(),
-      agreed: form.agreed.checked ? 'Yes' : 'No',
-      typed_signature: form.typed_signature.value.trim(),
+      message_text: form.message_text.value.trim(),
+      interests: selectedInterests().join('; '),
+      newsletter: form.newsletter.checked ? 'Yes' : 'No',
       user_agent: navigator.userAgent,
       page_url: form.page_url.value,
       company_website: form.company_website.value // honeypot
@@ -711,9 +787,9 @@
 
     var media = null;
     if (mode === 'record' && recordedBlob) {
-      media = { blob: recordedBlob, name: 'testimonial-recording.webm', type: recordedBlob.type || 'video/webm' };
+      media = { blob: recordedBlob, name: 'message-recording.webm', type: recordedBlob.type || 'video/webm' };
     } else if (mode === 'upload' && uploadedFile) {
-      media = { blob: uploadedFile, name: uploadedFile.name || 'testimonial-upload', type: uploadedFile.type || 'application/octet-stream' };
+      media = { blob: uploadedFile, name: uploadedFile.name || 'message-upload', type: uploadedFile.type || 'application/octet-stream' };
     }
 
     if (!media) return Promise.resolve(base);
@@ -742,21 +818,21 @@
     var err = validate();
     if (err) { setNote(err, true); return; }
 
-    if (!BOOTH_ENDPOINT) {
-      setNote('The booth isn’t wired up yet (no endpoint configured). See FOR-THE-RECORD-SETUP.md.', true);
+    if (!MSG_ENDPOINT) {
+      setNote('The message box isn’t wired up yet (no endpoint configured). See ISTE-SETUP.md.', true);
       return;
     }
 
     btn.disabled = true;
     var original = btn.textContent;
-    var hasMedia = currentMode() !== 'write';
+    var hasMedia = currentMode() !== 'write' && (recordedBlob || uploadedFile);
     btn.textContent = hasMedia ? 'Uploading…' : 'Sending…';
     if (hasMedia) progress.classList.add('is-on');
     setNote('');
 
     buildPayload().then(function (payload) {
       // text/plain avoids a CORS preflight against Apps Script.
-      return fetch(BOOTH_ENDPOINT, {
+      return fetch(MSG_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)

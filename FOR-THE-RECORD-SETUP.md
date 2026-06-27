@@ -11,8 +11,15 @@ static HTML page that POSTs JSON to a Google Apps Script web app. The difference
 and uploaded media is decoded and saved to a **Google Drive folder**, and the Sheet row
 stores a link to it.
 
-> **Keep it on its own Sheet and its own deployment** so testimonials stay separate from
-> survey and release data.
+> **This is now the shared CRM intake.** The `/iste` "leave us a message" page posts to
+> this same web app and lands in this same Sheet — one contact list for the whole CRM.
+> The script routes by a `form_type` field (`testimonial` | `message`) and keeps the two
+> straight with the `form_type` and `consent_type` columns. (Keep this separate from the
+> `/survey` and `/release` deployments, though.)
+
+> **Enabling messages:** if this script is already deployed for testimonials, just paste
+> the latest `for-the-record-apps-script.gs` and **Deploy → Manage deployments → edit →
+> New version**. The `/exec` URL stays the same, so both pages keep working.
 
 ## 1. Make the Sheet + the media folder
 
@@ -36,7 +43,7 @@ stores a link to it.
    permission as well as Sheets — that's expected. Copy the **`/exec` URL**.
 
 Health check: visiting the `/exec` URL in a browser should return
-`{"result":"ok","service":"for-the-record-testimonials"}`.
+`{"result":"ok","service":"tih-crm-intake"}`.
 
 ## 3. Wire up the page
 
@@ -66,6 +73,17 @@ testimonial record. Only rows where the box was checked **and** a name was signe
   POSTs (the body cap is ~50 MB, and base64 inflates a file by ~33%).
 - The page degrades gracefully: if a browser can't record in-page (rare), the Record button
   is disabled and the visitor is steered to Write or Upload.
+
+## Testimonials are not just messages
+
+Every row carries a **`consent_type`** column that reads
+*TESTIMONIAL — signed release on file; OK to publish per release terms*. That's your
+green light: these people signed the release, so you can quote and publish them.
+
+Don't confuse them with the **messages** from [`/iste`](./ISTE-SETUP.md), which now sit
+in this same sheet (so the CRM is one list) and read *MESSAGE — reply only; do NOT
+publish*. Those folks left a note but signed nothing. Sort or filter on `form_type` /
+`consent_type` before you publish anything — only `testimonial` rows are cleared.
 
 ## Notes
 

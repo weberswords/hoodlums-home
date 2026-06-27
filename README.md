@@ -8,6 +8,7 @@ Single page. Static HTML/CSS. Deploys to Vercel.
 
 ```
 index.html         single-page site
+iste.html          /iste — ISTELive 26 session page + "leave us a message" capture
 styles.css         all styles (tokens from brand kit)
 fonts/             Avocado Sans Bold / Regular / Thin (self-hosted)
 assets/            badge, favicon, wordmark strip

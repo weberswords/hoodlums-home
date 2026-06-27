@@ -119,6 +119,24 @@ body::before {
   z-index: 9999;
 }
 
+/* ── SKIP LINK (keyboard: jump past the chrome) ──────────── */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 200;
+  background: var(--hm-rufous);
+  color: var(--hm-bone);
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: top 150ms ease-in-out;
+}
+.skip-link:focus { top: 12px; outline: 2px solid var(--hm-tuscany); outline-offset: 2px; }
+
 /* ── MASTHEAD ────────────────────────────────────────────── */
 .masthead {
   background: var(--hm-prussian);
@@ -530,6 +548,21 @@ body::before {
 .leaders-cta {
   margin-top: 36px;
 }
+
+/* secondary "read more" under the leaders CTA (Bone bg → dark text) */
+.leaders-more {
+  margin-top: 20px;
+  font-size: 15px;
+  color: var(--hm-prussian);
+}
+.leaders-more a {
+  color: var(--hm-rufous); /* 5.2:1 on Bone — passes AA for body text */
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.leaders-more a:hover,
+.leaders-more a:focus-visible { color: var(--hm-ink); }
 
 /* ── WATCH ───────────────────────────────────────────────── */
 .section-watch {
