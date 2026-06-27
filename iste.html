@@ -37,6 +37,10 @@
 
 <link rel="stylesheet" href="/styles.css">
 
+<!-- Vercel Web Analytics -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
 <style>
   /* ── "Leave us a message" — booth infrastructure, repurposed ─────────
      Ported from /for-the-record. Same write / record / upload component,
@@ -804,6 +808,7 @@
   }
 
   function showSuccess() {
+    window.va && window.va('event', { name: 'iste_message_submit' });
     form.hidden = true;
     var state = document.getElementById('successState');
     state.hidden = false;
