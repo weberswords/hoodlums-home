@@ -17,6 +17,10 @@
 
 <link rel="stylesheet" href="/styles.css">
 
+<!-- Vercel Web Analytics -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
 <style>
   /* ── Booth-specific, scoped to this page ───────────────────── */
 
@@ -728,6 +732,7 @@
   }
 
   function showSuccess() {
+    window.va && window.va('event', { name: 'testimonial_submit' });
     form.hidden = true;
     var state = document.getElementById('successState');
     state.hidden = false;

@@ -17,6 +17,10 @@
 
 <link rel="stylesheet" href="/styles.css">
 
+<!-- Vercel Web Analytics -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
 <style>
   /* The hidden attribute must win even on .btn (which sets display:inline-block). */
   [hidden] { display: none !important; }
@@ -229,6 +233,7 @@
   }
 
   function showSuccess() {
+    window.va && window.va('event', { name: 'white_paper_request' });
     form.hidden = true;
     document.querySelector('.wp-promise').hidden = true;
     var state = document.getElementById('successState');
