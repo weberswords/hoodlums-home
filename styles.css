@@ -230,6 +230,45 @@ body::before {
 /* Current page in a hub nav. */
 .nav-links a[aria-current="page"] { color: var(--hm-bone); }
 
+/* Mobile menu toggle — hidden on desktop, revealed under 640px. */
+.nav-burger {
+  display: none;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 4px;
+  margin: -8px -4px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--hm-bone);
+}
+.nav-burger-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 22px;
+}
+.nav-burger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--hm-bone);
+  transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+}
+.nav-burger:focus-visible { outline: 2px solid var(--hm-tuscany); outline-offset: 2px; }
+.nav-burger[aria-expanded="true"] .nav-burger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger[aria-expanded="true"] .nav-burger-bar:nth-child(2) { opacity: 0; }
+.nav-burger[aria-expanded="true"] .nav-burger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-burger-bar { transition: none; }
+}
+
 /* Screen-reader-only text (e.g. "(opens in new tab)") — visually hidden,
    still announced. */
 .sr-only {
@@ -1061,10 +1100,31 @@ body::before {
 
 @media (max-width: 640px) {
   .nav-logo { font-size: 14px; letter-spacing: 0.14em; }
-  .nav-links {
+  .site-nav { justify-content: space-between; flex-wrap: wrap; }
+
+  /* Full homepage nav collapses behind the labeled hamburger. */
+  .site-nav--menu .nav-burger { display: inline-flex; }
+  .site-nav--menu .nav-links {
     display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+    margin-top: 10px;
   }
-  .site-nav { justify-content: center; }
+  .site-nav--menu .nav-links.is-open { display: flex; }
+  .site-nav--menu .nav-links li { width: 100%; }
+  .site-nav--menu .nav-links a {
+    display: block;
+    padding: 13px 2px;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    border-top: 1px solid var(--bone-08);
+  }
+  .site-nav--menu .nav-divider { display: none; }
+
+  /* Short interior navs (1-3 links) stay visible inline, no hamburger. */
+  .site-nav:not(.site-nav--menu) .nav-links { gap: 18px; flex-wrap: wrap; justify-content: flex-end; }
   .hero-title { font-size: 44px; }
   .masthead { font-size: 10px; letter-spacing: 0.35em; padding: 10px 16px; }
   .announce-bar { font-size: 10px; letter-spacing: 0.22em; padding: 9px 16px; }
