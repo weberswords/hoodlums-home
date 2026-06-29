@@ -208,6 +208,42 @@ body::before {
   color: var(--hm-tuscany);
 }
 
+/* Internal cross-page links: a quiet "go to another page" cue, distinct
+   from the ↗ used for links that leave the site / open a new tab. */
+.nav-page::after {
+  content: '\2192';
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 0.9em;
+  color: var(--hm-tuscany);
+}
+
+/* Divider between the on-page section links and the cross-page links. */
+.nav-divider {
+  width: 1px;
+  align-self: stretch;
+  min-height: 14px;
+  background: var(--bone-08);
+  padding: 0;
+}
+
+/* Current page in a hub nav. */
+.nav-links a[aria-current="page"] { color: var(--hm-bone); }
+
+/* Screen-reader-only text (e.g. "(opens in new tab)") — visually hidden,
+   still announced. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ── BUTTONS ─────────────────────────────────────────────── */
 .btn {
   display: inline-block;
@@ -722,7 +758,7 @@ body::before {
 }
 
 .footer-bottom .mono {
-  color: rgba(140,163,181,0.55);
+  color: var(--hm-cadet); /* full cadet ~7:1 on Ink — AA (was 0.55 alpha, ~3:1) */
   text-transform: none;
   letter-spacing: 0.1em;
 }
@@ -733,7 +769,7 @@ body::before {
   font-size: 11px;
   letter-spacing: 0.33em;
   text-transform: uppercase;
-  color: var(--hm-rufous);
+  color: var(--hm-tuscany); /* ~8:1 on Ink — AA (Rufous was ~2.9:1, fails at any size) */
 }
 
 /* ── ANIMATIONS ─────────────────────────────────────────── */
