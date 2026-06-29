@@ -8,6 +8,8 @@
   function setOpen(open) {
     burger.setAttribute('aria-expanded', String(open));
     links.classList.toggle('is-open', open);
+    var label = burger.querySelector('.nav-burger-label');
+    if (label) label.textContent = open ? 'Close' : 'Menu';
   }
 
   burger.addEventListener('click', function () {

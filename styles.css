@@ -233,16 +233,26 @@ body::before {
 /* Mobile menu toggle — hidden on desktop, revealed under 640px. */
 .nav-burger {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  margin: -10px;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 4px;
+  margin: -8px -4px;
   background: transparent;
   border: 0;
   cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--hm-bone);
+}
+.nav-burger-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 22px;
 }
 .nav-burger-bar {
   display: block;
@@ -1091,8 +1101,10 @@ body::before {
 @media (max-width: 640px) {
   .nav-logo { font-size: 14px; letter-spacing: 0.14em; }
   .site-nav { justify-content: space-between; flex-wrap: wrap; }
-  .nav-burger { display: inline-flex; }
-  .nav-links {
+
+  /* Full homepage nav collapses behind the labeled hamburger. */
+  .site-nav--menu .nav-burger { display: inline-flex; }
+  .site-nav--menu .nav-links {
     display: none;
     flex-direction: column;
     align-items: flex-start;
@@ -1100,16 +1112,19 @@ body::before {
     width: 100%;
     margin-top: 10px;
   }
-  .nav-links.is-open { display: flex; }
-  .nav-links li { width: 100%; }
-  .nav-links a {
+  .site-nav--menu .nav-links.is-open { display: flex; }
+  .site-nav--menu .nav-links li { width: 100%; }
+  .site-nav--menu .nav-links a {
     display: block;
     padding: 13px 2px;
     font-size: 13px;
     letter-spacing: 0.18em;
     border-top: 1px solid var(--bone-08);
   }
-  .nav-divider { display: none; }
+  .site-nav--menu .nav-divider { display: none; }
+
+  /* Short interior navs (1-3 links) stay visible inline, no hamburger. */
+  .site-nav:not(.site-nav--menu) .nav-links { gap: 18px; flex-wrap: wrap; justify-content: flex-end; }
   .hero-title { font-size: 44px; }
   .masthead { font-size: 10px; letter-spacing: 0.35em; padding: 10px 16px; }
   .announce-bar { font-size: 10px; letter-spacing: 0.22em; padding: 9px 16px; }
