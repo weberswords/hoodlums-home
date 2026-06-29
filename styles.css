@@ -758,7 +758,7 @@ body::before {
 }
 
 .footer-bottom .mono {
-  color: rgba(140,163,181,0.55);
+  color: var(--hm-cadet); /* full cadet ~7:1 on Ink — AA (was 0.55 alpha, ~3:1) */
   text-transform: none;
   letter-spacing: 0.1em;
 }
@@ -769,7 +769,7 @@ body::before {
   font-size: 11px;
   letter-spacing: 0.33em;
   text-transform: uppercase;
-  color: var(--hm-rufous);
+  color: var(--hm-tuscany); /* ~8:1 on Ink — AA (Rufous was ~2.9:1, fails at any size) */
 }
 
 /* ── ANIMATIONS ─────────────────────────────────────────── */
