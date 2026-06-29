@@ -37,6 +37,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://theintelligenthoodlums.com/say-hi</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://theintelligenthoodlums.com/classroom-os-volume-2</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
