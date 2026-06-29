@@ -118,7 +118,12 @@
 <!-- NAV -->
 <nav class="site-nav">
   <a href="/classroom-os" class="nav-logo">CLASSROOM OS</a>
-  <ul class="nav-links">
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+    <span class="nav-burger-bar" aria-hidden="true"></span>
+    <span class="nav-burger-bar" aria-hidden="true"></span>
+    <span class="nav-burger-bar" aria-hidden="true"></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="/classroom-os" class="nav-back">&larr; Back to Classroom OS</a></li>
   </ul>
 </nav>
@@ -407,5 +412,6 @@
 </footer>
 
 </main>
+<script src="/nav.js" defer></script>
 </body>
 </html>

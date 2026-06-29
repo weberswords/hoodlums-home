@@ -139,7 +139,12 @@
 <!-- NAV -->
 <nav class="site-nav">
   <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
-  <ul class="nav-links">
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+    <span class="nav-burger-bar" aria-hidden="true"></span>
+    <span class="nav-burger-bar" aria-hidden="true"></span>
+    <span class="nav-burger-bar" aria-hidden="true"></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="/classroom-os" class="nav-back">&larr; The Retrospective</a></li>
   </ul>
 </nav>
@@ -615,5 +620,6 @@
   </div>
 </footer>
 
+<script src="/nav.js" defer></script>
 </body>
 </html>
