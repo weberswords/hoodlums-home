@@ -397,13 +397,52 @@ body::before {
   animation: fadeUp 600ms ease-in-out 420ms forwards;
 }
 
+.hero-problems {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--hm-tuscany);
+  margin: 0 auto 28px;
+  min-height: 1.5em; /* reserve space so the swap doesn't shift layout */
+  opacity: 0;
+  animation: fadeUp 600ms ease-in-out 370ms forwards;
+}
+
+.hero-problem {
+  font-style: italic;
+  color: var(--hm-bone);
+  transition: opacity 360ms ease-in-out;
+}
+
+.hero-problem.is-swapping {
+  opacity: 0;
+}
+
 .hero-cta {
   margin-top: 48px;
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
   justify-content: center;
   opacity: 0;
   animation: fadeUp 600ms ease-in-out 520ms forwards;
+}
+
+.hero-admin-link {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hm-cadet);
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+}
+.hero-admin-link:hover,
+.hero-admin-link:focus-visible {
+  color: var(--hm-bone);
 }
 
 /* ── RULES ──────────────────────────────────────────────── */
@@ -827,6 +866,7 @@ body::before {
   .hero-pillars,
   .hero-title,
   .hero-rule,
+  .hero-problems,
   .hero-tagline,
   .hero-cta {
     opacity: 1;
