@@ -7,11 +7,13 @@
   if (!el) return;
 
   var problems = [
+    'your coffee’s cold again — and not the iced kind',
+    'yet another login you’ll never use',
+    'the platform the district bought that nobody opens',
+    'the grading stack that never shrinks',
+    'lunch eaten standing up in nine minutes',
     'the PD day that wastes everyone’s time',
-    'the binder no one opens',
-    'the tool that doesn’t fit Tuesday',
-    'feeling alone in the work',
-    'theory that never survives a real classroom'
+    'running the room on four hours of sleep'
   ];
 
   var reduce = window.matchMedia &&
