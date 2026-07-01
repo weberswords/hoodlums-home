@@ -65,6 +65,34 @@
     color: var(--hm-cadet);
     margin-bottom: 12px;
   }
+  /* Livestream embed — responsive 16:9 wrapper so the player scales down on
+     phones instead of the player's fixed 640x360. */
+  .livestream-frame {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--bone-08);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+  }
+  .livestream-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .livestream-note {
+    max-width: 860px;
+    margin: 16px auto 0;
+    text-align: center;
+    color: var(--hm-cadet);
+    font-size: 14px;
+    line-height: 1.7;
+  }
 </style>
 </head>
 <body>
@@ -103,6 +131,21 @@
       <a href="#events" class="btn btn-primary">See What&rsquo;s On</a>
     </div>
     <img src="/assets/HM-badge-full.png" alt="" aria-hidden="true" class="hero-badge">
+  </div>
+</section>
+
+<!-- LIVESTREAM -->
+<section class="section" id="live" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">Live</div>
+    <h2 class="section-title">Watch the stream.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <div class="livestream-frame">
+      <iframe src="https://player.onestream.live/embed?token=OTc2OTM=&type=up" scrolling="no" allow="autoplay" allowfullscreen title="The Intelligent Hoodlums livestream"></iframe>
+    </div>
+    <p class="livestream-note">
+      When we go live, it plays right here. If the stream has not started yet, check the schedule below or catch us on <a href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener" style="color:var(--hm-bone);text-decoration:underline;">YouTube</a>, <a href="https://www.facebook.com/theintelligenthoodlums/" target="_blank" rel="noopener" style="color:var(--hm-bone);text-decoration:underline;">Facebook</a>, or <a href="https://www.twitch.tv/intelligenthoodlums" target="_blank" rel="noopener" style="color:var(--hm-bone);text-decoration:underline;">Twitch</a>.
+    </p>
   </div>
 </section>
 
