@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Catalog · The Intelligent Hoodlums</title>
+<meta name="description" content="Every session we run, turned into something you can press play on. Free replays and deep-dive mixtapes for teachers — watch, listen in the car, or read the liner notes.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0F1419">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
+
+<!-- Inherits the whole brand system: tokens, Grift, buttons, footer. -->
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+/* ============================================================
+   THE CATALOG — content library. Two release types:
+   the free EP (webinar replays) and the paid Mixtape (course).
+   Prototype: EP is fully playable & free; Mixtape links to its
+   own cover. Real build shares ONE player component + per-release
+   data files; duplicated here so each page opens standalone.
+   ============================================================ */
+
+/* — liner-note captions (Crew Talk register) — */
+.liner { font-family: var(--font-family); font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: var(--hm-cadet); }
+
+/* — catalog hero — */
+.cat-hero { padding: var(--space-9) var(--space-5) var(--space-6); text-align: center; }
+.cat-hero .liner { font-size: var(--text-xs); }
+.cat-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 7vw, var(--text-3xl)); color: var(--hm-bone); margin: 12px 0 0; line-height: 1.02; }
+.cat-hero p { font-size: var(--text-md); color: var(--bone-60); max-width: 52ch; margin: 18px auto 0; }
+
+/* — releases grid — */
+.catalog { max-width: 1000px; margin: 0 auto; padding: var(--space-6) var(--space-5) var(--space-8); display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.release { position: relative; border: 1px solid var(--bone-08); border-radius: 16px; padding: var(--space-6); background: linear-gradient(160deg, var(--hm-prussian) 0%, var(--hm-ink) 100%); display: flex; flex-direction: column; }
+.release-badge { position: absolute; top: 18px; right: 18px; font-family: var(--font-family); font-weight: 700; font-size: var(--text-xs); letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; }
+.release-badge.free { background: var(--hm-tuscany); color: var(--hm-ink); }
+.release-badge.paid { background: var(--hm-rufous); color: var(--hm-bone); }
+.rel-art { width: 132px; height: 132px; margin-bottom: 22px; }
+.rel-kind { font-size: var(--text-xs); margin-bottom: 6px; }
+.release h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); color: var(--hm-bone); line-height: 1.06; }
+.release .rel-blurb { font-size: var(--text-base); color: var(--bone-60); margin: 12px 0 18px; }
+.rel-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 22px; }
+.rel-meta span { font-family: var(--font-family); font-size: var(--text-xs); color: var(--bone-40); letter-spacing: .04em; }
+.rel-foot { margin-top: auto; }
+.rel-foot .btn { width: 100%; justify-content: center; }
+.rel-price { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: var(--hm-bone); margin-bottom: 12px; }
+.rel-price small { font-size: var(--text-sm); font-weight: 500; color: var(--bone-40); }
+.rel-ways { display: flex; justify-content: center; gap: 14px; margin-top: 14px; }
+.rel-ways span { font-family: var(--font-family); font-size: var(--text-xs); color: var(--hm-cadet); display: inline-flex; align-items: center; gap: 5px; }
+.rel-ways svg { width: 13px; height: 13px; }
+
+/* — "from the stage to the catalog" strip — */
+.pipeline { max-width: 860px; margin: 0 auto var(--space-8); padding: 0 var(--space-5); }
+.pipeline-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 10px; text-align: center; }
+.pipe-step { border: 1px solid var(--bone-08); border-radius: 12px; padding: 18px 14px; }
+.pipe-step .liner { font-size: 10px; margin-bottom: 6px; }
+.pipe-step b { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: var(--hm-bone); display: block; }
+.pipe-step span { font-size: var(--text-sm); color: var(--bone-60); }
+.pipe-arrow { color: var(--hm-prussian-40); font-size: 22px; }
+
+/* ============================================================
+   THE EP PLAYER (free) — reuses the mixtape player shell,
+   with a Watch/Listen toggle and prominent liner notes.
+   ============================================================ */
+.player { display: none; position: fixed; inset: 0; z-index: 400; background: var(--hm-ink); grid-template-columns: 340px 1fr; }
+.player.is-open { display: grid; }
+body.player-open { overflow: hidden; }
+.player-side { border-right: 1px solid var(--bone-08); overflow-y: auto; background: var(--hm-ink); }
+.player-side-head { padding: 20px 22px; border-bottom: 1px solid var(--bone-08); position: sticky; top: 0; background: var(--hm-ink); z-index: 2; }
+.side-head-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.player-side-head a.exit { font-family: var(--font-family); font-size: var(--text-sm); color: var(--hm-cadet); text-decoration: none; cursor: pointer; }
+.side-close { display: none; background: none; border: 0; color: var(--bone-40); font-size: 24px; line-height: 1; cursor: pointer; }
+.player-side-head h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--hm-bone); margin-top: 8px; }
+.progress-wrap { margin-top: 14px; }
+.progress-track { height: 6px; border-radius: 3px; background: var(--bone-08); overflow: hidden; }
+.progress-fill { height: 100%; width: 0; background: var(--hm-tuscany); transition: width .35s ease; }
+.progress-label { font-family: var(--font-family); font-size: var(--text-xs); color: var(--bone-40); margin-top: 6px; letter-spacing: .04em; }
+.p-list-title { padding: 18px 22px 8px; }
+.p-lesson { display: flex; align-items: center; gap: 12px; padding: 11px 22px; width: 100%; background: none; border: 0; text-align: left; font: inherit; color: var(--bone-60); cursor: pointer; border-left: 3px solid transparent; }
+.p-lesson:hover { background: var(--bone-06); color: var(--hm-bone); }
+.p-lesson.active { background: var(--bone-08); color: var(--hm-bone); border-left-color: var(--hm-rufous); }
+.p-lesson .p-num { flex: 0 0 24px; font-family: var(--font-display); font-weight: 800; font-size: var(--text-md); color: var(--hm-prussian-40); text-align: center; }
+.p-lesson.active .p-num { color: var(--hm-rufous); }
+.p-lesson.done .p-num { color: var(--hm-tuscany); }
+.p-lesson .p-name { font-size: var(--text-sm); }
+.p-lesson .p-dur { margin-left: auto; font-size: var(--text-xs); color: var(--bone-40); }
+
+.player-stage { overflow-y: auto; }
+.stage-topbar { display: none; }
+.topbar-btn { background: var(--bone-06); border: 1px solid var(--bone-08); color: var(--hm-bone); border-radius: 8px; padding: 9px 14px; font: inherit; font-size: var(--text-sm); font-weight: 500; cursor: pointer; }
+.stage-inner { max-width: 900px; margin: 0 auto; padding: var(--space-7) var(--space-6) var(--space-9); }
+
+.media-toggle { display: inline-flex; gap: 4px; background: var(--bone-06); border-radius: 8px; padding: 4px; margin-bottom: 16px; }
+.media-toggle button { border: 0; background: none; color: var(--bone-60); font: inherit; font-size: var(--text-sm); padding: 7px 16px; border-radius: 6px; cursor: pointer; display: inline-flex; gap: 7px; align-items: center; }
+.media-toggle button.active { background: var(--hm-prussian); color: var(--hm-bone); }
+.media-toggle svg { width: 15px; height: 15px; }
+
+.media-frame { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid var(--bone-08); }
+.media-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video-poster { position: absolute; inset: 0; display: grid; place-items: center; cursor: pointer; background: radial-gradient(circle at 50% 40%, var(--hm-prussian) 0%, var(--hm-ink) 100%); }
+.video-poster .play { width: 76px; height: 76px; border-radius: 50%; background: var(--hm-rufous); display: grid; place-items: center; box-shadow: 0 10px 40px rgba(183,40,15,.4); }
+.video-poster .play svg { width: 30px; height: 30px; color: var(--hm-bone); margin-left: 4px; }
+
+/* audio ("in the car") view */
+.audio-card { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 16px; background: radial-gradient(circle at 50% 35%, var(--hm-prussian) 0%, var(--hm-ink) 100%); }
+.audio-disc { width: 128px; height: 128px; }
+.audio-disc.spin { animation: spin 4s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.audio-play { width: 60px; height: 60px; border-radius: 50%; background: var(--hm-rufous); display: grid; place-items: center; cursor: pointer; border: 0; }
+.audio-play svg { width: 24px; height: 24px; color: var(--hm-bone); }
+.audio-dl { font-family: var(--font-family); font-size: var(--text-xs); color: var(--hm-cadet); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.audio-dl svg { width: 13px; height: 13px; }
+
+.stage-lesson-kicker { font-family: var(--font-family); font-size: var(--text-sm); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--hm-tuscany); margin: 24px 0 8px; }
+.now-playing { font-family: var(--font-family); font-size: var(--text-xs); letter-spacing: .3em; text-transform: uppercase; color: var(--hm-rufous-light); margin-bottom: 8px; }
+.stage-inner h1 { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl); color: var(--hm-bone); line-height: 1.1; }
+.stage-body { color: var(--bone-60); font-size: var(--text-base); margin-top: 16px; }
+
+/* liner notes (show notes) */
+.liner-notes { margin-top: 30px; border-top: 1px solid var(--bone-08); padding-top: 22px; }
+.liner-notes h4 { margin-bottom: 14px; font-size: var(--text-xs); }
+.ln-row { display: flex; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--bone-06); }
+.ln-time { flex: 0 0 46px; font-family: var(--font-family); font-weight: 100; letter-spacing: .1em; font-size: var(--text-sm); color: var(--hm-tuscany); }
+.ln-row span:last-child { font-size: var(--text-base); color: var(--bone-60); }
+.ln-links { margin-top: 18px; display: grid; gap: 10px; }
+.ln-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid var(--bone-08); border-radius: 8px; text-decoration: none; color: var(--hm-bone); }
+.ln-link:hover { border-color: var(--hm-prussian-40); background: var(--bone-06); }
+.ln-link .r-ico { color: var(--hm-tuscany); }
+.ln-link .r-meta { margin-left: auto; font-family: var(--font-family); font-size: var(--text-xs); color: var(--bone-40); }
+
+.upsell { margin-top: 30px; border: 1px solid var(--hm-rufous); border-radius: 12px; padding: 20px 22px; background: rgba(183,40,15,.08); }
+.upsell b { font-family: var(--font-display); font-weight: 700; color: var(--hm-bone); }
+.upsell p { color: var(--bone-60); font-size: var(--text-sm); margin: 4px 0 14px; }
+
+.keep-touch { margin-top: 24px; border: 1px solid var(--bone-08); border-radius: 12px; padding: 20px 22px; }
+.keep-touch .liner { font-size: 10px; }
+.keep-touch b { font-family: var(--font-display); font-weight: 700; color: var(--hm-bone); display: block; margin-top: 6px; }
+.keep-touch p { color: var(--bone-60); font-size: var(--text-sm); margin: 4px 0 14px; }
+.kt-row { display: flex; gap: 10px; }
+.kt-row input { flex: 1; background: var(--bone-06); border: 1px solid var(--bone-08); border-radius: 8px; padding: 11px 14px; color: var(--hm-bone); font: inherit; font-size: var(--text-base); }
+.kt-row input:focus { outline: none; border-color: var(--hm-prussian-40); }
+.kt-row .btn { flex: 0 0 auto; }
+.keep-touch.done { text-align: left; }
+@media (max-width: 560px) { .kt-row { flex-direction: column; } .kt-row .btn { width: 100%; justify-content: center; } }
+
+.stage-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 36px; }
+
+@media (max-width: 860px) {
+  .catalog { grid-template-columns: 1fr; }
+  .pipeline-row { grid-template-columns: 1fr; }
+  .pipe-arrow { transform: rotate(90deg); }
+  .player { grid-template-columns: 1fr; }
+  .player-side { display: none; }
+  .player.show-side .player-side { display: block; position: fixed; inset: 0; z-index: 10; }
+  .stage-topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: sticky; top: 0; z-index: 6; padding: 10px 14px; background: rgba(15,20,25,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--bone-08); }
+  .side-close { display: block; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span>The Intelligent Hoodlums</span>
+  <span class="dot">&middot;</span>
+  <span>Las Vegas</span>
+  <span class="dot">&middot;</span>
+  <span>Est 2014</span>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-back">&larr; Home</a></li>
+    <li><a href="/events">Upcoming</a></li>
+  </ul>
+</nav>
+
+<main id="top" tabindex="-1">
+
+<!-- CATALOG HERO -->
+<section class="cat-hero">
+  <p class="liner">The Catalog</p>
+  <h1>Press play on the whole crew.</h1>
+  <p>Every session we run gets pressed to the catalog. Free replays of the live webinars, and deep-dive mixtapes when you want the whole build. Watch it, take it in the car, or just read the liner notes.</p>
+</section>
+
+<!-- RELEASES -->
+<section class="catalog">
+
+  <!-- FREE EP -->
+  <article class="release">
+    <span class="release-badge free">Free</span>
+    <svg class="rel-art" viewBox="0 0 200 200" role="img" aria-label="A vinyl record">
+      <circle cx="100" cy="100" r="94" fill="var(--hm-ink)" stroke="var(--hm-prussian-40)" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="var(--bone-08)"/>
+      <circle cx="100" cy="100" r="66" fill="none" stroke="var(--bone-08)"/>
+      <circle cx="100" cy="100" r="52" fill="none" stroke="var(--bone-08)"/>
+      <circle cx="100" cy="100" r="36" fill="var(--hm-tuscany)"/>
+      <circle cx="100" cy="100" r="6" fill="var(--hm-ink)"/>
+    </svg>
+    <p class="liner rel-kind">The EP</p>
+    <h2>Google Classroom, Live</h2>
+    <p class="rel-blurb">The free webinar series, on demand. Five episodes on building the system underneath Google Classroom — the one that keeps it from getting messy by October.</p>
+    <div class="rel-meta">
+      <span>5 episodes</span><span>&middot;</span><span>~3.5 hrs</span><span>&middot;</span><span>Watch &middot; Listen &middot; Read</span>
+    </div>
+    <div class="rel-foot">
+      <div class="rel-price">Free <small>&middot; no account</small></div>
+      <button class="btn btn-primary" onclick="openEP('e1')">Play the EP</button>
+      <div class="rel-ways">
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Watch</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> Listen</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg> Read</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- PAID MIXTAPE -->
+  <article class="release">
+    <span class="release-badge paid">$49</span>
+    <svg class="rel-art" viewBox="0 0 200 130" role="img" aria-label="A cassette tape">
+      <rect x="4" y="4" width="192" height="122" rx="12" fill="var(--hm-prussian)" stroke="var(--hm-tuscany)" stroke-width="2"/>
+      <rect x="20" y="16" width="160" height="40" rx="5" fill="var(--hm-bone)"/>
+      <rect x="30" y="27" width="90" height="6" rx="3" fill="var(--hm-prussian)"/>
+      <rect x="30" y="40" width="56" height="5" rx="2" fill="var(--hm-cadet)"/>
+      <rect x="22" y="70" width="156" height="44" rx="7" fill="var(--hm-ink)" stroke="var(--hm-prussian-40)"/>
+      <circle cx="70" cy="92" r="14" fill="none" stroke="var(--hm-bone)" stroke-width="3"/>
+      <circle cx="130" cy="92" r="14" fill="none" stroke="var(--hm-bone)" stroke-width="3"/>
+      <circle cx="70" cy="92" r="4" fill="var(--hm-tuscany)"/>
+      <circle cx="130" cy="92" r="4" fill="var(--hm-tuscany)"/>
+      <rect x="84" y="90" width="32" height="3" rx="1.5" fill="var(--hm-rufous)"/>
+    </svg>
+    <p class="liner rel-kind">Vol. 1 &middot; Mixtape</p>
+    <h2>Gemini + NotebookLM for Teachers</h2>
+    <p class="rel-blurb">The studio cut on Google's classroom AI. Six tracks on Gemini and NotebookLM — prompts that draft your plans, study guides from your own sources, and Audio Overviews. Yours forever, just your email.</p>
+    <div class="rel-meta">
+      <span>6 tracks</span><span>&middot;</span><span>~2.5 hrs</span><span>&middot;</span><span>Prompt packs + notebooks</span>
+    </div>
+    <div class="rel-foot">
+      <div class="rel-price">$49 <small>&middot; one-time</small></div>
+      <a class="btn btn-primary" href="/course-prototype" style="display:flex;justify-content:center;">Get the mixtape</a>
+    </div>
+  </article>
+
+</section>
+
+<!-- FROM THE STAGE TO THE CATALOG (the funnel, said plainly) -->
+<section class="pipeline">
+  <div class="pipeline-row">
+    <div class="pipe-step"><p class="liner">Live</p><b>Catch it in the room</b><span>Free webinars, in real time.</span></div>
+    <div class="pipe-arrow">&rarr;</div>
+    <div class="pipe-step"><p class="liner">The EP · Free</p><b>Missed it? Press play</b><span>Replays you can take in the car.</span></div>
+    <div class="pipe-arrow">&rarr;</div>
+    <div class="pipe-step"><p class="liner">The Mixtape · $49</p><b>Ready for the next level</b><span>Deep dives like Gemini + NotebookLM.</span></div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>The Intelligent Hoodlums</h3>
+      <p class="mono">Las Vegas, Nevada &middot; Est 2014<br>Design &middot; Disrupt &middot; Deliver</p>
+    </div>
+    <div class="footer-social">
+      <h4>The Streets</h4>
+      <ul class="social-links">
+        <li><a href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://blog.theintelligenthoodlums.com/" target="_blank" rel="noopener">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mono">&copy; 2014&ndash;2026 The Intelligent Hoodlums</p>
+    <span class="footer-tagline">When In Doubt, Trust A Hoodlum.</span>
+  </div>
+</footer>
+
+<!-- ============ THE EP PLAYER (free) ============ -->
+<div class="player" id="player">
+  <aside class="player-side" id="playerSide">
+    <div class="player-side-head">
+      <div class="side-head-row">
+        <a class="exit" onclick="closeEP()">&larr; Back to the catalog</a>
+        <button class="side-close" onclick="toggleSide()" aria-label="Close episodes">&times;</button>
+      </div>
+      <p class="liner" style="margin-top:10px;font-size:11px;">The EP &middot; Free</p>
+      <h2>Google Classroom, Live</h2>
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressLabel">0 of 5 episodes played</div>
+      </div>
+    </div>
+    <div class="p-list-title liner">Episodes</div>
+    <nav id="epNav"><!-- rendered by JS --></nav>
+  </aside>
+
+  <div class="player-stage" id="playerStage">
+    <header class="stage-topbar">
+      <button class="topbar-btn" onclick="closeEP()">&larr; Catalog</button>
+      <button class="topbar-btn" onclick="toggleSide()">Episodes</button>
+    </header>
+    <div class="stage-inner">
+      <div class="media-toggle" id="mediaToggle">
+        <button data-mode="watch" onclick="setMode('watch')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Watch</button>
+        <button data-mode="listen" onclick="setMode('listen')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> Listen</button>
+      </div>
+      <div class="media-frame" id="mediaFrame"></div>
+
+      <p class="now-playing">Now Playing</p>
+      <div class="stage-lesson-kicker" id="stageKicker">Episode 01</div>
+      <h1 id="stageTitle">Episode title</h1>
+      <div class="stage-body" id="stageBody"></div>
+
+      <div class="liner-notes" id="linerNotes"></div>
+
+      <!-- soft cross-sell to the paid Mixtape -->
+      <div class="upsell">
+        <b>Ready to level up?</b>
+        <p>Got your Classroom running? Put Google's AI to work next — Gemini for prep, NotebookLM for study guides and audio. That's the Mixtape.</p>
+        <a class="btn btn-bone" href="/course-prototype">Hear the Mixtape &rarr;</a>
+      </div>
+
+      <!-- optional: keep in touch. Never gates the content — it's already playing. -->
+      <div class="keep-touch" id="keepTouch">
+        <p class="liner">Optional &middot; no gate</p>
+        <b>Want to know when we drop the next one?</b>
+        <p>We'll email you when the crew releases new episodes. That's it. You're already watching — this is just if you want a heads up.</p>
+        <div class="kt-row">
+          <input type="email" id="ktEmail" placeholder="you@school.edu" autocomplete="email">
+          <button class="btn btn-bone" onclick="keepInTouch()">Keep me posted</button>
+        </div>
+      </div>
+
+      <div class="stage-nav">
+        <button class="btn btn-bone" onclick="markPlayed()">Mark played</button>
+        <button class="btn btn-primary" onclick="nextEpisode()">Next episode &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/nav.js"></script>
+<script>
+/* ============================================================
+   EP DATA — the free webinar series. In the real build this is
+   one release data file; the player renders whatever's here.
+   Each episode carries video + (later) an audio file for the car,
+   plus liner notes: timestamps and links.
+   ============================================================ */
+const EP = {
+  slug: "google-classroom-live",
+  episodes: [
+    { id: "e1", n: "01", title: "Google Classroom won't save you", dur: "44 min", video: "VIDEO_ID_1",
+      body: "<p>Why the tool everyone's handed doesn't fix anything on its own — and the one idea (a system underneath it) that makes it finally work.</p>",
+      notes: [ ["00:00","Cold open: the messy stream we've all had"], ["06:20","The filing-cabinet trap"], ["18:40","What a 'system underneath' actually means"], ["32:10","The one change to make Monday"] ],
+      links: [ { label: "Session slides", meta: "PDF", href: "#" } ] },
+    { id: "e2", n: "02", title: "The setup that survives the year", dur: "41 min", video: "VIDEO_ID_2",
+      body: "<p>Topics, naming, and the two settings that decide whether your Classroom is readable in April. We set it up once, on purpose.</p>",
+      notes: [ ["00:00","Recap"], ["04:15","Topics vs. no topics"], ["21:30","A naming convention students can predict"], ["35:00","Settings to change today"] ],
+      links: [ { label: "Setup checklist", meta: "Google Doc", href: "#" } ] },
+    { id: "e3", n: "03", title: "Taming the stream", dur: "39 min", video: "VIDEO_ID_3",
+      body: "<p>A weekly posting rhythm so students always know where to look — and you stop answering the same three questions.</p>",
+      notes: [ ["00:00","The stream problem"], ["09:10","A cadence you can keep"], ["24:40","Reusing announcements"] ],
+      links: [ { label: "Weekly cadence map", meta: "PDF", href: "#" } ] },
+    { id: "e4", n: "04", title: "Assignments without the busywork", dur: "46 min", video: "VIDEO_ID_4",
+      body: "<p>Templates and a rubric flow that cut the repeating work — build it once, clone it all year.</p>",
+      notes: [ ["00:00","Where the hours go"], ["12:00","The assignment template"], ["28:20","Rubrics that grade faster"] ],
+      links: [ { label: "Assignment starters", meta: "Drive folder", href: "#" } ] },
+    { id: "e5", n: "05", title: "Grades, guardians, and going home on time", dur: "43 min", video: "VIDEO_ID_5",
+      body: "<p>Closing the loop: gradebook sanity, guardian summaries, and the routines that let the room run without you.</p>",
+      notes: [ ["00:00","The Friday scramble"], ["11:45","Gradebook, tamed"], ["26:30","Guardian summaries on autopilot"], ["38:00","What runs without you"] ],
+      links: [ { label: "End-of-week routine", meta: "Google Doc", href: "#" } ] },
+  ]
+};
+
+const STORE = "tih_ep_" + EP.slug;
+function loadState() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch (e) { return {}; } }
+function saveState(s) { localStorage.setItem(STORE, JSON.stringify(s)); }
+let state = Object.assign({ done: {}, current: EP.episodes[0].id, mode: "watch" }, loadState());
+
+/* ---------- open / close ---------- */
+function openEP(id) {
+  state.current = id; saveState(state);
+  document.body.classList.add("player-open");
+  const p = document.getElementById("player");
+  p.classList.add("is-open"); p.classList.remove("show-side");
+  render();
+  document.getElementById("playerStage").scrollTop = 0;
+}
+function closeEP() {
+  document.body.classList.remove("player-open");
+  const p = document.getElementById("player");
+  p.classList.remove("is-open"); p.classList.remove("show-side");
+}
+function toggleSide() { document.getElementById("player").classList.toggle("show-side"); }
+
+/* ---------- render ---------- */
+function current() { return EP.episodes.find(e => e.id === state.current) || EP.episodes[0]; }
+
+function render() {
+  const e = current();
+
+  // episode list
+  document.getElementById("epNav").innerHTML = EP.episodes.map(ep => `
+    <button class="p-lesson ${ep.id === e.id ? "active" : ""} ${state.done[ep.id] ? "done" : ""}" onclick="openEP('${ep.id}')">
+      <span class="p-num">${ep.n}</span>
+      <span class="p-name">${ep.title}</span>
+      <span class="p-dur">${ep.dur}</span>
+    </button>`).join("");
+
+  // toggle state
+  document.querySelectorAll("#mediaToggle button").forEach(b =>
+    b.classList.toggle("active", b.dataset.mode === state.mode));
+
+  renderMedia();
+
+  document.getElementById("stageKicker").textContent = "Episode " + e.n;
+  document.getElementById("stageTitle").textContent = e.title;
+  document.getElementById("stageBody").innerHTML = e.body || "";
+
+  document.getElementById("linerNotes").innerHTML =
+    `<h4 class="liner">Liner notes</h4>` +
+    e.notes.map(([t, label]) => `<div class="ln-row"><span class="ln-time">${t}</span><span>${label}</span></div>`).join("") +
+    (e.links && e.links.length ? `<div class="ln-links">` + e.links.map(r => `
+      <a class="ln-link" href="${r.href}" onclick="return false;">
+        <span class="r-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></span>
+        <span>${r.label}</span><span class="r-meta">${r.meta}</span>
+      </a>`).join("") + `</div>` : "");
+
+  updateProgress();
+}
+
+function renderMedia() {
+  const e = current();
+  const frame = document.getElementById("mediaFrame");
+  if (state.mode === "listen") {
+    // Audio view — "take it in the car". Real build: an <audio> with the episode's audio file.
+    frame.innerHTML = `
+      <div class="audio-card">
+        <svg class="audio-disc" id="audioDisc" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="94" fill="var(--hm-ink)" stroke="var(--hm-prussian-40)"/>
+          <circle cx="100" cy="100" r="74" fill="none" stroke="var(--bone-08)"/>
+          <circle cx="100" cy="100" r="58" fill="none" stroke="var(--bone-08)"/>
+          <circle cx="100" cy="100" r="34" fill="var(--hm-tuscany)"/>
+          <circle cx="100" cy="100" r="6" fill="var(--hm-ink)"/>
+        </svg>
+        <button class="audio-play" id="audioPlay" onclick="toggleAudio()" aria-label="Play episode">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <a class="audio-dl" href="#" onclick="return false;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          Download for the car
+        </a>
+      </div>`;
+  } else {
+    // Video view
+    frame.innerHTML = `
+      <div class="video-poster" onclick="playVideo()">
+        <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>`;
+  }
+}
+function setMode(mode) { state.mode = mode; saveState(state); render(); }
+function playVideo() {
+  const e = current();
+  document.getElementById("mediaFrame").innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${encodeURIComponent(e.video)}?rel=0&modestbranding=1" title="${e.title}" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+}
+function toggleAudio() {
+  // Prototype: just spin the disc + swap the icon to convey playback.
+  const disc = document.getElementById("audioDisc");
+  const btn = document.getElementById("audioPlay");
+  const playing = disc.classList.toggle("spin");
+  btn.innerHTML = playing
+    ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+}
+
+function keepInTouch() {
+  // Optional opt-in — never blocks the content. Real build: POST the email to the list.
+  const box = document.getElementById("keepTouch");
+  const email = (document.getElementById("ktEmail") || {}).value || "";
+  box.classList.add("done");
+  box.innerHTML = `<p class="liner">On the list</p><b>You're in${email ? ", " + email.split("@")[0] : ""}.</b><p>We'll only reach out when there's a new episode. Back to the tape.</p>`;
+}
+function markPlayed() { state.done[state.current] = true; saveState(state); render(); }
+function nextEpisode() {
+  const i = EP.episodes.findIndex(e => e.id === state.current);
+  const next = EP.episodes[i + 1];
+  if (next) openEP(next.id);
+  else { alert("That's the whole EP. When you're ready to put AI to work, the Mixtape's waiting."); closeEP(); }
+}
+function updateProgress() {
+  const total = EP.episodes.length;
+  const done = EP.episodes.filter(e => state.done[e.id]).length;
+  document.getElementById("progressFill").style.width = (done / total * 100) + "%";
+  document.getElementById("progressLabel").textContent = `${done} of ${total} episodes played`;
+}
+
+/* keyboard: Esc backs out one layer at a time */
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  const p = document.getElementById("player");
+  if (p.classList.contains("show-side")) return p.classList.remove("show-side");
+  if (p.classList.contains("is-open")) return closeEP();
+});
+</script>
+</body>
+</html>
