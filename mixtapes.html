@@ -133,6 +133,17 @@ body.player-open { overflow: hidden; }
 .upsell b { font-family: var(--font-display); font-weight: 700; color: var(--hm-bone); }
 .upsell p { color: var(--bone-60); font-size: var(--text-sm); margin: 4px 0 14px; }
 
+.keep-touch { margin-top: 24px; border: 1px solid var(--bone-08); border-radius: 12px; padding: 20px 22px; }
+.keep-touch .liner { font-size: 10px; }
+.keep-touch b { font-family: var(--font-display); font-weight: 700; color: var(--hm-bone); display: block; margin-top: 6px; }
+.keep-touch p { color: var(--bone-60); font-size: var(--text-sm); margin: 4px 0 14px; }
+.kt-row { display: flex; gap: 10px; }
+.kt-row input { flex: 1; background: var(--bone-06); border: 1px solid var(--bone-08); border-radius: 8px; padding: 11px 14px; color: var(--hm-bone); font: inherit; font-size: var(--text-base); }
+.kt-row input:focus { outline: none; border-color: var(--hm-prussian-40); }
+.kt-row .btn { flex: 0 0 auto; }
+.keep-touch.done { text-align: left; }
+@media (max-width: 560px) { .kt-row { flex-direction: column; } .kt-row .btn { width: 100%; justify-content: center; } }
+
 .stage-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 36px; }
 
 @media (max-width: 860px) {
@@ -223,10 +234,10 @@ body.player-open { overflow: hidden; }
       <rect x="84" y="90" width="32" height="3" rx="1.5" fill="var(--hm-rufous)"/>
     </svg>
     <p class="liner rel-kind">Vol. 1 &middot; Mixtape</p>
-    <h2>Google Classroom, Run Like a System</h2>
-    <p class="rel-blurb">The studio cut. Six tracks and the actual templates — the full build the free EP only points at. Yours forever, just your email.</p>
+    <h2>Gemini + NotebookLM for Teachers</h2>
+    <p class="rel-blurb">The studio cut on Google's classroom AI. Six tracks on Gemini and NotebookLM — prompts that draft your plans, study guides from your own sources, and Audio Overviews. Yours forever, just your email.</p>
     <div class="rel-meta">
-      <span>6 tracks</span><span>&middot;</span><span>~2.5 hrs</span><span>&middot;</span><span>Templates included</span>
+      <span>6 tracks</span><span>&middot;</span><span>~2.5 hrs</span><span>&middot;</span><span>Prompt packs + notebooks</span>
     </div>
     <div class="rel-foot">
       <div class="rel-price">$49 <small>&middot; one-time</small></div>
@@ -243,7 +254,7 @@ body.player-open { overflow: hidden; }
     <div class="pipe-arrow">&rarr;</div>
     <div class="pipe-step"><p class="liner">The EP · Free</p><b>Missed it? Press play</b><span>Replays you can take in the car.</span></div>
     <div class="pipe-arrow">&rarr;</div>
-    <div class="pipe-step"><p class="liner">The Mixtape · $49</p><b>Want the whole build</b><span>The studio cut, with templates.</span></div>
+    <div class="pipe-step"><p class="liner">The Mixtape · $49</p><b>Ready for the next level</b><span>Deep dives like Gemini + NotebookLM.</span></div>
   </div>
 </section>
 
@@ -310,9 +321,20 @@ body.player-open { overflow: hidden; }
 
       <!-- soft cross-sell to the paid Mixtape -->
       <div class="upsell">
-        <b>Want the whole build?</b>
-        <p>The EP shows you the shape. The Mixtape hands you the templates and the six-track studio cut.</p>
+        <b>Ready to level up?</b>
+        <p>Got your Classroom running? Put Google's AI to work next — Gemini for prep, NotebookLM for study guides and audio. That's the Mixtape.</p>
         <a class="btn btn-bone" href="/course-prototype">Hear the Mixtape &rarr;</a>
+      </div>
+
+      <!-- optional: keep in touch. Never gates the content — it's already playing. -->
+      <div class="keep-touch" id="keepTouch">
+        <p class="liner">Optional &middot; no gate</p>
+        <b>Want to know when we drop the next one?</b>
+        <p>We'll email you when the crew releases new episodes. That's it. You're already watching — this is just if you want a heads up.</p>
+        <div class="kt-row">
+          <input type="email" id="ktEmail" placeholder="you@school.edu" autocomplete="email">
+          <button class="btn btn-bone" onclick="keepInTouch()">Keep me posted</button>
+        </div>
       </div>
 
       <div class="stage-nav">
@@ -460,12 +482,19 @@ function toggleAudio() {
     : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
 }
 
+function keepInTouch() {
+  // Optional opt-in — never blocks the content. Real build: POST the email to the list.
+  const box = document.getElementById("keepTouch");
+  const email = (document.getElementById("ktEmail") || {}).value || "";
+  box.classList.add("done");
+  box.innerHTML = `<p class="liner">On the list</p><b>You're in${email ? ", " + email.split("@")[0] : ""}.</b><p>We'll only reach out when there's a new episode. Back to the tape.</p>`;
+}
 function markPlayed() { state.done[state.current] = true; saveState(state); render(); }
 function nextEpisode() {
   const i = EP.episodes.findIndex(e => e.id === state.current);
   const next = EP.episodes[i + 1];
   if (next) openEP(next.id);
-  else { alert("That's the whole EP. When you want the templates, the Mixtape's waiting."); closeEP(); }
+  else { alert("That's the whole EP. When you're ready to put AI to work, the Mixtape's waiting."); closeEP(); }
 }
 function updateProgress() {
   const total = EP.episodes.length;
