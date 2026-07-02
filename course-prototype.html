@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Course Prototype — The Intelligent Hoodlums</title>
+<title>Google Classroom, Run Like a System · The Intelligent Hoodlums</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0F1419">
 
@@ -20,87 +20,40 @@
    Nothing below is final; it's a clickable reference for Mike.
    ============================================================ */
 
-/* — prototype banner (removed in the real build) — */
-.proto-bar {
-  position: sticky; top: 0; z-index: 500;
-  background: var(--hm-rufous); color: var(--hm-bone);
-  font-family: var(--font-family); font-size: 13px; font-weight: 500;
-  padding: 8px var(--space-5); display: flex; gap: 16px;
-  align-items: center; justify-content: center; text-align: center;
-}
-.proto-bar strong { font-weight: 700; }
-.proto-bar button {
-  margin-left: auto; background: transparent; border: 1px solid var(--bone-40);
-  color: var(--hm-bone); border-radius: 4px; padding: 2px 10px;
-  font: inherit; cursor: pointer;
-}
-.proto-note {
-  display: inline-block; font-family: var(--font-family); font-size: 11px;
-  letter-spacing: .04em; text-transform: uppercase; color: var(--hm-tuscany);
-  border: 1px dashed var(--hm-tuscany-dark); border-radius: 4px;
-  padding: 2px 8px; margin: 4px 0; opacity: .85;
-}
+/* — in-player mobile controls (top bar + sidebar overlay toggle) — */
+.stage-topbar { display: none; }
+.topbar-btn { background: var(--bone-06); border: 1px solid var(--bone-08); color: var(--hm-bone); border-radius: 8px; padding: 9px 14px; font: inherit; font-size: var(--text-sm); font-weight: 500; cursor: pointer; }
+.side-head-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.side-close { display: none; background: none; border: 0; color: var(--bone-40); font-size: 24px; line-height: 1; cursor: pointer; }
 
-/* — course hero — */
-.course-hero { padding: var(--space-9) var(--space-5) var(--space-8); }
-.course-hero-grid {
-  max-width: 1120px; margin: 0 auto; display: grid;
-  grid-template-columns: 1.4fr .9fr; gap: var(--space-8); align-items: start;
+/* — course hero: one screen. What it is + what it costs. Nothing to scroll past to start. — */
+.course-hero {
+  min-height: calc(100svh - 128px);
+  display: grid; place-items: center;
+  padding: var(--space-7) var(--space-5); text-align: center;
 }
+.course-hero-inner { max-width: 640px; }
 .course-kicker {
   font-family: var(--font-family); font-size: var(--text-sm); font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--hm-tuscany);
-  display: flex; gap: 12px; align-items: center;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--hm-tuscany);
 }
-.course-kicker::after { content: ""; height: 1px; flex: 1; background: var(--bone-08); }
 .course-hero h1 {
-  font-family: var(--font-display); font-weight: 800; line-height: 1.02;
-  font-size: clamp(40px, 6vw, var(--text-3xl)); margin: 18px 0 0; color: var(--hm-bone);
+  font-family: var(--font-display); font-weight: 800; line-height: 1.04;
+  font-size: clamp(34px, 5.5vw, var(--text-2xl)); margin: 16px 0 0; color: var(--hm-bone);
 }
-.course-hero .course-tagline { font-size: var(--text-md); color: var(--bone-60); margin-top: 20px; max-width: 34ch; }
-.course-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px; }
-.course-meta-item { display: flex; flex-direction: column; gap: 2px; }
-.course-meta-item b { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--hm-bone); }
-.course-meta-item span { font-family: var(--font-family); font-size: var(--text-xs); letter-spacing: .06em; text-transform: uppercase; color: var(--bone-40); }
-
-/* — buy card — */
-.buy-card {
-  background: linear-gradient(160deg, var(--hm-prussian) 0%, var(--hm-ink) 100%);
-  border: 1px solid var(--bone-08); border-radius: 12px; padding: var(--space-6);
-  position: sticky; top: 88px;
-}
-.buy-card .price { font-family: var(--font-display); font-weight: 800; font-size: var(--text-2xl); color: var(--hm-bone); line-height: 1; }
-.buy-card .price small { font-size: var(--text-base); font-weight: 500; color: var(--bone-40); }
-.buy-card .price-note { font-family: var(--font-family); font-size: var(--text-sm); color: var(--bone-60); margin: 8px 0 22px; }
-.buy-card .btn { width: 100%; justify-content: center; }
-.buy-card ul.perks { margin: 22px 0 0; display: grid; gap: 10px; }
-.buy-card ul.perks li { font-size: var(--text-sm); color: var(--bone-60); padding-left: 26px; position: relative; }
-.buy-card ul.perks li::before { content: "✓"; position: absolute; left: 0; color: var(--hm-tuscany); font-weight: 700; }
-.restore-link { display: block; text-align: center; margin-top: 16px; font-size: var(--text-sm); color: var(--hm-cadet); text-decoration: underline; cursor: pointer; background: none; border: 0; width: 100%; font-family: var(--font-family); }
-
-/* — curriculum — */
-.curriculum { max-width: 860px; margin: 0 auto; }
-.module { border: 1px solid var(--bone-08); border-radius: 10px; margin-bottom: 16px; overflow: hidden; }
-.module-head { padding: 18px 22px; background: var(--bone-06); display: flex; align-items: baseline; gap: 14px; }
-.module-head .mod-num { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); color: var(--hm-prussian-40); }
-.module-head h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); color: var(--hm-bone); }
-.module-head .mod-count { margin-left: auto; font-family: var(--font-family); font-size: var(--text-xs); letter-spacing: .06em; text-transform: uppercase; color: var(--bone-40); }
-.lesson-row {
-  display: flex; align-items: center; gap: 16px; padding: 14px 22px;
-  border-top: 1px solid var(--bone-06); background: none; border-left: 0; border-right: 0; border-bottom: 0;
-  width: 100%; text-align: left; color: inherit; font: inherit; cursor: pointer;
-}
-.lesson-row:hover { background: var(--bone-06); }
-.lesson-row[disabled] { cursor: default; opacity: .55; }
-.lesson-row[disabled]:hover { background: none; }
-.lesson-ico { width: 22px; height: 22px; flex: 0 0 22px; color: var(--hm-prussian-40); }
-.lesson-row.done .lesson-ico { color: var(--hm-tuscany); }
-.lesson-title { font-size: var(--text-base); color: var(--hm-bone); }
-.lesson-row[disabled] .lesson-title { color: var(--bone-60); }
-.lesson-dur { margin-left: auto; font-family: var(--font-family); font-size: var(--text-sm); color: var(--bone-40); }
-.lesson-tag { font-family: var(--font-family); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--hm-ink); background: var(--hm-tuscany); border-radius: 3px; padding: 2px 6px; font-weight: 600; }
-
-/* — outcomes grid reuses .method-card; nothing extra needed — */
+.course-hero .course-tagline { font-size: var(--text-md); color: var(--bone-60); margin: 18px auto 0; max-width: 46ch; }
+.buy-row { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 22px; margin-top: 34px; }
+.price { font-family: var(--font-display); font-weight: 800; font-size: var(--text-2xl); color: var(--hm-bone); line-height: 1; }
+.price small { font-size: var(--text-base); font-weight: 500; color: var(--bone-40); }
+.buy-row .btn { padding-left: 40px; padding-right: 40px; }
+.perks-inline { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: 24px; padding: 0; }
+.perks-inline li { font-family: var(--font-family); font-size: var(--text-sm); color: var(--bone-60); }
+.perks-inline li::before { content: "✓"; color: var(--hm-tuscany); font-weight: 700; margin-right: 7px; }
+.restore-link { display: inline-block; margin-top: 26px; font-size: var(--text-sm); color: var(--hm-cadet); text-decoration: underline; cursor: pointer; background: none; border: 0; font-family: var(--font-family); }
+.preview-cta { margin-top: 14px; }
+.preview-cta button { background: none; border: 0; color: var(--hm-cadet); font-family: var(--font-family); font-size: var(--text-sm); cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+.preview-cta button:hover { color: var(--hm-bone); }
+.preview-cta svg { width: 15px; height: 15px; }
 
 /* ============================================================
    THE PLAYER — shown after "purchase". Full-screen app view.
@@ -176,21 +129,20 @@ body.player-open { overflow: hidden; }
 .gate-msg .btn { display: inline-flex; width: auto; padding-left: 28px; padding-right: 28px; }
 
 @media (max-width: 860px) {
-  .course-hero-grid { grid-template-columns: 1fr; }
-  .buy-card { position: static; }
   .player { grid-template-columns: 1fr; }
   .player-side { display: none; }
-  .player.show-side .player-side { display: block; position: fixed; inset: 0; z-index: 3; }
+  .player.show-side .player-side { display: block; position: fixed; inset: 0; z-index: 10; }
+  .stage-topbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    position: sticky; top: 0; z-index: 6;
+    padding: 10px 14px; background: rgba(15,20,25,.94); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--bone-08);
+  }
+  .side-close { display: block; }
 }
 </style>
 </head>
 <body>
-
-<!-- PROTOTYPE BANNER — delete for the real build -->
-<div class="proto-bar" id="protoBar">
-  <span><strong>Prototype.</strong> Everything is clickable and faked in the browser — no real payment, no login. This is the reference Mike riffs on.</span>
-  <button onclick="document.getElementById('protoBar').remove()">Hide</button>
-</div>
 
 <!-- MASTHEAD -->
 <div class="masthead">
@@ -211,92 +163,26 @@ body.player-open { overflow: hidden; }
 
 <main id="top" tabindex="-1">
 
-<!-- ============ SALES / LANDING VIEW ============ -->
+<!-- ============ SALES / LANDING VIEW — one screen: what it is + what it costs ============ -->
 <section class="course-hero">
-  <div class="course-hero-grid">
-    <div>
-      <div class="course-kicker">Course &middot; Self-paced</div>
-      <h1>Google Classroom, Actually Run Like a System</h1>
-      <p class="course-tagline">The webinar you caught live, rebuilt as a course you can work through on your own time — with the templates, the moves, and the receipts.</p>
-      <div class="course-meta">
-        <div class="course-meta-item"><b>6 lessons</b><span>Video + resources</span></div>
-        <div class="course-meta-item"><b>~2.5 hrs</b><span>Watch anywhere</span></div>
-        <div class="course-meta-item"><b>Lifetime</b><span>Yours to keep</span></div>
-        <div class="course-meta-item"><b>No app</b><span>Just your email</span></div>
-      </div>
-      <span class="proto-note">Content is placeholder — Mike swaps copy, lessons &amp; links</span>
-    </div>
+  <div class="course-hero-inner">
+    <div class="course-kicker">Course &middot; Self-paced</div>
+    <h1>Google Classroom, Run Like a System</h1>
+    <p class="course-tagline">The self-paced version of our live webinar: six short video lessons and the templates that make Google Classroom run on a system instead of on you.</p>
 
-    <aside class="buy-card">
+    <div class="buy-row">
       <div class="price">$49 <small>one-time</small></div>
-      <p class="price-note">One payment. No subscription, no new account to remember.</p>
       <button class="btn btn-primary" onclick="openGate('buy')">Get the course</button>
-      <button class="restore-link" onclick="openGate('restore')">Already bought it? Get back in &rarr;</button>
-      <ul class="perks">
-        <li>Every lesson, forever</li>
-        <li>Downloadable templates &amp; links</li>
-        <li>Watch on any device</li>
-        <li>Access with just your email</li>
-      </ul>
-    </aside>
-  </div>
-</section>
-
-<!-- WHAT YOU'LL WALK OUT WITH -->
-<section class="section">
-  <div class="section-inner">
-    <div class="section-label">What you'll walk out with</div>
-    <h2 class="section-title">Not a video. A build.</h2>
-    <div class="rufous-rule section-rule"></div>
-    <div class="method-grid">
-      <article class="method-card">
-        <div class="method-step">By the end</div>
-        <h3>A classroom that runs itself</h3>
-        <p>Set up so the routines, the posting rhythm, and the handoffs work whether you're in the room or out sick.</p>
-      </article>
-      <article class="method-card">
-        <div class="method-step">You'll have</div>
-        <h3>The actual templates</h3>
-        <p>The docs and structures we build live in the webinar — downloadable, yours to copy into your own Drive.</p>
-      </article>
-      <article class="method-card">
-        <div class="method-step">You'll know</div>
-        <h3>The moves, in order</h3>
-        <p>Start with the human, move to analog, reach for digital only when it earns its place — applied to Classroom.</p>
-      </article>
     </div>
-  </div>
-</section>
 
-<!-- CURRICULUM -->
-<section class="section" style="background: var(--bone-06);">
-  <div class="section-inner">
-    <div class="section-label">The curriculum</div>
-    <h2 class="section-title">Six lessons, one system.</h2>
-    <div class="rufous-rule section-rule"></div>
-    <p class="proto-note">First lesson is a free preview — click it. The rest are locked until "purchase."</p>
-    <div class="curriculum" id="curriculum"><!-- rendered by JS --></div>
-  </div>
-</section>
+    <ul class="perks-inline">
+      <li>Yours forever</li>
+      <li>No subscription</li>
+      <li>Just your email &mdash; no new account</li>
+    </ul>
 
-<!-- CREDIBILITY -->
-<section class="section">
-  <div class="section-inner">
-    <figure class="quote-feature">
-      <span class="quote-feature-mark" aria-hidden="true">&ldquo;</span>
-      <blockquote>I stopped babysitting my Classroom and started running it. First week back, I got an actual prep period.</blockquote>
-    </figure>
-    <p class="proto-note" style="margin-top:16px;">Testimonial placeholder</p>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="section" style="text-align:center; background: var(--bone-06);">
-  <div class="section-inner">
-    <h2 class="section-title" style="text-align:center;">Take the webinar with you.</h2>
-    <div class="rufous-rule section-rule" style="margin-left:auto;margin-right:auto;"></div>
-    <div class="price" style="font-family:var(--font-display);font-weight:800;font-size:var(--text-2xl);color:var(--hm-bone);margin:18px 0 8px;">$49 <small style="font-size:var(--text-base);font-weight:500;color:var(--bone-40);">one-time</small></div>
-    <button class="btn btn-primary" style="margin-top:16px;" onclick="openGate('buy')">Get the course</button>
+    <button class="restore-link" onclick="openGate('restore')">Already bought it? Get back in &rarr;</button>
+    <p class="preview-cta"><button onclick="enterPlayer('l1')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Watch the first lesson free</button></p>
   </div>
 </section>
 
@@ -327,7 +213,10 @@ body.player-open { overflow: hidden; }
 <div class="player" id="player">
   <aside class="player-side" id="playerSide">
     <div class="player-side-head">
-      <a class="exit" onclick="closePlayer()">&larr; Back to course page</a>
+      <div class="side-head-row">
+        <a class="exit" onclick="closePlayer()">&larr; Back to course page</a>
+        <button class="side-close" onclick="toggleSide()" aria-label="Close lessons">&times;</button>
+      </div>
       <h2>Google Classroom as a System</h2>
       <div class="progress-wrap">
         <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -338,11 +227,15 @@ body.player-open { overflow: hidden; }
   </aside>
 
   <div class="player-stage" id="playerStage">
+    <!-- mobile-only: gives a way out of the player and into the lesson list -->
+    <header class="stage-topbar">
+      <button class="topbar-btn" onclick="closePlayer()">&larr; Course</button>
+      <button class="topbar-btn" onclick="toggleSide()">Lessons</button>
+    </header>
     <div class="stage-inner">
       <div class="video-frame" id="videoFrame">
         <div class="video-poster" id="videoPoster" onclick="playVideo()">
           <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="poster-note">Click to play — swaps in the YouTube-unlisted embed</div>
         </div>
       </div>
       <div class="stage-lesson-kicker" id="stageKicker">Lesson 01</div>
@@ -355,7 +248,6 @@ body.player-open { overflow: hidden; }
         <button class="btn btn-bone" onclick="markComplete()">Mark complete</button>
         <button class="btn btn-primary" onclick="nextLesson()">Next lesson &rarr;</button>
       </div>
-      <p class="proto-note" style="margin-top:24px;">Progress + "unlocked" state persist in this browser (localStorage). Real build: a signed token from the magic-link email.</p>
     </div>
   </div>
 </div>
@@ -383,15 +275,15 @@ body.player-open { overflow: hidden; }
           <input type="text" placeholder="CVC" inputmode="numeric">
         </div>
         <button class="btn btn-primary" onclick="fakePay()">Pay $49</button>
-        <div class="stripe-hint">🔒 Real build: this button opens <strong>&nbsp;Stripe Checkout</strong></div>
+        <div class="stripe-hint">🔒 Secure checkout</div>
       </div>
 
-      <!-- RESTORE (fake magic link) -->
+      <!-- RESTORE (magic link) -->
       <div id="paneRestore" style="display:none;">
         <label>Email you bought with</label>
         <input type="email" id="restoreEmail" placeholder="you@school.edu" autocomplete="email">
         <button class="btn btn-primary" onclick="fakeMagicLink()">Email me a sign-in link</button>
-        <div class="stripe-hint">No password. We check Stripe for your purchase, then email a one-tap link.</div>
+        <div class="stripe-hint">No password. We'll find your purchase and email a one-tap link.</div>
       </div>
     </div>
 
@@ -399,7 +291,7 @@ body.player-open { overflow: hidden; }
     <div class="gate-msg" id="msgPaid">
       <div class="big">🎉</div>
       <h3 style="margin-top:10px;">You're in.</h3>
-      <p>Receipt + access link sent to your email. (In the prototype, just click below.)</p>
+      <p>Your receipt and access link are on the way to your email.</p>
       <button class="btn btn-primary" onclick="grantAndOpen()">Start the course</button>
     </div>
 
@@ -407,7 +299,7 @@ body.player-open { overflow: hidden; }
     <div class="gate-msg" id="msgLink">
       <div class="big">📬</div>
       <h3 style="margin-top:10px;">Check your email.</h3>
-      <p>We sent a one-tap sign-in link. (Prototype: click below to simulate opening it.)</p>
+      <p>We just sent a one-tap sign-in link.</p>
       <button class="btn btn-primary" onclick="grantAndOpen()">Open my link</button>
     </div>
   </div>
@@ -469,32 +361,8 @@ function loadState() { try { return JSON.parse(localStorage.getItem(STORE)) || {
 function saveState(s) { localStorage.setItem(STORE, JSON.stringify(s)); }
 let state = Object.assign({ unlocked: false, done: {}, current: LESSONS[0].id }, loadState());
 
-/* ---------- SALES: curriculum outline ---------- */
-function renderCurriculum() {
-  const el = document.getElementById("curriculum");
-  el.innerHTML = COURSE.modules.map((m, mi) => `
-    <div class="module">
-      <div class="module-head">
-        <span class="mod-num">${String(mi + 1).padStart(2, "0")}</span>
-        <h3>${m.title.replace(/^Module \d+ — /, "")}</h3>
-        <span class="mod-count">${m.lessons.length} lessons</span>
-      </div>
-      ${m.lessons.map(l => {
-        const open = l.preview || state.unlocked;
-        return `<button class="lesson-row ${state.done[l.id] ? "done" : ""}" ${open ? "" : "disabled"} onclick="${open ? `enterPlayer('${l.id}')` : ""}">
-          <span class="lesson-ico">${lockOrPlay(open, state.done[l.id])}</span>
-          <span class="lesson-title">${l.title}</span>
-          ${l.preview && !state.unlocked ? '<span class="lesson-tag">Free preview</span>' : ""}
-          <span class="lesson-dur">${l.dur}</span>
-        </button>`;
-      }).join("")}
-    </div>`).join("");
-}
-function lockOrPlay(open, done) {
-  if (done) return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
-  if (open) return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>';
-}
+/* A lesson is watchable if it's a free preview or the course is unlocked. */
+function lessonOpen(l) { return l.preview || state.unlocked; }
 
 /* ---------- GATE (checkout / restore) ---------- */
 function openGate(mode) { document.getElementById("gate").classList.add("is-open"); switchTab(mode); resetGateMsgs(); }
@@ -516,31 +384,40 @@ function resetGateMsgs() {
 function showMsg(id) { document.getElementById("gateForms").style.display = "none"; document.getElementById(id).classList.add("show"); }
 function fakePay() { showMsg("msgPaid"); }          // real: redirect to Stripe Checkout
 function fakeMagicLink() { showMsg("msgLink"); }    // real: POST /api/request-access → email link
-function grantAndOpen() { state.unlocked = true; saveState(state); renderCurriculum(); closeGate(); enterPlayer(LESSONS[0].id); }
+function grantAndOpen() { state.unlocked = true; saveState(state); closeGate(); enterPlayer(LESSONS[0].id); }
 
 /* ---------- PLAYER ---------- */
 function enterPlayer(lessonId) {
   state.current = lessonId; saveState(state);
   document.body.classList.add("player-open");
-  document.getElementById("player").classList.add("is-open");
+  const player = document.getElementById("player");
+  player.classList.add("is-open");
+  player.classList.remove("show-side");           // close the mobile lesson overlay if it was open
   renderPlayer();
+  document.getElementById("playerStage").scrollTop = 0;   // start each lesson at the top
 }
 function closePlayer() {
   document.body.classList.remove("player-open");
-  document.getElementById("player").classList.remove("is-open");
+  const player = document.getElementById("player");
+  player.classList.remove("is-open");
+  player.classList.remove("show-side");
 }
+/* mobile: slide the lesson list in/out over the stage */
+function toggleSide() { document.getElementById("player").classList.toggle("show-side"); }
 function renderPlayer() {
   const l = LESSONS.find(x => x.id === state.current) || LESSONS[0];
 
-  // sidebar
+  // sidebar — locked lessons route to the buy gate instead of playing
   document.getElementById("playerNav").innerHTML = COURSE.modules.map(m => `
     <div class="p-module-title">${m.title}</div>
-    ${m.lessons.map(le => `
-      <button class="p-lesson ${le.id === l.id ? "active" : ""} ${state.done[le.id] ? "done" : ""}" onclick="enterPlayer('${le.id}')">
+    ${m.lessons.map(le => {
+      const open = lessonOpen(le);
+      return `<button class="p-lesson ${le.id === l.id ? "active" : ""} ${state.done[le.id] ? "done" : ""} ${open ? "" : "locked"}" onclick="${open ? `enterPlayer('${le.id}')` : "openGate('buy')"}">
         <span class="p-check">${state.done[le.id] ? "✓" : ""}</span>
         <span class="p-name">${le.title}</span>
-        <span class="p-dur">${le.dur}</span>
-      </button>`).join("")}`).join("");
+        <span class="p-dur">${open ? le.dur : "🔒"}</span>
+      </button>`;
+    }).join("")}`).join("");
 
   // stage
   document.getElementById("stageKicker").textContent = l.moduleTitle;
@@ -558,25 +435,25 @@ function renderPlayer() {
   document.getElementById("videoFrame").innerHTML = `
     <div class="video-poster" id="videoPoster" onclick="playVideo()">
       <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="poster-note">Click to play — swaps in the YouTube-unlisted embed (${l.video})</div>
     </div>`;
 
   updateProgress();
 }
 function playVideo() {
   const l = LESSONS.find(x => x.id === state.current) || LESSONS[0];
-  // Real build: use the actual unlisted id. Placeholder ids won't load a real video.
+  // Uses the lesson's YouTube-unlisted id (placeholders won't load a real video yet).
   document.getElementById("videoFrame").innerHTML =
     `<iframe src="https://www.youtube.com/embed/${encodeURIComponent(l.video)}?rel=0&modestbranding=1" title="${l.title}" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
 }
 function markComplete() {
-  state.done[state.current] = true; saveState(state); renderPlayer(); renderCurriculum();
+  state.done[state.current] = true; saveState(state); renderPlayer();
 }
 function nextLesson() {
   const i = LESSONS.findIndex(x => x.id === state.current);
   const next = LESSONS[i + 1];
-  if (next) enterPlayer(next.id);
-  else { alert("That's the whole course — nice work. 🎓"); closePlayer(); }
+  if (!next) { alert("That's the whole course — nice work. 🎓"); closePlayer(); return; }
+  if (!lessonOpen(next)) { openGate('buy'); return; }   // hit the paywall at the end of the free preview
+  enterPlayer(next.id);
 }
 function updateProgress() {
   const total = LESSONS.length;
@@ -585,14 +462,14 @@ function updateProgress() {
   document.getElementById("progressLabel").textContent = `${done} of ${total} lessons complete`;
 }
 
-/* keyboard: Esc closes overlays */
+/* keyboard: Esc backs out one layer at a time */
 document.addEventListener("keydown", e => {
   if (e.key !== "Escape") return;
+  const player = document.getElementById("player");
   if (document.getElementById("gate").classList.contains("is-open")) return closeGate();
-  if (document.getElementById("player").classList.contains("is-open")) return closePlayer();
+  if (player.classList.contains("show-side")) return player.classList.remove("show-side");
+  if (player.classList.contains("is-open")) return closePlayer();
 });
-
-renderCurriculum();
 </script>
 </body>
 </html>
