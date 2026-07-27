@@ -1850,3 +1850,29 @@ h1, h2, h3,
 .stat-num, .quote-feature blockquote, .footer-brand h3 {
   font-family: var(--font-display);
 }
+
+/* ── Responsive video embeds (YouTube replays) ──────────────
+   YouTube's own iframe fills its container, so a plain 16:9 box
+   works here (unlike the OneStream livestream, which needs the
+   fixed-size scaler on /events). Reused on /iste and the Bootcamp
+   archive for embedded session and reflection replays. */
+.yt-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid var(--bone-08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.yt-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.yt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.yt-item .yt-cap {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--hm-cadet);
+  margin-top: 10px;
+}
+@media (max-width: 680px) { .yt-grid { grid-template-columns: 1fr; } }
