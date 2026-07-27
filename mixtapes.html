@@ -442,6 +442,9 @@ function closeEP() {
   document.body.classList.remove("player-open");
   const p = document.getElementById("player");
   p.classList.remove("is-open"); p.classList.remove("show-side");
+  // Tear down the iframe so the video stops playing in the background.
+  const frame = document.getElementById("mediaFrame");
+  if (frame) frame.innerHTML = "";
 }
 function toggleSide() { document.getElementById("player").classList.toggle("show-side"); }
 
