@@ -204,7 +204,7 @@ body.player-open { overflow: hidden; }
     <h2>Google Classroom, Live</h2>
     <p class="rel-blurb">The free webinar series, on demand. Five live sessions on building the system underneath Google Classroom — the one that keeps it from getting messy by October.</p>
     <div class="rel-meta">
-      <span>5 episodes</span><span>&middot;</span><span>Free</span><span>&middot;</span><span>Watch on demand</span>
+      <span>5 episodes</span><span>&middot;</span><span>~5 hrs</span><span>&middot;</span><span>Free</span>
     </div>
     <div class="rel-foot">
       <div class="rel-price">Free <small>&middot; no account</small></div>
@@ -259,7 +259,9 @@ body.player-open { overflow: hidden; }
     </div>
   </article>
 
-  <!-- PAID MIXTAPE -->
+  <!-- PAID MIXTAPE — PLACEHOLDER: copy, price, track count (~2.5 hrs / 6 tracks)
+       and the /course-prototype link are prototype content, not final. Swap in
+       the real Mixtape details before promoting this. -->
   <article class="release">
     <span class="release-badge paid">$49</span>
     <svg class="rel-art" viewBox="0 0 200 130" role="img" aria-label="A cassette tape">
@@ -363,17 +365,6 @@ body.player-open { overflow: hidden; }
         <a class="btn btn-bone" href="/course-prototype">Hear the Mixtape &rarr;</a>
       </div>
 
-      <!-- optional: keep in touch. Never gates the content — it's already playing. -->
-      <div class="keep-touch" id="keepTouch">
-        <p class="liner">Optional &middot; no gate</p>
-        <b>Want to know when we drop the next one?</b>
-        <p>We'll email you when the crew releases new episodes. That's it. You're already watching — this is just if you want a heads up.</p>
-        <div class="kt-row">
-          <input type="email" id="ktEmail" placeholder="you@school.edu" autocomplete="email">
-          <button class="btn btn-bone" onclick="keepInTouch()">Keep me posted</button>
-        </div>
-      </div>
-
       <div class="stage-nav">
         <button class="btn btn-bone" onclick="markPlayed()">Mark played</button>
         <button class="btn btn-primary" onclick="nextEpisode()">Next episode &rarr;</button>
@@ -390,28 +381,27 @@ body.player-open { overflow: hidden; }
    Each episode carries video + (later) an audio file for the car,
    plus liner notes: timestamps and links.
    ============================================================ */
-/* NOTE: video IDs are the real "Google Classroom Won't Save You" webinar
-   recordings (days 1-5). Titles below are neutral day labels as a starting
-   point — swap in the real per-episode titles, and add dur / notes
-   (timestamps) / links whenever you have them. Empty notes+links hide the
-   liner-notes block automatically. */
+/* The real "Google Classroom Won't Save You... But You Can" webinar series
+   (5 live sessions). Titles use each episode's distinctive subtitle; durations
+   are rounded from the source recordings. Add notes (chapter timestamps) and
+   links whenever you have them — empty notes+links hide the liner-notes block. */
 const EP = {
   slug: "google-classroom-live",
   episodes: [
-    { id: "e1", n: "01", title: "Day 1", dur: "", video: "AE6Z0klBSlE",
-      body: "<p>Day one of the live <em>Google Classroom Won&rsquo;t Save You</em> webinar series.</p>",
+    { id: "e1", n: "01", title: "The Brain", dur: "1h 6m", video: "AE6Z0klBSlE",
+      body: "<p>Before you head over to Google Classroom, take time to reflect on who you are and how your classroom runs. Google Classroom is a container &mdash; you need to know what you&rsquo;re going to put in it.</p>",
       notes: [], links: [] },
-    { id: "e2", n: "02", title: "Day 2", dur: "", video: "gIJQ9O9T9gM",
-      body: "<p>Day two of the live series.</p>",
+    { id: "e2", n: "02", title: "Assets", dur: "1h 2m", video: "gIJQ9O9T9gM",
+      body: "<p>Starting with NotebookLM, then Gemini and Google Gems, you can build assets for Google Classroom far more efficiently.</p>",
       notes: [], links: [] },
-    { id: "e3", n: "03", title: "Day 3", dur: "", video: "sc2PnSgcyow",
-      body: "<p>Day three of the live series.</p>",
+    { id: "e3", n: "03", title: "Make Your Own Assets", dur: "43 min", video: "sc2PnSgcyow",
+      body: "<p>Creating your own assets is one of the best strategies for using any LMS. You build them by grounding Gemini in your context.</p>",
       notes: [], links: [] },
-    { id: "e4", n: "04", title: "Day 4", dur: "", video: "n5NOcWSLMx4",
-      body: "<p>Day four of the live series.</p>",
+    { id: "e4", n: "04", title: "Topics", dur: "1h 6m", video: "n5NOcWSLMx4",
+      body: "<p>Organizing your Google Classroom into Topics will make your life a lot easier.</p>",
       notes: [], links: [] },
-    { id: "e5", n: "05", title: "Day 5", dur: "", video: "w8hV_EfhabQ",
-      body: "<p>Day five of the live series.</p>",
+    { id: "e5", n: "05", title: "Building Activities", dur: "1h 7m", video: "w8hV_EfhabQ",
+      body: "<p>In the final episode, we build activities in Google Classroom &mdash; and look at the sites that add depth to your content.</p>",
       notes: [], links: [] },
   ]
 };
@@ -486,13 +476,6 @@ function playVideo() {
     `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(e.video)}?rel=0&modestbranding=1&autoplay=1" title="${e.title}" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
 }
 
-function keepInTouch() {
-  // Optional opt-in — never blocks the content. Real build: POST the email to the list.
-  const box = document.getElementById("keepTouch");
-  const email = (document.getElementById("ktEmail") || {}).value || "";
-  box.classList.add("done");
-  box.innerHTML = `<p class="liner">On the list</p><b>You're in${email ? ", " + email.split("@")[0] : ""}.</b><p>We'll only reach out when there's a new episode. Back to the tape.</p>`;
-}
 function markPlayed() { state.done[state.current] = true; saveState(state); render(); }
 function nextEpisode() {
   const i = EP.episodes.findIndex(e => e.id === state.current);
