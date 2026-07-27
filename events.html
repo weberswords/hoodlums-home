@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Upcoming Events · The Intelligent Hoodlums</title>
-<meta name="description" content="Where to catch The Intelligent Hoodlums next. Free Google Classroom webinars July 13 to 17, the ClassroomOS Bootcamp Volume 2 July 20 to 24, and more talks on the road.">
+<meta name="description" content="Where to catch The Intelligent Hoodlums next, and how to catch up on what you missed. Watch the livestream live, stream the Google Classroom webinar series on demand, and get early access to Curator.">
 <meta name="theme-color" content="#0F1419">
 <meta name="author" content="The Intelligent Hoodlums">
 <meta name="keywords" content="Intelligent Hoodlums events, Google Classroom webinar, ClassroomOS Bootcamp, teacher PD, Las Vegas, professional development">
@@ -17,7 +17,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="The Intelligent Hoodlums">
 <meta property="og:title" content="Upcoming Events — The Intelligent Hoodlums">
-<meta property="og:description" content="Free Google Classroom webinars July 13 to 17, the ClassroomOS Bootcamp Volume 2 July 20 to 24, and more talks on the road. Watch from anywhere or join in person.">
+<meta property="og:description" content="Catch the livestream, stream the Google Classroom webinar series on demand, and get early access to Curator. Here is where to catch the Hoodlums next.">
 <meta property="og:url" content="https://theintelligenthoodlums.com/events">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
@@ -31,7 +31,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Upcoming Events — The Intelligent Hoodlums">
-<meta name="twitter:description" content="Free Google Classroom webinars, the ClassroomOS Bootcamp Volume 2, and more. Watch from anywhere or join in person.">
+<meta name="twitter:description" content="Catch the livestream, stream the Google Classroom webinar series on demand, and get early access to Curator.">
 <meta name="twitter:image" content="https://theintelligenthoodlums.com/assets/HM-og.png">
 <meta name="twitter:image:alt" content="The Intelligent Hoodlums wordmark on Ink — Las Vegas, Est 2014.">
 <meta name="twitter:domain" content="theintelligenthoodlums.com">
@@ -78,12 +78,19 @@
     overflow: hidden;
     background: #000;
   }
+  /* The OneStream player lays out its content at a fixed 640x360 and centers
+     it, so a percentage-sized iframe just adds black margins. Instead we pin
+     the iframe to that native 640x360 footprint and scale it up to fill the
+     responsive 16:9 box (see the scaler script at the bottom of the page).
+     Both the player and the box are 16:9, so it fills with no letterboxing. */
   .livestream-frame iframe {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 360px;
     border: 0;
+    transform-origin: top left;
   }
   .livestream-note {
     max-width: 860px;
@@ -125,7 +132,7 @@
     <h1 class="hero-title" style="margin-top:18px;">Upcoming Events.</h1>
     <div class="rufous-rule hero-rule"></div>
     <p class="hero-tagline">
-      Where to catch the Hoodlums next. Webinars you can watch from anywhere, workshops you join in person, and talks on the road. Here is what is coming up.
+      Where to catch the Hoodlums next. Watch the livestream when we go live, catch the sessions you missed on demand, and get first access to what is coming. Here is what is on.
     </p>
     <div class="hero-cta">
       <a href="#events" class="btn btn-primary">See What&rsquo;s On</a>
@@ -152,51 +159,48 @@
 <!-- EVENTS -->
 <section class="section section-work" id="events" tabindex="-1">
   <div class="section-inner">
-    <div class="section-label">This July</div>
+    <div class="section-label">On Demand</div>
     <h2 class="section-title">What&rsquo;s on.</h2>
     <div class="rufous-rule section-rule"></div>
 
     <div class="day-grid">
 
-      <!-- GOOGLE CLASSROOM WEBINARS -->
+      <!-- GOOGLE CLASSROOM WEBINARS — ON DEMAND -->
       <article class="day-card" id="google-classroom">
         <div class="day-card-head">
           <span class="day-pill">Webinar Series</span>
-          <span class="day-date">Jul 13&ndash;17</span>
+          <span class="day-date">On Demand</span>
         </div>
         <div class="day-theme">Free &middot; Online</div>
-        <h3 class="day-title">Google Classroom won&rsquo;t save you.</h3>
+        <h3 class="day-title">Google Classroom, Live.</h3>
         <p class="day-blurb">
-          But you can. Google Classroom only works when there is a system underneath it, and with all the recent updates it gets messy fast. Across a week of webinars we show you how to build that system, so Google Classroom actually works for you when you use it. Watch live on YouTube, Facebook, or Twitch.
+          The whole free webinar series, on demand. Five episodes on building the system underneath Google Classroom, the one that keeps it from getting messy by October. Missed the live run in July? Watch, listen, or read it in the Catalog, no account required.
         </p>
-        <div class="event-watch-label">Watch live</div>
         <div class="event-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube<span class="sr-only"> (opens in new tab)</span></a>
-          <a class="btn btn-bone" href="https://www.facebook.com/theintelligenthoodlums/" target="_blank" rel="noopener">Facebook<span class="sr-only"> (opens in new tab)</span></a>
-          <a class="btn btn-bone" href="https://www.twitch.tv/intelligenthoodlums" target="_blank" rel="noopener">Twitch<span class="sr-only"> (opens in new tab)</span></a>
+          <a class="btn btn-primary" href="/mixtapes">Watch the series <span aria-hidden="true">&rarr;</span></a>
         </div>
       </article>
 
-      <!-- CLASSROOM OS BOOTCAMP VOLUME 2 -->
-      <article class="day-card" id="classroom-os-volume-2">
+      <!-- CURATOR — EARLY ACCESS -->
+      <article class="day-card" id="curator">
         <div class="day-card-head">
-          <span class="day-pill">Workshop</span>
-          <span class="day-date">Jul 20&ndash;24</span>
+          <span class="day-pill">Early Access</span>
+          <span class="day-date">Curator</span>
         </div>
-        <div class="day-theme">In person &middot; Las Vegas</div>
-        <h3 class="day-title">The ClassroomOS Bootcamp, Volume 2.</h3>
+        <div class="day-theme">The platform behind Classroom OS</div>
+        <h3 class="day-title">Get first access to Curator.</h3>
         <p class="day-blurb">
-          Five mornings at Ed W. Von Tobel Middle School. You start with one question, who are you as a teacher, and you leave with a classroom that runs in your own voice whether you are in the room or not. Register one day at a time, or come for the whole week. Every day earns a free contact unit through our partner NV-SIDE.
+          Curator is the platform that operationalizes Classroom OS, building the folders and sheets behind your system in your own Google Drive so the work is yours to keep. Want in before the next cohort? Sign up for early access and be first to know when the doors open.
         </p>
         <div class="event-actions">
-          <a class="btn btn-primary" href="/classroom-os-volume-2">See the days and register <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-primary" href="https://startcurating.com/" target="_blank" rel="noopener">Sign up for early access<span class="sr-only"> (opens in new tab)</span> <span aria-hidden="true">&rarr;</span></a>
         </div>
       </article>
 
     </div>
 
     <p style="margin-top:32px;padding-top:24px;border-top:1px solid var(--bone-08);text-align:center;color:var(--hm-cadet);font-size:14px;line-height:1.7;">
-      More dates are on the way, including conference talks. Check back here, or <a href="mailto:whenindoubt@theintelligenthoodlums.com?subject=Where%20are%20the%20Hoodlums%20next" style="color:var(--hm-bone);text-decoration:underline;">ask us where we are next</a>.
+      More dates are on the way, including new workshops and conference talks. Check back here, catch us on the <a href="/past" style="color:var(--hm-bone);text-decoration:underline;">stuff we have already run</a>, or <a href="mailto:whenindoubt@theintelligenthoodlums.com?subject=Where%20are%20the%20Hoodlums%20next" style="color:var(--hm-bone);text-decoration:underline;">ask us where we are next</a>.
     </p>
   </div>
 </section>
@@ -211,6 +215,23 @@
 </section>
 
 </main>
+
+<!-- LIVESTREAM SCALER — see the .livestream-frame note in the head styles.
+     Scales the fixed 640x360 player up to fill the responsive 16:9 box. -->
+<script>
+(function () {
+  var frame = document.querySelector('.livestream-frame');
+  var iframe = frame && frame.querySelector('iframe');
+  if (!iframe) return;
+  var NATIVE_W = 640; // the player's native width; box is the same 16:9 ratio
+  function fit() {
+    iframe.style.transform = 'scale(' + (frame.clientWidth / NATIVE_W) + ')';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(frame);
+})();
+</script>
 
 <!-- FOOTER -->
 <footer class="site-footer">
