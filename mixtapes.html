@@ -13,11 +13,11 @@
 
 <style>
 /* ============================================================
-   THE CATALOG — content library. Two release types:
-   the free EP (webinar replays) and the paid Mixtape (course).
-   Prototype: EP is fully playable & free; Mixtape links to its
-   own cover. Real build shares ONE player component + per-release
-   data files; duplicated here so each page opens standalone.
+   THE CATALOG — content library of free replays. The EP (the
+   Google Classroom webinar series) is fully playable in-page; the
+   single and B-sides link to where their videos are embedded.
+   Real build would share ONE player component + per-release data
+   files; kept inline here so the page opens standalone.
    ============================================================ */
 
 /* — liner-note captions (Crew Talk register) — */
@@ -51,7 +51,7 @@
 
 /* — "from the stage to the catalog" strip — */
 .pipeline { max-width: 860px; margin: 0 auto var(--space-8); padding: 0 var(--space-5); }
-.pipeline-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 10px; text-align: center; }
+.pipeline-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; text-align: center; max-width: 640px; margin: 0 auto; }
 .pipe-step { border: 1px solid var(--bone-08); border-radius: 12px; padding: 18px 14px; }
 .pipe-step .liner { font-size: 10px; margin-bottom: 6px; }
 .pipe-step b { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: var(--hm-bone); display: block; }
@@ -183,7 +183,7 @@ body.player-open { overflow: hidden; }
 <section class="cat-hero">
   <p class="liner">The Catalog</p>
   <h1>Press play on the whole crew.</h1>
-  <p>Every session we run gets pressed to the catalog. Free replays of the live webinars, and deep-dive mixtapes when you want the whole build. Press play on any of it.</p>
+  <p>Every session we run gets pressed to the catalog. Free replays of the live webinars and workshops, ready when you are. Press play on any of it.</p>
 </section>
 
 <!-- RELEASES -->
@@ -259,34 +259,6 @@ body.player-open { overflow: hidden; }
     </div>
   </article>
 
-  <!-- PAID MIXTAPE — PLACEHOLDER: copy, price, track count (~2.5 hrs / 6 tracks)
-       and the /course-prototype link are prototype content, not final. Swap in
-       the real Mixtape details before promoting this. -->
-  <article class="release">
-    <span class="release-badge paid">$49</span>
-    <svg class="rel-art" viewBox="0 0 200 130" role="img" aria-label="A cassette tape">
-      <rect x="4" y="4" width="192" height="122" rx="12" fill="var(--hm-prussian)" stroke="var(--hm-tuscany)" stroke-width="2"/>
-      <rect x="20" y="16" width="160" height="40" rx="5" fill="var(--hm-bone)"/>
-      <rect x="30" y="27" width="90" height="6" rx="3" fill="var(--hm-prussian)"/>
-      <rect x="30" y="40" width="56" height="5" rx="2" fill="var(--hm-cadet)"/>
-      <rect x="22" y="70" width="156" height="44" rx="7" fill="var(--hm-ink)" stroke="var(--hm-prussian-40)"/>
-      <circle cx="70" cy="92" r="14" fill="none" stroke="var(--hm-bone)" stroke-width="3"/>
-      <circle cx="130" cy="92" r="14" fill="none" stroke="var(--hm-bone)" stroke-width="3"/>
-      <circle cx="70" cy="92" r="4" fill="var(--hm-tuscany)"/>
-      <circle cx="130" cy="92" r="4" fill="var(--hm-tuscany)"/>
-      <rect x="84" y="90" width="32" height="3" rx="1.5" fill="var(--hm-rufous)"/>
-    </svg>
-    <p class="liner rel-kind">Vol. 1 &middot; Mixtape</p>
-    <h2>Gemini + NotebookLM for Teachers</h2>
-    <p class="rel-blurb">The studio cut on Google's classroom AI. Six tracks on Gemini and NotebookLM — prompts that draft your plans, study guides from your own sources, and Audio Overviews. Yours forever, just your email.</p>
-    <div class="rel-meta">
-      <span>6 tracks</span><span>&middot;</span><span>~2.5 hrs</span><span>&middot;</span><span>Prompt packs + notebooks</span>
-    </div>
-    <div class="rel-foot">
-      <div class="rel-price">$49 <small>&middot; one-time</small></div>
-      <a class="btn btn-primary" href="/course-prototype" style="display:flex;justify-content:center;">Get the mixtape</a>
-    </div>
-  </article>
 
 </section>
 
@@ -296,8 +268,6 @@ body.player-open { overflow: hidden; }
     <div class="pipe-step"><p class="liner">Live</p><b>Catch it in the room</b><span>Free webinars, in real time.</span></div>
     <div class="pipe-arrow">&rarr;</div>
     <div class="pipe-step"><p class="liner">The EP · Free</p><b>Missed it? Press play</b><span>Replays you can watch any time.</span></div>
-    <div class="pipe-arrow">&rarr;</div>
-    <div class="pipe-step"><p class="liner">The Mixtape · $49</p><b>Ready for the next level</b><span>Deep dives like Gemini + NotebookLM.</span></div>
   </div>
 </section>
 
@@ -357,13 +327,6 @@ body.player-open { overflow: hidden; }
       <div class="stage-body" id="stageBody"></div>
 
       <div class="liner-notes" id="linerNotes"></div>
-
-      <!-- soft cross-sell to the paid Mixtape -->
-      <div class="upsell">
-        <b>Ready to level up?</b>
-        <p>Got your Classroom running? Put Google's AI to work next — Gemini for prep, NotebookLM for study guides and audio. That's the Mixtape.</p>
-        <a class="btn btn-bone" href="/course-prototype">Hear the Mixtape &rarr;</a>
-      </div>
 
       <div class="stage-nav">
         <button class="btn btn-bone" onclick="markPlayed()">Mark played</button>
@@ -481,7 +444,7 @@ function nextEpisode() {
   const i = EP.episodes.findIndex(e => e.id === state.current);
   const next = EP.episodes[i + 1];
   if (next) openEP(next.id);
-  else { alert("That's the whole EP. When you're ready to put AI to work, the Mixtape's waiting."); closeEP(); }
+  else { alert("That's the whole EP. Thanks for watching — when in doubt, trust a Hoodlum."); closeEP(); }
 }
 function updateProgress() {
   const total = EP.episodes.length;
