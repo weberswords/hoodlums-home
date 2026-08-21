@@ -93,7 +93,8 @@ it while you teach. Free, five CUs. Link in bio. 🧱
 ## The facts, if you need to remix
 
 - Entirely virtual cohort, on Google Meet
-- Nine Wednesdays, one hour each: Sep 16, 23, 30, Oct 7, 14, 21, 28, Nov 4, 11
+- Nine Wednesdays, one hour each: Sep 16, 23, 30, Oct 7, 14, 21, 28, Nov 4, Nov 18
+  (no session Nov 11, Veterans Day)
 - Starts September 16, 2026
 - Free
 - Fifteen logged hours, five CUs (nine hours live, six in your own classroom)
