@@ -17,6 +17,23 @@ everywhere: **https://luma.com/d18q3tcw**. The landing page is
 All four are on brand: Grift Black on Ink, the Rufous rule, Tuscany accents, and
 the badge watermark, matching the site.
 
+## Two waves
+
+There are two sets of posts here, with two different jobs.
+
+1. **Registration wave** (the four cards above, and the captions that follow).
+   Job: fill the room. Sends to Luma.
+2. **Teaching wave** (the `-teach-` cards and captions near the bottom). Job:
+   teach the idea to the teachers who are not shopping for PD today, and capture
+   an email. Sends to the ClassroomOS white paper, which asks for a work email
+   and emails the link. This is the education-first play your strategy asks
+   social to run (`friday: domains/hoodlums/marketing.md`).
+
+Run the registration wave to sell the seat, and the teaching wave alongside or
+after it to build the list. If you would rather the teaching wave point at the
+Substack or the site opt-in instead of the white paper, say so and I will
+re-render the footer and swap the caption links.
+
 ---
 
 ## Facebook
@@ -90,6 +107,71 @@ it while you teach. Free, five CUs. Link in bio. 🧱
 
 ---
 
+## Teaching wave (education-first, routes to the white paper)
+
+The `-teach-` cards for each platform:
+`classroom-os-vol3-teach-facebook-1200x630.png`,
+`classroom-os-vol3-teach-linkedin-1200x627.png`,
+`classroom-os-vol3-teach-instagram-1080x1350.png`,
+`classroom-os-vol3-teach-tiktok-1080x1920.png`. Destination for all of them:
+**https://theintelligenthoodlums.com/white-paper-request** (asks for a work
+email, emails the link).
+
+### Facebook — teaching
+
+Every classroom runs on an operating system. Most teachers inherited theirs by
+accident: old habits, district mandates, and whatever survived the last
+in-service.
+
+It holds up fine until you are absent, exhausted, or the schedule collapses.
+Then it turns out the system was you the whole time.
+
+We wrote down what a classroom's operating system actually is, and how to
+rebuild it on purpose so the room does not rest on one person. Read the
+ClassroomOS white paper, free, and we email you the link:
+https://theintelligenthoodlums.com/white-paper-request
+
+#TeacherPD #Teachers #Education #ClassroomManagement
+
+### LinkedIn — teaching
+
+Every classroom runs on an operating system, and most teachers never chose
+theirs. It is built from old habits, district mandates, and whatever survived
+the last in-service, and it holds up fine until the teacher is absent,
+exhausted, or the schedule collapses.
+
+The ClassroomOS white paper lays out what that operating system is, why it
+usually rests on a single point of failure, and how to rebuild it on purpose so
+a classroom can run without depending on one person in the room.
+
+Read it here, free: https://theintelligenthoodlums.com/white-paper-request
+
+#Education #ProfessionalDevelopment #Teachers #InstructionalDesign
+
+### Instagram — teaching
+
+The system was you the whole time. 🧱
+
+Every classroom runs on an operating system, and most teachers inherited theirs
+by accident. It holds up fine until you are absent, exhausted, or the schedule
+collapses.
+
+You can rebuild it on purpose. The ClassroomOS white paper shows how. It is
+free, and the link is in bio. 🔗
+.
+.
+#TeacherPD #Teachers #TeachersOfInstagram #ClassroomManagement #TeacherLife #Education #ClassroomOS
+
+### TikTok — teaching
+
+The system was you the whole time. Every classroom runs on an operating system,
+and most teachers inherited theirs by accident. You can rebuild it on purpose.
+Free white paper, link in bio. 🧱
+
+#teachertok #teachersoftiktok #teacherlife #classroommanagement #teacherpd #education
+
+---
+
 ## The facts, if you need to remix
 
 - Entirely virtual cohort, on Google Meet
@@ -118,4 +200,5 @@ ln -s /opt/node22/lib/node_modules node_modules   # or: npm i playwright
 node generate-cards.mjs
 ```
 
-Edit the copy or the presets in that file and rerun to reflow every card.
+Edit the copy or the presets in that file and rerun to reflow every card. The
+teaching wave renders the same way from `generate-teaching-cards.mjs`.
