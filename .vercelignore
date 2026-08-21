@@ -15,5 +15,8 @@ brand-kit
 # Dev utilities
 scripts
 
+# Social card working files (source PNGs + render script for SocialBee)
+social
+
 # Work-in-progress prototype, not for public
 tih-site-prototype.html

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassroomOS, Vol. III &middot; The Intelligent Hoodlums</title>
+<meta name="description" content="ClassroomOS Vol. III is an entirely virtual cohort. One hour every Wednesday for nine weeks on Google Meet, starting September 16. Build your classroom's operating system while you are teaching. Free, fifteen logged hours, five CUs. Register now.">
+<meta name="theme-color" content="#0F1419">
+<meta name="author" content="The Intelligent Hoodlums">
+<meta name="keywords" content="ClassroomOS, Volume 3, virtual cohort, online teacher PD, Google Meet, professional development, instructional design, AI in education, CUs, NV-SIDE, Intelligent Hoodlums, Las Vegas">
+
+<link rel="canonical" href="https://theintelligenthoodlums.com/classroom-os-volume-3">
+
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/HM-favicon-64.png">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="The Intelligent Hoodlums">
+<meta property="og:title" content="ClassroomOS, Vol. III — an entirely virtual cohort">
+<meta property="og:description" content="One hour every Wednesday for nine weeks on Google Meet, starting September 16. Build your classroom's operating system while you are teaching. Free, five CUs.">
+<meta property="og:url" content="https://theintelligenthoodlums.com/classroom-os-volume-3">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://theintelligenthoodlums.com/assets/HM-og.png">
+<meta property="og:image:secure_url" content="https://theintelligenthoodlums.com/assets/HM-og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Intelligent Hoodlums wordmark on Ink — Las Vegas, Est 2014.">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClassroomOS, Vol. III — an entirely virtual cohort">
+<meta name="twitter:description" content="Nine Wednesdays, one hour each, starting September 16. Build your classroom's operating system while you teach. Free, five CUs.">
+<meta name="twitter:image" content="https://theintelligenthoodlums.com/assets/HM-og.png">
+<meta name="twitter:image:alt" content="The Intelligent Hoodlums wordmark on Ink — Las Vegas, Est 2014.">
+<meta name="twitter:domain" content="theintelligenthoodlums.com">
+
+<link rel="preload" href="/fonts/Grift-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Grift-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/styles.css">
+
+<!-- JSON-LD: the course + this session -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "ClassroomOS, Vol. III",
+  "description": "An entirely virtual cohort. One hour every Wednesday for nine weeks on Google Meet, building the operating system a classroom runs on while you are teaching. Fifteen logged hours, five CUs.",
+  "provider": {
+    "@type": "Organization",
+    "name": "The Intelligent Hoodlums",
+    "url": "https://theintelligenthoodlums.com/"
+  },
+  "url": "https://theintelligenthoodlums.com/classroom-os-volume-3",
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://luma.com/d18q3tcw"
+    },
+    "courseWorkload": "PT15H",
+    "startDate": "2026-09-16",
+    "endDate": "2026-11-11",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "url": "https://luma.com/d18q3tcw"
+    }
+  }
+}
+</script>
+
+<!-- Vercel Web Analytics -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<style>
+  /* This page reuses the event day-card and callout treatments. These few
+     rules only cover the register bar, the layer meta line, and the
+     leave-with checklist, which the shared styles do not have. */
+  .register-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 28px;
+    margin: 36px 0 0;
+    padding: 22px 24px;
+    border: 1px solid var(--bone-08);
+    background: var(--bone-06);
+  }
+  .register-strip .register-facts {
+    font-family: var(--font-family);
+    font-weight: 100;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--hm-cadet);
+    line-height: 1.9;
+  }
+  .register-strip .register-facts strong { color: var(--hm-bone); font-weight: 400; }
+  .register-strip .register-actions { margin-left: auto; }
+
+  .leave-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px 32px;
+  }
+  .leave-list li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--hm-cadet);
+  }
+  .leave-list li strong { color: var(--hm-bone); font-weight: 700; }
+  .leave-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 10px;
+    height: 10px;
+    background: var(--hm-rufous);
+  }
+
+  /* The session-open questions, set as a tight italic stack. */
+  .open-questions {
+    margin: 18px 0 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--hm-tuscany);
+    color: var(--hm-bone);
+    font-style: italic;
+    line-height: 1.9;
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <span>The Intelligent Hoodlums</span>
+  <span class="dot">&middot;</span>
+  <span>Las Vegas</span>
+  <span class="dot">&middot;</span>
+  <span>Est 2014</span>
+</div>
+
+<!-- NAV (minimal — single-purpose page) -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">THE INTELLIGENT HOODLUMS</a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-back">&larr; Home</a></li>
+    <li><a href="/events" class="nav-page">Upcoming</a></li>
+    <li><a href="/past" class="nav-page">Past</a></li>
+  </ul>
+</nav>
+
+<main id="top" tabindex="-1">
+
+<!-- HERO -->
+<section class="hero hero-event">
+  <div class="hero-inner">
+    <div class="hero-pillars">Source Code &nbsp;&middot;&nbsp; Architecture &nbsp;&middot;&nbsp; Scheduler &nbsp;&middot;&nbsp; Applications</div>
+    <div class="hero-eyebrow">Entirely virtual cohort &middot; Nine Wednesdays &middot; Starts Sep 16</div>
+    <h1 class="hero-title" style="margin-top:18px;">ClassroomOS,<br>Vol.&nbsp;III.</h1>
+    <div class="rufous-rule hero-rule"></div>
+    <p class="hero-tagline">
+      One hour. Every Wednesday. Nine weeks. Build the operating system your classroom runs on, one layer at a time, while you are teaching the whole time you build it.
+    </p>
+    <div class="hero-cta">
+      <a href="https://luma.com/d18q3tcw" class="btn btn-primary" target="_blank" rel="noopener">Take the Seat<span class="sr-only"> (register on Luma, opens in new tab)</span></a>
+      <a href="#weeks" class="btn btn-bone">See the Nine Weeks</a>
+    </div>
+    <img src="/assets/HM-badge-full.png" alt="" aria-hidden="true" class="hero-badge">
+  </div>
+</section>
+
+<!-- WHAT THIS IS -->
+<section class="section section-crew" id="about" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">The Series</div>
+    <h2 class="section-title">Every classroom runs on an operating system.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      Most teachers inherited theirs by accident: old habits, district mandates, and whatever survived the last in-service. It holds up fine until you are absent, or exhausted, or the schedule collapses. Then it turns out the system was you the whole time.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      <strong>ClassroomOS is where you rebuild that system on purpose, one layer at a time.</strong> You start with what you actually believe about how people learn. Then you build the room, the year, and the tools that carry it, until the design is what holds the whole thing together.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Teachers who did this in June rated their own classrooms on Monday and again on Friday. &ldquo;My classroom could run without me in the room&rdquo; moved from 3.7 to 4.4. Eighty-six percent of scores rose.
+    </p>
+  </div>
+</section>
+
+<!-- WHY ONLINE -->
+<section class="section section-work" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">Why This One Runs Online</div>
+    <h2 class="section-title">We are starting this fall, and so should you.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      There is no five-day window in a school year. You know that better than we do. The teachers who built their system in June got five consecutive mornings because it was June, and the next honest chance at five straight days is Summer 2027.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Vol.&nbsp;III runs one hour a week on Google Meet, nine Wednesdays, this fall. Same layers. Same crews. The difference is that <strong>you will be teaching the entire time you build it.</strong>
+    </p>
+
+    <div class="ab-callout" style="margin-top:36px;">
+      <div class="case-kicker">What that changes</div>
+      <p>
+        The summer cohorts built a system and then went home for six weeks to wonder about it. You will build a piece of yours on Wednesday and hand it to thirty students on Thursday. You see your system working while you are still teaching, and you finish with a semester of evidence.
+      </p>
+    </div>
+
+    <p class="lede-text" style="margin-top:32px;">
+      Every session opens with what happened when you put last week&rsquo;s work in front of real students.
+    </p>
+    <div class="open-questions">
+      Did anything break?<br>
+      Was anything ignored?<br>
+      What went well?
+    </div>
+    <p class="lede-text" style="margin-top:24px;">
+      Then we collaborate during that hour, while your experience of it is still fresh. By Week 9 your system will have survived a quarter of real teaching.
+    </p>
+  </div>
+</section>
+
+<!-- THE NINE WEEKS -->
+<section class="section section-work" id="weeks" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">The Nine Weeks</div>
+    <h2 class="section-title">Same layers. Built live.</h2>
+    <div class="rufous-rule section-rule"></div>
+
+    <p class="schedule-intro">
+      Each pair of weeks builds one layer of the system on top of the last, starting with the person and ending with something that runs without you. Here is the arc, week by week.
+    </p>
+
+    <div class="day-grid">
+
+      <!-- SOURCE CODE -->
+      <article class="day-card">
+        <div class="day-card-head">
+          <span class="day-pill">Weeks 1 &middot; 2</span>
+          <span class="day-date">Sep 16 &middot; Sep 23</span>
+        </div>
+        <div class="day-theme">Source Code</div>
+        <h3 class="day-title">Who you are.</h3>
+        <p class="day-blurb">
+          The beliefs already running your classroom whether or not you ever named them. Your Circle Map, the opening of your Source Code Document, and the AI that will grow alongside your system all semester.
+        </p>
+        <p class="day-question">What do you actually believe about how people learn?</p>
+      </article>
+
+      <!-- ARCHITECTURE -->
+      <article class="day-card">
+        <div class="day-card-head">
+          <span class="day-pill">Weeks 3 &middot; 4</span>
+          <span class="day-date">Sep 30 &middot; Oct 7</span>
+        </div>
+        <div class="day-theme">Architecture</div>
+        <h3 class="day-title">The visible structures.</h3>
+        <p class="day-blurb">
+          The structures that carry your Source Code when your voice is not carrying it. Procedures, layout, transitions. The things a stranger could read off your walls.
+        </p>
+        <p class="day-question">Could a stranger read who you are off your walls?</p>
+      </article>
+
+      <!-- SCHEDULER -->
+      <article class="day-card">
+        <div class="day-card-head">
+          <span class="day-pill">Weeks 5 &middot; 6</span>
+          <span class="day-date">Oct 14 &middot; Oct 21</span>
+        </div>
+        <div class="day-theme">Scheduler</div>
+        <h3 class="day-title">You design the year.</h3>
+        <p class="day-blurb">
+          Where your students are, where they are going, and whether they could tell you without being told.
+        </p>
+        <p class="day-question">Do your students know where they are in the year?</p>
+      </article>
+
+      <!-- APPLICATIONS -->
+      <article class="day-card">
+        <div class="day-card-head">
+          <span class="day-pill">Weeks 7 &middot; 8</span>
+          <span class="day-date">Oct 28 &middot; Nov 4</span>
+        </div>
+        <div class="day-theme">Applications</div>
+        <h3 class="day-title">The layer that does the work.</h3>
+        <p class="day-blurb">
+          Your Gems, the thing on the wall, the resources you actually use, and a sub plan that runs the room the day you are out.
+        </p>
+        <p class="day-question">Would your room run tomorrow if you could not come in?</p>
+      </article>
+
+      <!-- THE ABSENCE TEST -->
+      <article class="day-card">
+        <div class="day-card-head">
+          <span class="day-pill">Week 9</span>
+          <span class="day-date">Nov 11</span>
+        </div>
+        <div class="day-theme">The Absence Test</div>
+        <h3 class="day-title">Live curveballs.</h3>
+        <p class="day-blurb">
+          Everything you built, under pressure. A new student who speaks no English, arriving tomorrow. A schedule that just collapsed. The summer cohorts answered this from a simulation. You will answer it from a quarter of real evidence.
+        </p>
+        <p class="day-question">You already know the answer.</p>
+      </article>
+
+    </div>
+
+    <p class="schedule-meta">
+      Nine Wednesdays &middot; <strong>Sep 16 &ndash; Nov 11</strong> &middot; one hour each on <strong>Google Meet</strong> &middot; crews capped at four
+    </p>
+
+    <div class="register-strip">
+      <div class="register-facts">
+        <strong>Free.</strong> Fifteen logged hours &middot; <strong>five CUs</strong><br>
+        Nine hours on the Wednesdays &middot; six hours in your own classroom
+      </div>
+      <div class="register-actions">
+        <a href="https://luma.com/d18q3tcw" class="btn btn-primary" target="_blank" rel="noopener">Register on Luma<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE HOURS AND THE CREDIT -->
+<section class="section section-crew" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">The Hours, and the Credit</div>
+    <h2 class="section-title">Fifteen hours. Five CUs.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      Nine of those hours are the Wednesdays. The other six are your own, spent inside your own classroom on your own system, and you log them on a spreadsheet we give you.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      You will probably work more than six. Most people do. <strong>The credit caps at five CUs no matter how many hours you put in,</strong> so log what you did and stop counting.
+    </p>
+    <p class="lede-text" style="margin-top:24px;">
+      Three copies of that log exist when this is over: yours, ours, and NV-SIDE&rsquo;s. If anyone is ever audited, all three match.
+    </p>
+  </div>
+</section>
+
+<!-- WHAT YOU LEAVE WITH -->
+<section class="section section-work" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">What You Leave With</div>
+    <h2 class="section-title">Nine weeks, and this is yours to keep.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <ul class="leave-list">
+      <li><strong>A complete ClassroomOS:</strong> Source Code, Architecture, Scheduler, Applications.</li>
+      <li><strong>An AI trained on your classroom,</strong> your content, and your voice, built up over nine weeks of real teaching.</li>
+      <li><strong>A sub plan</strong> that has already been used.</li>
+      <li><strong>Fifteen logged hours and five CUs.</strong></li>
+      <li><strong>A crew of four people</strong> who watched your room change in real time.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR / WHERE IT LEADS -->
+<section class="section section-crew" tabindex="-1">
+  <div class="section-inner">
+    <div class="section-label">Who This Is For</div>
+    <h2 class="section-title">The only load-bearing wall in the building.</h2>
+    <div class="rufous-rule section-rule"></div>
+    <p class="lede-text">
+      Teachers who are already good and are tired of being the only load-bearing wall in the building. You do not need to be technical. You do not need permission. <strong>You need one hour on Wednesdays and four people willing to tell you the truth.</strong>
+    </p>
+
+    <div class="ab-callout" style="margin-top:36px;">
+      <div class="case-kicker">Where it leads</div>
+      <p>
+        Vol.&nbsp;III runs this fall. Vol.&nbsp;IV runs in the spring. Both are online, and both lead to <strong>Vol.&nbsp;V, five days in person in Las Vegas in Summer 2027.</strong> Start anywhere. Teachers who run an online semester first arrive at the in-person week carrying a system that has already been through a school year, which changes what that week is for.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="register" tabindex="-1">
+  <div class="cta-inner">
+    <h2 class="cta-title">Take the seat.</h2>
+    <p class="cta-sub">Nine Wednesdays, starting September 16. Crews are capped at four, so the room stays small enough that people know your classroom by Week 3. Bring a colleague if you want your crew to already know each other.</p>
+    <a href="https://luma.com/d18q3tcw" class="btn btn-bone" target="_blank" rel="noopener">Register on Luma<span class="sr-only"> (opens in new tab)</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>The Intelligent Hoodlums</h3>
+      <p class="mono">
+        Las Vegas, Nevada &middot; Est 2014<br>
+        Design &middot; Disrupt &middot; Deliver
+      </p>
+    </div>
+    <div class="footer-social">
+      <h4>The Streets</h4>
+      <ul class="social-links">
+        <li><a href="https://blog.theintelligenthoodlums.com/" target="_blank" rel="noopener">Blog<span class="sr-only"> (opens in new tab)</span></a></li>
+        <li><a href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube<span class="sr-only"> (opens in new tab)</span></a></li>
+        <li><a href="https://www.twitch.tv/intelligenthoodlums" target="_blank" rel="noopener">Twitch<span class="sr-only"> (opens in new tab)</span></a></li>
+        <li><a href="https://www.instagram.com/theintelligenthoodlums/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in new tab)</span></a></li>
+        <li><a href="https://www.tiktok.com/@webswebswebs" target="_blank" rel="noopener">TikTok<span class="sr-only"> (opens in new tab)</span></a></li>
+        <li><a href="https://www.linkedin.com/company/the-intelligent-hoodlums" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a></li>
+        <li><a href="https://www.facebook.com/theintelligenthoodlums/" target="_blank" rel="noopener">Facebook<span class="sr-only"> (opens in new tab)</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="mono">&copy; 2014&ndash;2026 The Intelligent Hoodlums</p>
+    <span class="footer-tagline">When In Doubt, Trust A Hoodlum.</span>
+  </div>
+</footer>
+
+</body>
+</html>
