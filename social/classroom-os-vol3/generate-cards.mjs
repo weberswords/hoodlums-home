@@ -108,7 +108,7 @@ function html({ w, h, layout }) {
         <div class="chips">
           <span class="chip solid">Starts Sep 16</span>
           <span class="chip">Google Meet</span>
-          <span class="chip">Free &middot; 5 CUs</span>
+          <span class="chip">Free &middot; 5&nbsp;<span style="text-transform:none">CUs</span></span>
           <span class="chip">Crews of 4</span>
         </div>
       </div>
