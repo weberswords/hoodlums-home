@@ -104,7 +104,7 @@ function html({ w, h, layout }) {
         <div class="title">ClassroomOS<br><span class="vol">Vol.&nbsp;III</span></div>
         <div class="rule"></div>
         <div class="tag">One hour. Every Wednesday.<br>Nine weeks.</div>
-        <div class="sub">Build the operating system your classroom runs on, one layer at a time, while you are teaching the whole time you build it.</div>
+        <div class="sub">You rebuild the system your classroom runs on while you&rsquo;re teaching, so you see it work before the semester&rsquo;s out.</div>
         <div class="chips">
           <span class="chip solid">Starts Sep 16</span>
           <span class="chip">Google Meet</span>

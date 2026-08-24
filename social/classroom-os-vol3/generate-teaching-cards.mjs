@@ -82,7 +82,7 @@ function html({ w, h, layout }) {
         <div class="eyebrow">Every classroom runs on an operating system</div>
         <div class="statement">The system was <span class="hot">you</span> the whole time.</div>
         <div class="rule"></div>
-        <div class="body">Most teachers inherited theirs by accident: old habits, district mandates, and whatever survived the last in-service. It holds up fine until you are absent, or exhausted, or the schedule collapses.</div>
+        <div class="body">Most teachers inherited theirs by accident, built from old habits, mandates, and whatever survived the last in-service. It holds up until you&rsquo;re absent, or exhausted, or the schedule collapses.</div>
       </div>
       <div class="foot">
         <span class="wordmark">The Intelligent Hoodlums</span>
