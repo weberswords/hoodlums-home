@@ -234,9 +234,9 @@
       <div class="livestream-poster">
         <img src="/assets/HM-badge-full.png" alt="" aria-hidden="true" class="poster-badge">
         <div class="poster-content">
-          <span class="poster-eyebrow"><span class="poster-dot"></span> Off Air Right Now</span>
+          <span class="poster-eyebrow"><span class="poster-dot"></span> <span data-status-label>Off Air Right Now</span></span>
           <p class="poster-title">We&rsquo;re not live at the moment.</p>
-          <p class="poster-sub">When we go live, the player loads right here. In the meantime, catch the replays and follow along wherever you already hang out.</p>
+          <p class="poster-sub">The player loads here on its own the moment we go live &mdash; no need to refresh. In the meantime, catch the replays and follow along wherever you already hang out.</p>
           <div class="poster-actions">
             <button type="button" class="btn btn-play" data-load-player>&#9654;&nbsp; Load the live player</button>
             <a class="btn btn-primary" href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube<span class="sr-only"> (opens in new tab)</span></a>
@@ -272,8 +272,8 @@
           We&rsquo;re presenting at the Silver State Technology Conference, hosted by NV-SIDE. A plain-language, human-first way to bring AI into your classroom, built for teachers who are not sure where to start. Friday, October 10, 9:00 am to 5:30 pm, at Aldeane C. Ries in Las Vegas.
         </p>
         <div class="event-actions">
-          <a class="btn btn-primary" href="https://nvside.org" target="_blank" rel="noopener">Conference details<span class="sr-only"> (nvside.org, opens in new tab)</span> <span aria-hidden="true">&rarr;</span></a>
-          <a class="btn btn-bone" href="mailto:whenindoubt@theintelligenthoodlums.com?subject=See%20you%20at%20Silver%20State%202026">Say you&rsquo;re coming</a>
+          <a class="btn btn-primary" href="https://www.zeffy.com/en-US/ticketing/silver-state-technology-conference--2026" target="_blank" rel="noopener">Get tickets<span class="sr-only"> (Zeffy, opens in new tab)</span> <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-bone" href="https://nvside.org" target="_blank" rel="noopener">Conference details<span class="sr-only"> (nvside.org, opens in new tab)</span></a>
         </div>
       </article>
 
@@ -362,6 +362,33 @@
   if (btn) btn.addEventListener('click', loadPlayer);
   window.addEventListener('resize', fit);
   if (window.ResizeObserver) new ResizeObserver(fit).observe(frame);
+
+  // Auto-flip: poll the server-side probe and load the player on its own the
+  // moment we go live. Fails safe — if the probe errors or is unreachable
+  // (e.g. viewing the file directly), the poster just stays up. Once the
+  // player is loaded we stop polling; we never tear it back down.
+  var label = frame.querySelector('[data-status-label]');
+  var poll = null;
+  function stopPolling() { if (poll) { clearInterval(poll); poll = null; } }
+  function check() {
+    if (iframe) { stopPolling(); return; }
+    fetch('/api/live-status', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data && data.live) {
+          if (label) label.textContent = 'Live Now';
+          loadPlayer();
+          stopPolling();
+        }
+      })
+      .catch(function () { /* stay on the poster */ });
+  }
+  check();
+  poll = setInterval(check, 30000);
+  // Re-check promptly when a backgrounded tab comes back into view.
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && !iframe) check();
+  });
 })();
 </script>
 
