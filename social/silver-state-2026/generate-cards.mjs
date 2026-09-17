@@ -28,13 +28,13 @@ const badge =
   'data:image/png;base64,' +
   readFileSync(join(repo, 'assets', 'HM-badge-full.png')).toString('base64');
 
-// NV-SIDE co-presenter mark (black-background square). The .nvside-lockup chip
-// below frames it on a black tile with a faint border so its edge looks
-// intentional against the Ink card.
-const NVSIDE_PATH = join(repo, 'assets', 'nvside_400x400.jpg');
+// NV-SIDE host mark. This is the background-knocked-out transparent PNG
+// (assets/nvside-logo.png, made from assets/nvside_400x400.jpg), so the
+// purple/silver artwork sits directly on the Ink card with no black tile.
+const NVSIDE_PATH = join(repo, 'assets', 'nvside-logo.png');
 let nvside;
 try {
-  nvside = 'data:image/jpeg;base64,' + readFileSync(NVSIDE_PATH).toString('base64');
+  nvside = 'data:image/png;base64,' + readFileSync(NVSIDE_PATH).toString('base64');
 } catch {
   console.error(
     '\n  Missing NV-SIDE logo: ' + NVSIDE_PATH +
@@ -112,15 +112,14 @@ function html({ w, h, layout }) {
     .foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:24px;
       border-top:1px solid rgba(242,232,213,0.16);padding-top:${Math.round(p.foot*1.1)}px}
     .wordmark{font-weight:900;font-size:${p.foot}px;letter-spacing:0.16em;text-transform:uppercase;color:${C.bone};max-width:52%}
-    /* Co-presenter lockup: a small label over the NV-SIDE mark, framed on a
-       faint panel so a black-background logo edge reads as intentional. */
-    .copresent{display:flex;flex-direction:column;align-items:flex-end;gap:${Math.round(p.foot*0.5)}px}
+    /* Host lockup: a small label beside the NV-SIDE mark. The logo art has its
+       black background knocked out to transparency, so it sits directly on the
+       Ink card — no framed tile, no stapled-on edge. */
+    .copresent{display:flex;flex-direction:column;align-items:flex-end;gap:${Math.round(p.foot*0.55)}px}
     .copresent .label{font-weight:500;font-size:${Math.round(p.foot*0.82)}px;letter-spacing:0.22em;
       text-transform:uppercase;color:${C.cadet}}
-    .copresent .nvside-lockup{display:inline-flex;padding:${Math.round(p.logo*0.10)}px ${Math.round(p.logo*0.14)}px;
-      border:1px solid rgba(242,232,213,0.14);border-radius:${Math.round(p.logo*0.10)}px;background:rgba(0,0,0,0.35)}
     .copresent img{height:${p.logo}px;width:auto;display:block}
-    ${layout !== 'landscape' ? `.foot{flex-direction:column;align-items:flex-start;gap:${Math.round(p.foot*1.1)}px}
+    ${layout !== 'landscape' ? `.foot{flex-direction:column;align-items:flex-start;gap:${Math.round(p.foot*0.9)}px}
       .wordmark{max-width:100%}.copresent{align-items:flex-start}` : ''}
   </style></head><body>
     <div class="card">
@@ -137,8 +136,8 @@ function html({ w, h, layout }) {
       <div class="foot">
         <span class="wordmark">The Intelligent Hoodlums</span>
         <span class="copresent">
-          <span class="label">Presented at</span>
-          <span class="nvside-lockup"><img src="${nvside}" alt="NV-SIDE"></span>
+          <span class="label">Hosted by</span>
+          <img src="${nvside}" alt="NV-SIDE">
         </span>
       </div>
     </div>

@@ -27,12 +27,15 @@ the badge watermark, matching the site.
 
 ## Co-branding
 
-The cards are our aesthetic, co-branded with NV-SIDE. The suggested flyer's "I'm
-presenting at..." banner becomes the eyebrow, the where / when / time ribbon
-becomes the detail line, and the NV-SIDE mark sits in a "Presented at" lockup in
-the footer next to our wordmark. The logo file lives at `assets/nvside-logo.png`
-(a transparent PNG reads cleanest; a black-background square is framed by the
-lockup so its edge looks intentional).
+The cards are our aesthetic, co-branded with NV-SIDE, the organization hosting
+the conference. The suggested flyer's "I'm presenting at..." banner becomes the
+eyebrow, the where / when / time ribbon becomes the detail line, and the NV-SIDE
+mark sits in a "Hosted by" lockup in the footer next to our wordmark.
+
+The mark is `assets/nvside-logo.png` — a transparent version knocked out from
+the supplied `assets/nvside_400x400.jpg` (its black background removed) so the
+logo sits directly on the Ink card with no tile. If NV-SIDE sends an official
+transparent logo, drop it in at that path and rerun.
 
 ---
 
