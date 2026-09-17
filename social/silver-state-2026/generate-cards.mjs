@@ -120,7 +120,11 @@ function html({ w, h, layout }) {
       text-transform:uppercase;color:${C.cadet}}
     .copresent img{height:${p.logo}px;width:auto;display:block}
     ${layout !== 'landscape' ? `.foot{flex-direction:column;align-items:flex-start;gap:${Math.round(p.foot*0.9)}px}
-      .wordmark{max-width:100%}.copresent{align-items:flex-start}` : ''}
+      .wordmark{max-width:100%}.copresent{align-items:flex-start}
+      /* On the tall canvases, let the text block fill the space above the
+         footer and center itself, so the whitespace is even top and bottom
+         instead of pooling into one big gap in the middle. */
+      .content{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center}` : ''}
   </style></head><body>
     <div class="card">
       <img class="badge" src="${badge}" alt="">
