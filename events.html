@@ -100,6 +100,89 @@
     font-size: 14px;
     line-height: 1.7;
   }
+  /* Off-air poster — the resting state of the stream box. We do NOT load the
+     OneStream embed on page load, because when nothing is live that endpoint
+     returns a raw JSON payload and the browser renders its own "Pretty-print"
+     viewer inside the frame. Instead we show this branded panel and only swap
+     in the real player when the visitor asks for it (see the script below). */
+  .livestream-poster {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    background:
+      radial-gradient(ellipse at 18% 82%, rgba(11,37,69,0.60) 0%, transparent 60%),
+      radial-gradient(ellipse at 84% 16%, rgba(183,40,15,0.14) 0%, transparent 52%),
+      var(--hm-ink);
+    overflow: hidden;
+  }
+  .livestream-poster .poster-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 62%;
+    max-width: 420px;
+    transform: translate(-50%, -50%);
+    opacity: 0.06;
+    pointer-events: none;
+  }
+  .livestream-poster .poster-content {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+  }
+  .livestream-poster .poster-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--hm-tuscany);
+    margin-bottom: 16px;
+  }
+  .livestream-poster .poster-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--hm-cadet);
+    box-shadow: 0 0 0 4px var(--bone-08);
+  }
+  .livestream-poster .poster-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 46px);
+    line-height: 1.02;
+    color: var(--hm-bone);
+    margin-bottom: 14px;
+  }
+  .livestream-poster .poster-sub {
+    color: var(--hm-cadet);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+  .livestream-poster .poster-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .livestream-poster .poster-actions .btn { font-size: 13px; }
+  .btn-play {
+    background: transparent;
+    color: var(--hm-bone);
+    border: 1px solid var(--bone-40);
+    cursor: pointer;
+  }
+  .btn-play:hover { border-color: var(--hm-bone); }
 </style>
 </head>
 <body>
@@ -147,8 +230,20 @@
     <div class="section-label">Live</div>
     <h2 class="section-title">Watch the stream.</h2>
     <div class="rufous-rule section-rule"></div>
-    <div class="livestream-frame">
-      <iframe src="https://player.onestream.live/embed?token=OTc2OTM=&type=up" scrolling="no" allow="autoplay" allowfullscreen title="The Intelligent Hoodlums livestream"></iframe>
+    <div class="livestream-frame" data-embed="https://player.onestream.live/embed?token=OTc2OTM=&type=up">
+      <div class="livestream-poster">
+        <img src="/assets/HM-badge-full.png" alt="" aria-hidden="true" class="poster-badge">
+        <div class="poster-content">
+          <span class="poster-eyebrow"><span class="poster-dot"></span> <span data-status-label>Off Air Right Now</span></span>
+          <p class="poster-title">We&rsquo;re not live at the moment.</p>
+          <p class="poster-sub">The player loads here on its own the moment we go live &mdash; no need to refresh. In the meantime, catch the replays and follow along wherever you already hang out.</p>
+          <div class="poster-actions">
+            <button type="button" class="btn btn-play" data-load-player>&#9654;&nbsp; Load the live player</button>
+            <a class="btn btn-primary" href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener">YouTube<span class="sr-only"> (opens in new tab)</span></a>
+            <a class="btn btn-bone" href="https://www.twitch.tv/intelligenthoodlums" target="_blank" rel="noopener">Twitch<span class="sr-only"> (opens in new tab)</span></a>
+          </div>
+        </div>
+      </div>
     </div>
     <p class="livestream-note">
       When we go live, it plays right here. If the stream has not started yet, check the schedule below or catch us on <a href="https://www.youtube.com/@theintelligenthoodlums" target="_blank" rel="noopener" style="color:var(--hm-bone);text-decoration:underline;">YouTube</a>, <a href="https://www.facebook.com/theintelligenthoodlums/" target="_blank" rel="noopener" style="color:var(--hm-bone);text-decoration:underline;">Facebook</a>, or <a href="https://www.twitch.tv/intelligenthoodlums" target="_blank" rel="noopener" style="color:var(--hm-bone);text-decoration:underline;">Twitch</a>.
@@ -165,20 +260,20 @@
 
     <div class="day-grid">
 
-      <!-- CLASSROOM OS VOL. III — REGISTRATION OPEN -->
-      <article class="day-card" id="classroom-os-vol-3">
+      <!-- SILVER STATE TECHNOLOGY CONFERENCE — UPCOMING TALK -->
+      <article class="day-card" id="silver-state-2026">
         <div class="day-card-head">
-          <span class="day-pill">Registration Open</span>
-          <span class="day-date">Starts Sep 16</span>
+          <span class="day-pill">Conference Talk</span>
+          <span class="day-date">Oct 10, 2026</span>
         </div>
-        <div class="day-theme">Free &middot; Online &middot; Nine Wednesdays</div>
-        <h3 class="day-title">ClassroomOS, Vol. III.</h3>
+        <div class="day-theme">In person &middot; Las Vegas, NV &middot; Silver State Technology Conference</div>
+        <h3 class="day-title">MAGIC: Human-Centered AI for Beginners.</h3>
         <p class="day-blurb">
-          An entirely virtual cohort. One hour every Wednesday for nine weeks on Google Meet, starting September 16. You rebuild the system your classroom runs on while you&rsquo;re teaching, so you see it work before the semester&rsquo;s out. Free, fifteen hours, five CUs, and a crew of four.
+          We&rsquo;re presenting at the Silver State Technology Conference, hosted by NV-SIDE. A plain-language, human-first way to bring AI into your classroom, built for teachers who are not sure where to start. Friday, October 10, 9:00 am to 5:30 pm, at Aldeane C. Ries in Las Vegas.
         </p>
         <div class="event-actions">
-          <a class="btn btn-primary" href="https://luma.com/d18q3tcw" target="_blank" rel="noopener">Take the seat<span class="sr-only"> (register on Luma, opens in new tab)</span> <span aria-hidden="true">&rarr;</span></a>
-          <a class="btn btn-bone" href="/classroom-os-volume-3">See the nine weeks</a>
+          <a class="btn btn-primary" href="https://www.zeffy.com/en-US/ticketing/silver-state-technology-conference--2026" target="_blank" rel="noopener">Get tickets<span class="sr-only"> (Zeffy, opens in new tab)</span> <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-bone" href="https://nvside.org" target="_blank" rel="noopener">Conference details<span class="sr-only"> (nvside.org, opens in new tab)</span></a>
         </div>
       </article>
 
@@ -233,20 +328,67 @@
 
 </main>
 
-<!-- LIVESTREAM SCALER — see the .livestream-frame note in the head styles.
-     Scales the fixed 640x360 player up to fill the responsive 16:9 box. -->
+<!-- LIVESTREAM PLAYER — see the .livestream-frame and .livestream-poster notes
+     in the head styles. The OneStream embed is NOT loaded on page load: when
+     nothing is live it returns a raw JSON payload and the browser shows its own
+     "Pretty-print" viewer. So we show the branded poster until the visitor asks
+     for the player, then inject the iframe and scale its fixed 640x360 footprint
+     up to fill the responsive 16:9 box. -->
 <script>
 (function () {
   var frame = document.querySelector('.livestream-frame');
-  var iframe = frame && frame.querySelector('iframe');
-  if (!iframe) return;
+  if (!frame) return;
   var NATIVE_W = 640; // the player's native width; box is the same 16:9 ratio
+  var iframe = null;
   function fit() {
-    iframe.style.transform = 'scale(' + (frame.clientWidth / NATIVE_W) + ')';
+    if (iframe) iframe.style.transform = 'scale(' + (frame.clientWidth / NATIVE_W) + ')';
   }
-  fit();
+  function loadPlayer() {
+    if (iframe) return;
+    var src = frame.getAttribute('data-embed');
+    if (!src) return;
+    var poster = frame.querySelector('.livestream-poster');
+    if (poster) poster.remove();
+    iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.scrolling = 'no';
+    iframe.allow = 'autoplay';
+    iframe.allowFullscreen = true;
+    iframe.title = 'The Intelligent Hoodlums livestream';
+    frame.appendChild(iframe);
+    fit();
+  }
+  var btn = frame.querySelector('[data-load-player]');
+  if (btn) btn.addEventListener('click', loadPlayer);
   window.addEventListener('resize', fit);
   if (window.ResizeObserver) new ResizeObserver(fit).observe(frame);
+
+  // Auto-flip: poll the server-side probe and load the player on its own the
+  // moment we go live. Fails safe — if the probe errors or is unreachable
+  // (e.g. viewing the file directly), the poster just stays up. Once the
+  // player is loaded we stop polling; we never tear it back down.
+  var label = frame.querySelector('[data-status-label]');
+  var poll = null;
+  function stopPolling() { if (poll) { clearInterval(poll); poll = null; } }
+  function check() {
+    if (iframe) { stopPolling(); return; }
+    fetch('/api/live-status', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data && data.live) {
+          if (label) label.textContent = 'Live Now';
+          loadPlayer();
+          stopPolling();
+        }
+      })
+      .catch(function () { /* stay on the poster */ });
+  }
+  check();
+  poll = setInterval(check, 30000);
+  // Re-check promptly when a backgrounded tab comes back into view.
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && !iframe) check();
+  });
 })();
 </script>
 
