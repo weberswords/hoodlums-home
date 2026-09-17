@@ -28,17 +28,17 @@ const badge =
   'data:image/png;base64,' +
   readFileSync(join(repo, 'assets', 'HM-badge-full.png')).toString('base64');
 
-// NV-SIDE co-presenter mark. Drop the file at assets/nvside-logo.png (a
-// transparent PNG reads cleanest; a black-background square is framed by the
-// .nvside-lockup chip below so its edge looks intentional either way).
-const NVSIDE_PATH = join(repo, 'assets', 'nvside-logo.png');
+// NV-SIDE co-presenter mark (black-background square). The .nvside-lockup chip
+// below frames it on a black tile with a faint border so its edge looks
+// intentional against the Ink card.
+const NVSIDE_PATH = join(repo, 'assets', 'nvside_400x400.jpg');
 let nvside;
 try {
-  nvside = 'data:image/png;base64,' + readFileSync(NVSIDE_PATH).toString('base64');
+  nvside = 'data:image/jpeg;base64,' + readFileSync(NVSIDE_PATH).toString('base64');
 } catch {
   console.error(
     '\n  Missing NV-SIDE logo: ' + NVSIDE_PATH +
-    '\n  Add the logo there (assets/nvside-logo.png) and rerun.\n'
+    '\n  Add the logo there and rerun.\n'
   );
   process.exit(1);
 }
