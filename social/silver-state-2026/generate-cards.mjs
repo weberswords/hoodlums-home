@@ -3,11 +3,11 @@
 // AI for Beginners." Renders brand-accurate HTML to PNG via the pre-installed
 // Chromium (through Playwright). Run: node generate-cards.mjs
 //
-// Homage to the suggested NV-SIDE flyer, in our aesthetic: the flyer's cloud of
-// warm adjectives (Useful, Fun, Community, Engaging, Accessible...) becomes a
-// row of Hoodlum chips; the "I'm presenting at..." banner becomes the eyebrow;
-// the where / when / time ribbon becomes our detail block. Grift Black on Ink,
-// the Rufous rule, Tuscany accents, and the badge watermark, matching the site.
+// Our aesthetic, co-branded with NV-SIDE: the "I'm presenting at..." banner
+// becomes the eyebrow, the where / when / time ribbon becomes our detail line,
+// and the NV-SIDE mark sits in a "Presented at" lockup in the footer. Grift
+// Black on Ink, the Rufous rule, Tuscany accents, and the badge watermark,
+// matching the site.
 import { chromium } from 'playwright';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -27,6 +27,21 @@ const grift = {
 const badge =
   'data:image/png;base64,' +
   readFileSync(join(repo, 'assets', 'HM-badge-full.png')).toString('base64');
+
+// NV-SIDE co-presenter mark. Drop the file at assets/nvside-logo.png (a
+// transparent PNG reads cleanest; a black-background square is framed by the
+// .nvside-lockup chip below so its edge looks intentional either way).
+const NVSIDE_PATH = join(repo, 'assets', 'nvside-logo.png');
+let nvside;
+try {
+  nvside = 'data:image/png;base64,' + readFileSync(NVSIDE_PATH).toString('base64');
+} catch {
+  console.error(
+    '\n  Missing NV-SIDE logo: ' + NVSIDE_PATH +
+    '\n  Add the logo there (assets/nvside-logo.png) and rerun.\n'
+  );
+  process.exit(1);
+}
 
 // Brand palette (from styles.css)
 const C = {
@@ -48,13 +63,10 @@ const cards = [
 
 // Scale knobs per layout so type reads well at each aspect ratio.
 const preset = {
-  landscape: { pad: 64, title: 132, tag: 28, eyebrow: 17, sub: 20, chip: 16, foot: 16, rule: 84, badge: 560, badgeOpacity: 0.05, titleGap: 20, block: 20 },
-  portrait: { pad: 92, title: 196, tag: 40, eyebrow: 21, sub: 27, chip: 20, foot: 20, rule: 110, badge: 780, badgeOpacity: 0.06, titleGap: 30, block: 34 },
-  story: { pad: 100, title: 208, tag: 44, eyebrow: 23, sub: 31, chip: 22, foot: 21, rule: 116, badge: 880, badgeOpacity: 0.055, titleGap: 34, block: 42 },
+  landscape: { pad: 64, title: 132, tag: 28, eyebrow: 17, sub: 20, detail: 19, foot: 16, logo: 108, rule: 84, badge: 560, badgeOpacity: 0.05, titleGap: 20, block: 20 },
+  portrait: { pad: 92, title: 196, tag: 40, eyebrow: 21, sub: 27, detail: 26, foot: 20, logo: 150, rule: 110, badge: 780, badgeOpacity: 0.06, titleGap: 30, block: 34 },
+  story: { pad: 100, title: 208, tag: 44, eyebrow: 23, sub: 31, detail: 30, foot: 21, logo: 168, rule: 116, badge: 880, badgeOpacity: 0.055, titleGap: 34, block: 42 },
 };
-
-// The word-cloud homage: NV-SIDE's warm adjectives, our way.
-const cloud = ['Useful', 'Human-Centered', 'Accessible', 'Fun', 'Community', 'Engaging'];
 
 function html({ w, h, layout }) {
   const p = preset[layout];
@@ -62,10 +74,6 @@ function html({ w, h, layout }) {
   // centered as a flex column and let space-between do the vertical rhythm.
   const padBottom = layout === 'story' ? Math.round(h * 0.20) : p.pad;
   const padTop = layout === 'story' ? Math.round(h * 0.14) : p.pad;
-
-  const chips = cloud
-    .map((word, i) => `<span class="chip${i === 0 ? ' solid' : ''}">${word}</span>`)
-    .join('');
 
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     @font-face{font-family:'Grift';src:url(${grift.regular}) format('woff2');font-weight:400}
@@ -97,16 +105,23 @@ function html({ w, h, layout }) {
     .tag{font-weight:700;font-size:${p.tag}px;line-height:1.14;color:${C.bone};margin-bottom:${Math.round(p.block*0.7)}px}
     .sub{font-weight:400;font-size:${p.sub}px;line-height:1.42;color:${C.cadet};
       max-width:${Math.round((w - p.pad*2)*0.96)}px;margin-bottom:${p.block}px}
-    .chips{display:flex;flex-wrap:wrap;gap:${Math.round(p.chip*0.7)}px}
-    .chip{font-weight:500;font-size:${p.chip}px;letter-spacing:0.10em;
-      text-transform:uppercase;color:${C.bone};border:1px solid rgba(242,232,213,0.22);
-      padding:${Math.round(p.chip*0.55)}px ${Math.round(p.chip*0.95)}px}
-    .chip.solid{background:${C.tuscany};color:${C.ink};border-color:${C.tuscany};font-weight:700}
+    .detail{display:flex;align-items:center;gap:${Math.round(p.detail*0.6)}px;
+      font-weight:700;font-size:${p.detail}px;letter-spacing:0.01em;color:${C.bone}}
+    .detail .tick{width:${Math.round(p.detail*0.5)}px;height:${Math.round(p.detail*0.5)}px;
+      background:${C.rufous};border-radius:2px;flex:none}
     .foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:24px;
       border-top:1px solid rgba(242,232,213,0.16);padding-top:${Math.round(p.foot*1.1)}px}
-    .wordmark{font-weight:900;font-size:${p.foot}px;letter-spacing:0.16em;text-transform:uppercase;color:${C.bone}}
-    .cta{font-weight:500;font-size:${p.foot}px;letter-spacing:0.05em;color:${C.tuscany};text-align:right}
-    ${layout !== 'landscape' ? `.foot{flex-direction:column;align-items:flex-start;gap:${Math.round(p.foot*0.55)}px}.cta{text-align:left}` : ''}
+    .wordmark{font-weight:900;font-size:${p.foot}px;letter-spacing:0.16em;text-transform:uppercase;color:${C.bone};max-width:52%}
+    /* Co-presenter lockup: a small label over the NV-SIDE mark, framed on a
+       faint panel so a black-background logo edge reads as intentional. */
+    .copresent{display:flex;flex-direction:column;align-items:flex-end;gap:${Math.round(p.foot*0.5)}px}
+    .copresent .label{font-weight:500;font-size:${Math.round(p.foot*0.82)}px;letter-spacing:0.22em;
+      text-transform:uppercase;color:${C.cadet}}
+    .copresent .nvside-lockup{display:inline-flex;padding:${Math.round(p.logo*0.10)}px ${Math.round(p.logo*0.14)}px;
+      border:1px solid rgba(242,232,213,0.14);border-radius:${Math.round(p.logo*0.10)}px;background:rgba(0,0,0,0.35)}
+    .copresent img{height:${p.logo}px;width:auto;display:block}
+    ${layout !== 'landscape' ? `.foot{flex-direction:column;align-items:flex-start;gap:${Math.round(p.foot*1.1)}px}
+      .wordmark{max-width:100%}.copresent{align-items:flex-start}` : ''}
   </style></head><body>
     <div class="card">
       <img class="badge" src="${badge}" alt="">
@@ -117,11 +132,14 @@ function html({ w, h, layout }) {
         <div class="rule"></div>
         <div class="tag">Human-Centered AI<br>for Beginners.</div>
         <div class="sub">A plain-language, human-first way to bring AI into your room, built for teachers who are not sure where to start.</div>
-        <div class="chips">${chips}</div>
+        <div class="detail"><span class="tick"></span> Fri, Oct 10 &middot; 9a&ndash;5:30p &middot; Las Vegas, NV</div>
       </div>
       <div class="foot">
         <span class="wordmark">The Intelligent Hoodlums</span>
-        <span class="cta">Fri, Oct 10 &middot; 9a&ndash;5:30p &middot; Las Vegas, NV</span>
+        <span class="copresent">
+          <span class="label">Presented at</span>
+          <span class="nvside-lockup"><img src="${nvside}" alt="NV-SIDE"></span>
+        </span>
       </div>
     </div>
   </body></html>`;

@@ -25,13 +25,14 @@ and a caption written for that platform.
 All four are on brand: Grift Black on Ink, the Rufous rule, Tuscany accents, and
 the badge watermark, matching the site.
 
-## The homage
+## Co-branding
 
-The suggested NV-SIDE flyer leans on a warm cloud of adjectives — Useful, Fun,
-Community, Engaging, Accessible, Motivational. We kept that spirit and ran it
-through our aesthetic: the cloud becomes a row of Hoodlum chips, the "I'm
-presenting at..." banner becomes the eyebrow, and the where / when / time ribbon
-becomes our footer line. Same warmth, our voice.
+The cards are our aesthetic, co-branded with NV-SIDE. The suggested flyer's "I'm
+presenting at..." banner becomes the eyebrow, the where / when / time ribbon
+becomes the detail line, and the NV-SIDE mark sits in a "Presented at" lockup in
+the footer next to our wordmark. The logo file lives at `assets/nvside-logo.png`
+(a transparent PNG reads cleanest; a black-background square is framed by the
+lockup so its edge looks intentional).
 
 ---
 
