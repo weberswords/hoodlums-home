@@ -20,3 +20,6 @@ social
 
 # Work-in-progress prototype, not for public
 tih-site-prototype.html
+
+# Prototype, deployed by mistake before (noindex). Keep it off the live site.
+course-prototype.html

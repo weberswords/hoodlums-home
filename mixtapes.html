@@ -4,8 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Catalog · The Intelligent Hoodlums</title>
-<meta name="description" content="Every session we run, turned into something you can press play on. Free replays and deep-dive mixtapes for teachers — the Google Classroom webinar series, the ISTE session, and more.">
+<meta name="description" content="Every session we run, turned into something you can press play on. Free replays and deep-dive mixtapes for teachers: the Google Classroom webinar series, the ISTE session, and more.">
 <meta name="theme-color" content="#0F1419">
+<meta name="author" content="The Intelligent Hoodlums">
+
+<link rel="canonical" href="https://theintelligenthoodlums.com/mixtapes">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="The Intelligent Hoodlums">
+<meta property="og:title" content="The Catalog · The Intelligent Hoodlums">
+<meta property="og:description" content="Free replays for teachers from The Intelligent Hoodlums: the five-episode Google Classroom webinar series with chapters, the ISTELive 26 session, and the ClassroomOS Bootcamp reflections.">
+<meta property="og:url" content="https://theintelligenthoodlums.com/mixtapes">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://theintelligenthoodlums.com/assets/HM-og-v2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Intelligent Hoodlums badge beside the name and the line: We help teachers solve problems. Las Vegas, Est 2014.">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Catalog · The Intelligent Hoodlums">
+<meta name="twitter:description" content="Free replays for teachers from The Intelligent Hoodlums: the five-episode Google Classroom webinar series with chapters, the ISTELive 26 session, and the ClassroomOS Bootcamp reflections.">
+<meta name="twitter:image" content="https://theintelligenthoodlums.com/assets/HM-og-v2.png">
+
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/HM-favicon-64.png">
 
 <!-- Inherits the whole brand system: tokens, Grift, buttons, footer. -->
@@ -113,7 +135,7 @@ body.player-open { overflow: hidden; }
 
 .stage-lesson-kicker { font-family: var(--font-family); font-size: var(--text-sm); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--hm-tuscany); margin: 24px 0 8px; }
 .now-playing { font-family: var(--font-family); font-size: var(--text-xs); letter-spacing: .3em; text-transform: uppercase; color: var(--hm-rufous-light); margin-bottom: 8px; }
-.stage-inner h1 { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl); color: var(--hm-bone); line-height: 1.1; }
+.stage-inner h2#stageTitle { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl); color: var(--hm-bone); line-height: 1.1; }
 .stage-body { color: var(--bone-60); font-size: var(--text-base); margin-top: 16px; }
 
 /* liner notes (show notes) */
@@ -160,6 +182,24 @@ body.player-open { overflow: hidden; }
   .stage-topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: sticky; top: 0; z-index: 6; padding: 10px 14px; background: rgba(15,20,25,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--bone-08); }
   .side-close { display: block; }
 }
+
+/* — the EP track list (crawlable episode data) — */
+.tracklist { max-width: 1000px; margin: 0 auto var(--space-8); padding: 0 var(--space-5); }
+.tracklist .liner { font-size: var(--text-xs); }
+.tracklist h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: var(--hm-bone); margin-top: 8px; }
+.tracklist-sub { color: var(--bone-60); margin-top: 10px; max-width: 60ch; }
+.tracks { list-style: none; padding: 0; margin: var(--space-5) 0 0; display: grid; gap: 16px; }
+.track { border: 1px solid var(--bone-08); border-radius: 16px; padding: var(--space-5); }
+.track-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.track-n { font-family: var(--font-family); font-weight: 100; letter-spacing: .1em; color: var(--hm-tuscany); }
+.track-title { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--hm-bone); flex: 1 1 auto; }
+.track-dur { font-size: var(--text-sm); color: var(--bone-40); }
+.track-body { color: var(--bone-60); margin-top: 10px; }
+.track-notes { list-style: none; padding: 0; margin: 14px 0 0; columns: 2 280px; column-gap: 28px; }
+.track-notes li { display: flex; gap: 12px; padding: 5px 0; break-inside: avoid; font-size: var(--text-sm); color: var(--bone-60); }
+.track-notes time { flex: 0 0 42px; color: var(--hm-tuscany); font-weight: 100; letter-spacing: .08em; }
+.track-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 16px; }
+.track-actions a { color: var(--hm-bone); text-decoration: underline; font-size: var(--text-sm); }
 </style>
 </head>
 <body>
@@ -231,8 +271,8 @@ body.player-open { overflow: hidden; }
       <circle cx="100" cy="100" r="6" fill="var(--hm-ink)"/>
     </svg>
     <p class="liner rel-kind">The Single</p>
-    <h2>Human-Centered AI, Live</h2>
-    <p class="rel-blurb">Our virtual Idea Lab from ISTELive 26 and ASCD Annual — a plain-language, human-centered way to bring AI into your room. The full session, on demand.</p>
+    <h2>Human-Centered ai, Live</h2>
+    <p class="rel-blurb">Our virtual Idea Lab from ISTELive 26 and ASCD Annual — a plain-language, human-centered way to bring ai into your room. The full session, on demand.</p>
     <div class="rel-meta">
       <span>1 session</span><span>&middot;</span><span>Free</span><span>&middot;</span><span>Watch on demand</span>
     </div>
@@ -265,6 +305,128 @@ body.player-open { overflow: hidden; }
   </article>
 
 
+</section>
+
+<!-- THE EP, TRACK BY TRACK. This list is the episode data: the player
+     below reads it from the page, so edit episodes here and nowhere else.
+     Each track needs data-id, data-video (the YouTube ID), a .track-n,
+     .track-title, .track-dur, .track-body, and one li per chapter. -->
+<section class="tracklist" id="episodes" aria-labelledby="tracklistTitle">
+  <p class="liner">The EP &middot; Track list</p>
+  <h2 id="tracklistTitle">Google Classroom, Live</h2>
+  <p class="tracklist-sub">The five episodes of the free webinar series &ldquo;Google Classroom Won&rsquo;t Save You&hellip; But You Can,&rdquo; with chapters.</p>
+  <ol class="tracks">
+    <li class="track" id="episode-01" data-id="e1" data-video="AE6Z0klBSlE">
+      <div class="track-head">
+        <span class="track-n">01</span>
+        <h3 class="track-title">The Brain</h3>
+        <span class="track-dur">1h 6m</span>
+      </div>
+      <div class="track-body"><p>Before you head over to Google Classroom, take time to reflect on who you are and how your classroom runs. Google Classroom is a container &mdash; you need to know what you&rsquo;re going to put in it.</p></div>
+      <ol class="track-notes">
+        <li><time>0:00</time> <span>Welcome &amp; the week ahead</span></li>
+        <li><time>1:44</time> <span>Google Classroom is just a container</span></li>
+        <li><time>9:50</time> <span>Build the operating system first</span></li>
+        <li><time>13:45</time> <span>Start in your Google Drive</span></li>
+        <li><time>16:53</time> <span>The scaffold: folders, agents &amp; data</span></li>
+        <li><time>37:00</time> <span>Inside Classroom: the shiny-button trap</span></li>
+        <li><time>49:54</time> <span>The money move: Gemini Notebook (formerly NotebookLM)</span></li>
+        <li><time>56:53</time> <span>Why vanilla ai falls flat</span></li>
+      </ol>
+      <div class="track-actions">
+        <button class="btn btn-bone" onclick="openEP('e1')">Play episode 01</button>
+        <a href="https://www.youtube.com/watch?v=AE6Z0klBSlE" target="_blank" rel="noopener">Watch on YouTube<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
+    </li>
+    <li class="track" id="episode-02" data-id="e2" data-video="gIJQ9O9T9gM">
+      <div class="track-head">
+        <span class="track-n">02</span>
+        <h3 class="track-title">Assets</h3>
+        <span class="track-dur">1h 2m</span>
+      </div>
+      <div class="track-body"><p>Starting with Gemini Notebook (formerly NotebookLM), then Gemini and Google Gems, you can build assets for Google Classroom far more efficiently.</p></div>
+      <ol class="track-notes">
+        <li><time>0:00</time> <span>Welcome &amp; day one recap</span></li>
+        <li><time>2:10</time> <span>Claude for teachers: should you?</span></li>
+        <li><time>4:46</time> <span>Stay in your Google ecosystem</span></li>
+        <li><time>9:06</time> <span>From draft to Classroom: always audit</span></li>
+        <li><time>13:02</time> <span>Make work students actually want</span></li>
+        <li><time>23:54</time> <span>Ground the ai, then build</span></li>
+        <li><time>34:15</time> <span>When the tools break (and why we go live)</span></li>
+        <li><time>42:32</time> <span>Build a Gem: accessibility &amp; voice</span></li>
+      </ol>
+      <div class="track-actions">
+        <button class="btn btn-bone" onclick="openEP('e2')">Play episode 02</button>
+        <a href="https://www.youtube.com/watch?v=gIJQ9O9T9gM" target="_blank" rel="noopener">Watch on YouTube<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
+    </li>
+    <li class="track" id="episode-03" data-id="e3" data-video="sc2PnSgcyow">
+      <div class="track-head">
+        <span class="track-n">03</span>
+        <h3 class="track-title">Make Your Own Assets</h3>
+        <span class="track-dur">43 min</span>
+      </div>
+      <div class="track-body"><p>Creating your own assets is one of the best strategies for using any LMS. You build them by grounding Gemini in your context.</p></div>
+      <ol class="track-notes">
+        <li><time>0:00</time> <span>Welcome &amp; the Teachers Pay Teachers problem</span></li>
+        <li><time>3:56</time> <span>Build your own asset factory</span></li>
+        <li><time>7:10</time> <span>Curation &amp; collecting ideas</span></li>
+        <li><time>9:49</time> <span>Personalizing what you find</span></li>
+        <li><time>13:05</time> <span>Keep kids out of Classroom, live in the calendar</span></li>
+        <li><time>20:38</time> <span>Does calendar-first work for little kids?</span></li>
+        <li><time>25:57</time> <span>The copy-link trick &amp; the paper trail</span></li>
+        <li><time>33:32</time> <span>Consistency, templates &amp; SOPs</span></li>
+      </ol>
+      <div class="track-actions">
+        <button class="btn btn-bone" onclick="openEP('e3')">Play episode 03</button>
+        <a href="https://www.youtube.com/watch?v=sc2PnSgcyow" target="_blank" rel="noopener">Watch on YouTube<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
+    </li>
+    <li class="track" id="episode-04" data-id="e4" data-video="n5NOcWSLMx4">
+      <div class="track-head">
+        <span class="track-n">04</span>
+        <h3 class="track-title">Topics</h3>
+        <span class="track-dur">1h 6m</span>
+      </div>
+      <div class="track-body"><p>Organizing your Google Classroom into Topics will make your life a lot easier.</p></div>
+      <ol class="track-notes">
+        <li><time>0:00</time> <span>Welcome &amp; why organization matters</span></li>
+        <li><time>7:21</time> <span>Bundling &amp; collecting ideas</span></li>
+        <li><time>10:41</time> <span>Classroom&rsquo;s upside-down hierarchy</span></li>
+        <li><time>14:37</time> <span>Build your topic buckets first</span></li>
+        <li><time>21:00</time> <span>Questions, bell ringers &amp; headphones</span></li>
+        <li><time>36:26</time> <span>Grades are basically vibes</span></li>
+        <li><time>40:09</time> <span>Materials vs assignments: skip the zero</span></li>
+        <li><time>51:14</time> <span>The dummy-topics hack</span></li>
+      </ol>
+      <div class="track-actions">
+        <button class="btn btn-bone" onclick="openEP('e4')">Play episode 04</button>
+        <a href="https://www.youtube.com/watch?v=n5NOcWSLMx4" target="_blank" rel="noopener">Watch on YouTube<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
+    </li>
+    <li class="track" id="episode-05" data-id="e5" data-video="w8hV_EfhabQ">
+      <div class="track-head">
+        <span class="track-n">05</span>
+        <h3 class="track-title">Building Activities</h3>
+        <span class="track-dur">1h 7m</span>
+      </div>
+      <div class="track-body"><p>In the final episode, we build activities in Google Classroom &mdash; and look at the sites that add depth to your content.</p></div>
+      <ol class="track-notes">
+        <li><time>0:00</time> <span>Final episode: material, not assignments</span></li>
+        <li><time>4:48</time> <span>The research behind good assignments</span></li>
+        <li><time>9:16</time> <span>Start simple: Own it, Learn it, Share it</span></li>
+        <li><time>14:21</time> <span>The magic-button trap</span></li>
+        <li><time>20:22</time> <span>Grounding fixes it (and the rule of three)</span></li>
+        <li><time>26:51</time> <span>Audio lessons &amp; avatars: who&rsquo;s in control?</span></li>
+        <li><time>34:05</time> <span>Non-ai activities &amp; everyday tools</span></li>
+        <li><time>40:03</time> <span>A tour of free classroom resources</span></li>
+      </ol>
+      <div class="track-actions">
+        <button class="btn btn-bone" onclick="openEP('e5')">Play episode 05</button>
+        <a href="https://www.youtube.com/watch?v=w8hV_EfhabQ" target="_blank" rel="noopener">Watch on YouTube<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
+    </li>
+  </ol>
 </section>
 
 <!-- FROM THE STAGE TO THE CATALOG (the funnel, said plainly) -->
@@ -328,7 +490,7 @@ body.player-open { overflow: hidden; }
 
       <p class="now-playing">Now Playing</p>
       <div class="stage-lesson-kicker" id="stageKicker">Episode 01</div>
-      <h1 id="stageTitle">Episode title</h1>
+      <h2 id="stageTitle">Episode title</h2>
       <div class="stage-body" id="stageBody"></div>
 
       <div class="liner-notes" id="linerNotes"></div>
@@ -344,84 +506,23 @@ body.player-open { overflow: hidden; }
 <script src="/nav.js"></script>
 <script>
 /* ============================================================
-   EP DATA — the free webinar series. In the real build this is
-   one release data file; the player renders whatever's here.
-   Each episode carries video + (later) an audio file for the car,
-   plus liner notes: timestamps and links.
+   EP DATA. The episodes live in the HTML track list (#episodes),
+   so ai crawlers and people without JavaScript can read them.
+   The player reads them from there.
    ============================================================ */
-/* The real "Google Classroom Won't Save You... But You Can" webinar series
-   (5 live sessions). Titles use each episode's distinctive subtitle; durations
-   are rounded from the source recordings. Add notes (chapter timestamps) and
-   links whenever you have them — empty notes+links hide the liner-notes block. */
 const EP = {
   slug: "google-classroom-live",
-  episodes: [
-    { id: "e1", n: "01", title: "The Brain", dur: "1h 6m", video: "AE6Z0klBSlE",
-      body: "<p>Before you head over to Google Classroom, take time to reflect on who you are and how your classroom runs. Google Classroom is a container &mdash; you need to know what you&rsquo;re going to put in it.</p>",
-      notes: [
-        ["0:00", "Welcome &amp; the week ahead"],
-        ["1:44", "Google Classroom is just a container"],
-        ["9:50", "Build the operating system first"],
-        ["13:45", "Start in your Google Drive"],
-        ["16:53", "The scaffold: folders, agents &amp; data"],
-        ["37:00", "Inside Classroom: the shiny-button trap"],
-        ["49:54", "The money move: Gemini Notebook (formerly NotebookLM)"],
-        ["56:53", "Why vanilla AI falls flat"],
-      ],
-      links: [] },
-    { id: "e2", n: "02", title: "Assets", dur: "1h 2m", video: "gIJQ9O9T9gM",
-      body: "<p>Starting with Gemini Notebook (formerly NotebookLM), then Gemini and Google Gems, you can build assets for Google Classroom far more efficiently.</p>",
-      notes: [
-        ["0:00", "Welcome &amp; day one recap"],
-        ["2:10", "Claude for teachers: should you?"],
-        ["4:46", "Stay in your Google ecosystem"],
-        ["9:06", "From draft to Classroom: always audit"],
-        ["13:02", "Make work students actually want"],
-        ["23:54", "Ground the AI, then build"],
-        ["34:15", "When the tools break (and why we go live)"],
-        ["42:32", "Build a Gem: accessibility &amp; voice"],
-      ],
-      links: [] },
-    { id: "e3", n: "03", title: "Make Your Own Assets", dur: "43 min", video: "sc2PnSgcyow",
-      body: "<p>Creating your own assets is one of the best strategies for using any LMS. You build them by grounding Gemini in your context.</p>",
-      notes: [
-        ["0:00", "Welcome &amp; the Teachers Pay Teachers problem"],
-        ["3:56", "Build your own asset factory"],
-        ["7:10", "Curation &amp; collecting ideas"],
-        ["9:49", "Personalizing what you find"],
-        ["13:05", "Keep kids out of Classroom, live in the calendar"],
-        ["20:38", "Does calendar-first work for little kids?"],
-        ["25:57", "The copy-link trick &amp; the paper trail"],
-        ["33:32", "Consistency, templates &amp; SOPs"],
-      ],
-      links: [] },
-    { id: "e4", n: "04", title: "Topics", dur: "1h 6m", video: "n5NOcWSLMx4",
-      body: "<p>Organizing your Google Classroom into Topics will make your life a lot easier.</p>",
-      notes: [
-        ["0:00", "Welcome &amp; why organization matters"],
-        ["7:21", "Bundling &amp; collecting ideas"],
-        ["10:41", "Classroom&rsquo;s upside-down hierarchy"],
-        ["14:37", "Build your topic buckets first"],
-        ["21:00", "Questions, bell ringers &amp; headphones"],
-        ["36:26", "Grades are basically vibes"],
-        ["40:09", "Materials vs assignments: skip the zero"],
-        ["51:14", "The dummy-topics hack"],
-      ],
-      links: [] },
-    { id: "e5", n: "05", title: "Building Activities", dur: "1h 7m", video: "w8hV_EfhabQ",
-      body: "<p>In the final episode, we build activities in Google Classroom &mdash; and look at the sites that add depth to your content.</p>",
-      notes: [
-        ["0:00", "Final episode: material, not assignments"],
-        ["4:48", "The research behind good assignments"],
-        ["9:16", "Start simple: Own it, Learn it, Share it"],
-        ["14:21", "The magic-button trap"],
-        ["20:22", "Grounding fixes it (and the rule of three)"],
-        ["26:51", "Audio lessons &amp; avatars: who&rsquo;s in control?"],
-        ["34:05", "Non-AI activities &amp; everyday tools"],
-        ["40:03", "A tour of free classroom resources"],
-      ],
-      links: [] },
-  ]
+  episodes: Array.from(document.querySelectorAll("#episodes .track")).map(el => ({
+    id: el.dataset.id,
+    n: el.querySelector(".track-n").textContent.trim(),
+    title: el.querySelector(".track-title").textContent.trim(),
+    dur: el.querySelector(".track-dur").textContent.trim(),
+    video: el.dataset.video,
+    body: el.querySelector(".track-body").innerHTML,
+    notes: Array.from(el.querySelectorAll(".track-notes li")).map(li =>
+      [li.querySelector("time").textContent.trim(), li.querySelector("span").innerHTML]),
+    links: []
+  }))
 };
 
 const STORE = "tih_ep_" + EP.slug;
