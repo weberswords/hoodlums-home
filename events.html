@@ -184,6 +184,37 @@
   }
   .btn-play:hover { border-color: var(--hm-bone); }
 </style>
+<!-- JSON-LD: upcoming events. Add a record here when a dated event goes on the page. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://theintelligenthoodlums.com/events#silver-state-2026",
+  "name": "MAGIC: Human-Centered AI for Beginners",
+  "description": "The Intelligent Hoodlums present a plain-language, human-first way to bring ai into the classroom, built for teachers who are not sure where to start.",
+  "startDate": "2026-10-10",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "url": "https://theintelligenthoodlums.com/events#silver-state-2026",
+  "location": {
+    "@type": "Place",
+    "name": "Aldeane C. Ries",
+    "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressRegion": "NV", "addressCountry": "US" }
+  },
+  "organizer": { "@id": "https://theintelligenthoodlums.com/#organization" },
+  "performer": [{ "@id": "https://theintelligenthoodlums.com/crew#webs" }, { "@id": "https://theintelligenthoodlums.com/crew#mike" }],
+  "superEvent": {
+    "@type": "Event",
+    "name": "Silver State Technology Conference 2026",
+    "startDate": "2026-10-10T09:00:00-07:00",
+    "endDate": "2026-10-10T17:30:00-07:00",
+    "url": "https://nvside.org",
+    "organizer": { "@type": "Organization", "name": "NV-SIDE", "url": "https://nvside.org" },
+    "offers": { "@type": "Offer", "url": "https://www.zeffy.com/en-US/ticketing/silver-state-technology-conference--2026" }
+  }
+}
+</script>
+
 </head>
 <body>
 
