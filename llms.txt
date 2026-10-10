@@ -25,6 +25,7 @@ The founders:
 - [Upcoming events](https://theintelligenthoodlums.com/events): where to see the Hoodlums next, including the Silver State Technology Conference on October 10, 2026.
 - [Past events](https://theintelligenthoodlums.com/past): sessions, series, and talks already run.
 - [The Catalog](https://theintelligenthoodlums.com/mixtapes): free replays, including the five-episode Google Classroom webinar series with chapters.
+- [Silver State 2026 session](https://theintelligenthoodlums.com/silver-state): the page for "MAGIC: Human-Centered AI for Beginners" at the Silver State Technology Conference, with a way to leave the Hoodlums a message or book PD.
 - [ISTELive 26 session](https://theintelligenthoodlums.com/iste): the replay of "Human-Centered AI Collaboration for Beginners."
 
 ## Optional
