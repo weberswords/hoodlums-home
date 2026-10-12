@@ -4,6 +4,7 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/consultation", "destination": "/", "permanent": true },
+    { "source": "/facilitation", "destination": "/", "permanent": true },
     { "source": "/inspiration", "destination": "/", "permanent": true },
     { "source": "/learn-with-the-hoodlums", "destination": "/", "permanent": true },
     { "source": "/pomodoro-method-canvas", "destination": "https://blog.theintelligenthoodlums.com/p/pomodoro-method-canvas", "permanent": true }
