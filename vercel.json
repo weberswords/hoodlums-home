@@ -3,7 +3,9 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/consultation", "destination": "/", "permanent": true }
+    { "source": "/consultation", "destination": "/", "permanent": true },
+    { "source": "/inspiration", "destination": "/", "permanent": true },
+    { "source": "/learn-with-the-hoodlums", "destination": "/", "permanent": true }
   ],
   "headers": [
     {
