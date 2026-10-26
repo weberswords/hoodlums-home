@@ -11,7 +11,7 @@ const houseRules = [
   'We design with teachers, never at them.',
   'We disrupt anything that wastes their time.',
   'We deliver work that survives Monday morning.',
-  'We refuse to sell temporal solutions.',
+  'We refuse to sell solutions that only promise to pay off someday.',
   'We speak plain. We dress sharp. We move quiet.',
   'We are the hoodlums in the room.',
 ];
