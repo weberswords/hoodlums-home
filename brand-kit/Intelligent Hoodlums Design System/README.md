@@ -95,7 +95,7 @@ ui_kits/
 
 1. **Lead with the verb.** Open with action: design, disrupt, deliver, build, ship. Never "we believe that perhaps…"
 2. **Specifics over slogans.** "Six teachers. Three weeks." beats "transformative impact." No "world-class," "best-in-breed," "cutting-edge."
-3. **Name the enemy.** Call out the CFL playbook when relevant. Don't punch down — teachers are not the problem.
+3. **Name the enemy.** Call out the consultant-industrial complex when relevant. Don't punch down — teachers are not the problem.
 4. **Cite the bars.** Use lyrics, film lines, book quotes as openers — but only if they're doing structural work. Ornamental quotes get cut.
 5. **Finish on the hook.** Every page ends with a call-back line, a question, or a pivot. "In conclusion" is forbidden.
 6. **Keep the badge clean.** Logo on Prussian, Bone, or Ink only. No drop shadows, no gradients, no rotation past ±4°.
